@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# fmxmlsnippet_retrieve snippetType filename
+#
+# Stores the fmxmlsnippet file to the snippet library.
+#
+# That is, it copies the file fmxmlsnippets/$1/$2.xml to fmxmlsnippet.xml
+#   where
+#     $fmxmlsnippetLibraryName is the name of the Library folder.
+#
+# FIXME!
+#
+$snippetType=$1
+$filename=$2
+#
+$fmxmlsnippetLibraryName=$snippetType
+#
+cp ~/Documents/fmCheckMate/fmxmlsnippets/$fmxmlsnippetLibraryName/$filename.xml ~/Documents/fmCheckMate/fmxmlsnippet.xml

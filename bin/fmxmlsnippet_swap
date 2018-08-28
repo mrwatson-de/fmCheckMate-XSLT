@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Swaps the top two fmxmlsnippet files on the stack.
+#
+# That is it moves the file fmxmlsnippet#.xml to fmxmlsnippet.xml where # is the highest number in the sequence 1,2,3... that causes no error.
+#
+i=1
+while [ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ]
+do
+	((i++))
+done
+((i--))
+if [[ $i==0 ]]; then
+	j=""
+else
+	((j=$i-1))
+fi
+((k=$i+1))
+[[ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml && -f ~/Documents/fmCheckMate/fmxmlsnippet$j.xml ]] && mv -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ~/Documents/fmCheckMate/fmxmlsnippet$k.xml ; mv -f ~/Documents/fmCheckMate/fmxmlsnippet$j.xml ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ; mv -f ~/Documents/fmCheckMate/fmxmlsnippet$k.xml ~/Documents/fmCheckMate/fmxmlsnippet$j.xml

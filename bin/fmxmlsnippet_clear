@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Clears the fmxmlsnippet stack.
+#
+# That is it deletes all files with the name fmxmlsnippet#.xml
+#
+rm -fv ~/Documents/fmCheckMate/fmxmlsnippet[0-9]*.xml

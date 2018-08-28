@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- Script steps from HelloWorld.fp7 copied with FileMaker 10 and XML tidied with TextMate/XML-Tidy. -->
+<dummy>
+	<Step id="76" name="Feldwert setzen" enable="True">
+		<Calculation><![CDATA["Hello World"]]></Calculation>
+		<Field id="1" name="HelloWorld" table="fmCheckMate"/>
+	</Step>
+</dummy>

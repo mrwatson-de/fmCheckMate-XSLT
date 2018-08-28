@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- Field definition from HelloWorld.fp7 copied with FileMaker 10 and XML tidied with TextMate/XML-Tidy. -->
+<dummy>
+	<Field id="1" name="HelloWorld" dataType="Text" fieldType="Normal">
+		<Comment/>
+		<AutoEnter lookup="False" constant="False" furigana="False" calculation="False" allowEditing="True">
+			<ConstantData/>
+		</AutoEnter>
+		<Validation type="OnlyDuringDataEntry" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False">
+			<NotEmpty value="False"/>
+			<Unique value="False"/>
+			<Existing value="False"/>
+			<StrictValidation value="False"/>
+		</Validation>
+		<Storage index="None" global="False" autoIndex="True" indexLanguage="German" maxRepetition="1"/>
+	</Field>
+</dummy>

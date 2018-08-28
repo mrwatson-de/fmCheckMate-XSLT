@@ -1,0 +1,45 @@
+# The top-level fmCheckMate folder is a working folder,
+# so we need to switch the priority round to ALLOW stuff
+# instead of IGNORING stuff.
+# This we do by first of all disallowing everything,
+# and then specifically granting access to particular
+# files and folders
+
+# :
+
+# BLACKLIST files/folders in same directory as the .gitignore file
+/*
+
+# WHITELIST files in same directory as the .gitignore file
+!.gitignore
+!/About the fmCheckMate folder README.md
+!/LICENSE.txt
+!/README.md
+
+# BLACKLIST files in temp folder and subfolders
+/temp/**/*
+
+# WHITELIST folders in same directory as the .gitignore file
+!/bin/
+!/docs/
+!/test/
+!/temp/
+!/xml/
+!/xsl/
+
+
+
+# GLOBAL BLACKLIST - Ignore files hierarchically...
+
+# Ignore all Mac Desktop files
+**/.DS_Store
+**/Icon
+
+# Ignore all oXygen XML Projects
+**.xpr
+
+# Ignore all TextMate Project property files
+**/.tm_properties
+
+**.log
+

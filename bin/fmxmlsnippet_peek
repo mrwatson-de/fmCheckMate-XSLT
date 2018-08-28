@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Peeks the $1th document from the top of the fmxmlsnippet stack, where top=0
+#
+# That is it copies the file fmxmlsnippet#.xml to fmxmlsnippet.xml where # is the highest number in the sequence 1,2,3... that causes no error.
+#
+i=1
+while [ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ]
+do
+	(( i++ ))
+done
+j=$1
+while [ $j>=0 ]
+do
+	(( j-- ))
+	(( i-- ))
+done
+[ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ] && cp -vf ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ~/Documents/fmCheckMate/fmxmlsnippet.xml

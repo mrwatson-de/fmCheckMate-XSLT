@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Pops the fmxmlsnippet file off the stack.
+#
+# That is it moves the file fmxmlsnippet#.xml to fmxmlsnippet.xml where # is the highest number in the sequence 1,2,3... that causes no error.
+#
+i=1
+while [ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ]
+do
+	(( i++ ))
+done
+(( i-- ))
+[ -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ] && mv -f ~/Documents/fmCheckMate/fmxmlsnippet$i.xml ~/Documents/fmCheckMate/fmxmlsnippet.xml

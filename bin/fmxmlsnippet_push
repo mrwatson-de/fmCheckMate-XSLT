@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Pushes the fmxmlsnippet file onto the stack.
+#
+# That is it copies the file fmxmlsnippet.xml to fmxmlsnippet#.xml where # is the next avaialable number.
+#
+i=0
+err=1
+while [ $err -ne 0 ]
+do
+	(( i++ ))
+        cp -nv ~/Documents/fmCheckMate/fmxmlsnippet.xml ~/Documents/fmCheckMate/fmxmlsnippet$i.xml 
+	err=$?
+done

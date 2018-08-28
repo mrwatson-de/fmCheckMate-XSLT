@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# fmxmlsnippet_store filename
+#
+# Stores the fmxmlsnippet file to the snippet library.
+#
+# That is, it copies the file fmxmlsnippet.xml to fmxmlsnippets/$fmxmlsnippetLibraryName/$1.xml
+#   where
+#     $fmxmlsnippetLibraryName is the name of the Library folder.
+#
+# FIXME!
+$fmxmlsnippetLibraryName
+cp ~/Documents/fmCheckMate/fmxmlsnippet.xml ~/Documents/fmCheckMate/fmxmlsnippets/$fmxmlsnippetLibraryName/$1.xml
