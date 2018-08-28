@@ -16,6 +16,7 @@
 	
 	===== CHANGES HISTORY =====
 	(c) russell@mrwatson.de 2018
+	2018-08-28 MrW: Version 1.0.1 Improved output message.
 	2018-06-06 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
@@ -25,7 +26,7 @@
 	<xsl:template match="/">
 		<xsl:value-of select="'Hello World!'"/>
 		<xsl:value-of select="'&#x0a;&#x0a;&#x0a;'"/>
-		<xsl:value-of select="concat('(The XML you copied has ', count(//*), ' bits.)')"/>
+		<xsl:value-of select="concat('(The XML you copied has ', count(//*), ' element nodes.)')"/>
 	</xsl:template>
 	<!-- ignore all other text -->
 	<xsl:template match="text()"/>

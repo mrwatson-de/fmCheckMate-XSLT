@@ -18,6 +18,7 @@
 	
 	===== CHANGES HISTORY =====
 	(c) russell@mrwatson.de 2018
+	2018-08-28 MrW: Version 1.1.1 GitHub release :)
 	2018-08-13 MrW: Version 1.1 File name corrected
 	2015-01-23 MrW: Version 1.0
 	-->
@@ -26,7 +27,7 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- Main -->
 	<xsl:template match="/">
-		<xsl:value-of select="2018-08-13 13:13:13"/>
+		<xsl:value-of select="2018-08-28 03:00:00"/>
 	</xsl:template>
 	<!-- ignore all other text -->
 	<xsl:template match="text()"/>

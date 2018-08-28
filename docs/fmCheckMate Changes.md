@@ -8,7 +8,26 @@ Please check the history entries in the individual files for more details.
 
 ---
 
+20180828 MrW: Hello GitHub! ... We're going to have to wait and see if we are going to get along ;-)
+20180827 MrW: Added transformation XMSS_XMSS_ReplaceSetVarWithInsertCalculatedResult.xsl to change 
+              Set Variable steps into the faster Insert Calculated Result step (which runs in linear
+              time instead of quadratic)
+20180801 MrW: Corrected various errors thanks to oXygen XML Editor
+
+---
+
 20180711 MrW: Tidied up the formatting of this file, will update contents later.
+20180513 MrW: Added transformation XMSS_XMSS_ConvertCustomDialogInputsToVars.xsl to help convert per fm17
+              Custom Dialogs to variable-based rather than field based input.
+20180511 MrW: Added transformation XMFD_XMFD_RemoveFieldsWithSerialnumbers.xsl to remove fields
+              with serial numbers from the list of copied fields
+
+20180511 MrW: Added transformation XMFD_Text.Lines_ListPrimaryFields.xsl to list just the primary key fields
+              from the list of copied fields, that is fields with Serial Numbers or Get( UUID[Number] )
+              calculations, or fields marked internally as primary fields.
+20180511 MrW: Added transformation XMFD_XMFD_SelectPrimaryFields.xsl to select only the primary key fields
+              from the list of copied fields, that is fields with Serial Numbers or Get( UUID[Number] )
+              calculations, or fields marked internally as primary fields.
 
 ---
 

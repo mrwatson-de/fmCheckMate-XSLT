@@ -19,7 +19,7 @@
 	
 	===== CHANGES HISTORY =====
 	(c) russell@MrWatson.de 2018
-	2018-06-06 MrW: Version 0.9.4 Renamed File to 
+	2018-06-06 MrW: Version 0.9.4 Renamed File
 	2013-05-15 MrW: Version 0.9.3 Import, export and xslt namespaces sorted out, and DOCH all fields - in case you need them as placeholders.
 	2013-05-14 MrW: Version 0.9.2 Supports repeating fields
 	2013-05-09 MrW: Version 0.9.1 Not calculated nor summary fields
