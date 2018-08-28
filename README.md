@@ -16,7 +16,7 @@ It's as easy as ABC:
 To use the fmCheckMate XSLT Library, if you don't have it already, you will need
 to download and install MrWatson's fmWorkMate toolbox:
 
-1. Download fmWorkMate from the [fmworkmate downloads page][] ![fmWM.logo][]
+1. Download fmWorkMate from the [fmWorkMate downloads page][] ![fmWM.logo][]
 2. Copy fmWorkMate to your Applications folder (or the Documents folder, or wherever you want)
 
 ### B: Installing this fmCheckMate XSLT Library
@@ -24,7 +24,7 @@ to download and install MrWatson's fmWorkMate toolbox:
 Simply:
 
 1. Get hold of the latest fmCheckMate XSLT library:
-   - either use the copy in the latest fmWorkMate Bundle (from the [fmworkmate downloads page][])
+   - either use the copy in the latest fmWorkMate Bundle (from the [fmWorkMate downloads page][])
    - or download the latest version from the [fmCheckMate-XSLT GitHub repository][]
      - (in which case you need to unpack it and rename the folder simply to fmCheckMate)
 2. Copy the fmCheckMate folder to your Documents folder.
@@ -93,7 +93,7 @@ See the [LICENSE.txt](LICENSE.txt) file for details.
 This document: 20180711 MrW Version 2.0.1
 
 [fmWorkMate]: http://www.fmworkmate.com
-[fmworkmate downloads page]: http://fmworkmate.com/downloads
+[fmWorkMate downloads page]: http://fmworkmate.com/downloads
 [fmCheckMate]: http://www.fmworkmate.com/fmcheckmate
 [fmCM.logo]: http://www.fmworkmate.com/fmCM_XSLT_Folder_sm.png
 [fmWM.logo]: http://www.fmworkmate.com/fmWorkMate_ICON_128x128.png
