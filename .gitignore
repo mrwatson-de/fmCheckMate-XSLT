@@ -35,11 +35,15 @@
 **/.DS_Store
 **/Icon
 
+# Ignore all fmdiff folders
+**/fmdiff/
+
 # Ignore all oXygen XML Projects
 **.xpr
 
 # Ignore all TextMate Project property files
 **/.tm_properties
 
-**.log
+# Ignore all (import.)logs
+**/*.log
 
