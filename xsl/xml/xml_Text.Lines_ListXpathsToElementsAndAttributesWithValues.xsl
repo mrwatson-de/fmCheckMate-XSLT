@@ -30,7 +30,7 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- Main -->
 	 <xsl:template match="/">
-		<xsl:call-template name="node" select=".">
+		<xsl:call-template name="node">
 			<xsl:with-param name="path" select="''"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -48,7 +48,7 @@
 		</xsl:for-each>
 		<!-- Repeat for all child elements -->
 		<xsl:for-each select="*">
-			<xsl:call-template name="node" select=".">
+			<xsl:call-template name="node">
 				<xsl:with-param name="path" select="concat($path,'/',name())"/>
 			</xsl:call-template>
 		</xsl:for-each>
