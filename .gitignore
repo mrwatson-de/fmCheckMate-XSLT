@@ -18,6 +18,7 @@
 
 # BLACKLIST files in temp folder and subfolders
 /temp/**/*
+/xml/iDDR/**/*
 
 # WHITELIST folders in same directory as the .gitignore file
 !/bin/

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns the script steps from all buttons.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013-2016
+	(c) russell@mrwatson.de 2013-2018
 	2013-08-31 MrW 
 	-->
 	<!-- ===== HEAD ===== -->
