@@ -95,8 +95,11 @@
 		<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
 			<xsl:call-template name="outputGraphmlKeys"/>
 			<graph edgedefault="directed" id="G">
+				<xsl:comment> GRAPH META-DATA </xsl:comment>
 				<xsl:call-template name="outputGraphmlGraphMetaData"/>
+				<xsl:comment> NODES </xsl:comment>
 				<xsl:call-template name="outputGraphmlNodes"/>
+				<xsl:comment> EDGES </xsl:comment>
 				<xsl:call-template name="outputGraphmlEdges"/>
 			</graph>
 		</graphml>
@@ -111,10 +114,12 @@
 	 !-->
 	<xsl:template name="outputGraphmlKeys">
 		<!-- graph fields -->
+		<xsl:comment> graph fields </xsl:comment>
 		<key attr.name="Description" attr.type="string" for="graph" id="d0"/>
 		<key attr.name="Generator" attr.type="string" for="graph" id="d1"/>
 		<key attr.name="Version" attr.type="string" for="graph" id="d2"/>
 		<!-- node fields -->
+		<xsl:comment> node fields </xsl:comment>
 		<key attr.name="Label" attr.type="string" for="node" id="d10"/>
 		<key attr.name="Node Type" attr.type="string" for="node" id="d11"/>
 		<key attr.name="Storage" attr.type="string" for="node" id="d12"/>
@@ -127,12 +132,14 @@
 		<key attr.name="url" attr.type="string" for="node" id="d30"/>
 		<key attr.name="description" attr.type="string" for="node" id="d31"/>
 		<!-- edge fields -->
+		<xsl:comment> edge fields </xsl:comment>
 		<key attr.name="url" attr.type="string" for="edge" id="d50"/>
 		<key attr.name="description" attr.type="string" for="edge" id="d51"/>
 	</xsl:template>
 	<!-- outputGraphmlGraphMetaData -->
 	<xsl:template name="outputGraphmlGraphMetaData">
 		<!-- output graph description -->
+		<xsl:comment> graph description </xsl:comment>
 		<data key="d0">
 			<xsl:if test="$baseTableName != ''">
 				<xsl:value-of select="$baseTableName"/>
@@ -141,14 +148,17 @@
 			<xsl:value-of select="'Field Dependency Graph'"/>
 		</data>
 		<!-- output graph generator -->
+		<xsl:comment> graph generator </xsl:comment>
 		<data key="d1">
 			<xsl:value-of select="'fmCheckMate'"/>
 		</data>
 		<!-- output stylesheet name -->
+		<xsl:comment> stylesheet name </xsl:comment>
 		<data key="d2">
 			<xsl:value-of select="$stylesheetName"/>
 		</data>
 		<!-- output stylesheet version -->
+		<xsl:comment> stylesheet version </xsl:comment>
 		<data key="d3">
 			<xsl:value-of select="$stylesheetVersion"/>
 		</data>

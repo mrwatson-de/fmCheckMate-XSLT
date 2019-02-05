@@ -1,0 +1,564 @@
+#!/usr/bin/awk -f
+#
+# This is an AWK script to convert text ("fmPseudoCode") into FileMaker script steps (fmxmlsnippet).
+#
+# IT IS VERY RUDIMENTARY, IS STILL IN DEVELOPMENT (OF COURSE) AND ONLY SUPPORTS A FEW SMALL FEATURES
+#
+# => SO CHECK THE RESULTS YOU GET CAREFULLY!
+# => It IS, however, certainly useful for those few features that do work! :)
+#
+# Supported pseudo-code:
+#
+#     ONLY *ENGLISH* SCRIPT STEP NAMES
+#     // disabled script steps
+#     Comments (starting with a #)
+#     Set Field
+#     Set Variable
+#     $variable = calculation // for convenience :-)
+#     All steps with no options
+#     All steps that take a single [Calculation] in brackets
+#     Note: only SINGLE line calculation are recognised
+#     Some other steps: See the code below to see which ones have made it (Pause/Resume,... )
+#
+# Not supported:
+#
+#     EVERYTHING ELSE
+#
+# All unrecognised lines are rendered as a comment starting with a '?'
+# 
+#
+#
+# AUTHOR: MrWatson, russell@mrwatson.de 
+#
+# FILE: fmPseudoCodeToFmxmlsnippetScriptsteps
+#
+#  INPUT-Source: fmPseudoCode
+#  INPUT-Format: lines
+#  INPUT-Content: script step text (e.g. from MBS [Copy Script Text] button)
+#
+#  OUTPUT-Type: XML
+#  OUTPUT-Grammar: FileMaker fmxmlsnippet
+#  OUTPUT-Content: Scriptstep comments - one step per line in the input
+#
+# USAGE
+#
+# The following command converts the code in the MBS_Dialog_Script_example.fmpc.txt and 
+# saves it into the fmxmlsnippet.xml file as script steps
+#
+#    awk -f ~/Documents/fmCheckMate/bin/fmPseudoCodeToFmxmlsnippetScriptsteps /Users/rwatson/Documents/fmCheckMate/test/MBS_Dialog_Script_example.fmpc.txt > ~/Documents/fmCheckMate/fmxmlsnippet.xml
+#
+# You can then convert the xml back to FileMaker clipboard objects and paste them back into FileMaker
+#
+#  1. In fmCheckMate press CMD+L to load the XML
+#  2. Then press CMD+ALT+V to convert the XML back to FileMaker clipboard objects
+#  3. Then paste them into a FileMaker script
+#
+# ...or probably even easier with a further osascript command (Please let me know!)
+#
+# Note: You may have to mark this file as executable, before you can run it.
+#
+#     sudo chmod u+x ~/Documents/fmCheckMate/bin/fmPseudoCodeToFmxmlsnippetScriptsteps
+#
+# KNOWN BUGS
+#
+# - It won't create correct XML if there is a closing CDATA-tag (]]>) anywhere in the text.
+#
+#
+# *A cry for help*
+#
+# Are you an awk programmer? Please help! => russell@mrwatson.de :)
+#
+# @history
+# 20190204 MrW Version 0.3 Cool Set Field + Set Variable are working!
+# 20190202 MrW Version 0.2.2 5+ years on haven't learnt Perl yet, so ... time to get Set Field + Set Variable working!
+# 20131120 MrW Version 0.2.1 Need to learn Perl! AWK won't be able to do the job properly!
+# 20131111 MrW Version 0.2 Improved on the original comment-transformer to create a slightly usable "fmPseudoCode interpreter"
+# 20110207 MrW Version 0.1 My first AWK-Script :-)
+#
+# (c) Copyright 2011-2019 MrWatson. All Rights Reserved. 
+#
+
+function f_dequote(strg)
+{
+    sub(/^[\"]/,"",strg)  # leading
+    sub(/[\"]$/,"",strg)  # leading
+    return strg;
+}
+
+function f_trim(strg)
+{
+    sub(/^[ \t]+/,"",strg)  # leading
+    sub(/[ \t]+$/,"",strg)  # trailing 
+    return strg;
+}
+
+function f_xmlize(strg)
+{
+    gsub(/&/,"&amp;",strg)
+    gsub(/"/,"&quot;",strg)
+    gsub(/'/,"&apos;",strg)
+    return strg;
+}
+
+function f_cdata(strg)
+{
+    return strg;
+}
+function f_StateTrueFalse(strg,val){
+	if (f_trim(strg)==f_trim(val)) { return "True" } else {return "False"}
+}
+function f_xStep( enable, aid, step, content) {
+
+}
+
+
+#################
+BEGIN {
+#################
+
+#################
+# Manual settings
+debug=1;
+IGNORECASE=1
+
+#################
+# chunkDelim must be any UNIQUE string
+chunk_delim = "mosrhtbbuzsvmocbuvtrb"
+
+
+#################
+# IDs of script steps
+#
+Step_id["Add Account"]=134
+Step_id["Adjust Window"]=31
+Step_id["Allow Toolbars"]=115
+Step_id["Allow User Abort"]=85
+Step_id["Arrange All Windows"]=120
+Step_id["AVPlayer Play"]=00000000000000000
+Step_id["AVPlayer Set Options"]=00000000000000000
+Step_id["AVPlayer Set Playback State"]=00000000000000000
+Step_id["Beep"]=93
+Step_id["Change Password"]=83
+Step_id["Check Found Set"]=20
+Step_id["Check Record"]=19
+Step_id["Check Selection"]=18
+Step_id["Clear"]=49
+Step_id["Close File"]=34
+Step_id["Close Window"]=121
+Step_id["Comment"]=89
+Step_id["Commit Records/Requests"]=75
+Step_id["Constrain Found Set"]=126
+Step_id["Convert File"]=139
+Step_id["Copy All Records/Requests"]=98
+Step_id["Copy Record/Request"]=101
+Step_id["Copy"]=47
+Step_id["Correct Word"]=106
+Step_id["Cut"]=46
+Step_id["Delete Account"]=135
+Step_id["Delete All Records"]=10
+Step_id["Delete Portal Row"]=104
+Step_id["Delete Record/Request"]=9
+Step_id["Dial Phone"]=65
+Step_id["Duplicate Record/Request"]=8
+Step_id["Edit User Dictionary"]=109
+Step_id["Else If"]=125
+Step_id["Else"]=69
+Step_id["Enable Account"]=137
+Step_id["End If"]=70
+Step_id["End Loop"]=73
+Step_id["Enter Browse Mode"]=55
+Step_id["Enter Find Mode"]=22
+Step_id["Enter Preview Mode"]=41
+Step_id["Execute SQL"]=117
+Step_id["Exit Application"]=44
+Step_id["Exit Loop If"]=72
+Step_id["Exit Script"]=103
+Step_id["Export Field Contents"]=132
+Step_id["Export Records"]=36
+Step_id["Extend Found Set"]=127
+Step_id["Flush Cache to Disk"]=102
+Step_id["Freeze Window"]=79
+Step_id["Go to Field"]=17
+Step_id["Go to Layout"]=6
+Step_id["Go to Next Field"]=4
+Step_id["Go to Object"]=145
+Step_id["Go to Portal Row"]=99
+Step_id["Go to Previous Field"]=5
+Step_id["Go to Record/Request/Page"]=16
+Step_id["Go to Related Record"]=74
+Step_id["Halt Script"]=90
+Step_id["If"]=68
+Step_id["Import Records"]=35
+Step_id["Insert Calculated Result"]=77
+Step_id["Insert Current Date"]=13
+Step_id["Insert Current Time"]=14
+Step_id["Insert Current User Name"]=60
+Step_id["Insert File"]=131
+Step_id["Insert from Index"]=11
+Step_id["Insert from Last Visited"]=12
+Step_id["Insert Object"]=78
+Step_id["Insert Picture"]=56
+Step_id["Insert QuickTime"]=59
+Step_id["Insert Text"]=61
+Step_id["Install Menu Set"]=142
+Step_id["Install OnTimer Script"]=148
+Step_id["Loop"]=71
+Step_id["Modify Last Find"]=24
+Step_id["Move/Resize Window"]=119
+Step_id["New File"]=82
+Step_id["New Record/Request"]=7
+Step_id["New Window"]=122
+Step_id["Omit Multiple Records"]=26
+Step_id["Omit Record"]=25
+Step_id["Open Edit Saved Finds"]=149
+Step_id["Open File Options"]=114
+Step_id["Open File"]=33
+Step_id["Open Find/Replace"]=129
+Step_id["Open Help"]=32
+Step_id["Open Manage Data Sources"]=140
+Step_id["Open Manage Database"]=38
+Step_id["Open Manage Layouts"]=151
+Step_id["Open Manage Scripts"]=88
+Step_id["Open Manage Value Lists"]=112
+Step_id["Open Preferences"]=105
+Step_id["Open Record/Request"]=133
+Step_id["Open Remote"]=118
+Step_id["Open Sharing"]=113
+Step_id["Open URL"]=111
+Step_id["Paste"]=48
+Step_id["Pause/Resume Script"]=62
+Step_id["Perform AppleScript"]=67
+Step_id["Perform Find"]=28
+Step_id["Perform Find/Replace"]=128
+Step_id["Perform Quick Find"]=150
+Step_id["Perform Script"]=1
+Step_id["Print Setup"]=42
+Step_id["Print"]=43
+Step_id["Re-Login"]=138
+Step_id["Recover File"]=95
+Step_id["Refresh Window"]=80
+Step_id["Relookup Field Contents"]=40
+Step_id["Replace Field Contents"]=91
+Step_id["Reset Account Password"]=136
+Step_id["Revert Record/Request"]=51
+Step_id["Save a Copy as"]=37
+Step_id["Save Records as Excel"]=143
+Step_id["Save Records as PDF"]=144
+Step_id["Save Records as Snapshot Link"]=152
+Step_id["Scroll Window"]=81
+Step_id["Select All"]=50
+Step_id["Select Dictionaries"]=108
+Step_id["Select Window"]=123
+Step_id["Send DDE Execute"]=64
+Step_id["Send Event"]=57
+Step_id["Send Mail"]=63
+Step_id["Set Error Capture"]=86
+Step_id["Set Field By Name"]=147
+Step_id["Set Field"]=76
+Step_id["Set Multi-User"]=84
+Step_id["Set Next Serial Value"]=116
+Step_id["Set Selection"]=130
+Step_id["Set Use System Formats"]=94
+Step_id["Set Variable"]=141
+Step_id["Set Web Viewer"]=146
+Step_id["Set Window Title"]=124
+Step_id["Set Zoom Level"]=97
+Step_id["Show All Records"]=23
+Step_id["Show Custom Dialog"]=87
+Step_id["Show Omitted Only"]=27
+Step_id["Show/Hide Status Area"]=29
+Step_id["Show/Hide Text Ruler"]=92
+Step_id["Sort Records"]=39
+Step_id["Speak"]=66
+Step_id["Spelling Options"]=107
+Step_id["Undo/Redo"]=45
+Step_id["Unsort Records"]=21
+Step_id["Update Link"]=96
+Step_id["View As"]=30
+
+
+#################
+# OPEN XML
+#################
+print "<?xml version=\"1.0\"?>\
+<fmxmlsnippet type=\"FMObjectList\">"
+
+#################
+#END BEGIN
+#################
+}
+
+################
+# PROCESS LINE #
+################
+
+#Trim and remove final semicolon
+{sub(/^[ \t]+/,"");
+sub(/[ \t\;]+$/,"")}
+
+
+#by default script steps are enabled
+#Set enable
+{enable="True"}
+
+# // -> Commented out -> Set disabled and remove leading comment and white space
+/^(\s*\/\/\s*).*/{
+sub(/(\s*\/\/\s*)/,"");
+enable="False"
+}
+
+###############
+# -> Process Comment -> Remove # and print $0
+#
+/(^#|^$)/{
+sub(/^#/, "");
+print "\
+	<Step id=\"89\" enable=\""enable"\">\
+		<Text><![CDATA["f_cdata($0)"]]></Text>\
+	</Step>\
+";next}
+
+
+###############
+#$var=expression // Set Variable SHORT FORM
+#
+/^\$/{Repetition=1}
+#/^(\$\$?.*)(\[(.*)\])\s*=/{
+Repetition=$0;
+#sub(/\]/,"[",Repetition);
+#split(Repetition,Repetition,"[");Repetition=Repetition[2]}
+
+
+
+#$var=... -> set variable
+/^(\$\$?.*)(\[(.*)\])?\s*=/{
+sub(/\s*=\s*/,chunk_delim);
+split($0,chunk,chunk_delim);
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"141\" name=\"Set Variable\">\
+		<Value>\
+			<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+		</Value>\
+		<Repetition>\
+			<Calculation><![CDATA[1]]></Calculation>\
+		</Repetition>\
+		<Name>"f_trim(chunk[1])"</Name>\
+	</Step>\
+";next}
+
+#############################################
+# Set Field
+#
+# FIXME
+#
+/^(Set Field)/{
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\:\:/,chunk_delim);	# split Table + Field
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"76\" name=\"Set Field\">\
+		<Calculation><![CDATA["f_cdata(f_trim(chunk[4]))"]]></Calculation>\
+		<Field table=\""f_trim(chunk[2])"\" id=\"0\" repetition=\"1\" name=\""f_cdata(f_trim(chunk[3]))"\"/>\
+	</Step>\
+";next}
+
+#############################################
+# Set Variable
+#
+# Repetitions not yet supported
+#
+/^(Set Variable)/{
+
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\s*Value\s*:\s*/,"");	# Remove Value: label - FIXME ... can't get this regex right to match the first Value AFTER a semicolon
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);	# chunk
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"141\" name=\"Set Variable\">\
+		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+		<Value>\
+			<Calculation><![CDATA["f_cdata(f_trim(chunk[3]))"]]></Calculation>\
+		</Value>\
+		<Repetition>\
+			<Calculation><![CDATA[1]]></Calculation>\
+		</Repetition>\
+		<Name>"f_cdata(f_trim(chunk[2]))"</Name>\
+	</Step>\
+";next}
+
+
+#############################################
+# Pause/Resume Script [ Indefinitely ] 
+#
+/((^Pause\s*$)|(Pause.*Indefinitely))/{	# Match Pause or Pause Indefinitely
+print "\
+	<Step enable=\""enable"\" id=\"141\" name=\"Pause/Resume Script\">\
+		<PauseTime value=\"Indefinitely\"/>\
+	</Step>\
+";next}
+
+
+#############################################
+# Pause/Resume Script [Duration (seconds): ,1]
+#
+/^(Pause)/{		# Match Pause or Pause/Resume or Pause/Resume or 
+#sub(/\s*[\/-]?\s*(Resume)?\s*(Script)?\s*/,"");	# 
+
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/Duration \(seconds\):?/,"");	# Remove label Duration (seconds): - FIXME ... can't get this regex right to match the first Value AFTER a semicolon
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);	# chunk
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"62\" name=\"Pause/Resume Script\">\
+		<PauseTime value=\"ForDuration\"/>\
+		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+	</Step>\
+";next}
+
+
+#############################################
+#Simple Steps
+/^(Open Hosts|Open Manage Containers|Open Manage Themes|Open My Apps|Open Script Workspace|Upload to FileMaker Server|Send DDE Execute|Duplicate Record\/Request|Select All|Close Popover|Else|Beep|Check Found Set|Check Record|Copy All Records\/Requests|Copy Record\/Request|Correct Word|Edit User Dictionary|End If|End Loop|Exit Application|Flush Cache to Disk|Freeze Window|Go to Next Field|Go to Previous Field|Halt Script|Loop|Modify Last Find|New File|New Record\/Request|Omit Record|Open Edit Saved Finds|Open File Options|Open Find\/Replace|Open Help|Open Manage Data Sources|Open Manage Database|Open Manage Layouts|Open Manage Scripts|Open Manage Value Lists|Open Preferences|Open Record\/Request|Open Remote|Open Sharing|Resume Script|Select Dictionaries|Show All Records|Show Omitted Only|Spelling Options|Unsort Records)$/{print "\
+    <Step enable=\""enable"\" id=\""Step_id[$0]"\" name=\""$0"\"/>\
+";next}
+	
+
+
+#Steps that take a single [Calculation] in brackets
+/(Exit Script|Aktuelles Script verlassen|If|Wenn|Else If|Sonst, wenn|Exit Loop If|Verlasse Schleife wenn).*\[(.*)\]/{sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
+		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+	</Step>\
+";next}
+
+#############################################
+# Single Option Steps
+#
+# Note: Enable Touch Keyboard is 3-state
+#
+/(Enable Touch Keyboard|Set Multi-User|Allow User Abort|Allow Formatting Bar|Set Error Capture|Set Use System Formats|Set Layout Object Animation).*\[(.*)\]/{sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
+		<Set state=\""f_StateTrueFalse(chunk[2],"On")"\"></Set>\
+	</Step>\
+";next}
+
+#############################################
+# Pause Steps
+#
+/(Enter Browse Mode|Enter Preview Mode).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
+		<Pause state=\""f_StateTrueFalse(chunk[2],"On")"\"></Pause>\
+	</Step>\
+";next}
+
+#############################################
+# Simple Insert Steps
+#
+# FIXME  [ Select ] 
+#
+/(Insert Current Date|Enter Preview Mode).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
+		<Pause state=\""f_StateTrueFalse(chunk[2],"On")"\"></Pause>\
+	</Step>\
+";next}
+
+
+
+#############################################
+# Configure Local Notification
+#
+# MINIMAL
+#
+/^(Configure Local Notification)/{	# Match Configure Local Notification
+
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);	# chunk
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"187\" name=\"Configure Local Notification\">\
+		<Action value=\"Queue\"></Action>\
+	</Step>\
+";next}
+
+#############################################
+# Configure Region Monitor Script
+#
+# MINIMAL
+#
+/^(Configure Region Monitor Script)/{	# Match Configure Local Notification
+
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);	# chunk
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"185\" name=\"Configure Region Monitor Script\">\
+		<MonitorType value=\"iBeacon\"></MonitorType>\
+	</Step>\
+";next}
+
+
+#############################################
+# Install OnTimer Script
+#
+# MINIMAL
+#
+/^(Install OnTimer Script)/{
+
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);	# chunk
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"148\" name=\"Install OnTimer Script\">\
+		<Script id=\"0\" name=\""f_dequote(f_cdata(f_trim(chunk[2])))"\"></Script>\
+		<Interval>\
+			<Calculation><![CDATA["f_cdata(f_trim(chunk[3]))"]]></Calculation>\
+		</Interval>\
+	</Step>\
+";next}
+
+
+
+
+
+#############################################
+#############################################
+# FINALLY - Render everything else as a comment (with a starting ? to distinguish it from real comments)
+#############################################
+#############################################
+
+{print "<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[?" $0"]]></Text>\</Step>";}
+
+#################
+# CLOSE XML
+#################
+END {
+print "</fmxmlsnippet>"
+}

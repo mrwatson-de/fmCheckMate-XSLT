@@ -28,16 +28,7 @@
 	 ! 
 	 !     Outputs a field name for a (tgf) graph node, inc. flags to indicate what kind of field it is.
 	 ! 
-	 ! The first character indicates the storage type:
-	 ! 
-	 !     s = stored (but not indexed)
-	 !     x = single index
-	 !     X = double index
-	 !     u = unstored calculation
-	 !     U = Unstored summary
-	 !     g = global storage
-	 ! 
-	 ! The second character indicates the data type (= the SHORTCUT KEY for that data type):
+	 ! The first character indicates the data type = the SHORTCUT KEY for that data type
 	 ! 
 	 !     T = Text
 	 !     N = Number
@@ -46,30 +37,50 @@
 	 !     M = Timestamp
 	 !     R = Container
 	 ! 
+	 ! The second character indicates storage type
+	 ! 
+	 !     s = stored (but not indexed)
+	 !     x = single index
+	 !     X = double index
+	 !     u = unstored calculation
+	 !     U = Unstored summary
+	 !     g = global storage
+	 ! 
+	 ! 
 	 ! The third character indicates the field calculation type:
 	 ! 
-	 !     F = Input Field
-	 !     o = Output Field // not modifiable
-	 !     f = Initialized Field // with initial auto enter value
-	 !     c = Automatic Field // autoenter filter or lookup)
+	 !     O = Output Field // not modifiable
+	 !     o = Initialized Field // with initial auto enter value
+	 !     f = Input Field
+	 !     F = Automatic Field // autoenter filter or lookup)
 	 !     C = Calculated Field
 	 !     s = Summary Number Field
 	 !     S = Summary Text Field
 	 ! 
 	 ! Typical examples are:
 	 ! 
-	 !     (U-T-S) = Unstored Text Summary Field (List)
-	 !     (U-N-S) = Unstored Number Summary Field (Sum, etc.)
-	 !     (g-N-C) = global Number Calculated Field
-	 !     (u-N-C) = unstored Number Calculated Field
-	 !     (s-N-C) = stored (unindexed) Number Calculated Field
-	 !     (x-N-C) = stored single-indexed Number Calculated Field
-	 !     (x-T-C) = stored single-indexed Text Calculated Field
-	 !     (X-T-C) = stored double-indexed Text Calculated Field
-	 !     (s-N-c) = stored (unindexed) Automatic Number Field
-	 !     (s-N-f) = stored (unindexed) Initialized Number Field
-	 !     (s-N-F) = stored (unindexed) (Input) Number Field
+	 !   (D-xO) = indexed Output Date Field
+	 !   (N-so) = stored (unindexed) Initialized once Number Field
+	 !   (N-sF) = stored (unindexed) Automatic Filter Number Field
+	 !   (N-sf) = stored (unindexed) Number Field
+	 !   (N-gC) = global Calculated Number Field
+	 !   (N-uC) = unstored Calculated Number Field
+	 !   (N-sC) = stored (unindexed) Calculated Number Field
+	 !   (N-xC) = stored single-indexed Number Calculated Number Field
+	 !   (T-xC) = stored single-indexed Calculated Field
+	 !   (T-XC) = stored double-indexed Calculated Field
+	 !   (T-US) = Unstored Summary Text Field (List)
+	 !   (N-us) = Unstored Summary Number Field (Sum, etc.)
 	 ! 
+	 ! Note: In the last two characters...
+	 !       CAPITAL letters indicate a 'heavier' property and
+	 !       lowercae letters indicate a 'lighter' property:
+	 !
+	 !   x = single index, X = double index
+	 !   f = field (with no calculation), F = Filter, C = Calculate
+	 !   o = initialize once (modifiable), O = (poss. initialize and) output (unmodifiable)
+	 !   s = number sum, S = text sum
+	 !
 	 ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 ! 
 	 !  A note on filtering the nodes in yEd
@@ -99,30 +110,30 @@
 				<xsl:value-of select="'::'"/>
 			</xsl:if>
 			<xsl:value-of select="@name"/>
-			<xsl:if test="$showDataType='True' or $showStorage='True' or $showCalcType='True'">
+			<xsl:if test="$showDataType = 'True' or $showStorage = 'True' or $showCalcType = 'True'">
 				<xsl:value-of select="' '"/>
 				<xsl:value-of select="'('"/>
-				<xsl:if test="$showDataType='True'">
+				<xsl:if test="$showDataType = 'True'">
 					<!--
 					! The first character indicates the data type = the SHORTCUT KEY for that data type
 					!-->
 					<xsl:choose>
-						<xsl:when test="@dataType='Text'">
+						<xsl:when test="@dataType = 'Text'">
 							<xsl:value-of select="'T'"/>
 						</xsl:when>
-						<xsl:when test="@dataType='Number'">
+						<xsl:when test="@dataType = 'Number'">
 							<xsl:value-of select="'N'"/>
 						</xsl:when>
-						<xsl:when test="@dataType='Date'">
+						<xsl:when test="@dataType = 'Date'">
 							<xsl:value-of select="'D'"/>
 						</xsl:when>
-						<xsl:when test="@dataType='Time'">
+						<xsl:when test="@dataType = 'Time'">
 							<xsl:value-of select="'I'"/>
 						</xsl:when>
-						<xsl:when test="@dataType='TimeStamp'">
+						<xsl:when test="@dataType = 'TimeStamp'">
 							<xsl:value-of select="'M'"/>
 						</xsl:when>
-						<xsl:when test="@dataType='Binary'">
+						<xsl:when test="@dataType = 'Binary'">
 							<xsl:value-of select="'R'"/>
 						</xsl:when>
 						<xsl:otherwise>
@@ -130,27 +141,28 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:if>
-				<xsl:if test="$showDataType='True' and ($showStorage='True' or $showCalcType='True')">
+				<xsl:if
+					test="$showDataType = 'True' and ($showStorage = 'True' or $showCalcType = 'True')">
 					<xsl:value-of select="$flagDelim"/>
 				</xsl:if>
-				<xsl:if test="$showStorage='True'">
+				<xsl:if test="$showStorage = 'True'">
 					<!--
 					! The second character indicates storage type
 					! -->
 					<xsl:choose>
-						<xsl:when test="Storage/@global='True'">
+						<xsl:when test="Storage/@global = 'True'">
 							<xsl:value-of select="'g'"/>
 						</xsl:when>
-						<xsl:when test="@fieldType='Summary'">
+						<xsl:when test="@fieldType = 'Summary'">
 							<xsl:value-of select="'U'"/>
 						</xsl:when>
-						<xsl:when test="Storage/@storeCalculationResults='False'">
+						<xsl:when test="Storage/@storeCalculationResults = 'False'">
 							<xsl:value-of select="'u'"/>
 						</xsl:when>
-						<xsl:when test="Storage/@index='All' and @dataType='Text'">
+						<xsl:when test="Storage/@index = 'All' and @dataType = 'Text'">
 							<xsl:value-of select="'X'"/>
 						</xsl:when>
-						<xsl:when test="Storage/@index!='None'">
+						<xsl:when test="Storage/@index != 'None'">
 							<xsl:value-of select="'x'"/>
 						</xsl:when>
 						<xsl:otherwise>
@@ -158,54 +170,44 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:if>
-				<xsl:if test="0=1  and ($showDataType='True' or $showStorage='True') and $showCalcType='True'">
-					<xsl:value-of select="$flagDelim"/>
-				</xsl:if>
-				<xsl:if test="$showCalcType='True'">
+				<xsl:if test="$showCalcType = 'True'">
 					<!--
 					! The third character indicates the field calculation type:
 					! -->
 					<xsl:choose>
 						<!-- An Output field, i.e. not modifiable input field -->
-						<xsl:when test="AutoEnter/@allowEditing='False'">
+						<xsl:when test="AutoEnter/@allowEditing = 'False'">
 							<xsl:value-of select="'O'"/>
 						</xsl:when>
-						<xsl:when test="@fieldType='Summary'">
+						<!-- Summary Fields-->
+						<xsl:when test="@fieldType = 'Summary' and SummaryInfo/@operation='List'">
 							<xsl:value-of select="'S'"/>
 						</xsl:when>
-						<!-- Calculation and Auto-Enter filters-->
-						<xsl:when test="@fieldType='Calculated'">
+						<xsl:when test="@fieldType = 'Summary'">
+							<xsl:value-of select="'s'"/>
+						</xsl:when>
+						<!-- Calculations -->
+						<xsl:when test="@fieldType = 'Calculated'">
 							<xsl:value-of select="'C'"/>
 						</xsl:when>
-						<xsl:when test="AutoEnter/@calculation='True' and AutoEnter/@overwriteExistingValue='True'">
-							<xsl:value-of select="'c'"/>
-						</xsl:when>
-						<xsl:when test="AutoEnter/@lookup='True'">
-							<xsl:value-of select="'c'"/>
-						</xsl:when>
-						<!-- Fields with initial values -->
-						<xsl:when test="AutoEnter/@calculation='True'">
-							<xsl:value-of select="'f'"/>
-						</xsl:when>
-						<xsl:when test="AutoEnter/@constant='True'">
-							<xsl:value-of select="'f'"/>
-						</xsl:when>
-						<xsl:when test="AutoEnter/@value">
-							<xsl:value-of select="'f'"/>
-						</xsl:when>
-						<xsl:when test="AutoEnter/Serial">
-							<xsl:value-of select="'f'"/>
-						</xsl:when>
-						<!-- simple data field -->
-						<xsl:otherwise>
+						<!-- Automatic Fields (AutoEnter always or Modification* or Lookup fields)-->
+						<xsl:when test="AutoEnter/@overwriteExistingValue='True' or starts-with(AutoEnter/@value,'Modification') or AutoEnter/@lookup='True'">
 							<xsl:value-of select="'F'"/>
+						</xsl:when>
+						<!-- Fields with one-time initial values -->
+						<xsl:when test="AutoEnter/@calculation = 'True' or AutoEnter/@constant = 'True' or AutoEnter/@value or AutoEnter/Serial">
+							<xsl:value-of select="'o'"/>
+						</xsl:when>
+						<!-- Finally a simple data field -->
+						<xsl:otherwise>
+							<xsl:value-of select="'f'"/>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:if>
 				<xsl:value-of select="')'"/>
 			</xsl:if>
 		</xsl:variable>
-		<xsl:value-of select="translate($name,'#','_')"/>
+		<xsl:value-of select="translate($name, '#', '_')"/>
 	</xsl:template>
 	<!-- ScriptGraphNodeName -->
 	<xsl:template name="ScriptGraphNodeName">
@@ -215,17 +217,15 @@
 				<xsl:value-of select="'::'"/>
 			</xsl:if>
 			<xsl:value-of select="@name"/>
-			<xsl:if test="includeInMenu='True'">
+			<xsl:if test="includeInMenu = 'True'">
 				<xsl:value-of select="' [X]'"/>
 			</xsl:if>
-			<xsl:if test="runFullAccess='True'">
+			<xsl:if test="runFullAccess = 'True'">
 				<xsl:value-of select="' (o)'"/>
 			</xsl:if>
 		</xsl:variable>
-		<xsl:value-of select="translate($name,'#','_')"/>
+		<xsl:value-of select="translate($name, '#', '_')"/>
 	</xsl:template>
 	<!-- RelationGraphNodeName -->
-	<xsl:template name="RelationGraphNodeName">
-
-	</xsl:template>
+	<xsl:template name="RelationGraphNodeName"> </xsl:template>
 </xsl:stylesheet>
