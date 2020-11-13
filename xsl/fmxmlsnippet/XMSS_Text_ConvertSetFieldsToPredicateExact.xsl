@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -21,7 +21,7 @@
 	XMSS_XMSS_SetFieldIfNotAlreadyEqual.xsl
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2013-11-14 MrW: Apparently never been used. Bug removed!
 	2011-09-30 MrW: inc/constants.xsl
 	2011-08-10 MrW: Version 0.9
@@ -33,7 +33,7 @@
 	<xsl:variable name="delimiter" select="$TAB"/>
 	<xsl:variable name="newrecord" select="$RETURN"/>
 	<!-- ===== TEMPLATES ===== -->
-	<!-- Set Feldwert setzen-->
+	<!-- Set Field -->
 	<xsl:template match="/">
 		<xsl:for-each select="//Step[@id='76']">
 			<xsl:if test="position()>1">

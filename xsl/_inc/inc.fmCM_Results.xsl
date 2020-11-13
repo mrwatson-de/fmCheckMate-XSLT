@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Functions (named templates) to create a filemaker analysis.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016
+	(c) russell@mrwatson.de 2020
 	2016-01-25 MrW: Version 1.0.2 Corrected reference of Style info for ButtonBars
 	2015-11-17 MrW: Version 1.0.1 Corrected reference of Style info
 	2015-09-12 MrW: Version 1.0
@@ -55,6 +55,7 @@
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ErrorLevel" TYPE="NUMBER"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="Event" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="Result" TYPE="TEXT"/>
+			
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectDescription" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectXpath" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectType" TYPE="TEXT"/>
@@ -69,6 +70,7 @@
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectLocalCSS" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectFullCSS" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="ObjectSVGHexData" TYPE="TEXT"/>
+			
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="SnippetPosition" TYPE="TEXT"/>
 			<FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="LayoutName" TYPE="TEXT"/>
 		</METADATA>

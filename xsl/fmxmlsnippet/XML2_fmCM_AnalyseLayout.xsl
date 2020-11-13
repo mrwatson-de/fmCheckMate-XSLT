@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Performs an analysis and creates an FMPXMLRESULT data set to import into fmCheckMate.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
+	(c) russell@mrwatson.de 2020
 	2018-06-04 MrW: Version 1.1 Added check for broken field + table references
 	2017-03-19 MrW: Version 1.0.1 Fixed include bug which had crept in.
 	2015-09-12 MrW: Version 1.0

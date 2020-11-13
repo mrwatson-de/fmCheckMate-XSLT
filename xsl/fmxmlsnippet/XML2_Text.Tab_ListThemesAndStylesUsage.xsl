@@ -2,27 +2,32 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
-	XSL-File: XML2_Text.Tab_ThemesAndStylesUsed.xsl
+	XSL-File: XML2_Text.Tab_ListThemesAndStylesUsage.xsl
 
 	XML-Source: fmxmlsnippet.xml
 	XML-Grammar: fmxmlsnippet
 	XML-Content: fmp12 layout objects
 	
-	Lists the themes and styles that are used by the layout objects.
+	Lists the themes and styles that are used by the layout objects, and their frequency.
 	
 	Note:
-	This XSLT uses the "instant DDR" themes fmxmlsnippet file stored in ~Documents/fmCheckMate/temp/iDDR/XMTH_fmxmlsnippet.xml
+	This XSLT uses the "instant DDR" feature of fmCheckMate to look up Theme + Style names 
+	in the themes fmxmlsnippet file stored in ~Documents/fmCheckMate/temp/iDDR/XMTH_fmxmlsnippet.xml
+	
 	Before you can use this XSLT you must:
 	- Copy all custom themes of the current file
 	- Convert them to an fmxmlsnippet
 	- Save the file to the given path.
 	
+	Implementation note ... It doesn't seem possible in XSLT 1.0 to avoid an error when the iDDR file is not present
+	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
+	(c) russell@mrwatson.de 2020
+	2019-09-07 MrW: Version 1.0.3 Standardised the file name (List…Usage)  and improved comments
 	2017-10-27 MrW: Version 1.0.2 iDDR folder moved from xml/ to temp/ folder
 	2015-09-12 MrW: Version 1.0.1 iddr renamed to iDDR 
 	2015-04-29 MrW: Version 1.0

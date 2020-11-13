@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -14,7 +14,7 @@
 	
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016-2018
+	(c) russell@mrwatson.de 2020
 	2018-02-05 MrW: Version 0.4 Changed order (DataType-StorageCalcType), and corrected for Containers='Binary'
 	2017-11-29 MrW: Version 0.3 Improved the indicator for Index type - now big "X" is shown ONLY for text fields
 	2017-01-12 MrW: Version 0.2 Improved the output of the metadata flags to be more meaningful, of a more useful granularity, and to make it easier to find/select nodes.
@@ -23,6 +23,37 @@
 	<!-- ===== HEAD ===== -->
 	<!--  -->
 	<!-- NAMED TEMPLATES -->
+	<!-- tgf.node - encode a single tgf node -->
+	<xsl:template name="tgf.node">
+		<xsl:param name="name"/>
+		<xsl:param name="id" select="''"/>
+		<!-- -->
+		<xsl:variable name="nameOutput" select="translate($name, '#', '_')"/>
+		<xsl:variable name="idOutput">
+			<xsl:choose>
+				<xsl:when test="$id=''">
+					<xsl:value-of select="$nameOutput"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="translate($id, ' #', '__')"/>					
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<!-- -->
+		<xsl:value-of select="concat($idOutput,' ', $nameOutput,'&#x0D;')"/>
+	</xsl:template>
+	
+	<!-- tgf.edge - encode a tgf edge -->
+	<xsl:template name="tgf.edge">
+		<xsl:param name="from"/>
+		<xsl:param name="to"/>
+		<!-- -->
+		<xsl:value-of select="translate($from, ' ', '_')"/>
+		<xsl:value-of select="' '"/>
+		<xsl:value-of select="translate($to, ' ', '_')"/>
+		<xsl:value-of select="'&#x0D;'"/>
+	</xsl:template>
+
 	<!--
 	 ! FieldGraphNodeName
 	 ! 
@@ -221,7 +252,7 @@
 				<xsl:value-of select="' [X]'"/>
 			</xsl:if>
 			<xsl:if test="runFullAccess = 'True'">
-				<xsl:value-of select="' (o)'"/>
+				<xsl:value-of select="' (!)'"/>
 			</xsl:if>
 		</xsl:variable>
 		<xsl:value-of select="translate($name, '#', '_')"/>

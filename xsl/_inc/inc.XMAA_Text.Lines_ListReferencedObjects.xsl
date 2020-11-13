@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns a list of all referenced objects
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013-2018
+	(c) russell@mrwatson.de 2020
 	2018-06-20 MrW: Version 1.1.1 Fixed broken stylesheet
 	2013-09-13 MrW: Version 1.1 Creates unique list, with or without headings
 	2013-09-07 MrW: Version 1.0

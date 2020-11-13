@@ -2,17 +2,17 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
-	XSL-File: inc.XML2_fmCM_LayoutAnalysis.xsl
+	XSL-File: inc.XML2_fmCM_AnalyseLayout.xsl
 	
 	Convenience include file which includes all layout analysis include files
 	(and defines the required delimiter and newrecord variables).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
+	(c) russell@mrwatson.de 2020
 	2017-05-26 MrW: Version 1.2 Added Group-of-one analysis
 	2015-11-30 MrW: Version 1.1 Added various analyses
 	2015-11-23 MrW: Version 1.0

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns all variables defined by Set Variable script step.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2011-09-30 MrW: inc/constants.xsl
 	-->
 	<!-- ===== HEAD ===== -->
@@ -34,7 +34,7 @@
 	<xsl:variable name="VariablenameEndWords" select="concat($kXOR_EN,'|',$and_EN,'|',$kOR_EN,'|',$xor_GUI,'|',$and_GUI,'|',$or_GUI,'|')"/>
 	<xsl:variable name="VariablenameEndChars" select="'+-*/^([{;}])=≠≤≥&lt;&gt;&amp;&#9;&#10;&#13;'"/>
 	<!-- ===== TEMPLATES ===== -->
-	<!-- Script step 141. Variable setzen -->
+	<!-- Script step 141. Set Variable -->
 	<xsl:template match="Step[@id='141' and @enable='True']">
 		<xsl:value-of select="Name"/>
 		<xsl:value-of select="'='"/>

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -16,7 +16,7 @@
 	with enter find mode, set fields, omit record, etc.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2014-06-25 MrW: Addes quotes to text IFF it has no quotes, and internationalized the function
 	2013-11-08 MrW: Removed doubled quotes from the criteria.
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
@@ -30,7 +30,7 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- 28/Perform Find or 126/Constrain Found Set or 127/Extend Found Set-->
 	<xsl:template match="//Step[@id='28' or @id='126' or @id='127']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="stepId" select="@id"/>
 		<xsl:variable name="stepName" select="@name"/>
@@ -46,6 +46,10 @@
 				<!-- New Record/Request (OR) -->
 				<Step id="7" enable="{$enable}"/>
 			</xsl:if>
+			<xsl:if test="@operation='Exclude'">
+				<!-- Omit Record -->
+				<Step id="25" enable="{$enable}"/>
+			</xsl:if>
 			<!-- For each criteria -->
 			<xsl:for-each select="Criteria">
 				<!-- Set Field -->
@@ -53,9 +57,15 @@
 					<Calculation>
 						<xsl:choose>
 							<xsl:when test="starts-with(Text,$QUOT)">
+								<!-- Quoted string (Does this ever really occur?) -->
+								<xsl:value-of select="Text"/>
+							</xsl:when>
+							<xsl:when test="starts-with(Text,'$')">
+								<!-- Search for a variable value -->
 								<xsl:value-of select="Text"/>
 							</xsl:when>
 							<xsl:otherwise>
+								<!-- Search for a text value -->
 								<xsl:call-template name="fn.Quote">
 									<xsl:with-param name="text">
 										<xsl:value-of select="Text"/>
@@ -67,10 +77,6 @@
 					<xsl:copy-of select="Field"/>
 				</Step>
 			</xsl:for-each>
-			<xsl:if test="@operation='Exclude'">
-				<!-- Omit Record -->
-				<Step id="25" enable="{$enable}"/>
-			</xsl:if>
 		</xsl:for-each>
 		<!-- and finally an *empty* search command -->
 		<Step id="{$stepId}" enable="{$enable}">

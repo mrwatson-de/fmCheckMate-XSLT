@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Lists the details of the FileMaker Theme (so that Themes can be compared between files).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016
+	(c) russell@mrwatson.de 2020
 	2015-04-17 MrW: Version 1.0.1 Added missing return
 	2014-05-29 MrW: Version 1.0
 	-->

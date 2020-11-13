@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Removes all lookup fields.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2018
+	(c) russell@mrwatson.de 2020
 	2018-05-02 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

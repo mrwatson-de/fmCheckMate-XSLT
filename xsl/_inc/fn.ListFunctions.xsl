@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Functions for processing lists.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2013-09-05 MrW: Template ScriptStepParameterList refactored upwards.
 	  :
 	2011-01-13 MrW: Version 1

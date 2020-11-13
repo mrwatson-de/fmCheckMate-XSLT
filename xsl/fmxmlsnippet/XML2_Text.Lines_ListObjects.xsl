@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" xmlns:str="http://exslt.org/strings" extension-element-prefixes="str date" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns a tabulated list of the objects.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2013-11-19 MrW: Umbenannt für XML2
 	2011-09-30 MrW: inc/constants.xsl
 	2011-08-10 MrW: Version 0.9

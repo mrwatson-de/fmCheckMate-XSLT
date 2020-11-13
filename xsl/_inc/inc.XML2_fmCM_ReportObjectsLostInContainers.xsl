@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Include file in a layout analysis to report objects which have been lost inside of other container objects (portals, etc.).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016
+	(c) russell@mrwatson.de 2020
 	2016-10-10 MrW: Version 1.4 Now finds lost objects in TabPanels and SlidePanels (previously it had incorrectly looked in TabControls and SlideControls)
 	2016-02-19 MrW: Version 1.3 Now also detects objects hidden above and to the left of the container
 	2016-01-14 MrW: Version 1.2 Objects hidden behind a portal scroll bar are also considered lost

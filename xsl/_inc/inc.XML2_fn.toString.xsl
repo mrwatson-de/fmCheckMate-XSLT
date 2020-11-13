@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" xmlns:str="http://exslt.org/strings" extension-element-prefixes="str date" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	toString function for layout objects
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016
+	(c) russell@mrwatson.de 2020
 	2016-01-14 MrW v0.4 Extended getPathDescriptionOfCurrentNode for processing DDR-FMXMLREPORT XML
 	2016-01-04 MrW v0.3 Added Bounds to getPathDescriptionOfCurrentNode
 	2015-11-23 MrW v0.2 Fixed output of button name
@@ -63,6 +63,7 @@
 		<!-- -->
 		<xsl:choose>
 			<xsl:when test="name()='Object'">
+				<xsl:variable name="ObjectName" select="Name/text()"/>
 				<xsl:variable name="bitLineFlip" select="8190"/>
 				<xsl:choose>
 					<xsl:when test="@type='Portal'">
@@ -106,13 +107,21 @@
 						<xsl:variable name="PopoverTitle">
 							<xsl:value-of select="translate(TitleCalc/Calculation,$CRLF,'')"/>
 						</xsl:variable>
-						<xsl:if test="$PopoverTitle">
-							<xsl:value-of select="concat(' ',$PopoverTitle)"/>
-						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="$ObjectName">
+								<xsl:value-of select="$ObjectName"/>
+							</xsl:when>
+							<xsl:when test="$PopoverTitle">
+								<xsl:value-of select="concat(' ',$PopoverTitle)"/>
+							</xsl:when>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@type='PopoverButton'">
 						<xsl:value-of select="@type"/>
 						<xsl:choose>
+							<xsl:when test="$ObjectName">
+								<xsl:value-of select="$ObjectName"/>
+							</xsl:when>
 							<!-- Static button text -->
 							<xsl:when test="TextObj/ParagraphStyleVector/Data/text()">
 								<xsl:value-of select="' '"/>

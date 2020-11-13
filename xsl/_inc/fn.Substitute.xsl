@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Substitute function like in FileMaker. 
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2011-01-13 MrW: Version 1.0
 	-->
 	<!-- ===== TEMPLATES ===== -->
@@ -73,11 +73,20 @@
 				<!-- recurse -->
 				<xsl:call-template name="fn.SubstituteMultiple">
 					<xsl:with-param name="text">
-						<xsl:call-template name="fn.Substitute">
-							<xsl:with-param name="text" select="$text"/>
-							<xsl:with-param name="searchString" select="$searchString"/>
-							<xsl:with-param name="replaceString" select="$replaceString"/>
-						</xsl:call-template>
+						<xsl:choose>
+							<xsl:when test="false() and string-length($searchString)=1 and string-length($replaceString) &lt;=1">
+								<!-- replace or remove a single character -->
+								<xsl:value-of select="translate($text,$searchString,$replaceString)"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<!-- substitute a single string -->
+								<xsl:call-template name="fn.Substitute">
+									<xsl:with-param name="text" select="$text"/>
+									<xsl:with-param name="searchString" select="$searchString"/>
+									<xsl:with-param name="replaceString" select="$replaceString"/>
+								</xsl:call-template>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:with-param>
 					<xsl:with-param name="substitutions" select="substring($substitutions, string-length($searchString) + string-length($replaceString) + 3)"/>
 				</xsl:call-template>
@@ -169,5 +178,4 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
 </xsl:stylesheet>

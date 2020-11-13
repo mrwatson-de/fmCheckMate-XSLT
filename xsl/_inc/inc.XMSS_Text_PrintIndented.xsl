@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Include file to list script steps in text form similar to FileMaker ScriptMaker.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2017
+	(c) russell@mrwatson.de 2020
 	2017-05-22 MrW. Corrected the parameter list to deal with faulty delimiters [pSIC]
 	2013-09-07 MrW: Added formatting parameters: pShowLineNumbers, pLineNumbers, pIndentGroups, 
 	    pIndentScripts, pIndentScriptSteps, pIndentString, pIndentLevel, pScriptGroupPathDelimiter, 

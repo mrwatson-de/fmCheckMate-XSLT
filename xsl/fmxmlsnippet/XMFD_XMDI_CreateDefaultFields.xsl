@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -17,7 +17,7 @@
 	Creates the equivalent DefaultFields.xml (XMDI = FileMaker Default Items XML).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2018
+	(c) russell@mrwatson.de 2020
 	2018-11-08 MrW: Version 1.0.1 Documented XMDI abbreviation
 	2018-07-12 MrW: Version 1.0
 	-->

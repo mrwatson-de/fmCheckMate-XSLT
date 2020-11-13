@@ -35,7 +35,7 @@
 	-->
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -52,7 +52,8 @@
 	The opposite function fn.parseXML.xsl
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
+	20200107 MrW: Version 1.1.1 Corrected a bug, where node() was being used instead of * (element)
 	20150515 MrW: Version 1.1 Quotes are also now correctly serialized.
 	20110113 MrW: Version 1.0
 	-->
@@ -73,7 +74,7 @@
 		<xsl:value-of select="concat(' ',name(),'=&amp;quot;',.,'&amp;quot;')"/>
 	</xsl:template>
 	<!-- Serialize a node -->
-	<xsl:template match="node()" mode="serialize">
+	<xsl:template match="*" mode="serialize">
 		<xsl:value-of select="concat('&lt;',name())"/>
 		<xsl:apply-templates select="@*" mode="serialize"/>
 		<xsl:for-each select="namespace::*">

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns all Script steps that reference other files/external sources.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013	
+	(c) russell@mrwatson.de 2020	
 	2013-10-06 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	-->
 	<!-- ===== HEAD ===== -->

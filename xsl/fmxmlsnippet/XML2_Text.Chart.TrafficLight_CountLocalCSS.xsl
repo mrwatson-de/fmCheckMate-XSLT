@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2014 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Counts the number of objects with Local CSS.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016
+	(c) russell@mrwatson.de 2020
 	2016-11-16 MrW: Version 2.0 Adapted for traffic-light chart output
 	2015-04-29 MrW: Version 1.0
 	-->

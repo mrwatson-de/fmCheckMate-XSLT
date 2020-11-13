@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Ignores the input and just returns "Hello World".
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2018
+	(c) russell@mrwatson.de 2020
 	2018-08-28 MrW: Version 1.0.1 Improved output message.
 	2018-06-06 MrW: Version 1.0
 	-->

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -67,7 +67,7 @@ m		End If
 	…BUT ONLY WHERE #D and #E do not exist, or are empty lines!
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2016-12-29 MrW: Version 1.1 Only convert else-if where the else + if are directly next to each other!
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2012-06-11 MrW: Version 1.0

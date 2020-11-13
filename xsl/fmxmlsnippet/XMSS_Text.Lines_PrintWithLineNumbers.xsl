@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -17,7 +17,7 @@
 	WARNING: ALPHA-VERSION STILL IN DEVELOPMENT!
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2016-03-12 MrW: Renamed simply Print, as indented is the default expectation
 	2016-02-15 MrW: Renamed with "Print ..." to group print functions together
 	2013-12-09 MrW: Version 1.2 Added missing Parameters

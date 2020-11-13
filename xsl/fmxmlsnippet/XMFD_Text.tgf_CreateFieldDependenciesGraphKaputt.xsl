@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	PLANNED: Lists all fields, organised/indented based on references/dependencies.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2016-05-19 MrW: Node name logic refactored into include file.
 	2016-05-11 MrW: WOW! Greatly improved // field name match now includes word-bounds :-) // references AND modified-triggers // labels improved with clearer markers and a prefix was added to ids so that we can (later) distinguish between field-ids (F###) and relationship-ids (R###)
 	2011-11-17 MrW: Started ... but with what hope?

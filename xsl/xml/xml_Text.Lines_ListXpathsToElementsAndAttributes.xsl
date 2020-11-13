@@ -4,7 +4,7 @@
 	version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -17,7 +17,8 @@
 	Emits a list of Xpath expressions.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
+	2019-08-25 MrW Version 1.0.1 Removed incorrect use of select on call-template. 
 	2011-02-09 MrW Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
@@ -29,7 +30,7 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- Main -->
 	 <xsl:template match="/">
-		<xsl:call-template name="node" select=".">
+		<xsl:call-template name="node">
 			<xsl:with-param name="path" select="''"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -47,7 +48,7 @@
 		</xsl:for-each>
 		<!-- Repeat for all child elements -->
 		<xsl:for-each select="*">
-			<xsl:call-template name="node" select=".">
+			<xsl:call-template name="node">
 				<xsl:with-param name="path" select="concat($path,'/',name())"/>
 			</xsl:call-template>
 		</xsl:for-each>

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Inserts gaps by moving all non-imported fields to the end of the import list.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
+	(c) russell@mrwatson.de 2020
 	2017-01-18 MrW: Version 1.1 Sort the fields at the end!
 	2017-01-17 MrW: Version 1.0
 	-->

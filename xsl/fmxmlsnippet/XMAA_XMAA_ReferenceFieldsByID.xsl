@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -16,7 +16,7 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013-2016
+	(c) russell@mrwatson.de 2020
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	-->
 	<!-- ===== HEAD ===== -->

@@ -1,0 +1,23 @@
+abort
+grr abc
+install [1;somescript]
+install[1;somescript]
+$a=1
+#ok
+sf[MyTable::MyField;123]
+SF[MyTable::MyField;123]
+#LOOP
+Loop
+huh
+	eli [1234567	]
+huh
+End Loop
+
+If [1]
+	es[123]
+End If
+halt
+
+Install OnTimer Script [ “New Script 2” ; Parameter: 123 ; Interval: 2 ] 
+Install OnTimer Script [ Interval: 2 ] 
+Install OnTimer Script [] 

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Converts the script-based calculation to a FileMaker Calculation.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2017-03-21 MrW: Version 0.9.1 Now parses thew calculation and renames variables
 	2011-09-30 MrW: inc/constants.xsl
 	2011-08-10 MrW: Version 0.9
@@ -36,7 +36,7 @@
 	 ! ===== TEMPLATES =====
 	 !
 	 !-->
-	<!-- Set Feldwert setzen-->
+	<!-- Set Field -->
 	<xsl:template match="/">
 		<xsl:value-of select="'Let(['"/>
 		<xsl:value-of select="$newrecord"/>
@@ -61,7 +61,7 @@
 		</xsl:choose>
 		<xsl:value-of select="$newrecord"/>
 	</xsl:template>
-	<!-- Script step 141. Variable setzen -->
+	<!-- Script step 141. Set Variable -->
 	<xsl:template match="Step[@id='141']">
 		<xsl:value-of select="$newrecord"/>
 		<xsl:value-of select="'  '"/>
@@ -75,7 +75,7 @@
 		<xsl:value-of select="' ;'"/>
 		<xsl:value-of select="$newrecord"/>
 	</xsl:template>
-	<!-- Script step 141. Feld setzen -->
+	<!-- Script step 141. Set Field -->
 	<xsl:template match="Step[@id='76']">
 		<xsl:call-template name="GetCalculationVariableName">
 			<xsl:with-param name="ScriptVariableName">

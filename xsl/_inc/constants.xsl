@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -12,7 +12,7 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2016-03-09 MrW: Added OPENQUOTES and CLOSEQUOTES
 	2013-07-01 MrW: Corrected upper and lowercase chars (you can forget the apostrophes?! with NO error!?)
 	2011-02-15 MrW: Version 1.0

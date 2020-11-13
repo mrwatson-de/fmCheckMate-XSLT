@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -16,11 +16,11 @@
 	
 	Here is an example list of each type of field:
 	
-	_ID	=+1	7           // A serial number field
+	_ID	:+1	7           // A field with auto-incremented serial number (Auto-Increment)
 	
-	_X	:	"1"         // A field with auto-entered fixed text
-	Status	:=	"New"       // A field with an auto-enter initial calculated value
-	e	:==	_ID+2       // A field with an auto-enter filter calculated value
+	_X	:	"1"         // A field with an auto-enter fixed text (Auto-Data)
+	Status	:=	"New"       // A field with an auto-enter initial calculated value (Auto-Init)
+	e	:==	_ID+2       // A field with an auto-enter filter calculated value (Auto-Calc)
 	f	:===	_ID+3       // A field with an auto-enter filter calculated value even when inputs empty
 
 	d	=	_ID+1       // A calculated field
@@ -30,12 +30,14 @@
 	_sAve	=∑/N:	_ID         // A statistic field = Average
 	_sMin	=≤:	_ID         // A statistic field = Minimum
 	_sMax	=≥:	_ID         // A statistic field = Maximum
-	_sMin	=≤:	_ID         // A statistic field = Minimum
 	_StdDev	=σ:	_ID         // A statistic field = Standard Deviation
 	_Frac	=½:	_ID         // A statistic field = Fraction of Total
+	_List	=∑¶:	_ID         // A statistic field = Fraction of Total
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013-2016
+	(c) russell@mrwatson.de 2020
+	2020-08-21 MrW: Version 1.2 Changed the type symbol for serial number fields from '=+1' to the more semantically correct ':+1' - conveying the meaning of 'set' rather than 'calculate'.
+	2020-08-20 MrW: Version 1.1 Added Analysis of Summary list fields
 	2012-09-28 MrW: Improved Docu: added example list
 	2011-09-30 MrW: inc/constants.xsl
 	2011-08-10 MrW: Version 1.0
@@ -87,6 +89,9 @@
 					<xsl:when test="SummaryInfo/@operation='Fractional'">
 						<xsl:text>=½:</xsl:text>
 					</xsl:when>
+					<xsl:when test="SummaryInfo/@operation='List'">
+						<xsl:text>=∑¶:</xsl:text>
+					</xsl:when>
 				</xsl:choose>
 				<xsl:value-of select="$delimiter"/>
 				<xsl:value-of select="SummaryInfo/SummaryField/Field/@name"/>
@@ -94,7 +99,7 @@
 			</xsl:when>
 			<xsl:when test="AutoEnter/Serial">
 				<xsl:value-of select="$delimiter"/>
-				<xsl:text>=+</xsl:text>
+				<xsl:text>:+</xsl:text>
 				<xsl:value-of select="AutoEnter/Serial/@increment"/>
 				<xsl:value-of select="$delimiter"/>
 				<xsl:value-of select="AutoEnter/Serial/@nextValue"/>

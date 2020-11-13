@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Returns a list of the value calculations in Set Variable, Set Field, Set Field by Name, Replace Field Contents.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
 	2011-09-30 MrW: inc/constants.xsl
 	-->
 	<!-- ===== HEAD ===== -->
@@ -25,7 +25,7 @@
 	<xsl:variable name="delimiter" select="$TAB"/>
 	<xsl:variable name="newrecord" select="$RETURN"/>
 	<!-- ===== TEMPLATES ===== -->
-	<!-- Script step 141. Variable setzen -->
+	<!-- Script step 141. Set Variable -->
 	<xsl:template match="Step[(@id='141' or @id='76' or @id='147' or @id='91') and @enable='True']">		
 		<xsl:value-of select="translate(Value/Calculation,$CRLF,' ')"/>
 		<xsl:value-of select="$newrecord"/>

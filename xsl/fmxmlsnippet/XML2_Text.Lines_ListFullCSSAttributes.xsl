@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2014 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Lists Objects and their CSS properties.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2014
+	(c) russell@mrwatson.de 2020
 	2011-12-28 MrW: 
 	-->
 	<!-- ===== HEAD ===== -->

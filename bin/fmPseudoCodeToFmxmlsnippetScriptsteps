@@ -104,11 +104,22 @@ function f_cdata(strg)
 {
     return strg;
 }
+
 function f_StateTrueFalse(strg,val){
 	if (f_trim(strg)==f_trim(val)) { return "True" } else {return "False"}
 }
 function f_xStep( enable, aid, step, content) {
 
+}
+
+function f_xField( tableName, fieldName, repetition ) {
+	return "<Field table=\""(f_trim(tableName))"\" id=\"0\" repetition=\""(repetition?repetition:1)"\" name=\""(f_cdata(f_trim(fieldName)))"\"/>"
+}
+
+function f_xWithDialog ( On ) {
+	On = (origLine0 ~ /With Dialog: On/)?1:0
+#	#return "<NoInteract state=\""(f_StateTrueFalse(f_trim(On),"On"))"\"></NoInteract>"
+	return "<NoInteract state=\""(On?"True":"False")"\"></NoInteract>"
 }
 
 
@@ -119,11 +130,11 @@ BEGIN {
 #################
 # Manual settings
 debug=1;
-IGNORECASE=1
+IGNORECASE=1;
 
 #################
 # chunkDelim must be any UNIQUE string
-chunk_delim = "mosrhtbbuzsvmocbuvtrb"
+chunk_delim = "/CHUNK/"
 
 
 #################
@@ -292,77 +303,125 @@ print "<?xml version=\"1.0\"?>\
 # PROCESS LINE #
 ################
 
-#Trim and remove final semicolon
-{sub(/^[ \t]+/,"");
-sub(/[ \t\;]+$/,"")}
+{origLine0 = $0}
+
+#Trim
+{
+sub(/^[ \t]+/,"");
+sub(/[ \t]+$/,"");
+}
 
 
+#############################################
 #by default script steps are enabled
 #Set enable
 {enable="True"}
 
 # // -> Commented out -> Set disabled and remove leading comment and white space
-/^(\s*\/\/\s*).*/{
-sub(/(\s*\/\/\s*)/,"");
+/^(\/\/\s*).*/{
+sub(/(\/\/\s*)/,"");
 enable="False"
 }
 
-###############
+#################################
+#################################
+# Here we can perform expansion #
+#################################
+#################################
+
+#{print "	<!-- " $0 " -->";}
+#{print "	<!-- " line " -->";}
+#/\s+/ {print "	<!-- $0 contains spaces -->";}
+#/install/ {print "	<!-- $0 contains install -->";}
+#/install(\s)/ {print "	<!-- $0 contains install single space -->";}
+#/install(\s*)\[/ {print "	<!-- $0 contains install (space*) bracket -->";}
+#/install(\s+)\[/ {print "	<!-- $0 contains install (space+) bracket -->";}
+#/install./ {print "	<!-- $0 contains install single char -->";}
+#/install.\[/ {print "	<!-- $0 contains install single char bracket -->";}
+#/install\[/ {print "	<!-- $0 contains install bracket -->";}
+#/install\s*/ {print "	<!-- $0 contains install space* -->";}
+#/install\s*/ {print "	<!-- $0 contains install space* -->";}
+#{
+#if (/install(\s+)/) {print "	<!-- $0 contains install space+ -->";}
+#else if (/install/) {print "	<!-- $0 DOES NOT contain install space+ -->";}
+#}
+#$1 ~ /install/ {print "	<!-- $1 is install -->";}
+
+
+
+
+#################################
+# Expand common abbreviations
+# sf -> Set Field, etc.
+# 2
+/^install\s*\[/ {sub(/(^.{7})/,"Install OnTimer Script");}
+{sub(/(^ps)/,"Perform Script");}
+{sub(/(^sf)/,"Set Field");}
+{sub(/(^ei)/,"Else If");}
+{sub(/(^es)/,"Exit Script");}
+{sub(/(^eli)/,"Exit Loop If");}
+{sub(/(^grr)/,"Go to Related Record");}
+{sub(/(^gtrr)/,"Go to Related Record");}
+{sub(/(^psos)/,"Perform Script on Server");}
+{sub(/(^abort)/,"Allow User Abort");}
+{sub(/(^error)/,"Set Error Capture");}
+
+#################################
+# Expand common abbreviations
+# Complete lines
+/^halt$/ {sub(/(^.{4})/,"Halt Script");}
+#################################
+# Expand common abbreviations
+# Complete lines
+
+
+
+
+
+
+#############################################
 # -> Process Comment -> Remove # and print $0
 #
 /(^#|^$)/{
 sub(/^#/, "");
 print "\
 	<Step id=\"89\" enable=\""enable"\">\
-		<Text><![CDATA["f_cdata($0)"]]></Text>\
+		<Text><![CDATA["(f_cdata($0))"]]></Text>\
 	</Step>\
 ";next}
 
 
-###############
+#############################################
 #$var=expression // Set Variable SHORT FORM
 #
-/^\$/{Repetition=1}
-#/^(\$\$?.*)(\[(.*)\])\s*=/{
-Repetition=$0;
-#sub(/\]/,"[",Repetition);
-#split(Repetition,Repetition,"[");Repetition=Repetition[2]}
+# Default to Repetition 1
+/^\$/{
+repetition=1;
+}
+
+# Read variable repetition
+/^(\$\$?.*)(\[(.*)\])\s*=/{
+#chunk=sub(/\[/,chunk_delim,sub(/[/,chunk_delim));
+repetition=f_trim(chunk[2]);
+}
 
 
 
-#$var=... -> set variable
+#############################################
+#$var=expression -> Set Variable
 /^(\$\$?.*)(\[(.*)\])?\s*=/{
-sub(/\s*=\s*/,chunk_delim);
-split($0,chunk,chunk_delim);
-sub($0,"");
+sub(/\s*=\s*/,chunk_delim);	# split at =
+split($0,chunk,chunk_delim);	# chunk
+#sub($0,"");
 print "\
 	<Step enable=\""enable"\" id=\"141\" name=\"Set Variable\">\
 		<Value>\
-			<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+			<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
 		</Value>\
 		<Repetition>\
 			<Calculation><![CDATA[1]]></Calculation>\
 		</Repetition>\
-		<Name>"f_trim(chunk[1])"</Name>\
-	</Step>\
-";next}
-
-#############################################
-# Set Field
-#
-# FIXME
-#
-/^(Set Field)/{
-sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
-sub(/\:\:/,chunk_delim);	# split Table + Field
-sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
-sub(/\s*\]\s*$/,"");	# remove trailing ]
-split($0,chunk,chunk_delim);
-sub($0,"");
-print "\
-	<Step enable=\""enable"\" id=\"76\" name=\"Set Field\">\
-		<Calculation><![CDATA["f_cdata(f_trim(chunk[4]))"]]></Calculation>\
-		<Field table=\""f_trim(chunk[2])"\" id=\"0\" repetition=\"1\" name=\""f_cdata(f_trim(chunk[3]))"\"/>\
+		<Name>"(f_trim(chunk[1]))"</Name>\
 	</Step>\
 ";next}
 
@@ -381,17 +440,36 @@ split($0,chunk,chunk_delim);	# chunk
 sub($0,"");
 print "\
 	<Step enable=\""enable"\" id=\"141\" name=\"Set Variable\">\
-		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
 		<Value>\
-			<Calculation><![CDATA["f_cdata(f_trim(chunk[3]))"]]></Calculation>\
+			<Calculation><![CDATA["(f_cdata(f_trim(chunk[3])))"]]></Calculation>\
 		</Value>\
 		<Repetition>\
 			<Calculation><![CDATA[1]]></Calculation>\
 		</Repetition>\
-		<Name>"f_cdata(f_trim(chunk[2]))"</Name>\
+		<Name>"(f_cdata(f_trim(chunk[2])))"</Name>\
 	</Step>\
 ";next}
 
+
+#############################################
+# Set Field
+#
+# Repetitions are NOT SUPPORTED
+#
+/^(Set Field)/{
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\:\:/,chunk_delim);	# split Table + Field
+sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"76\" name=\"Set Field\">\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[4])))"]]></Calculation>\
+		"(f_xField( chunk[2], chunk[3], 1 ))"\
+	</Step>\
+";next}
 
 #############################################
 # Pause/Resume Script [ Indefinitely ] 
@@ -419,7 +497,7 @@ sub($0,"");
 print "\
 	<Step enable=\""enable"\" id=\"62\" name=\"Pause/Resume Script\">\
 		<PauseTime value=\"ForDuration\"/>\
-		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
 	</Step>\
 ";next}
 
@@ -432,30 +510,79 @@ print "\
 	
 
 
+#############################################
+#Exit Script
+/Exit Script.*\[(.*)\]/{
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/Text Result:\s*/,"");	# Remove label - FIXME ... can't get this regex right to match the first Value AFTER a semicolon
+sub(/\]$/,chunk_delim);	# remove trailing ]
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
+	</Step>\
+";next}
+
+#############################################
 #Steps that take a single [Calculation] in brackets
-/(Exit Script|Aktuelles Script verlassen|If|Wenn|Else If|Sonst, wenn|Exit Loop If|Verlasse Schleife wenn).*\[(.*)\]/{sub(/\[/,chunk_delim);
+/^(Aktuelles Script verlassen|If|Wenn|Else If|Sonst, wenn|Exit Loop If|Verlasse Schleife wenn).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
 print "\
-	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
-		<Calculation><![CDATA["f_cdata(f_trim(chunk[2]))"]]></Calculation>\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
 	</Step>\
 ";next}
 
 #############################################
 # Single Option Steps
 #
+# Syntax: Step Command [ On ]
+# Chunks:     1           2
+#
 # Note: Enable Touch Keyboard is 3-state
 #
-/(Enable Touch Keyboard|Set Multi-User|Allow User Abort|Allow Formatting Bar|Set Error Capture|Set Use System Formats|Set Layout Object Animation).*\[(.*)\]/{sub(/\[/,chunk_delim);
+/(Enable Touch Keyboard|Set Multi-User|Allow User Abort|Allow Formatting Bar|Set Error Capture|Set Use System Formats|Set Layout Object Animation).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
 print "\
-	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
-		<Set state=\""f_StateTrueFalse(chunk[2],"On")"\"></Set>\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<Set state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></Set>\
 	</Step>\
 ";next}
 
+#############################################
+# Single Interaction Steps
+#
+#
+/(Commit Records\/Requests|Delete All Records|Delete Portal Row|Delete Record\/Request|Revert Record\/Request|Omit Multiple Records|Relookup Field Contents|Replace Field Contents).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<NoInteract state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></NoInteract>\
+	</Step>\
+	<!-- "chunk[2]" -->\
+";next}
+
+#############################################
+# Truncate Table [ With dialog: On ; Table: <Current Table> ]
+#        0             1         2     3           4
+/(Truncate Table).*\[(.*)\]/{
+sub(/\[/,chunk_delim);
+sub(/\]$/,chunk_delim);
+gsub(/\s*\;\s*/,chunk_delim);	# split semicolons
+gsub(/\: /,chunk_delim);
+split($0,chunk,chunk_delim);
+print "\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<NoInteract state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></NoInteract>\
+		<BaseTable id=\"-1\" name=\"&lt;Current Table&gt;\"></BaseTable>\
+	</Step>\
+"}#;next}
 #############################################
 # Pause Steps
 #
@@ -464,23 +591,32 @@ sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
 print "\
-	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
-		<Pause state=\""f_StateTrueFalse(chunk[2],"On")"\"></Pause>\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<Pause state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></Pause>\
 	</Step>\
 ";next}
 
 #############################################
 # Simple Insert Steps
 #
-# FIXME  [ Select ] 
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
+# FIXME
 #
 /(Insert Current Date|Enter Preview Mode).*\[(.*)\]/{
 sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
 print "\
-	<Step enable=\""enable"\" id=\""Step_id[f_trim(chunk[1])]"\" name=\""f_trim(chunk[1])"\">\
-		<Pause state=\""f_StateTrueFalse(chunk[2],"On")"\"></Pause>\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+		<Pause state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></Pause>\
 	</Step>\
 ";next}
 
@@ -526,10 +662,14 @@ print "\
 #############################################
 # Install OnTimer Script
 #
+#         1                    2                   3             4
+#Install OnTimer Script [ “New Script 2” ; Parameter: 123 ; Interval: 2 ] 
+#Install OnTimer Script [ Interval: 2 ] 
+#Install OnTimer Script [] 
+#
 # MINIMAL
 #
 /^(Install OnTimer Script)/{
-
 sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
 sub(/\s*\;\s*/,chunk_delim);	# split at first semicolon
 sub(/\s*\]\s*$/,"");	# remove trailing ]
@@ -537,14 +677,47 @@ split($0,chunk,chunk_delim);	# chunk
 sub($0,"");
 print "\
 	<Step enable=\""enable"\" id=\"148\" name=\"Install OnTimer Script\">\
-		<Script id=\"0\" name=\""f_dequote(f_cdata(f_trim(chunk[2])))"\"></Script>\
+		<Script id=\"0\" name=\""(f_dequote(f_cdata(f_trim(chunk[2]))))"\"></Script>\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[3])))"]]></Calculation>\
 		<Interval>\
-			<Calculation><![CDATA["f_cdata(f_trim(chunk[3]))"]]></Calculation>\
+			<Calculation><![CDATA["(f_cdata(f_trim(chunk[4])))"]]></Calculation>\
 		</Interval>\
 	</Step>\
 ";next}
 
+#############################################
+# Select Window [ Current Window ]
+/^(Select Window \[ Current Window \])/{
+print "\
+	<Step enable=\""enable"\" id=\"123\" name=\"Select Window\">\
+		<LimitToWindowsOfCurrentFile state=\"True\"/>\
+		<Window value=\"Current\"/>\
+	</Step>\
+";next}
 
+#############################################
+# TABLE::FIELD=<expression>
+#
+# MINIMAL 
+#
+#
+#
+# /^([^0-9\{\}\[\]\(\)\^\|\*\+\\-/&<>≤≥=≠])::([^\{\}\[\]\(\)\^\|\*\+\\-/&<>≤≥=≠])\s*=/{
+#/^([^0-9]*)::([]*)\s*=/{
+/^([a-zA-Z_][a-zA-Z_0-9]*)::([a-zA-Z_][a-zA-Z_0-9]*)\s*=/{
+sub(/\s*::\s*/,chunk_delim);	# split at ::
+sub(/\s*=\s*/,chunk_delim);	# split at =
+#1: Table
+#2: Field
+#3: Expression
+split($0,chunk,chunk_delim);	# chunk
+#sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"76\" name=\"Set Field\">\
+		<Calculation><![CDATA["(f_cdata(f_trim(chunk[3])))"]]></Calculation>\
+		<Field table=\""(f_trim(chunk[1]))"\" id=\"0\" repetition=\"1\" name=\""(f_cdata(f_trim(chunk[2])))"\"/>\
+	</Step>\
+";next}
 
 
 
@@ -554,7 +727,7 @@ print "\
 #############################################
 #############################################
 
-{print "<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[?" $0"]]></Text>\</Step>";}
+{print "	<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[?" origLine0"]]></Text>\</Step>";}
 
 #################
 # CLOSE XML

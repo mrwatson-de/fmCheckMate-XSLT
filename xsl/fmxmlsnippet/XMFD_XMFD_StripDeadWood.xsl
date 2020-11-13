@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!--===== AUTHOR =====
 
-	(c) Copyright 2014 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,7 @@
 	Removes 'dead wood' from field definitions, i.e. Calculations + Look-ups that are no longer active
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2014
+	(c) russell@mrwatson.de 2020
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2011-08-10 MrW: Version 1.0
 	-->

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 	
@@ -15,7 +15,7 @@
 	Removes all Fields that have serial numbers
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2018
+	(c) russell@mrwatson.de 2020
 	2018-05-11 MrW: Renamed the file to mirror the function -> REMOVE!
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2013-05-15 MrW: Version 1.0

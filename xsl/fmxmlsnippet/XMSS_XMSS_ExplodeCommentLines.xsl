@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -18,24 +18,9 @@
 	
 	@see XMSS_XMSS_MergeCommentLines.xsl for the inverse function
 
-
-	Relevance of this XSLT:
-	
-	   XML has no comments with CR/LF    =>   0%
-	   XML has some comments with CR/LF  =>  50%
-	   XML no active steps               => +25%
-	   XML has no comments without CR/LF => +25%
-
-	@XsltRelevanceXpath="
-	  1  * number(not(not( //Step[@id=89 and (contains(Text/text(),'&#13;') or contains(Text/text(),'&#10;'))]   ))) * (
-	  50 +
-	  25 * number(not(not( //Step[@id=89 and not(contains(Text,'&#13;')) and not(contains(Text/text(),'&#10;'))] ))) +
-	  25 * number(not(     //Step[@id!=89 and @enable='True']                                                    ))
-	  )
-	"
-	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2016-17
+	(c) russell@mrwatson.de 2020
+	2020-04-07 MrW: Version 1.1 Corrected a long standing bug which caused the last line to be lost.
 	2017-09-08 MrW: Version 1.0 Renamed to frequently used 'Explode' instead of 'Split', extended to deal with CRLF, CR and LF, and added the XSLT Relevance function
 	2016-10-11 MrW: Version 0.1
 	-->
@@ -74,7 +59,16 @@
 		<xsl:param name="text"/>
 		<xsl:param name="delim"/>
 		<!-- -->
-		<xsl:variable name="line" select="substring-before($text,$delim)"/>
+		<xsl:variable name="line">
+			<xsl:choose>
+				<xsl:when test="not(contains($text,$delim))">
+					<xsl:value-of select="$text"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="substring-before($text,$delim)"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="rest" select="substring-after($text,$delim)"/>
 		<Step enable="True" id="89" name="comment">
 			<Text>

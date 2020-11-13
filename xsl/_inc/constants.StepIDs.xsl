@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -11,7 +11,9 @@
 	Defines script step id constants to make stylesheet coding easier.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2013-2016
+	(c) russell@mrwatson.de 2020
+	2019-03-31 MrW: Version 1.3.1 Added comments indicating renamings and obsoletions
+	2019-03-30 MrW: Version 1.3 FileMaker 18 Script Steps
 	2016-09-01 MrW: Version 1.2 corrected select value
 	2013-12-15 MrW: Version 1.1 FileMaker 13 Script steps 
 	2013-05-09 MrW: Version 1.0
@@ -124,6 +126,8 @@
 	<xsl:variable name="ID_SET_NEXT_SERIAL_VALUE" select="'116'"/>
 	<xsl:variable name="ID_EXECUTE_SQL" select="'117'"/>
 	<xsl:variable name="ID_OPEN_REMOTE" select="'118'"/>
+	<!-- ^-Renamed in FM17 -v -->
+	<xsl:variable name="ID_OPEN_HOSTS" select="'118'"/>
 	<xsl:variable name="ID_MOVE_RESIZE_WINDOW" select="'119'"/>
 	<xsl:variable name="ID_ARRANGE_ALL_WINDOWS" select="'120'"/>
 	<xsl:variable name="ID_CLOSE_WINDOW" select="'121'"/>
@@ -173,4 +177,41 @@
 	<xsl:variable name="ID_SET_SCRIPT_ANIMATION" select="'168'"/>
 	<xsl:variable name="ID_CLOSE_POPOVER" select="'169'"/>
 	<xsl:variable name="ID_UPLOAD_TO_FILEMAKER_SERVER" select="'172'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="ID_OPEN_UPLOAD_TO_HOST" select="'172'"/>
+	<xsl:variable name="ID_UNKNOWN_173" select="'173'"/>
+	<xsl:variable name="ID_ENABLE_TOUCH_KEYBOARD" select="'174'"/>
+	<xsl:variable name="ID_OBSOLETE_PERFORM_WEB_SCRIPT" select="'175'"/>
+	<!-- Obsoleted in FM16: -->
+	<xsl:variable name="ID_OBSOLETE_SET_ALLOWED_ORIENTATIONS" select="'176'"/>
+	<xsl:variable name="ID_AVPLAYER_PLAY" select="'177'"/>
+	<xsl:variable name="ID_AVPLAYER_SET_PLAYBACK_STATE" select="'178'"/>
+	<xsl:variable name="ID_AVPLAYER_SET_OPTIONS" select="'179'"/>
+	<xsl:variable name="ID_REFRESH_PORTAL" select="'180'"/>
+	<xsl:variable name="ID_GET_DIRECTORY" select="'181'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="ID_GET_FOLDER_PATH" select="'181'"/>
+	<xsl:variable name="ID_TRUNCATE_TABLE" select="'182'"/>
+	<xsl:variable name="ID_OPEN_LAUNCH_CENTER" select="'183'"/>
+	<!-- ^-Renamed in FM17 -v -->
+	<xsl:variable name="ID_OPEN_MY_APPS" select="'183'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="ID_OPEN_FAVORITES" select="'183'"/>
+	<xsl:variable name="ID_OPEN_STARTER_SOLUTION" select="'184'"/>
+	<xsl:variable name="ID_CONFIGURE_REGION_MONITOR_SCRIPT" select="'185'"/>
+	<xsl:variable name="ID_UNKNOWN_EXTERNAL_SCRIPT_STEP_FROM_MISSING_PLUG-IN" select="'186'"/>
+	<xsl:variable name="ID_CONFIGURE_LOCAL_NOTIFICATION" select="'187'"/>
+	<xsl:variable name="ID_GET_FILE_EXISTS" select="'188'"/>
+	<xsl:variable name="ID_GET_FILE_SIZE" select="'189'"/>
+	<xsl:variable name="ID_CREATE_DATA_FILE" select="'190'"/>
+	<xsl:variable name="ID_OPEN_DATA_FILE" select="'191'"/>
+	<xsl:variable name="ID_WRITE_TO_DATA_FILE" select="'192'"/>
+	<xsl:variable name="ID_READ_FROM_DATA_FILE" select="'193'"/>
+	<xsl:variable name="ID_GET_DATA_FILE_POSITION" select="'194'"/>
+	<xsl:variable name="ID_SET_DATA_FILE_POSITION" select="'195'"/>
+	<xsl:variable name="ID_CLOSE_DATA_FILE" select="'196'"/>
+	<xsl:variable name="ID_DELETE_FILE" select="'197'"/>
+	<xsl:variable name="ID_UNKNOWN_198" select="'198'"/>
+	<xsl:variable name="ID_RENAME_FILE" select="'199'"/>
+	<xsl:variable name="ID_SET_ERROR_LOGGING" select="'200'"/>
 </xsl:stylesheet>

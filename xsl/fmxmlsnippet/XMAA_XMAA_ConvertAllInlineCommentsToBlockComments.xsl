@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -21,7 +21,7 @@
 		<Calculation>inline line /* comment */¶line 2</Calculation>
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
+	(c) russell@mrwatson.de 2020
 	2017-10-18 MrW: Version 1.1 - bug fixed
 	2014-10-10 MrW: Version 1.0 - parsing calculations is tricky - but possible!!!
 	2014-10-09 MrW: Version 0.1

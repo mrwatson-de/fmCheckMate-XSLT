@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://graphml.graphdrawing.org/xmlns" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -45,7 +45,7 @@
 
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2017
+	(c) russell@mrwatson.de 2020
 	2017-12-01 MrW: Changed to output graphml xml - with embedded data for hugely improved visualisation and analysis possibilities
 	2016-12-15 MrW: Technique vastly improved to avoid false links to fields whose names are a substring of other fields
 	                The trick is to work through the fields in descending order of name length,

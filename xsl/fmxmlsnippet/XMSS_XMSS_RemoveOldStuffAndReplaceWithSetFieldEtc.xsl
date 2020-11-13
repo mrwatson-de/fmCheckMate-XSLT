@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -15,7 +15,8 @@
 	Replaces old Field-handling with Set Field.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2016
+	(c) russell@mrwatson.de 2020
+	2019-10-02 MrW: Version 0.2 Removed German step name
 	2011-12-13 MrW: Version 0.1
 	2011-09-30 MrW: inc/constants.xsl
 	-->
@@ -26,11 +27,11 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- 13: Systemdatum einfügen -->
 	<xsl:template match="//Step[@id='13' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:text>Get( CurrentDate )</xsl:text>
 			</Calculation>
@@ -46,11 +47,11 @@
 	</xsl:template>
 	<!-- 14: Systemuhrzeit einfügen -->
 	<xsl:template match="//Step[@id='14' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:text>Get( CurrentTime )</xsl:text>
 			</Calculation>
@@ -66,11 +67,11 @@
 	</xsl:template>
 	<!-- 60: Benutzernamen einfügen -->
 	<xsl:template match="//Step[@id='60' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:text>Get( UserName )</xsl:text>
 			</Calculation>
@@ -87,11 +88,11 @@
 	
 	<!-- 49: Löschen -->
 	<xsl:template match="//Step[@id='49' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:text>""</xsl:text>
 			</Calculation>
@@ -107,11 +108,11 @@
 	</xsl:template>
 	<!-- 77: Berechneten Wert einfügen -->
 	<xsl:template match="//Step[@id='77' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:text>""</xsl:text>
 			</Calculation>
@@ -128,11 +129,11 @@
 	</xsl:template>
 	<!-- 61: Text einfügen FIXME -->
 	<xsl:template match="//Step[@id='61' and Field and SelectAll/@state='True']">
-		<!-- convert to Feldwert setzen step -->
+		<!-- convert to Set Field step -->
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="repetitionCalculation" select="Repetition/Calculation"/>
 		<!--  -->
-		<Step enable="{$enable}" id="76" name="Feldwert setzen">
+		<Step enable="{$enable}" id="76">
 			<Calculation>
 				<xsl:call-template name="TextToCalculation">
 					<xsl:with-param name="pText" select="Text/text()"/>

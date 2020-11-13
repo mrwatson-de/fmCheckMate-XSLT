@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2018 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -16,7 +16,7 @@
 
 	===== CHANGES HISTORY =====
 	2018-06-19 MrW v1.0
-	(c) russell@mrwatson.de 2018
+	(c) russell@mrwatson.de 2020
 
 	-->
 	<!-- ===== HEAD ===== -->

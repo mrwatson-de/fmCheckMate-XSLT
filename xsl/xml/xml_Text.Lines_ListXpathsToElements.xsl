@@ -4,7 +4,7 @@
 	version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -17,7 +17,7 @@
 	Emits a list of Xpath expressions.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2011-2017
+	(c) russell@mrwatson.de 2020
 	2011-02-09 MrW Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
