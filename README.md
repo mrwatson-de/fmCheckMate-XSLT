@@ -1,6 +1,6 @@
 ![fmCM.logo][]
 
-#fmCheckMate-XSLT Library
+# fmCheckMate-XSLT Library
 
 The fmCheckMate-XSLT library extends the [fmCheckMate][] tool in the [fmWorkMate][] toolbox, and gives FileMaker
 Database Developers the ability to analyse, change and transform their
