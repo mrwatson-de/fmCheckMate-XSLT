@@ -24,5 +24,5 @@
 	<xsl:include href="../../../fmCheckMate/xsl/_inc/inc.Clone.xsl"/>
 	<!-- ===== TEMPLATES ===== -->
 	<!-- Remove all non-normal fields  -->
-	<xsl:template match="Field[@fieldType!='Normal' or @dataType='Container]"/>
+	<xsl:template match="Field[@fieldType!='Normal' or @dataType='Container']"/>
 </xsl:stylesheet>
