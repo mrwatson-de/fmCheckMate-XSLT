@@ -21,10 +21,8 @@
 	-->
 	<!-- ===== HEAD ===== -->
 	<xsl:output method="text" version="1.0" encoding="UTF-8" indent="no"/>
-	<xsl:include href="../../../fmCheckMate/xsl/_inc/constants.xsl"/>
 	<!-- ===== VARIABLES ===== -->
-	<xsl:variable name="delimiter" select="$TAB"/>
-	<xsl:variable name="newrecord" select="$RETURN"/>
+	<xsl:variable name="newrecord" select="'&#10;'"/>
 	<!-- ===== TEMPLATES ===== -->
 	<!-- Main -->
 	<xsl:template match="/">

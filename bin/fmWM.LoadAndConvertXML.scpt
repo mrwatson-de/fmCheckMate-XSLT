@@ -1,3 +1,10 @@
+(*
+
+DEPRECATED
+
+AppleScript to tell fmWorkmate (RUNTIME version) to load & convert the fmxmlsnippet and activate FleMaker
+
+*)
 tell application "fmWorkMate"
 	--activate
 	set oneMoment to 0.1 -- seconds
