@@ -1,0 +1,33 @@
+#!/usr/bin/awk -f
+#
+# This is an AWK script to convert the input text into FileMaker script comments.
+#
+# FILE: text_ToFmxmlsnippet_Scriptsteps_Comments
+#
+# INPUT-Source: text
+# INPUT-Format: lines
+# INPUT-Content: any text*
+#
+# OUTPUT-type: XML
+# OUTPUT-Grammar: FileMaker fmxmlsnippet
+# OUTPUT-Content: Scriptstep comments - one step per line in the input
+#
+#
+#
+# *Known bugs: It won't create correct XML if there is a closing CDATA-tag in the text.
+#
+# MrW 07.02.11 My first AWK-Script :-)
+#
+# (c) Copyright 2016 MrWatson. All Rights Reserved. 
+#
+BEGIN {
+print "<?xml version=\"1.0\"?>\
+<fmxmlsnippet type=\"FMObjectList\">"
+}
+{ print "	<Step id=\"89\" name=\"Kommentar\" enable=\"True\">\
+		<Text><![CDATA["$0"]]></Text>\
+	</Step>"}
+
+END {
+print "</fmxmlsnippet>"
+}

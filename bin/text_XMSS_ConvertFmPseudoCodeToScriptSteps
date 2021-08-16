@@ -1,11 +1,22 @@
 #!/usr/bin/awk -f
 #
-# This is an AWK script to convert text ("fmPseudoCode") into FileMaker script steps (fmxmlsnippet).
+#######################################################################
 #
-# IT IS VERY RUDIMENTARY, IS STILL IN DEVELOPMENT (OF COURSE) AND ONLY SUPPORTS A FEW SMALL FEATURES
+# (c) Copyright 2011-2021 MrWatson. All Rights Reserved. 
 #
-# => SO CHECK THE RESULTS YOU GET CAREFULLY!
-# => It IS, however, certainly useful for those few features that do work! :)
+# AUTHOR: MrWatson, russell@mrwatson.de 
+#
+# FILE: text_XMSS_ConvertFmPseudoCodeToScriptSteps
+#
+# PURPOSE: This is an AWK script to convert text ("fmPseudoCode") into FileMaker script steps (fmxmlsnippet).
+#
+#  INPUT-Source: fmPseudoCode
+#  INPUT-Format: lines
+#  INPUT-Content: script step text (e.g. from MBS [Copy Script Text] button)
+#
+#  OUTPUT-Type: XML
+#  OUTPUT-Grammar: FileMaker fmxmlsnippet
+#  OUTPUT-Content: Script steps - one step per line in the input
 #
 # Supported pseudo-code:
 #
@@ -15,37 +26,32 @@
 #     Set Field
 #     Set Variable
 #     $variable = calculation // for convenience :-)
+#     => Note: only SINGLE line calculation are recognised
 #     All steps with no options
 #     All steps that take a single [Calculation] in brackets
-#     Note: only SINGLE line calculation are recognised
 #     Some other steps: See the code below to see which ones have made it (Pause/Resume,... )
 #
-# Not supported:
+# Not supported pseudo-code:
 #
 #     EVERYTHING ELSE
-#
-# All unrecognised lines are rendered as a comment starting with a '?'
+#     => All unrecognised lines are rendered as a comment starting with a '?'
 # 
 #
+# **DISCLAIMER**
 #
-# AUTHOR: MrWatson, russell@mrwatson.de 
+#     THIS SCRIPT IS VERY RUDIMENTARY, IS STILL IN DEVELOPMENT (OF COURSE) AND ONLY SUPPORTS A FEW SMALL FEATURES
 #
-# FILE: fmPseudoCodeToFmxmlsnippetScriptsteps
+# => SO PLEASE CHECK THE RESULTS YOU GET CAREFULLY!
+# => It IS, however, certainly useful for those few features that do work! :)
 #
-#  INPUT-Source: fmPseudoCode
-#  INPUT-Format: lines
-#  INPUT-Content: script step text (e.g. from MBS [Copy Script Text] button)
-#
-#  OUTPUT-Type: XML
-#  OUTPUT-Grammar: FileMaker fmxmlsnippet
-#  OUTPUT-Content: Scriptstep comments - one step per line in the input
+# **/DISCLAIMER**
 #
 # USAGE
 #
 # The following command converts the code in the MBS_Dialog_Script_example.fmpc.txt and 
 # saves it into the fmxmlsnippet.xml file as script steps
 #
-#    awk -f ~/Documents/fmCheckMate/bin/fmPseudoCodeToFmxmlsnippetScriptsteps /Users/rwatson/Documents/fmCheckMate/test/MBS_Dialog_Script_example.fmpc.txt > ~/Documents/fmCheckMate/fmxmlsnippet.xml
+#    awk -f ~/Documents/fmCheckMate/bin/text_XMSS_ConvertFmPseudoCodeToScriptSteps ~/Documents/fmCheckMate/test/MBS_Dialog_Script_example.fmpc.txt > ~/Documents/fmCheckMate/fmxmlsnippet.xml
 #
 # You can then convert the xml back to FileMaker clipboard objects and paste them back into FileMaker
 #
@@ -55,27 +61,29 @@
 #
 # ...or probably even easier with a further osascript command (Please let me know!)
 #
-# Note: You may have to mark this file as executable, before you can run it.
+# Note: You may have to mark this file as executable before you can run it using the following command:
 #
-#     sudo chmod u+x ~/Documents/fmCheckMate/bin/fmPseudoCodeToFmxmlsnippetScriptsteps
+#     sudo chmod u+x ~/Documents/fmCheckMate/bin/text_XMSS_ConvertFmPseudoCodeToScriptSteps
 #
 # KNOWN BUGS
 #
 # - It won't create correct XML if there is a closing CDATA-tag (]]>) anywhere in the text.
 #
 #
-# *A cry for help*
+# A CRY FOR HELP
 #
-# Are you an awk programmer? Please help! => russell@mrwatson.de :)
+#   Are you an awk (or perl) programmer? Please help! => russell@mrwatson.de :)
 #
 # @history
+# 20210813 MrW Version 0.5 Trim semicolons from the end of lines, so that Let-statements are converted properly, accept variable declarations for Let variables with no $, and convert While to a Loop 
+# 20210517 MrW Version 0.4 File renamed to fit the fmCheckMate standard and comment documentation improved 
 # 20190204 MrW Version 0.3 Cool Set Field + Set Variable are working!
 # 20190202 MrW Version 0.2.2 5+ years on haven't learnt Perl yet, so ... time to get Set Field + Set Variable working!
 # 20131120 MrW Version 0.2.1 Need to learn Perl! AWK won't be able to do the job properly!
 # 20131111 MrW Version 0.2 Improved on the original comment-transformer to create a slightly usable "fmPseudoCode interpreter"
 # 20110207 MrW Version 0.1 My first AWK-Script :-)
 #
-# (c) Copyright 2011-2019 MrWatson. All Rights Reserved. 
+#######################################################################
 #
 
 function f_dequote(strg)
@@ -308,7 +316,7 @@ print "<?xml version=\"1.0\"?>\
 #Trim
 {
 sub(/^[ \t]+/,"");
-sub(/[ \t]+$/,"");
+sub(/[ \t;]+$/,"");
 }
 
 
@@ -719,6 +727,36 @@ print "\
 	</Step>\
 ";next}
 
+#############################################
+#var=expression -> Set Variable
+/^([a-zA-Z].*)(\[(.*)\])?\s*=/{
+sub(/\s*=\s*/,chunk_delim);	# split at =
+split($0,chunk,chunk_delim);	# chunk
+#sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"141\" name=\"Set Variable\">\
+		<Value>\
+			<Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation>\
+		</Value>\
+		<Repetition>\
+			<Calculation><![CDATA[1]]></Calculation>\
+		</Repetition>\
+		<Name>$"(f_trim(chunk[1]))"</Name>\
+	</Step>\
+";next}
+
+#############################################
+# While
+#
+# MINIMAL 
+#
+/^(While)/{
+#sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"71\" name=\"Loop\"></Step>\
+	<Step enable=\""enable"\" id=\"72\" name=\"Exit Loop If\"></Step>\
+	<Step enable=\""enable"\" id=\"73\" name=\"End Loop\"></Step>\
+";next}
 
 
 #############################################

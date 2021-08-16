@@ -8,7 +8,7 @@ Please check the history entries in the individual files for more details.
 
 ---
 
-20201113 MrW: Two years on, ... Time to get fmWorkMate + fmCheckMate XSLT-Library + FieldDependencyGraph stuff 
+20201113 MrW: Two years on, ... Time to get fmWorkMate + fmCheckMate XSLT-Library + FieldDependencyGraph stuff out!
 20191004 MrW: One year older, a bunch of transformations wiser.
 20180828 MrW: Hello GitHub! ... We're going to have to wait and see if we are going to get along ;-)
 20180827 MrW: Added transformation XMSS_XMSS_ReplaceSetVarWithInsertCalculatedResult.xsl to change 

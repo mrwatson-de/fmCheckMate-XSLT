@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://graphml.graphdrawing.org/xmlns" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -45,7 +45,8 @@
 
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	(c) russell@mrwatson.de 2021
+	2021-08-15 MrW: Improved recognition of field dependencies by stripping all function names from calculations
 	2017-12-01 MrW: Changed to output graphml xml - with embedded data for hugely improved visualisation and analysis possibilities
 	2016-12-15 MrW: Technique vastly improved to avoid false links to fields whose names are a substring of other fields
 	                The trick is to work through the fields in descending order of name length,
@@ -418,70 +419,151 @@
 				</xsl:for-each>
 			</xsl:with-param>
 			<!--
-		 ! the list of reference calculations
-		 !
-		 ! {newrecord}
-		 ! id{delim}Calculation{newrecord}
-		 ! id{delim}Calculation{newrecord}
-		 ! ...
-		 !
-		 !-->
+			 ! fieldCalcs : the list of reference calculations
+			 !
+			 ! {newrecord}
+			 ! field-id{delim}Calculation{newrecord}
+			 ! field-id{delim}Calculation{newrecord}
+			 ! ...
+		 	 !
+		 	 !-->
 			<xsl:with-param name="fieldCalcs">
-				<!-- Add a return at the front to make text handling easier -->
-				<xsl:value-of select="$newrecord"/>
-				<!-- -->
-				<xsl:for-each select="//Field[not(ancestor::Field)]">
-					<xsl:sort select="string-length(@name)" order="descending" data-type="number"/>
-					<!-- -->
-					<xsl:choose>
-						<!-- Calculation -->
-						<xsl:when test="@fieldType='Calculated'">
-							<xsl:value-of select="@id"/>
-							<xsl:value-of select="$delimiter"/>
-							<xsl:value-of select="translate(Calculation/text(),$CRLF,'  ')"/>
-							<xsl:if test="contains(concat('|',translate(Calculation/text(),$CALC_FIELD_BOUNDARY_CHARS,$CALC_FIELD_BOUNDARY_BARS),'|'),'|Self|')">
-								<!-- expand self-reference to field name -->
-								<xsl:value-of select="'+'"/>
-								<xsl:value-of select="@name"/>
-							</xsl:if>
-							<xsl:value-of select="$newrecord"/>
-						</xsl:when>
-						<!-- AutoEnter Calculation -->
-						<xsl:when test="@fieldType='Normal' and AutoEnter/@calculation='True'">
-							<xsl:value-of select="@id"/>
-							<xsl:value-of select="$delimiter"/>
-							<xsl:value-of select="translate(AutoEnter/Calculation/text(),$CRLF,'  ')"/>
-							<xsl:if test="contains(concat('|',translate(AutoEnter/Calculation/text(),$CALC_FIELD_BOUNDARY_CHARS,$CALC_FIELD_BOUNDARY_BARS),'|'),'|Self|')">
-								<!-- expand self-reference to field name -->
-								<xsl:value-of select="'+'"/>
-								<xsl:value-of select="@name"/>
-							</xsl:if>
-							<xsl:value-of select="$newrecord"/>
-						</xsl:when>
-						<!-- AutoEnter Lookup -->
-						<xsl:when test="@fieldType='Normal' and AutoEnter/@lookup='True'">
-							<!-- FIXME - ADD NAMES OF RELATIONSHIP SOURCE FIELDS HERE -->
-						</xsl:when>
-						<xsl:when test="@fieldType='Summary'">
-							<xsl:value-of select="@id"/>
-							<xsl:value-of select="$delimiter"/>
-							<xsl:value-of select="SummaryInfo/SummaryField/Field/@name"/>
-							<!-- FIXME - ALSO RESORT FIELD? -->
-							<xsl:value-of select="$newrecord"/>
-						</xsl:when>
-					</xsl:choose>
-				</xsl:for-each>
+
+				<!--xsl:call-template name="calcRemoveFunctionNames">
+					<xsl:with-param name="calc"-->
+
+						<!-- Add a return at the front to make text handling easier -->
+						<xsl:value-of select="$newrecord"/>
+						<!-- -->
+						<xsl:for-each select="//Field[not(ancestor::Field)]">
+							<xsl:sort select="string-length(@name)" order="descending" data-type="number"/>
+							<!-- -->
+							<xsl:choose>
+								<!-- Calculation -->
+								<xsl:when test="@fieldType='Calculated'">
+									<xsl:value-of select="@id"/>
+									<xsl:value-of select="$delimiter"/>
+									<xsl:value-of select="translate(Calculation/text(),$CRLF,'  ')"/>
+									<xsl:if test="contains(concat('|',translate(Calculation/text(),$CALC_FIELD_BOUNDARY_CHARS,$CALC_FIELD_BOUNDARY_BARS),'|'),'|Self|')">
+										<!-- expand self-reference to field name -->
+										<xsl:value-of select="'+'"/>
+										<xsl:value-of select="@name"/>
+									</xsl:if>
+									<xsl:value-of select="$newrecord"/>
+								</xsl:when>
+								<!-- AutoEnter Calculation -->
+								<xsl:when test="@fieldType='Normal' and AutoEnter/@calculation='True'">
+									<xsl:value-of select="@id"/>
+									<xsl:value-of select="$delimiter"/>
+									<xsl:value-of select="translate(AutoEnter/Calculation/text(),$CRLF,'  ')"/>
+									<xsl:if test="contains(concat('|',translate(AutoEnter/Calculation/text(),$CALC_FIELD_BOUNDARY_CHARS,$CALC_FIELD_BOUNDARY_BARS),'|'),'|Self|')">
+										<!-- expand self-reference to field name -->
+										<xsl:value-of select="'+'"/>
+										<xsl:value-of select="@name"/>
+									</xsl:if>
+									<xsl:value-of select="$newrecord"/>
+								</xsl:when>
+								<!-- AutoEnter Lookup -->
+								<xsl:when test="@fieldType='Normal' and AutoEnter/@lookup='True'">
+									<!-- FIXME - ADD NAMES OF RELATIONSHIP SOURCE FIELDS HERE -->
+								</xsl:when>
+								<xsl:when test="@fieldType='Summary'">
+									<xsl:value-of select="@id"/>
+									<xsl:value-of select="$delimiter"/>
+									<xsl:value-of select="SummaryInfo/SummaryField/Field/@name"/>
+									<!-- FIXME - ALSO RESORT FIELD? -->
+									<xsl:value-of select="$newrecord"/>
+								</xsl:when>
+							</xsl:choose>
+						</xsl:for-each>
+
+					<!--/xsl:with-param>
+				</xsl:call-template-->
+
 			</xsl:with-param>
 		</xsl:call-template>
+
 	</xsl:template>
+
+	<!--
+	 ! FIXME
+	 ! calc.removeFunctionNames ( calc )
+	 !
+	 !  Removes function names found before an opening parentheses.
+	 !
+	 ! Note: It DOESN'T remove function names that have no parameters / no () !
+	 ! But it's better than nothing
+ 	 !
+	 !-->
+	 <xsl:template name="calcRemoveFunctionNames">
+		<xsl:param name="calc"/>
+		<!-- -->
+		
+		<xsl:choose>
+			<xsl:when test="not(contains($calc,'('))">
+				<!-- Case 1. NO parentheses -->
+				<xsl:value-of select="$calc"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="firstBit" select="substring-before($calc,'(')"/>
+				<!-- Remove (~)all legal function name letters ... the last character of the remaining string is the character we need to locate -->
+				<xsl:variable name="delimChars" select="translate($firstBit,' _abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöüÄÖÜß1234567890.')"/>
+				<xsl:choose>
+					<xsl:when test="$delimChars=''">
+						<!-- Case 2. NO function name to remove -->
+						<!-- output as is  -->
+						<xsl:value-of select="$firstBit"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<!-- Case 3. function name to remove-->
+						<!-- what is the last character before the function name? -->
+						<xsl:variable name="lastChar" select="substring($delimChars,string-length($delimChars))"/>
+						<!-- get the function name (including white space) -->
+						<xsl:variable name="functionNameWithWhiteSpace">
+							<xsl:call-template name="fn.substring-after-last">
+								<xsl:with-param name="text" select="$firstBit"/>
+								<xsl:with-param name="searchString" select="$lastChar"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<!-- get the first bit without the function name -->
+						<xsl:variable name="firstBitWithoutFunctionName" select="substring($firstBit,1,string-length($firstBit) - string-length($functionNameWithWhiteSpace))"/>
+						<!-- output the first bit without the function name -->
+						<xsl:value-of select="$firstBitWithoutFunctionName"/>
+					</xsl:otherwise>
+				</xsl:choose>
+				<!-- Don't forget to output the '('! -->
+				<xsl:value-of select="'('"/>
+				<!-- then recurse the remaining calculation  -->
+				<xsl:call-template name="calcRemoveFunctionNames">
+					<xsl:with-param name="calc" select="substring-after($calc,'(')"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+		
+	</xsl:template>
+
 	<!--
 	 !
 	 ! constructEdges
+	 ! 
+	 !     Constructs the edges by iterating over the (source) fields (from 1st to last = from longest to shortest name)
+	 !     and for each field name
+	 !         finding all occurences of the field name in the (target) field calculations
+	 !         and for each occurence
+	 !             construct an edge source field -> target field
+	 !             (i.e. source field is referenced by target field / data flows from source to target)
+	 !         and THEN REMOVING the field name from ALL calculations
+	 !         BEFORE moving on to the next source field
 	 !
+	 ! fieldNames : The field names sorted in descending order of length (in order to avoid 
+	 !     linking to fields whose names are a substring of other field names)
 	 !
+	 ! fieldCalcs : the list of field calculations
 	 !
-	 ! Note: The fieldNames MUST be sorted in descending order of length, in order to avoid 
-	 !       linking to fields whose names are a substring of other field names
+	 !     {newrecord}
+	 !     field-id{delim}Calculation{newrecord}
+	 !     field-id{delim}Calculation{newrecord}
+	 !     ...
 	 !
 	 !-->
 	<xsl:template name="constructEdges">
@@ -534,8 +616,12 @@
 	 !
 	 ! constructEdgesForField
 	 !
+	 !     Constructs all edges for the source field to all target fields that reference it
 	 !
-	 !
+	 !     Iterates over all references to the source field in the 
+	 !       for each reference
+	 !            identifies the target fields which references it
+	 !           outputs the edge source -> target
 	 !
 	 !-->
 	<xsl:template name="constructEdgesForField">
