@@ -13,6 +13,8 @@
 # OUTPUT-Content: Scriptstep comments - one step per line in the input
 #
 #
+# DEPRECATED/RENAMED - please use the function with the standardised name: text_XMSS_ConvertTextToScriptStepComments
+#
 #
 # *Known bugs: It won't create correct XML if there is a closing CDATA-tag in the text.
 #
