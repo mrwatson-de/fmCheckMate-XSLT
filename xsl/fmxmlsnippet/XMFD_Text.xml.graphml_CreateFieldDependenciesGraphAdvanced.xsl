@@ -46,6 +46,7 @@
 
 	===== CHANGES HISTORY =====
 	(c) russell@mrwatson.de 2021
+	2021-08-18 MrW: Fixed a bug which had caused a function name at the start of a calulation to not be stripped.
 	2021-08-15 MrW: Improved recognition of field dependencies by stripping all function names from calculations
 	2017-12-01 MrW: Changed to output graphml xml - with embedded data for hugely improved visualisation and analysis possibilities
 	2016-12-15 MrW: Technique vastly improved to avoid false links to fields whose names are a substring of other fields
@@ -510,9 +511,8 @@
 				<xsl:variable name="delimChars" select="translate($firstBit,' _abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZäöüÄÖÜß1234567890.')"/>
 				<xsl:choose>
 					<xsl:when test="$delimChars=''">
-						<!-- Case 2. NO function name to remove -->
-						<!-- output as is  -->
-						<xsl:value-of select="$firstBit"/>
+						<!-- Case 2. NOTHING found before the function name -->
+						<!-- Skip everything before the '(' -->
 					</xsl:when>
 					<xsl:otherwise>
 						<!-- Case 3. function name to remove-->
