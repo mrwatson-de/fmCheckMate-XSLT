@@ -1,23 +1,56 @@
-abort
-grr abc
-install [1;somescript]
-install[1;somescript]
-$a=1
-#ok
+Set Error Capture [ On ]
+Allow User Abort [ Off ]
+
+
+Set Variable [ $params ; Get( ScriptParameter ) ]
+Set Variable [ $a ; 1 ]
+$b=2
+
+
+If [ 1=0 ]
+	# Never
+Else If [ $a=1 ]
+	# Do sth
+ei [ 1=1 ]
+	# Always
+Else
+	# Otherwise
+End If
+
+# ToDo still
+Perform Script [ Specified: From list ; “HelloWorld” ; Parameter: "everybody" ]
+Perform Script ["HelloWorld" ; Parameter: "short with normal quotes" ]
+Perform Script ["HelloWorld" ; "short with normal quotes" ]
+
+
+Set Field[MyTable::MyField;123]
 sf[MyTable::MyField;123]
 SF[MyTable::MyField;123]
+MyTable::MyField=123
+
 #LOOP
+Go To Record [ First ]
+Go To Record First
+Go To First Record
 Loop
-huh
-	eli [1234567	]
-huh
+	eli [$i > $n]
+	Go To Record [ Next ; Exit after Last: On ]
 End Loop
 
-If [1]
-	es[123]
-End If
-halt
+#Calculate Factorial
+$fac = 1
+$i = 1
+$n = 10
+Loop
+	eli [$i > $n]
+	$fac = $fac * $i
+	$i = $i + 1
+End Loop
+Show Custom Dialog [ $fac ]
 
-Install OnTimer Script [ “New Script 2” ; Parameter: 123 ; Interval: 2 ] 
-Install OnTimer Script [ Interval: 2 ] 
-Install OnTimer Script [] 
+#Short forms
+GTR [ First ]
+GTR [ Next ; Exit after Last: On ]
+
+
+halt
