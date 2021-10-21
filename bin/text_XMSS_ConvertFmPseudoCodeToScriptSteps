@@ -75,6 +75,8 @@
 #   Are you an awk (or perl) programmer? Please help! => russell@mrwatson.de :)
 #
 # @history
+# 20211021 MrW Version 0.5.2 Removed the '?' from the start of unrecognised code comments, so that multiline comments are correctly rendered
+# 20211006 MrW Version 0.5.1 Accept short variations "... Record/Request" 
 # 20210813 MrW Version 0.5 Trim semicolons from the end of lines, so that Let-statements are converted properly, accept variable declarations for Let variables with no $, and convert While to a Loop 
 # 20210517 MrW Version 0.4 File renamed to fit the fmCheckMate standard and comment documentation improved 
 # 20190204 MrW Version 0.3 Cool Set Field + Set Variable are working!
@@ -166,6 +168,8 @@ Step_id["Close File"]=34
 Step_id["Close Window"]=121
 Step_id["Comment"]=89
 Step_id["Commit Records/Requests"]=75
+Step_id["Commit Records"]=75
+Step_id["Commit Record"]=75
 Step_id["Constrain Found Set"]=126
 Step_id["Convert File"]=139
 Step_id["Copy All Records/Requests"]=98
@@ -179,6 +183,7 @@ Step_id["Delete Portal Row"]=104
 Step_id["Delete Record/Request"]=9
 Step_id["Dial Phone"]=65
 Step_id["Duplicate Record/Request"]=8
+Step_id["Duplicate Record"]=8
 Step_id["Edit User Dictionary"]=109
 Step_id["Else If"]=125
 Step_id["Else"]=69
@@ -364,13 +369,13 @@ enable="False"
 # 2
 /^install\s*\[/ {sub(/(^.{7})/,"Install OnTimer Script");}
 {sub(/(^ps)/,"Perform Script");}
+{sub(/(^psos)/,"Perform Script on Server");}
 {sub(/(^sf)/,"Set Field");}
 {sub(/(^ei)/,"Else If");}
 {sub(/(^es)/,"Exit Script");}
 {sub(/(^eli)/,"Exit Loop If");}
-{sub(/(^grr)/,"Go to Related Record");}
 {sub(/(^gtrr)/,"Go to Related Record");}
-{sub(/(^psos)/,"Perform Script on Server");}
+{sub(/(^grr)/,"Go to Related Record");}
 {sub(/(^abort)/,"Allow User Abort");}
 {sub(/(^error)/,"Set Error Capture");}
 
@@ -511,9 +516,9 @@ print "\
 
 
 #############################################
-#Simple Steps
-/^(Open Hosts|Open Manage Containers|Open Manage Themes|Open My Apps|Open Script Workspace|Upload to FileMaker Server|Send DDE Execute|Duplicate Record\/Request|Select All|Close Popover|Else|Beep|Check Found Set|Check Record|Copy All Records\/Requests|Copy Record\/Request|Correct Word|Edit User Dictionary|End If|End Loop|Exit Application|Flush Cache to Disk|Freeze Window|Go to Next Field|Go to Previous Field|Halt Script|Loop|Modify Last Find|New File|New Record\/Request|Omit Record|Open Edit Saved Finds|Open File Options|Open Find\/Replace|Open Help|Open Manage Data Sources|Open Manage Database|Open Manage Layouts|Open Manage Scripts|Open Manage Value Lists|Open Preferences|Open Record\/Request|Open Remote|Open Sharing|Resume Script|Select Dictionaries|Show All Records|Show Omitted Only|Spelling Options|Unsort Records)$/{print "\
-    <Step enable=\""enable"\" id=\""Step_id[$0]"\" name=\""$0"\"/>\
+#Simple Steps - don't output name, as it could be an abbreviation
+/^(Open Hosts|Open Manage Containers|Open Manage Themes|Open My Apps|Open Script Workspace|Upload to FileMaker Server|Send DDE Execute|Duplicate Record(.*)|Select All|Close Popover|Else|Beep|Check Found Set|Check Record|Copy All Records\/Requests|Copy Record(.*?)|Correct Word|Edit User Dictionary|End If|End Loop|Exit Application|Flush Cache to Disk|Freeze Window|Go to Next Field|Go to Previous Field|Halt Script|Loop|Modify Last Find|New File|New Record(.*?)|Omit Record|Open Edit Saved Finds|Open File Options|Open Find\/Replace|Open Help|Open Manage Data Sources|Open Manage Database|Open Manage Layouts|Open Manage Scripts|Open Manage Value Lists|Open Preferences|Open Record(.*?)|Open Remote|Open Sharing|Resume Script|Select Dictionaries|Show All Records|Show Omitted Only|Spelling Options|Unsort Records)$/{print "\
+    <Step enable=\""enable"\" id=\""Step_id[$0]"\"/>\
 ";next}
 	
 
@@ -551,7 +556,7 @@ print "\
 #
 # Note: Enable Touch Keyboard is 3-state
 #
-/(Enable Touch Keyboard|Set Multi-User|Allow User Abort|Allow Formatting Bar|Set Error Capture|Set Use System Formats|Set Layout Object Animation).*\[(.*)\]/{
+/(Enable Touch Keyboard|Set Multi-User|Allow User Abort|Allow Formatting Bar|Set Error Capture|Set Use System Formats|Set Layout Object Animation).*\[(.*?)\]/{
 sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
@@ -565,15 +570,16 @@ print "\
 # Single Interaction Steps
 #
 #
-/(Commit Records\/Requests|Delete All Records|Delete Portal Row|Delete Record\/Request|Revert Record\/Request|Omit Multiple Records|Relookup Field Contents|Replace Field Contents).*\[(.*)\]/{
+/(Commit Record(.*?)|Delete All Records|Delete Portal Row|Delete Record(.*?)|Revert Record(.*?)|Omit Multiple Records|Relookup Field Contents|Replace Field Contents).*?\[(.*?)\]/{
 sub(/\[/,chunk_delim);
 sub(/\]$/,chunk_delim);
 split($0,chunk,chunk_delim);
+#	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
 print "\
-	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\" name=\""(f_trim(chunk[1]))"\">\
+	<Step enable=\""enable"\" id=\""(Step_id[(f_trim(chunk[1]))])"\">\
 		<NoInteract state=\""(f_StateTrueFalse(chunk[2],"On"))"\"></NoInteract>\
 	</Step>\
-	<!-- "chunk[2]" -->\
+	<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[?"f_cdata(f_trim(chunk[2]))"]]></Text>\</Step>\
 ";next}
 
 #############################################
@@ -761,11 +767,11 @@ print "\
 
 #############################################
 #############################################
-# FINALLY - Render everything else as a comment (with a starting ? to distinguish it from real comments)
+# FINALLY - Render everything else as a comment
 #############################################
 #############################################
 
-{print "	<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[?" origLine0"]]></Text>\</Step>";}
+{print "	<Step id=\"89\" enable=\""enable"\">\<Text><![CDATA[" origLine0"]]></Text>\</Step>";}
 
 #################
 # CLOSE XML
