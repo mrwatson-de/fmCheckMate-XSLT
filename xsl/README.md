@@ -1,4 +1,4 @@
-#About the xsl Folder
+# About the xsl Folder
 
 Great folder - this is where all the xsl goodies are stored!
 
@@ -15,11 +15,11 @@ overwritten when you get a new version of fmCheckMate-XSLT library.
 
 Subfolders
 
-    _inc                - xslt  building block files which are included in other xslts are placed here
-    FMObjectTransfer    - XSLTs that transform the new (CustomMenus) FMObjectTransfer XML syntax
-    fmxmlsnippet        - XSLTs that transform FileMaker clipboard XML (so called xml snippet) syntax
-    xml                 - generic XSLTs that transform ANY xml file
-    xsl                 - XSLTs for transforming XSLTs
+- [_inc/](_inc/README.md) - xslt  building block files which are included in other xslts are placed here
+- [FMObjectTransfer/](FMObjectTransfer/README.md) - XSLTs that transform the new (CustomMenus) - FMObjectTransfer XML syntax
+- [fmxmlsnippet/](fmxmlsnippet/README.md) - XSLTs that transform FileMaker clipboard XML (so called xml snippet) syntax
+- [xml/](xml/README.md) - generic XSLTs that transform ANY xml file
+- [xsl/](xsl/README.md) - XSLTs for transforming XSLTs
 
 History
 

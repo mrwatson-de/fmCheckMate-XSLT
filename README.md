@@ -2,11 +2,17 @@
 
 # fmCheckMate-XSLT Library
 
-The fmCheckMate-XSLT library extends the [fmCheckMate][] tool in the [fmWorkMate][] toolbox, and gives FileMaker
-Database Developers the ability to analyse, change and transform their
-FileMaker work like never before!
+[Transforms your FileMaker work]
 
-## 1. Getting started
+The fmCheckMate-XSLT library is a pile of XSL transformations and other functions to transform your FileMaker work.
+
+- Primarily it extends the [fmCheckMate][] tool in the [fmWorkMate][] toolbox, 
+and gives FileMaker Database Developers the ability to analyse, change and transform their
+FileMaker code like never before!
+- It has a smart feature to [convert pseudo-code to FileMaker code using fmAutoMate](#convert-pseudo-code-to-fileMaker-code-using-fmautomate)
+- It contains XSL transformations to be used with FileMaker export & import
+
+## Getting started
 
 You are not far away from having the best tools that money can't buy! -
 It's as easy as ABC:
@@ -31,7 +37,7 @@ Simply:
 
 That's it!
 
-### C: Doing your first transformation
+### C: Doing your first transformation with fmCheckMate
 
 Once you have copied some FileMaker objects, just:
 
@@ -47,7 +53,7 @@ Once you have copied some FileMaker objects, just:
 Then just paste the changed objects back into FileMaker.
 
 
-###Tip => Always check for pasting errors!
+### Tip => Always check for pasting errors!
 
 Use one of the following methods to check for errors when pasting objects
 back into FileMaker!
@@ -64,18 +70,23 @@ back into FileMaker!
 
 ## 2. Next Steps
 
-###Try out some of the cool transformations:
+### Try out some of the cool transformations:
 
 * Copy scripts and **analyse** their script calls
 * Copy script steps and **change** old Replace Field Contents steps into a Set Field Loop
 * Copy fields and **analyse** them, listing their definitions
 * Copy layout objects and **analyse** them for errors
 
-###Learn more
+### Convert Pseudo-Code to FileMaker code using fmAutoMate
+
+(ToDo)
+
+
+### Learn more
 
 Google fmCheckMate -> you may find some videos + further help
 
-###What's new in this Version?
+### What's new in this Version?
 
 See [fmCheckMate Changes.md](docs/fmCheckMate Changes.md)
 

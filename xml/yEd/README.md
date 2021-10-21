@@ -1,6 +1,6 @@
-#About the yEd Folder
+# About the yEd Folder
 
-yEd is a (free) graph editor from yWorks
+yEd is a (free) graph editor from [yWorks](https://www.yworks.com)
 
 yEd can be used to visualise the dependencies between fields.
 

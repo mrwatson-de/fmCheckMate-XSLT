@@ -2,11 +2,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
-	XSL-File: XMTH_XML_ThemeWithMarkesUpCSS.xsl
+	XSL-File: XMTH_Text.xml_ThemeWithMarkedUpCSS.xsl
 
 	XML-Source: fmxmlsnippet.xml
 	XML-Grammar: fmxmlsnippet
@@ -15,7 +15,8 @@
 	Outputs the Theme tag and the marked up CSS of the FileMaker Theme - for debugging / transformation tests.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	(c) russell@mrwatson.de 2021
+	2021-10-21 MrW: Version 1.2 - filename corrected
 	2016-10-04 MrW: Version 1.1 - output styles only sorted
 	2014-05-29 MrW: Version 1.0
 	-->
