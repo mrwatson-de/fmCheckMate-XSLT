@@ -1,30 +1,43 @@
 # About the xsl/fmxmlsnippet Folder
 
-These XSLTs can be applied to the FileMaker clipboard.
+The XSLTs in this folder can be applied to the FileMaker clipboard.
+
+
+## Filenames
 
 The XSLT files follow the following naming convention:
 
 `<source-type>_<target-type.subtype>_<NameInCamelCase>.xsl`
 
-The source-types are:
+For example:
+
+`XMFD_Text.Lines_ListFieldNamesAndIDs.xsl` - accepts copied fields (or tables or even layouts/valuelists) and returns a list of field names and ids, one line per field.
+
+
+
+## 📋 Source-types 
+
+The main source-types are:
 
 - `XMAA` - FileMaker All/Any XML
 - `XMFD` - FileMaker Field XML
 - `XMFN` - FileMaker (Custom) Function XML
 - `XML2` - FileMaker Layout XML Version 2 (FM12+)
 - `XMLO` - FileMaker Layout XML Version 1 (FM11-)
+- `XMME` - FileMaker Custom Menu XML (*)
+- `XMMI` - FileMaker Custom Menu Item XML (*)
+- `XMMR` - FileMaker Custom Menu References XML (*)
+- `XMMS` - FileMaker Custom Menu Sets XML (*)
 - `XMSC` - FileMaker Script XML
 - `XMSS` - FileMaker Script Step XML
 - `XMTB` - FileMaker Table XML
 - `XMTH` - FileMaker Theme XML
 - `XMVL` - FileMaker ValueList XML
 
-*Note* The abbreviations for Custom Menus XMM* are still a bit experimental, because they actually use the FMObjectTransfer XML internally, and at the original time of implmentation were not yet fully ripe:
+ (*) Note: The abbreviations for Custom Menus `XMM*` are still a bit experimental (because they actually use the FMObjectTransfer XML internally, and at the original time of implementation were not yet fully ripe)
 
-- `XMME` - FileMaker Custom Menu XML 
-- `XMMI` - FileMaker Custom Menu Item XML
-- `XMMR` - FileMaker Custom Menu References XML
-- `XMMS` - FileMaker Custom Menu Sets XML
+
+## 🎯 Target-types
 
 The target-types are:
 
@@ -48,3 +61,36 @@ displayed in fmCheckmate as a trafficlight chart
 - `XMDF` - FileMaker XML Default Fields format (FM19+)
 - `XMDI` - FileMaker XML Default Items format (FM18-)
 - `XSLT` - xslt file
+
+Note the subtle diffence between a `Text` target and a `Text.Lines` target:
+
+- `XMFD_Text_PrintFieldDefinitions.xsl` - prints field definitions, as they appear in the calculation editor over multiple lines
+- `XMFD_Text.Lines_ListFieldDefinitions.xsl` - outputs field definitions one field on a single line
+  - This is used when performing a basic diff on files
+
+## Applicability of Source-types
+
+Note that although a source-type identifies the *main* object type that a file aims to transform it is not necessarily the *only* type of object that may work. Often the parent object-type also works.
+
+For example:
+
+- many of the `XMSS` script step transformations also work on scripts - or even Layout objects!
+- similarly `XMFD` field transformations mostly work on copied tables.
+
+on the other hand, it tends to not be the case the other way round
+
+- `XMSC` transformations which operate on entire scripts tendc not to make sene´se when applied to script steps alone.
+
+Similarly you may be able to extract field information from a layout using an `XMFD`transformation.
+
+## Analyse, Change, Transform
+
+fmCheckMate categorises the XSLT transformations into three broad categories:
+
+- Analyse = Transformations with a Text output
+- Change = Transformations with the same output type as input type
+- Transform = Transformations with a different output type as input type
+
+---
+
+Now go transform your FileMaker work!

@@ -29,6 +29,7 @@ overwritten when you get a new version of fmCheckMate-XSLT library.
 Then reimport the XSLT files in fmCheckMate (CMD+T CMD+8)
 and enjoy!
 
+See [Make your own fmCheckMate XSLT library and functions](docs/Make_your_own_fmCheckMate_XSLT_library_and_functions.md) for more
 
 ## Subfolders
 
