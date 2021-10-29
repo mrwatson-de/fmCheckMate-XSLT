@@ -17,7 +17,7 @@ It's as easy as ABC:
 
 ### A: Prerequisites
 
-To get the most out of the `fmCheckMate-XSLT Library` you will want to be downloadloading and installing MrWatson's fmWorkMate toolbox:
+To get the most out of the `fmCheckMate-XSLT Library` you will want to be downloading and installing MrWatson's fmWorkMate toolbox:
 
 1. Download fmWorkMate from the [fmWorkMate repo][] - [[how?]][MrWs FAQ]
 
