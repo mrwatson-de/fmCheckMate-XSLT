@@ -330,22 +330,22 @@
             </node>
           </graph>
         </node>
-        <node id="n0::n4" yfiles.foldertype="group">
+        <node id="n0::n4" yfiles.foldertype="folder">
           <data key="d4" xml:space="preserve"/>
           <data key="d6">
             <y:ProxyAutoBoundsNode>
-              <y:Realizers active="0">
+              <y:Realizers active="1">
                 <y:GroupNode>
-                  <y:Geometry height="500.51313462706594" width="603.2046424967705" x="22.138253028786664" y="990.5824215206126"/>
+                  <y:Geometry height="403.0556257893959" width="603.2046424967705" x="22.138253028786664" y="990.5824215206126"/>
                   <y:Fill color="#F5F5F5" transparent="false"/>
                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.666015625" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="603.2046424967705" x="0.0" xml:space="preserve" y="0.0">LEGEND</y:NodeLabel>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.615234375" x="266.29470406088524" xml:space="preserve" y="241.19016106353297">Version 1.0<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.615234375" x="266.29470406088524" xml:space="preserve" y="192.46140664469795">Version 1.0<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                   <y:Shape type="roundrectangle"/>
                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                   <y:NodeBounds considerNodeLabelSize="true"/>
                   <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                  <y:BorderInsets bottom="97" bottomF="97.45750883767005" left="0" leftF="0.0" right="3" rightF="2.965638996102598" top="0" topF="0.0"/>
+                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="3" rightF="2.965638996102598" top="0" topF="0.0"/>
                 </y:GroupNode>
                 <y:GroupNode>
                   <y:Geometry height="50.0" width="603.2046424967706" x="22.138253028786664" y="990.5824215206126"/>
@@ -570,7 +570,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="163.517578125" x="53.56208115378667" y="1138.285896751468"/>
                       <y:Fill color="#333399" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="79.66796875" x="41.9248046875" xml:space="preserve" y="5.93359375">Data Sources</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="79.66796875" x="41.92480468749999" xml:space="preserve" y="5.93359375">Data Sources</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -625,7 +625,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="155.173828125" x="57.73395615378667" y="1325.0965754844997"/>
                       <y:Fill color="#FFCC00" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="43.146484375" x="56.013671875" xml:space="preserve" y="5.93359375">Scripts</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="43.146484375" x="56.01367187499999" xml:space="preserve" y="5.93359375">Scripts</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -636,7 +636,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="163.517578125" x="53.56208115378667" y="1076.0156705071245"/>
                       <y:Fill color="#DADADA" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.490234375" x="56.013671875" xml:space="preserve" y="5.93359375">External</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.490234375" x="56.01367187499999" xml:space="preserve" y="5.93359375">External</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -647,7 +647,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="161.90625" x="54.36774521628667" y="1378.0960658160889"/>
                       <y:Fill color="#FFFFFF" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="49.87890625" x="56.013671875" xml:space="preserve" y="5.93359375">Security</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="49.87890625" x="56.01367187499999" xml:space="preserve" y="5.93359375">Security</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -658,7 +658,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="52.033203125000014" x="54.36774521628669" y="1200.556122995812"/>
                       <y:Fill color="#C0C1A8" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="18.736328125" x="16.648437500000007" xml:space="preserve" y="5.93359375">CF</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="18.736328125" x="16.6484375" xml:space="preserve" y="5.93359375">CF</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -680,7 +680,7 @@ B is pasted into the solution<y:PreferredPlacementDescriptor angle="0.0" angleOf
                       <y:Geometry height="30.0" width="155.173828125" x="57.73395615378667" y="1431.0955561476785"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.501953125" x="35.3359375" xml:space="preserve" y="5.93359375">Abstract Type</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.501953125" x="35.33593749999999" xml:space="preserve" y="5.93359375">Abstract Type</y:NodeLabel>
                       <y:Shape type="star8"/>
                     </y:ShapeNode>
                   </data>
@@ -1401,7 +1401,6 @@ Part</y:NodeLabel>
                   </data>
                 </edge>
                 <edge id="n0::n6::n4::e5" source="n0::n6::n4::n5" target="n0::n6::n4::n1">
-                  <data key="d9"/>
                   <data key="d10">
                     <y:PolyLineEdge>
                       <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1708,7 +1707,6 @@ Script Triggers</y:NodeLabel>
             </node>
             <node id="n0::n6::n10" yfiles.foldertype="folder">
               <data key="d4" xml:space="preserve"/>
-              <data key="d5"/>
               <data key="d6">
                 <y:ProxyAutoBoundsNode>
                   <y:Realizers active="1">
@@ -2549,7 +2547,6 @@ Table<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angl
               </data>
             </edge>
             <edge id="n0::n6::e31" source="n0::n6::n10::n1::n1::n1" target="n0::n6::n0::n0">
-              <data key="d9"/>
               <data key="d10">
                 <y:PolyLineEdge>
                   <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
