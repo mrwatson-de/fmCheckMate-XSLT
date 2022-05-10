@@ -15,23 +15,82 @@
 	Functions for processing bases (base 16 and bits).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	(c) russell@mrwatson.de 2022
 	2013-05-16 MrW: Version 1.0
+	2022-05-10 MrW: Version 1.1 Added fn.BitwiseOr, fn.BitwiseAnd, fn.BitwiseXor
+
 	-->
 	<!-- ===== TEMPLATES ===== -->
-	<!-- Bit
-	 ! Tests the bit in the value
+	<!-- fn.BitwiseOr
+	 ! Performs a bitwise OR on number1 and number2
 	 !-->
-	<xsl:template name="Bit">
-		<xsl:param name="inVal"/>
-		<xsl:param name="inBit"/>
+	<xsl:template name="fn.BitwiseOr">
+		<xsl:param name="number1"/>
+		<xsl:param name="number2"/>
+		<xsl:param name="bit" select="1"/>
+		<!-- -->
 		<xsl:choose>
-			<xsl:when test="(($inVal mod ($inBit*2)) - ($inVal mod ($inBit))) &gt; 0">
-				<xsl:value-of select="'true'"/>
+			<xsl:when test="$bit &gt; $number1 and $bit &gt; $number2">
+				<xsl:value-of select="$number1"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="'false'"/>
+				<xsl:variable name="bit1" select="floor($number1 div $bit) mod 2"/>
+				<xsl:variable name="bit2" select="floor($number2 div $bit) mod 2"/>
+				<xsl:call-template name="fn.BitwiseOr">
+					<xsl:with-param name="number1" select="$number1 + number($bit1=0 and $bit2=1) * $bit"/>
+					<xsl:with-param name="number2" select="$number2"/>
+					<xsl:with-param name="bit" select="$bit * 2"/>
+				</xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	
+	<!-- fn.BitwiseAnd
+	 ! Performs a bitwise AND on number1 and number2
+	 !-->
+	<xsl:template name="fn.BitwiseAnd">
+		<xsl:param name="number1"/>
+		<xsl:param name="number2"/>
+		<xsl:param name="bit" select="1"/>
+		<!-- -->
+		<xsl:choose>
+			<xsl:when test="$bit &gt; $number1 and $bit &gt; $number2">
+				<xsl:value-of select="$number1"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="bit1" select="floor($number1 div $bit) mod 2"/>
+				<xsl:variable name="bit2" select="floor($number2 div $bit) mod 2"/>
+				<xsl:call-template name="fn.BitwiseAnd">
+					<xsl:with-param name="number1" select="$number1 - number($bit1=1 and $bit2=0) * $bit"/>
+					<xsl:with-param name="number2" select="$number2"/>
+					<xsl:with-param name="bit" select="$bit * 2"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<!-- fn.BitwiseXor
+	 ! Performs a bitwise XOR on number1 and number2
+	 !-->
+	<xsl:template name="fn.BitwiseXor">
+		<xsl:param name="number1"/>
+		<xsl:param name="number2"/>
+		<xsl:param name="bit" select="1"/>
+		<!-- -->
+		<xsl:choose>
+			<xsl:when test="$bit &gt; $number1 and $bit &gt; $number2">
+				<xsl:value-of select="$number1"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="bit1" select="floor($number1 div $bit) mod 2"/>
+				<xsl:variable name="bit2" select="floor($number2 div $bit) mod 2"/>
+				<xsl:call-template name="fn.BitwiseXor">
+					<xsl:with-param name="number1" select="$number1 +(number($bit1=0 and $bit2=0) - number($bit1=1 and $bit2=1)) * $bit"/>
+					<xsl:with-param name="number2" select="$number2"/>
+					<xsl:with-param name="bit" select="$bit * 2"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
 </xsl:stylesheet>
