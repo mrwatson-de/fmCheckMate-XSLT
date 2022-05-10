@@ -27,6 +27,7 @@
 
 	===== CHANGES HISTORY =====
 	(c) russell@mrwatson.de 2022
+	2022-05-10 MrW: Version 0.1.1 Refactored Bitwise functions to library and corrected parameter names
 	2022-05-10 MrW: Version 0.1
 	-->
 	<!-- ===== HEAD ===== -->
@@ -73,8 +74,8 @@
 			<xsl:apply-templates select="@*[name() != 'flags']"/>
 			<xsl:attribute name="flags">
 				<xsl:call-template name="fn.BitwiseOr">
-					<xsl:with-param name="value1" select="number(@flags)"/>
-					<xsl:with-param name="value2" select="8"/>
+					<xsl:with-param name="number1" select="number(@flags)"/>
+					<xsl:with-param name="number2" select="8"/>
 				</xsl:call-template>
 			</xsl:attribute>
 			<xsl:apply-templates select="*"/>
