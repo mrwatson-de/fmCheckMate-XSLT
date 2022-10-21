@@ -120,6 +120,6 @@ Thanks!
 [fmWorkMate downloads page]: http://fmworkmate.com/downloads
 [fmCheckMate]: http://www.fmworkmate.com/fmcheckmate
 [fmCM.logo]: docs/fmCM_XSLT_Folder_sm.png
-[fmWM.logo]: https://raw.githubusercontent.com/mrwatson-de/fmWorkMate/master/fmWorkMate_ICON_200x200_sm.png
+[fmWM.logo]: https://raw.githubusercontent.com/mrwatson-de/fmWorkMate/master/docs/img/fmWorkMate_ICON_200x200_sm.png
 [fmCheckMate-XSLT GitHub repository]: https://github.com/mrwatson-de/fmCheckMate-XSLT
 [MrWs FAQ]: https://github.com/mrwatson-de/mrwatson-de/blob/main/faq.md
