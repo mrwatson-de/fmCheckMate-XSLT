@@ -485,6 +485,33 @@ print "\
 ";next}
 
 #############################################
+# Show Custom Dialog
+#
+# Title not supported, Repetitions are NOT SUPPORTED
+#
+/^(Show Custom Dialog)/{
+sub(/\s*\[\s*/,chunk_delim);	# split at leading [.
+sub(/\s*\]\s*$/,"");	# remove trailing ]
+split($0,chunk,chunk_delim);
+sub($0,"");
+print "\
+	<Step enable=\""enable"\" id=\"87\" name=\"Show Custom Dialog\">\
+		<Message><Calculation><![CDATA["(f_cdata(f_trim(chunk[2])))"]]></Calculation></Message>\
+		<Buttons>\
+			<Button CommitState=\"True\">\
+				<Calculation><![CDATA[\"OK\"]]></Calculation>\
+			</Button>\
+			<Button CommitState=\"False\">\
+				<Calculation><![CDATA[\"Cancel\"]]></Calculation>\
+			</Button>\
+			<Button CommitState=\"False\"></Button>\
+		</Buttons>\
+	</Step>\
+";next}
+
+
+
+#############################################
 # Pause/Resume Script [ Indefinitely ] 
 #
 /((^Pause\s*$)|(Pause.*Indefinitely))/{	# Match Pause or Pause Indefinitely
