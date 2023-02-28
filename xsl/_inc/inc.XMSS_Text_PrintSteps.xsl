@@ -16,20 +16,23 @@
 	
 	WARNING: ALPHA-VERSION STILL IN DEVELOPMENT!
 	To Do:
-	1) DOING - Complete all Script steps (FM17).
+	1) DONE - Complete all Script steps (FM19.6.2).
 	2) DOING - Make multiple output formats possible (not just single row multi-column format)
 	3) DOING - Standardise coding
 	4) DOING - Factorise coding
 	5) LATER - i18n
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	(c) russell@mrwatson.de 2023
+	2023-02-27 MrW: - Added new script steps up to FM19.6.2
+					- Fixed changed texts
+	                - Fixed spelling of parameter label (NOT lable)
 	2019-05-23 MrW: It's that time of year again - fm18 ! :-) ...
-	                + Added new script steps
+	                - Added new script steps
 	2018-05-06 MrW: It's that time of year :-) ...
-	                + Corrected, refactored, sorted + tidied code, improved comments - thanks to oXygen XML Editor - nice!
-	                + Added FileMaker 17 script steps + changed output formatting
-	                + Improved output of Print + Print Setup steps, inc. attributes + printer names
+	                - Corrected, refactored, sorted + tidied code, improved comments - thanks to oXygen XML Editor - nice!
+	                - Added FileMaker 17 script steps + changed output formatting
+	                - Improved output of Print + Print Setup steps, inc. attributes + printer names
 	2017-05-21 MrW: Another huge day...
 	                + Corrected 99.9% for all FM16 commands (known to me)
 	                + Added support for parameters 
@@ -951,7 +954,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 				<xsl:if test="Text/text()">
 					<xsl:value-of select="$OPENQUOTES"/>
 					<xsl:call-template name="OutputCalculation">
@@ -971,7 +974,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 				<xsl:call-template name="OutputCalculation">
 					<xsl:with-param name="Calc" select="Calculation"/>
 				</xsl:call-template>
@@ -986,7 +989,9 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget">
+					<xsl:with-param name="label" select="''"/>
+				</xsl:call-template>
 				<xsl:value-of select="'Type'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="InsertFrom/@value"/>
@@ -1017,13 +1022,6 @@
 				<!-- -->
 				<xsl:if test="DeviceOptions/StartImmediately/@state = 'True'">
 					<xsl:value-of select="'Start immediately'"/>
-					<xsl:call-template name="SIC.delimiter3"/>
-				</xsl:if>
-				<!-- -->
-				<xsl:if test="DeviceOptions/ScanFrom/@type = 'Field'">
-					<xsl:value-of select="'Scan from'"/>
-					<xsl:value-of select="$delimiter2"/>
-					<xsl:value-of select="'FIXME Field name'"/>
 					<xsl:call-template name="SIC.delimiter3"/>
 				</xsl:if>
 				<!-- -->
@@ -1074,6 +1072,13 @@
 					<xsl:call-template name="SIC.delimiter3"/>
 				</xsl:if>
 				<!-- -->
+				<xsl:if test="DeviceOptions/ScanFrom/@type = 'Field'">
+						<xsl:call-template name="ScriptStepParamTarget">
+							<xsl:with-param name="label" select="'Scan from'"/>
+							<xsl:with-param name="field" select="DeviceOptions/ScanFrom/Field"/>
+						</xsl:call-template>
+				</xsl:if>
+				<!-- -->
 				<xsl:if test="BarCodes">
 					<!-- nothing is output -->
 				</xsl:if>
@@ -1115,21 +1120,23 @@
 		<Calculation><![CDATA["http://www.mrwatson.de"]]></Calculation>
 		<Field table="Students" id="2" name="Name"/>
 	</Step>
+
+	Note: In FM18 the parameter order changed and demoted VerifySSLCertificates to behind the URL.
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '160']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:call-template name="ScriptStepParamVerifySSLCertificates"/>
 				<xsl:call-template name="ScriptStepParamSelect"/>
 				<xsl:call-template name="ScriptStepParamNoDialog"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 				<xsl:if test="Calculation">
 					<xsl:call-template name="OutputCalculation">
 						<xsl:with-param name="Calc" select="Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
+				<xsl:call-template name="ScriptStepParamVerifySSLCertificates"/>
 				<!-- -->
 				<xsl:if test="CURLOptions/Calculation">
 					<xsl:value-of select="'cURL options'"/>
@@ -1157,7 +1164,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -1170,7 +1177,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -1183,7 +1190,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -1214,7 +1221,7 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamUniversalPathListReference"/>
 				<!-- -->
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -1291,7 +1298,7 @@
 						<!-- -->
 					</xsl:when>
 				</xsl:choose>
-				<xsl:call-template name="ScriptStepParamField"/>
+				<xsl:call-template name="ScriptStepParamTarget"/>
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -1491,10 +1498,9 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:call-template name="ScriptStepParamVerifySSLCertificates"/>
 				<xsl:call-template name="ScriptStepParamNoDialog"/>
 				<!-- In fm18 the target table was added to the script text - at last :-) -->
-				<xsl:if test="Table">
+				<xsl:if test="Restore/@state='True' and Table">
 					<xsl:value-of select="'Table'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:choose>
@@ -1545,12 +1551,12 @@
 							<!-- -->
 						</xsl:when>
 						<xsl:when test="ImportOptions/@method = 'UpdateOnMatch'">
-							<xsl:value-of select="'Update matching'"/>
+							<xsl:value-of select="'Update'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
 						</xsl:when>
 						<xsl:when test="ImportOptions/@method = 'Update'">
-							<xsl:value-of select="'Update existing'"/>
+							<xsl:value-of select="'Replace'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
 						</xsl:when>
@@ -1589,7 +1595,8 @@
 								<xsl:value-of select="'Korean (EUC-KR)'"/>
 							</xsl:when>
 						</xsl:choose>
-						<xsl:call-template name="SIC.delimiter3"/>
+						<!--xsl:call-template name="SIC.delimiter3"/-->
+						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<xsl:if test="$pVerbose = 'True'">
 						<!-- Options -->
@@ -1689,6 +1696,7 @@
 						</xsl:if>
 					</xsl:if>
 				</xsl:if>
+				<xsl:call-template name="ScriptStepParamVerifySSLCertificates"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -2158,20 +2166,13 @@
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:choose>
 					<xsl:when test="not(NewWndStyles) or $NewWndStylesDocument">
+						<!--Default => Document --> 
 						<xsl:value-of select="'Document'"/>
 					</xsl:when>
-					<!--<xsl:when test="$NewWndStylesDialog">
-						<xsl:value-of select="'Dialog'"/>
-					</xsl:when>
-					<xsl:when test="$NewWndStylesFloating">
+					<xsl:when test="NewWndStyles/@Style='Floating'">
+						<!--Rename Floating => Floating Document --> 
 						<xsl:value-of select="'Floating Document'"/>
 					</xsl:when>
-					<xsl:when test="NewWndStyles/@Style='Card'">
-						<xsl:value-of select="'Card'"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="'Unknown Window Style'"/>
-					</xsl:otherwise>-->
 					<xsl:otherwise>
 						<xsl:value-of select="NewWndStyles/@Style"/>
 					</xsl:otherwise>
@@ -2675,7 +2676,7 @@
 	<!--
 	 ! Script step 37. Save a Copy as
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '37']">
+	 <xsl:template match="//Step[not(ancestor::Step) and @id = '37']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2683,6 +2684,36 @@
 					<xsl:with-param name="SaveAsType" select="SaveAsType"/>
 				</xsl:call-template>
 				<xsl:call-template name="ScriptStepParamCreateDirectories"/>
+			</xsl:with-param>
+		</xsl:call-template>
+		<xsl:call-template name="ScriptStepEND"/>
+	</xsl:template>
+	<!--
+	 ! Script step 96. Save a Copy as Add-on Package
+	 !
+	 ! Note: This step reuses the old obsolete step 96 Update Link.
+	 !       Thus the XML element for the "Replace UUIDs option is
+	 !       (confusingly) called LinkAvail !
+	 !-->
+	 <xsl:template match="//Step[not(ancestor::Step) and @id = '96']">
+		<xsl:call-template name="ScriptStepSTART"/>
+		<xsl:call-template name="ScriptStepParameterList">
+			<xsl:with-param name="pParameterList">
+
+				<xsl:value-of select="'Window name'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="OutputCalculationOrTwoSpaces">
+					<xsl:with-param name="Calc" select="Calculation"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+
+				<xsl:value-of select="'Replace UUIDs'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="Set_state">
+					<xsl:with-param name="state" select="LinkAvail/@state"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -4420,7 +4451,7 @@
 					<xsl:value-of
 						select="PluginStep/Parameter[@Type = 'target' and @ShowInLine = 'true' and not(@ID)]/@Label"/>
 					<xsl:value-of select="$delimiter2"/>
-					<xsl:call-template name="ScriptStepParamField"/>
+					<xsl:call-template name="ScriptStepParamTarget"/>
 				</xsl:if>
 				<!-- Parameters (FIXME ONLY CALCS) -->
 				<xsl:for-each
@@ -4502,9 +4533,9 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 				<!-- -->
-				<xsl:call-template name="ScriptStepParamField">
-					<xsl:with-param name="showLable" select="'True'"/>
-				</xsl:call-template>
+				<xsl:value-of select="'Target'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="ScriptStepParamField"/>
 				<!-- -->
 			</xsl:with-param>
 		</xsl:call-template>
@@ -4517,16 +4548,18 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="'File ID'"/>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:call-template name="OutputCalculation">
-					<xsl:with-param name="Calc" select="Calculation"/>
-				</xsl:call-template>
-				<xsl:value-of select="$delimiter3"/>
+				<xsl:if test="Calculation">
+					<xsl:value-of select="'File ID'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
 				<!-- -->
+				<xsl:value-of select="'Data source'"/>
+				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamField">
-					<xsl:with-param name="showLable" select="'True'"/>
-					<xsl:with-param name="lable" select="'Data source'"/>
 				</xsl:call-template>
 				<!-- -->
 				<xsl:value-of select="'Write as'"/>
@@ -4557,33 +4590,37 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="'File ID'"/>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:call-template name="OutputCalculation">
-					<xsl:with-param name="Calc" select="Calculation"/>
-				</xsl:call-template>
-				<xsl:value-of select="$delimiter3"/>
+				<xsl:if test="Calculation">
+					<xsl:value-of select="'File ID'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
 				<!-- -->
-				<xsl:choose>
-					<xsl:when test="DataSourceType/@value = 1">
-						<xsl:value-of select="'Amount'"/>
-					</xsl:when>
-					<xsl:when test="DataSourceType/@value = 2">
-						<xsl:value-of select="'Amount (bytes)'"/>
-					</xsl:when>
-					<xsl:when test="DataSourceType/@value = 3">
-						<xsl:value-of select="'Amount (bytes)'"/>
-					</xsl:when>
-				</xsl:choose>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:call-template name="OutputCalculation">
-					<xsl:with-param name="Calc" select="Count/Calculation"/>
-				</xsl:call-template>
-				<xsl:value-of select="$delimiter3"/>
+				<xsl:if test="Count/Calculation">
+					<xsl:choose>
+						<xsl:when test="DataSourceType/@value = 1">
+							<xsl:value-of select="'Amount'"/>
+						</xsl:when>
+						<xsl:when test="DataSourceType/@value = 2">
+							<xsl:value-of select="'Amount (bytes)'"/>
+						</xsl:when>
+						<xsl:when test="DataSourceType/@value = 3">
+							<xsl:value-of select="'Amount (bytes)'"/>
+						</xsl:when>
+					</xsl:choose>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Count/Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
 				<!-- -->
-				<xsl:call-template name="ScriptStepParamField">
-					<xsl:with-param name="showLable" select="'True'"/>
-				</xsl:call-template>
+				<xsl:value-of select="'Target'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="ScriptStepParamField"/>
 				<!-- -->
 				<xsl:value-of select="'Read as'"/>
 				<xsl:value-of select="$delimiter2"/>
@@ -4611,16 +4648,18 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="'File ID'"/>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:call-template name="OutputCalculation">
-					<xsl:with-param name="Calc" select="Calculation"/>
-				</xsl:call-template>
-				<xsl:value-of select="$delimiter3"/>
+				<xsl:if test="Calculation">
+					<xsl:value-of select="'File ID'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
 				<!-- -->
-				<xsl:call-template name="ScriptStepParamField">
-					<xsl:with-param name="showLable" select="'True'"/>
-				</xsl:call-template>
+				<xsl:value-of select="'Target'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="ScriptStepParamField"/>
 				<!-- -->
 			</xsl:with-param>
 		</xsl:call-template>
@@ -4665,7 +4704,7 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:value-of select="'File ID'"/>
 				<xsl:value-of select="$delimiter2"/>
-				<xsl:call-template name="OutputCalculation">
+				<xsl:call-template name="OutputCalculationOrSpace">
 					<xsl:with-param name="Calc" select="Calculation"/>
 				</xsl:call-template>
 				<xsl:value-of select="$delimiter3"/>
@@ -4696,7 +4735,7 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="'Target file'"/>
+				<xsl:value-of select="'Source file'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="UniversalPathListFileName"/>
 				<xsl:value-of select="$delimiter3"/>
@@ -4742,13 +4781,86 @@
 
 	<!--
 	 ! Script step 201. Configure NFC Reading
+
+	 ! <Step enable="True" id="201" name="Configure NFC Reading">
+! 
+! 	<FileReference id="2" name="Self">
+! 		<UniversalPathList>file:fmSyntaxColorizer</UniversalPathList>
+! 	</FileReference>
+! 
+! 	<Calculation><![CDATA[$param]]></Calculation>
+! 
+! 	<Script id="201" name="Hello::World"/>
+! 
+! 	<Action value="Read">
+! 		<Timeout>
+! 			<Calculation><![CDATA[$timeout]]></Calculation>
+! 		</Timeout>
+! 		<ReadMultiple>
+! 			<Calculation><![CDATA[$continuous]]></Calculation>
+! 		</ReadMultiple>
+! 	</Action>
+! 
+! </Step>
+! 
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '201']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="Action/@value"/> 
+
+				<xsl:value-of select="'Action'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:value-of select="Action/@value"/>
 				<xsl:value-of select="$delimiter3"/>
+
+				<xsl:if test="Script">
+					<xsl:value-of select="'Script'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="QuotedStringOrUnknown">
+						<xsl:with-param name="string" select="Script/@name"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+					<!-- -->
+					<xsl:if test="Calculation">
+						<xsl:value-of select="'Parameter'"/>
+						<xsl:value-of select="$delimiter2"/>
+						<xsl:call-template name="OutputCalculation">
+							<xsl:with-param name="Calc" select="Calculation"/>
+						</xsl:call-template>
+						<xsl:value-of select="$delimiter3"/>
+					</xsl:if>
+					<!-- -->
+				</xsl:if>
+
+				<xsl:if test="Action/Timeout">
+					<xsl:value-of select="'Timeout'"/>
+					<xsl:value-of select="$delimiter2"/>
+						<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Action/Timeout/Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+
+				<xsl:if test="Action/ReadMultiple">
+					<xsl:value-of select="'Continuous Reading'"/>
+					<xsl:value-of select="$delimiter2"/>
+						<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Action/ReadMultiple/Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+
+				<xsl:if test="Action/JSONOutput">
+					<xsl:value-of select="'Format Result as JSON'"/>
+					<xsl:value-of select="$delimiter2"/>
+						<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Action/JSONOutput/Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+
+				
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -4758,6 +4870,11 @@
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '202']">
 		<xsl:call-template name="ScriptStepSTART"/>
+		<xsl:call-template name="ScriptStepParameterList">
+			<xsl:with-param name="pParameterList">
+				<xsl:value-of select="'FIXME (Step Parameters)'"/>
+			</xsl:with-param>
+		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
 	<!--
@@ -4765,15 +4882,199 @@
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '203']">
 		<xsl:call-template name="ScriptStepSTART"/>
+		<xsl:call-template name="ScriptStepParameterList">
+			<xsl:with-param name="pParameterList">
+				<xsl:call-template name="ScriptStepParamSelect"/>
+
+				<xsl:if test="Field">
+					<xsl:call-template name="ScriptStepParamTarget"/>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+
+				<xsl:if test="Calculation">
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="Condition/Calculation"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:with-param>
+		</xsl:call-template>
+
+
 		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 175. Perform JavaScript in Web Viewer
+
+	 	<Step enable="True" id="175" name="Perform JavaScript in Web Viewer">
+		<ObjectName>
+			<Calculation><![CDATA["abc"]]></Calculation>
+		</ObjectName>
+		<FunctionName>
+			<Calculation><![CDATA["def"]]></Calculation>
+		</FunctionName>
+		<Parameters Count="2">
+			<P>
+				<Calculation><![CDATA[$p1]]></Calculation>
+			</P>
+			<P>
+				<Calculation><![CDATA[$p2]]></Calculation>
+			</P>
+		</Parameters>
+	</Step>
+
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '175']">
 		<xsl:call-template name="ScriptStepSTART"/>
+		<xsl:call-template name="ScriptStepParameterList">
+			<xsl:with-param name="pParameterList">
+
+			<xsl:value-of select="'Object Name'"/>
+			<xsl:value-of select="$delimiter2"/>
+				<xsl:choose>
+					<xsl:when test="ObjectName/Calculation">
+						<xsl:call-template name="OutputCalculation">
+							<xsl:with-param name="Calc" select="ObjectName/Calculation"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="'&lt;Active Object&gt;'"/>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:value-of select="$delimiter3"/>
+
+				<xsl:if test="FunctionName/Calculation">
+					<xsl:value-of select="'Function Name'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:call-template name="OutputCalculation">
+						<xsl:with-param name="Calc" select="FunctionName/Calculation"/>
+					</xsl:call-template>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+
+				<xsl:variable name="parCnt" select="number(Parameters/@Count)"/>
+				<xsl:if test="$parCnt&gt;0">
+					<xsl:value-of select="'Parameters'"/>
+					<xsl:value-of select="$delimiter2"/>
+					<xsl:for-each select="Parameters/P">
+						<xsl:if test="position() &gt; 1">
+							<xsl:value-of select="', '"/>
+						</xsl:if>
+						<xsl:call-template name="OutputCalculation">
+							<xsl:with-param name="Calc" select="Calculation"/>
+						</xsl:call-template>
+					</xsl:for-each>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:if>
+				<!-- -->
+			</xsl:with-param>
+		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
+
+
+
+
+
+	<!--
+	 ! Script step 205. Open Transaction
+	 !-->
+	 <xsl:template match="//Step[not(ancestor::Step) and @id = '205']">
+	 <xsl:call-template name="ScriptStepSTART"/>
+	 <xsl:call-template name="ScriptStepParameterList">
+		 <xsl:with-param name="pParameterList">
+			<xsl:if test="Option/@state='True'">
+				<xsl:value-of select="'Skip data entry validation'"/>
+				<xsl:value-of select="$delimiter3"/>
+			</xsl:if>
+			<xsl:if test="ESSForceCommit/@state='True'">
+				<xsl:value-of select="'Override ESS locking conflicts'"/>
+				<xsl:value-of select="$delimiter3"/>
+			</xsl:if>
+			 <!-- -->
+		 </xsl:with-param>
+	 </xsl:call-template>
+	 <xsl:call-template name="ScriptStepEND"/>
+ </xsl:template>
+ <!--
+  ! Script step 206. Commit Transaction
+  !-->
+ <xsl:template match="//Step[not(ancestor::Step) and @id = '206']">
+	 <xsl:call-template name="ScriptStepSTARTEND"/>
+ </xsl:template>
+ <!--
+  ! Script step 207. Revert Transaction
+  !-->
+ <xsl:template match="//Step[not(ancestor::Step) and @id = '207']">
+	 <xsl:call-template name="ScriptStepSTART"/>
+	 <xsl:call-template name="ScriptStepParameterList">
+		 <xsl:with-param name="pParameterList">
+			<xsl:if test="Condition/Calculation">
+				<xsl:value-of select="'Condition'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="OutputCalculation">
+					<xsl:with-param name="Calc" select="Condition/Calculation"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+			</xsl:if>
+			<xsl:if test="ErrorCode/Calculation">
+				<xsl:value-of select="'Error Code'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="OutputCalculation">
+					<xsl:with-param name="Calc" select="ErrorCode/Calculation"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+				<xsl:value-of select="'Error Message'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="OutputCalculation">
+					<xsl:with-param name="Calc" select="ErrorMessage/Calculation"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+			</xsl:if>
+
+			 <!-- -->
+		 </xsl:with-param>
+	 </xsl:call-template>
+	 <xsl:call-template name="ScriptStepEND"/>
+ </xsl:template>
+ <!--
+  ! Script step 208. Set Session Identifier
+  !-->
+ <xsl:template match="//Step[not(ancestor::Step) and @id = '208']">
+	 <xsl:call-template name="ScriptStepSTART"/>
+	 <xsl:call-template name="ScriptStepParameterList">
+		 <xsl:with-param name="pParameterList">
+			 <xsl:call-template name="OutputCalculation">
+				 <xsl:with-param name="Calc" select="Calculation"/>
+			 </xsl:call-template>
+			 <!-- -->
+		 </xsl:with-param>
+	 </xsl:call-template>
+	 <xsl:call-template name="ScriptStepEND"/>
+ </xsl:template>
+ <!--
+  ! Script step 209. Set Dictionary
+  !-->
+ <xsl:template match="//Step[not(ancestor::Step) and @id = '209']">
+	 <xsl:call-template name="ScriptStepSTART"/>
+	 <xsl:call-template name="ScriptStepParameterList">
+		 <xsl:with-param name="pParameterList">
+			 <xsl:if test="MainDictionary/@value">
+				 <xsl:value-of select="'Spelling Language'"/>
+				 <xsl:value-of select="$delimiter2"/>
+				 <xsl:value-of select="MainDictionary/@value"/>
+			 </xsl:if>
+			 <xsl:value-of select="$delimiter3"/>
+			 <xsl:if test="UniversalPathList">
+				 <xsl:value-of select="'User Dictionary'"/>
+				 <xsl:value-of select="$delimiter2"/>
+				 <xsl:call-template name="UniversalPathListFileName"/>
+				 <xsl:value-of select="$delimiter3"/>
+			 </xsl:if>
+			 <!-- -->
+		 </xsl:with-param>
+	 </xsl:call-template>
+	 <xsl:call-template name="ScriptStepEND"/>
+ </xsl:template>
 
 	
 	<!--
@@ -4793,7 +5094,6 @@
 	 ! 58 [OBSOLETE] <unknown>
 	 ! 59 [OBSOLETE] Insert QuickTime
 	 ! 78 [OBSOLETE] Insert Object
-	 ! 96 <unknown> Update Link
 	 ! 153 [OBSOLETE] <unknown>
 	 ! 162 [OBSOLETE] Open from Test Server
 	 ! 163 [OBSOLETE] Sign Out from Test Server
@@ -4801,11 +5101,12 @@
 	 ! 171 [OBSOLETE] Manage Test Server
 	 ! 173 <unknown>*
 	 ! 176 [OBSOLETE] Set Allowed Orientations
+	 ! 204 [OBSOLETE]
 	 !
 	 ! <unknown>* = never used
 	 !-->
 	<xsl:template
-		match="//Step[not(ancestor::Step) and (@id = 2 or @id = 3 or @id = 15 or @id = 52 or @id = 53 or @id = 54 or @id = 58 or @id = 59 or @id = 78 or @id = 96 or @id = 153 or @id = 162 or @id = 163 or @id = 170 or @id = 171 or @id = 173)]">
+		match="//Step[not(ancestor::Step) and (@id = 2 or @id = 3 or @id = 15 or @id = 52 or @id = 53 or @id = 54 or @id = 58 or @id = 59 or @id = 78 or @id = 153 or @id = 162 or @id = 163 or @id = 170 or @id = 171 or @id = 173 or @id = 204)]">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
@@ -5050,6 +5351,20 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	<xsl:template name="OutputCalculationOrSpace">
+		<xsl:param name="Calc"/>
+		<!-- -->
+		<xsl:choose>
+			<xsl:when test="string-length($Calc) = 0">
+				<xsl:value-of select="'  '"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="OutputCalculation">
+					<xsl:with-param name="Calc" select="$Calc"/>
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 	<!-- 
 	 ! =============================
 	 ! ScriptStepParameter Templates
@@ -5217,42 +5532,58 @@
 	<!-- 
 	 ! ScriptStepParamField
 	 !
-	 ! Outputs a target field or variable 
+	 ! Outputs a field (or variable), with no label.
 	 !-->
-	<xsl:template name="ScriptStepParamField">
-		<xsl:param name="showLable" select="$pVerbose"/>
-		<xsl:param name="lable" select="'Target'"/>
+	 <xsl:template name="ScriptStepParamField">
+		<xsl:param name="label" select="''"/>
+		<xsl:param name="field" select="Field"/>
 		<!--  -->
-		<xsl:if test="Field">
-			<!--xsl:if test="true or $showLable = 'True'"-->
-				<xsl:value-of select="$lable"/>
+		<xsl:call-template name="ScriptStepParamTarget">
+			<xsl:with-param name="label" select="$label"/>
+			<xsl:with-param name="field" select="$field"/>
+		</xsl:call-template>
+	</xsl:template>
+		
+	<!-- 
+	 ! ScriptStepParamTarget
+	 !
+	 ! Outputs a target field or variable, by default with a Target label.
+	 ! No Field -> no label.
+	 !-->
+	<xsl:template name="ScriptStepParamTarget">
+		<xsl:param name="label" select="'Target'"/>
+		<xsl:param name="field" select="Field"/>
+		<!--  -->
+		<xsl:if test="$field">
+			<xsl:if test="$label and $label!=''">
+				<xsl:value-of select="$label"/>
 				<xsl:value-of select="$delimiter2"/>
-			<!--/xsl:if-->
+			</xsl:if>
 			<xsl:choose>
 				<!-- Starting fm16 target can also be a variable - var name is in the content of the Field tag -->
-				<xsl:when test="Field/text()">
+				<xsl:when test="$field/text()">
 					<!-- Target: $var -->
-					<xsl:value-of select="Field/text()"/>
+					<xsl:value-of select="$field/text()"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- Target: Table::Field -->
 					<xsl:choose>
-						<xsl:when test="Field/@table = ''">
+						<xsl:when test="$field/@table = ''">
 							<xsl:value-of select="'&lt;Table Missing&gt;'"/>
 						</xsl:when>
-						<xsl:when test="Field/@name = ''">
+						<xsl:when test="$field/@name = ''">
 							<xsl:value-of
-								select="concat(Field/@table, '::', '&lt;Field Missing&gt;')"/>
+								select="concat($field/@table, '::', '&lt;Field Missing&gt;')"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="concat(Field/@table, '::', Field/@name)"/>
+							<xsl:value-of select="concat($field/@table, '::', $field/@name)"/>
 						</xsl:otherwise>
 					</xsl:choose>
 					<xsl:choose>
-						<xsl:when test="Field/@repetition = '1' or not(Field/@repetition)">
+						<xsl:when test="$field/@repetition = '1' or not($field/@repetition)">
 							<!-- [1] nicht ausgeben -->
 						</xsl:when>
-						<xsl:when test="Field/@repetition = '0'">
+						<xsl:when test="$field/@repetition = '0'">
 							<!-- [0] Calculation -->
 							<xsl:value-of select="'['"/>
 							<xsl:call-template name="OutputCalculation">
@@ -5260,9 +5591,9 @@
 							</xsl:call-template>
 							<xsl:value-of select="']'"/>
 						</xsl:when>
-						<xsl:when test="Field/@name != ''">
+						<xsl:when test="$field/@name != ''">
 							<!-- [n] repetition number -->
-							<xsl:value-of select="concat('[', Field/@repetition, ']')"/>
+							<xsl:value-of select="concat('[', $field/@repetition, ']')"/>
 						</xsl:when>
 					</xsl:choose>
 				</xsl:otherwise>
@@ -5270,6 +5601,7 @@
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
 	</xsl:template>
+
 	<!--
 	 ! ScriptStepParamLayoutDestination
 	 !-->

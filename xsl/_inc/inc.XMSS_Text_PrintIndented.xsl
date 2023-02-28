@@ -15,8 +15,9 @@
 	Include file to list script steps in text form similar to FileMaker ScriptMaker.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
-	2017-05-22 MrW. Corrected the parameter list to deal with faulty delimiters [pSIC]
+	(c) russell@mrwatson.de 2023
+	2023-02-27 MrW: Step 175 `Perform JavaScript in Web Viewer` and 96 `Save a Copy as Add-on Package` are no longer OBSOLETE
+	2017-05-22 MrW: Corrected the parameter list to deal with faulty delimiters [pSIC]
 	2013-09-07 MrW: Added formatting parameters: pShowLineNumbers, pLineNumbers, pIndentGroups, 
 	    pIndentScripts, pIndentScriptSteps, pIndentString, pIndentLevel, pScriptGroupPathDelimiter, 
 	    pScriptGroupNamePrefix, pScriptGroupNameSuffix, pScriptNamePrefix, pScriptNameSuffix, 
@@ -120,16 +121,14 @@
 			<!-- OBSOLETE:
 			 ! 59 Insert QuickTime
 			 ! 78 Insert Object
-			 ! 96 Update Link
 			 ! 153 <unknown>
 			 ! 162 Open from Test Server
 			 ! 163 Sign Out from Test Server
 			 ! 170 Upload to Test Server
 			 ! 171 Manage Test Server
-			 ! 175 Perform Web Script
 			 ! 176 Set Allowed Orientations
 			 !-->
-			<xsl:if test="@id=59 or @id=78 or @id=96 or @id=153 or @id=162 or @id=163 or @id=170 or @id=171 or @id=175 or @id=176">
+			<xsl:if test="@id=59 or @id=78 or @id=153 or @id=162 or @id=163 or @id=170 or @id=171 or @id=176">
 				<xsl:value-of select="'OBSOLETE'"/>
 			</xsl:if>
 		</xsl:variable>

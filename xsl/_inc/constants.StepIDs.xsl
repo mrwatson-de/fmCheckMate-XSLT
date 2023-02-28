@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) Copyright 2023 MrWatson, russell@mrwatson.de All Rights Reserved. 
 
 	===== PURPOSE =====
 
@@ -11,7 +11,11 @@
 	Defines script step id constants to make stylesheet coding easier.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	(c) russell@mrwatson.de 2023
+	2023-02-27 MrW: Version 1.4
+	- Added new Script Step IDs for fm19.6.2 up to 209 = ID_SET_DICTIONARY
+	- Added 96 ID_SAVE_A_COPY_AS_ADD_ON_PACKAGE
+	- Renamed 175 ID_PERFORM_SCRIPT_IN_WEB_VIEWER
 	2019-03-31 MrW: Version 1.3.1 Added comments indicating renamings and obsoletions
 	2019-03-30 MrW: Version 1.3 FileMaker 18 Script Steps
 	2016-09-01 MrW: Version 1.2 corrected select value
@@ -106,6 +110,7 @@
 	<xsl:variable name="ID_BEEP" select="'93'"/>
 	<xsl:variable name="ID_SET_USE_SYSTEM_FORMATS" select="'94'"/>
 	<xsl:variable name="ID_RECOVER_FILE" select="'95'"/>
+	<xsl:variable name="ID_SAVE_A_COPY_AS_ADD_ON_PACKAGE" select="'96'"/>
 	<xsl:variable name="ID_SET_ZOOM_LEVEL" select="'97'"/>
 	<xsl:variable name="ID_COPY_ALL_RECORDS_REQUESTS" select="'98'"/>
 	<xsl:variable name="ID_GO_TO_PORTAL_ROW" select="'99'"/>
@@ -181,7 +186,7 @@
 	<xsl:variable name="ID_OPEN_UPLOAD_TO_HOST" select="'172'"/>
 	<xsl:variable name="ID_UNKNOWN_173" select="'173'"/>
 	<xsl:variable name="ID_ENABLE_TOUCH_KEYBOARD" select="'174'"/>
-	<xsl:variable name="ID_OBSOLETE_PERFORM_WEB_SCRIPT" select="'175'"/>
+	<xsl:variable name="ID_PERFORM_SCRIPT_IN_WEB_VIEWER" select="'175'"/>
 	<!-- Obsoleted in FM16: -->
 	<xsl:variable name="ID_OBSOLETE_SET_ALLOWED_ORIENTATIONS" select="'176'"/>
 	<xsl:variable name="ID_AVPLAYER_PLAY" select="'177'"/>
@@ -214,4 +219,13 @@
 	<xsl:variable name="ID_UNKNOWN_198" select="'198'"/>
 	<xsl:variable name="ID_RENAME_FILE" select="'199'"/>
 	<xsl:variable name="ID_SET_ERROR_LOGGING" select="'200'"/>
+	<xsl:variable name="ID_CONFIGURE_NFC_READING" select="'201'"/>
+	<xsl:variable name="ID_CONFIGURE_MACHINE_LEARNING_MODEL" select="'202'"/>
+	<xsl:variable name="ID_EXECUTE_FILEMAKER_DATA_API" select="'203'"/>
+	<xsl:variable name="ID_UNKNOWN_204" select="'204'"/>
+	<xsl:variable name="ID_OPEN_TRANSACTION" select="'205'"/>
+	<xsl:variable name="ID_COMMIT_TRANSACTION" select="'206'"/>
+	<xsl:variable name="ID_REVERT_TRANSACTION" select="'207'"/>
+	<xsl:variable name="ID_SET_SESSION_IDENTIFIER" select="'208'"/>
+	<xsl:variable name="ID_SET_DICTIONARY" select="'209'"/>
 </xsl:stylesheet>
