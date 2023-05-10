@@ -15,7 +15,8 @@
 	Converts all fields to Normal fields without AutoEnter, Validation etc.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2018
+	(c) russell@mrwatson.de 2018-2023
+	2023-05-10 MrW: Version 1.0.1 Fixed: Removed illegal select on xsl:copy 
 	2020-04-02 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
@@ -24,7 +25,7 @@
 	<!-- ===== TEMPLATES ===== -->
 	<!-- For each field output a minimal field-definition  -->
 	<xsl:template match="Field">
-		<xsl:copy select=".">
+		<xsl:copy>
 			<xsl:attribute name="id">
 				<xsl:value-of select="@id"/>
 			</xsl:attribute>
