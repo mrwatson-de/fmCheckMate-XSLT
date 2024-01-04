@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -19,7 +19,6 @@
 	    Else if ( condition ) steps are converted to If ( condition ).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-08-29 MrW: Corrected the bug
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2012-06-11 MrW: Version 1.0

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Analyses themes and prepares an FMPXMLRESULT for import into fmCheckMate.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2018-09-28 MrW: Version 1.1.1 Added dot to the allowed style name characters.
 	2016-09-20 MrW: Version 1.1 Added test for undesirable or mulitple white space in name 
 	2015-09-12 MrW: Version 1.0

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xalan="http://xml.apache.org/xalan" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Functions for processing bases (base 16 and bits).
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2022
 	2022-05-10 MrW: Version 1.1.1 Added parameter checking to fn.BitwiseOr
 	2022-05-10 MrW: Version 1.1 Added fn.BitwiseOr, fn.BitwiseAnd, fn.BitwiseXor
 	2013-05-16 MrW: Version 1.0

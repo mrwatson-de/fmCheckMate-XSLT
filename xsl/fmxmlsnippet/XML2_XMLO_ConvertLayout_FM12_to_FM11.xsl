@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Returns (some but not all bits of) the layout in fmp11 format
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2013-07-12 MrW: Corrected calculation of Bounds and StyleID (for TabControls & Panels) :-)
 	2013-07-11 MrW: Text, fields, shapes, graphics, base line, hair line line width, etc.
 	2013-06-25 MrW: With fn.NumberFunctions for conversion of pixels to numbers and rgb% to Hex #RRGGBBAA.

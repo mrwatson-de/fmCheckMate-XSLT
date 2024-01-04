@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -21,7 +21,6 @@
 	XMSS_XMSS_SetFieldIfNotExactlyEqual.xsl
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2011-09-30 MrW: inc/constants.xsl
 	-->
 	<!-- ===== HEAD ===== -->

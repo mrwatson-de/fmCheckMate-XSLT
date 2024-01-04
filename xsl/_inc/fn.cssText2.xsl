@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	More functions for processing CSS text.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-09-16 MrW: Version 1.0
 	-->
 	<!--

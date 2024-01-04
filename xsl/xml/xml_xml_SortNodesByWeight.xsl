@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:math="http://exslt.org/math" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" extension-element-prefixes="math" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Sorts the nodes by weight, where weight = Count of nodes contained + Length of all data
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-06-25 MrW: Version 1.0.1 Comment corrected
 	2011-08-10 MrW: Version 1.0
 	-->

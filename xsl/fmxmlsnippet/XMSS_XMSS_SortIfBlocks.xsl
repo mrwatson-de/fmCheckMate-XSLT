@@ -3,7 +3,7 @@
 	<!--
 	===== AUTHOR =====
 	
-	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved.
+	(c) 2024 @mrwatson-de
 	
 	===== PURPOSE =====
 	
@@ -16,7 +16,6 @@
 	Sorts the if blocks
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2011-04-16 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

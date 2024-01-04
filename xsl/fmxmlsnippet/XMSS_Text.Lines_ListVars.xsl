@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Returns all Script steps that define a variable.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2011-09-30 MrW: inc/constants.xsl
 	-->
 	<!-- ===== HEAD ===== -->

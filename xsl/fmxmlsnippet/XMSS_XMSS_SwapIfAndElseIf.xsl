@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	If ( condition ) steps are converted to Else If ( condition ) and vice versa
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2022
 	2022-04-23 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

@@ -3,7 +3,7 @@
 	xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,7 +16,6 @@
 	Returns all variables defined by Set Variable script step, but which are not referenced
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-02-27 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

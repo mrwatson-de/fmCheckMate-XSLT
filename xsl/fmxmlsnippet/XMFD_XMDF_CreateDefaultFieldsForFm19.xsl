@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -17,7 +17,6 @@
 	BETA Version - please test
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2020-05-19 MrW: Version 2.1 Updated to XMDF from the XMDI version to be compatible with version 2.1 in FM19
 	2018-11-08 MrW: Version 1.0.1 Documented XMDI abbreviation
 	2018-07-12 MrW: Version 1.0

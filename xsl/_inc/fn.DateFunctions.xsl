@@ -6,7 +6,7 @@
 	version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -19,7 +19,6 @@
 	Functions. Substitute
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2011-01-13 MrW: Version 1.0
 	-->
 	<!-- ===== TEMPLATES ===== -->

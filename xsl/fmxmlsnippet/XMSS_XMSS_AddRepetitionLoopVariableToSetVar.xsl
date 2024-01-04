@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" exclude-result-prefixes="exsl" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -40,7 +40,6 @@
 		Replace Field Contents [ With dialog: On ; MyTable::MyField ; MyTable::MyField[$i] ] 
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2018-02-28 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

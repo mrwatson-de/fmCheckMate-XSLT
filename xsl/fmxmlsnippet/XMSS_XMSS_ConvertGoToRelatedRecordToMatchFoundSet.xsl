@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2023 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -23,7 +23,6 @@
 	  Go to Related Record [ Show only related records ; Match found set ; From table: “tScriptStep” ; Using layout: “tScriptStep _Det” (tScriptStep) ; New window ] 
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2023
 	2023-05-05 MrW: New
 	-->
 	<!-- ===== HEAD ===== -->

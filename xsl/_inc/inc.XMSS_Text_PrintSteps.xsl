@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,31 +16,35 @@
 	
 	WARNING: ALPHA-VERSION STILL IN DEVELOPMENT!
 	To Do:
-	1) DONE - Complete all Script steps (FM19.6.2).
+	1) DOING - Complete all Script steps (FM20.3).
 	2) DOING - Make multiple output formats possible (not just single row multi-column format)
 	3) DOING - Standardise coding
 	4) DOING - Factorise coding
 	5) LATER - i18n
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2023
-	2023-02-27 MrW: - Added new script steps up to FM19.6.2
-					- Fixed changed texts
-	                - Fixed spelling of parameter label (NOT lable)
-	2019-05-23 MrW: It's that time of year again - fm18 ! :-) ...
-	                - Added new script steps
-	2018-05-06 MrW: It's that time of year :-) ...
-	                - Corrected, refactored, sorted + tidied code, improved comments - thanks to oXygen XML Editor - nice!
-	                - Added FileMaker 17 script steps + changed output formatting
-	                - Improved output of Print + Print Setup steps, inc. attributes + printer names
-	2017-05-21 MrW: Another huge day...
-	                + Corrected 99.9% for all FM16 commands (known to me)
-	                + Added support for parameters 
-	                  - pSIC - 'True' outputs the ';' delimiter exactly as it appears in the Script Workspace (i.e. missing a space in Import Records + Insert from Device)
-	                  - pVerbose - 'True' outputs more detail than visible in the Script Workspace (Verbose mode is not finished yet)
-	                + Corrected nearly all known rendering bugs. Issues still open:
-	                  - In (Go to) layout references the LayoutTablename cannot be known without a DDR => we output (…) as a placeholder
-			  - In the Print Step printer names with high ascii characters are encoded (code?)
+	2023-11-20 @mrwatson-de:
+	- Added FM20.1 Perform Script on Server with Callback
+	- Added FM20.1 Trigger Claris Connect Flow
+	- Added FM20.3 Loop Flush
+	2023-02-27 @mrwatson-de:
+	- Added new script steps up to FM19.6.2
+	- Fixed changed texts
+	- Fixed spelling of parameter label (NOT lable)
+	2019-05-23 @mrwatson-de: It's that time of year again - fm18 ! :-) ...
+	- Added new script steps
+	2018-05-06 @mrwatson-de: It's that time of year :-) ...
+	- Corrected, refactored, sorted + tidied code, improved comments - thanks to oXygen XML Editor - nice!
+	- Added FileMaker 17 script steps + changed output formatting
+	- Improved output of Print + Print Setup steps, inc. attributes + printer names
+	2017-05-21 @mrwatson-de: Another huge day...
+	+ Corrected 99.9% for all FM16 commands (known to me)
+	+ Added support for parameters 
+	  - pSIC - 'True' outputs the ';' delimiter exactly as it appears in the Script Workspace (i.e. missing a space in Import Records + Insert from Device)
+	  - pVerbose - 'True' outputs more detail than visible in the Script Workspace (Verbose mode is not finished yet)
+	+ Corrected nearly all known rendering bugs. Issues still open:
+	  - In (Go to) layout references the LayoutTablename cannot be known without a DDR => we output (…) as a placeholder
+	  - In the Print Step printer names with high ascii characters are encoded (code?)
 	2016-03-12 MrW: Big day...Corrected 99.9% for all FM15 commands
 	2014-11-21 MrW: Stubs for FM14 Commands
 	2013-12-15 MrW: Stubs for FM13 Commands
@@ -264,7 +268,30 @@
 	 ! Script step 71. Loop
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '71']">
-		<xsl:call-template name="ScriptStepSTARTEND"/>
+	<xsl:variable name="flush" select="FlushType/@value"/>
+		<xsl:call-template name="ScriptStepSTART"/>
+		<xsl:if test="$flush!=''">
+			<xsl:call-template name="ScriptStepParameterList">
+				<xsl:with-param name="pParameterList">
+						<xsl:value-of select="'Flush'"/>
+						<xsl:value-of select="$delimiter2"/>
+						<xsl:value-of select="@flush"/>
+							<xsl:choose>
+							<xsl:when test="$flush='Always'">
+							<xsl:value-of select="'Always'"/>
+						</xsl:when>
+						<xsl:when test="$flush='Defer'">
+							<xsl:value-of select="'Defer'"/>
+						</xsl:when>
+						<xsl:when test="$flush='Min'">
+							<xsl:value-of select="'Minimum'"/>
+						</xsl:when>
+					</xsl:choose>
+					<xsl:value-of select="$delimiter3"/>
+				</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>
+		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 70. End If
@@ -5054,27 +5081,75 @@
  <!--
   ! Script step 209. Set Dictionary
   !-->
- <xsl:template match="//Step[not(ancestor::Step) and @id = '209']">
-	 <xsl:call-template name="ScriptStepSTART"/>
-	 <xsl:call-template name="ScriptStepParameterList">
-		 <xsl:with-param name="pParameterList">
-			 <xsl:if test="MainDictionary/@value">
-				 <xsl:value-of select="'Spelling Language'"/>
-				 <xsl:value-of select="$delimiter2"/>
-				 <xsl:value-of select="MainDictionary/@value"/>
-			 </xsl:if>
-			 <xsl:value-of select="$delimiter3"/>
-			 <xsl:if test="UniversalPathList">
-				 <xsl:value-of select="'User Dictionary'"/>
-				 <xsl:value-of select="$delimiter2"/>
-				 <xsl:call-template name="UniversalPathListFileName"/>
-				 <xsl:value-of select="$delimiter3"/>
-			 </xsl:if>
-			 <!-- -->
-		 </xsl:with-param>
-	 </xsl:call-template>
-	 <xsl:call-template name="ScriptStepEND"/>
- </xsl:template>
+  <xsl:template match="//Step[not(ancestor::Step) and @id = '209']">
+  <xsl:call-template name="ScriptStepSTART"/>
+  <xsl:call-template name="ScriptStepParameterList">
+	  <xsl:with-param name="pParameterList">
+		  <xsl:if test="MainDictionary/@value">
+			  <xsl:value-of select="'Spelling Language'"/>
+			  <xsl:value-of select="$delimiter2"/>
+			  <xsl:value-of select="MainDictionary/@value"/>
+		  </xsl:if>
+		  <xsl:value-of select="$delimiter3"/>
+		  <xsl:if test="UniversalPathList">
+			  <xsl:value-of select="'User Dictionary'"/>
+			  <xsl:value-of select="$delimiter2"/>
+			  <xsl:call-template name="UniversalPathListFileName"/>
+			  <xsl:value-of select="$delimiter3"/>
+		  </xsl:if>
+		  <!-- -->
+	  </xsl:with-param>
+  </xsl:call-template>
+  <xsl:call-template name="ScriptStepEND"/>
+</xsl:template>
+ <!--
+  ! Script step 210. Perform Script on Server with Callback
+  !-->
+  <xsl:template match="//Step[not(ancestor::Step) and @id = '210']">
+  <xsl:call-template name="ScriptStepSTART"/>
+  <xsl:call-template name="ScriptStepParameterList">
+	<xsl:with-param name="pParameterList">
+		<xsl:call-template name="ScriptStepParamCallbackScriptSpecified"/>
+	</xsl:with-param>
+	</xsl:call-template>
+  <xsl:call-template name="ScriptStepEND"/>
+</xsl:template>
+<!--
+  ! Script step 211. Trigger Claris Connect Flow
+  !-->
+  <xsl:template match="//Step[not(ancestor::Step) and @id = '211']">
+  	<xsl:call-template name="ScriptStepSTART"/>
+  	<xsl:call-template name="ScriptStepParameterList">
+		<xsl:with-param name="pParameterList">
+	
+			<xsl:value-of select="'Flow'"/>
+			<xsl:value-of select="$delimiter2"/>
+			<xsl:choose>
+				<xsl:when test="Flow/text()!=''">
+					<xsl:value-of select="Flow/text()"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="'&lt;unknown&gt;'"/>
+				</xsl:otherwise>
+			</xsl:choose>
+			<xsl:value-of select="$delimiter3"/>
+
+			<xsl:value-of select="'JSON Data'"/>
+			<xsl:value-of select="$delimiter2"/>
+			<xsl:call-template name="OutputCalculation">
+				<xsl:with-param name="Calc" select="JSONData/Calculation"/>
+			</xsl:call-template>
+			<xsl:value-of select="$delimiter3"/>
+
+			<xsl:call-template name="ScriptStepParamField">
+				<xsl:with-param name="label" select="'Target'"/>
+				<xsl:with-param name="field" select="Field"/>
+			</xsl:call-template>
+
+		</xsl:with-param>
+	</xsl:call-template>
+  <xsl:call-template name="ScriptStepEND"/>
+</xsl:template>
 
 	
 	<!--
@@ -5751,6 +5826,11 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
+	<!--
+	 ! ScriptStepParamScriptSpecified
+	 !   for Perform Script
+	 !   and Perform Script on Server
+	 !-->
 	<xsl:template name="ScriptStepParamScriptSpecified">
 		<xsl:value-of select="'Specified'"/>
 		<xsl:value-of select="$delimiter2"/>
@@ -5791,6 +5871,75 @@
 		<xsl:value-of select="$delimiter3"/>
 		<!-- -->
 	</xsl:template>
+	<!--
+	 ! ScriptStepParamCallbackScriptSpecified
+	 !   for Perform Script on Server with Callback
+	 !   …since it does not (yet) support script-by-name
+	 !-->
+	 <xsl:template name="ScriptStepParamCallbackScriptSpecified">
+		<!-- -->
+		<xsl:if test="Script">
+			<!-- Script -->
+			<xsl:value-of select="'Script'"/>
+			<xsl:value-of select="$delimiter2"/>
+			<xsl:call-template name="QuotedStringOrUnknown">
+				<xsl:with-param name="string" select="Script/@name"/>
+			</xsl:call-template>
+			<xsl:if test="FileReference/@name">
+				<xsl:value-of select="' '"/>
+				<xsl:value-of select="'from file'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:value-of select="$OPENQUOTES"/>
+				<xsl:value-of select="FileReference/@name"/>
+				<xsl:value-of select="$CLOSEQUOTES"/>
+				<xsl:if test="FileReference/@name = ''">
+					<xsl:value-of select="' (file not open)'"/>
+				</xsl:if>
+			</xsl:if>
+			<xsl:value-of select="$delimiter3"/>
+		</xsl:if>
+		<xsl:if test="Calculation">
+			<!-- Script Parameter -->
+			<xsl:value-of select="'Parameter'"/>
+			<xsl:value-of select="$delimiter2"/>
+			<xsl:call-template name="OutputCalculationOrTwoSpaces">
+				<xsl:with-param name="Calc" select="Calculation"/>
+			</xsl:call-template>
+			<xsl:value-of select="$delimiter3"/>
+		</xsl:if>
+		<xsl:if test="CallbackScript">
+			<!-- Script -->
+			<xsl:value-of select="'Callback script'"/>
+			<xsl:value-of select="$delimiter2"/>
+			<xsl:call-template name="QuotedStringOrUnknown">
+				<xsl:with-param name="string" select="CallbackScript/ScriptName/@name"/>
+			</xsl:call-template>
+			<xsl:if test="CallbackScript/FileReference/@name">
+				<!-- CallbackScript File Reference -->
+				<xsl:value-of select="' '"/>
+				<xsl:value-of select="'from file'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:value-of select="$OPENQUOTES"/>
+				<xsl:value-of select="CallbackScript/FileReference/@name"/>
+				<xsl:value-of select="$CLOSEQUOTES"/>
+				<xsl:if test="CallbackScript/FileReference/@name = ''">
+					<xsl:value-of select="' (file not open)'"/>
+				</xsl:if>
+			</xsl:if>
+			<xsl:value-of select="$delimiter3"/>
+			<xsl:if test="CallbackScript/ScriptParameter">
+				<!-- CallbackScript Parameter -->
+				<xsl:value-of select="'Parameter'"/>
+				<xsl:value-of select="$delimiter2"/>
+				<xsl:call-template name="OutputCalculationOrTwoSpaces">
+					<xsl:with-param name="Calc" select="CallbackScript/ScriptParameter/Calculation"/>
+				</xsl:call-template>
+				<xsl:value-of select="$delimiter3"/>
+			</xsl:if>
+		</xsl:if>
+		<!-- -->
+	</xsl:template>
+	<!-- -->
 	<xsl:template name="ScriptStepParamSelect">
 		<!--xsl:param name="delimiter3"/-->
 		<xsl:if test="SelectAll/@state = 'True'">

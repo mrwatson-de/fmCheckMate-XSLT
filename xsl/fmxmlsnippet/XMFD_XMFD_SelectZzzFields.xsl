@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2022 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Retains zzz fields by removing non-zzz fields.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2022
 	2022-05-31 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

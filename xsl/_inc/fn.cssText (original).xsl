@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -33,7 +33,6 @@
 	2. '/*' and '*/' are only used to bound block comments, and do not occur in {definition-part}s
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-05-28 MrW: Version 2.0 Dependencies defined as NEEDS (to be declared at the top level)
 	2011-12-29 MrW: Version 1.0
 	-->

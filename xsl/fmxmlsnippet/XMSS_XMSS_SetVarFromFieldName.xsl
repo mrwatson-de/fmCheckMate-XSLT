@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Converts SetVar X = Field Y into Set Var Y = Field Y.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-10-03 MrW: Degermanified
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	-->

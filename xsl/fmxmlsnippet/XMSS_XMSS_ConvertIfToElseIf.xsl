@@ -2,11 +2,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
-	XSL-File: XMSS_ConvertIfToElseIf.xsl
+	XSL-File: XMSS_XMSS_ConvertIfToElseIf.xsl
 
 	XML-Source: fmxmlsnippet.xml
 	XML-Grammar: fmxmlsnippet
@@ -15,7 +15,7 @@
 	If ( condition ) steps are converted to Else If ( condition )
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
+	2023-09-18 MrW: Version 1.0.1 Documentation corrected
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2012-10-18 MrW: Version 1.0
 	-->

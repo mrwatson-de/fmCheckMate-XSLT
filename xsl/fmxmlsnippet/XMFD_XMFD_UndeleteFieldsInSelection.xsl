@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,7 +16,6 @@
 	Starts at the minimum id and iterates up to the maximum id.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2013-08-30 MrW: Version 1.2 Adapted for FM12 where internal IDs are now sequential
 	2012-07-16 MrW: Version 1.1 Bugs removed: Compare variables as numbers and skip ids 128 thru 32767
 	2012-07-10 MrW: Version 1.0

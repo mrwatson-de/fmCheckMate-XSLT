@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -25,7 +25,6 @@
 	3. Popover coordinates are ONLY NEARLY absolute
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2015-09-22 MrW: Version 2.3 Functions as named templates: fn.GetAbsBoundsOfCurrentNodeAsNumber/Text
 	2015-09-16 MrW: Version 2.2 Corrected for PopoverButtons (Popovers, embedded in the Button, must ignore the button's Bounds)
 	2015-09-15 MrW: Version 2.1 Added Layout.GetAbsoluteBoundsAsNumber to similarly get the layout enclosing rectangle

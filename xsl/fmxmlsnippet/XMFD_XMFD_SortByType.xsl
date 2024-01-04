@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Sorts the fields by type. There is sadly no table id available, so we can't sort the tables!
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2013-05-15 MrW: Version 1.1 Improved order to match FileMaker (exactly?)
 	2013-05-07 MrW: Version 1.0
 	-->

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://graphml.graphdrawing.org/xmlns" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -45,7 +45,6 @@
 
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2021
 	2021-08-18 MrW: Fixed a bug which had caused a function name at the start of a calulation to not be stripped.
 	2021-08-15 MrW: Improved recognition of field dependencies by stripping all function names from calculations
 	2017-12-01 MrW: Changed to output graphml xml - with embedded data for hugely improved visualisation and analysis possibilities

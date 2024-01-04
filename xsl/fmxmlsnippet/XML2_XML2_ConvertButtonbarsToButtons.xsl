@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -26,7 +26,6 @@
 		- Not looked at it yet
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2022
 	2022-05-10 MrW: Version 0.1.1 Refactored Bitwise functions to library and corrected parameter names
 	2022-05-10 MrW: Version 0.1
 	-->

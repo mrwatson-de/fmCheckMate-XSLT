@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Lists the theme and (custom) style names and their internal names.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2016-10-10 MrW: Version 1.2 Changed filename to output as a table
 	2015-04-18 MrW: Version 1.1 Themes sorted by name
 	2014-05-27 MrW: Version 1.0

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" xmlns:str="http://exslt.org/strings" extension-element-prefixes="str date" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -17,7 +17,6 @@
 	is quite natural for objects to lie behind them.)
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-07-07 MrW: Version 0.9
 	-->
 	<!-- ===== HEAD ===== -->

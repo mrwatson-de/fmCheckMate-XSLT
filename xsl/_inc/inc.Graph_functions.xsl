@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -14,7 +14,6 @@
 	
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2018-02-05 MrW: Version 0.4 Changed order (DataType-StorageCalcType), and corrected for Containers='Binary'
 	2017-11-29 MrW: Version 0.3 Improved the indicator for Index type - now big "X" is shown ONLY for text fields
 	2017-01-12 MrW: Version 0.2 Improved the output of the metadata flags to be more meaningful, of a more useful granularity, and to make it easier to find/select nodes.

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Functions for processing sub-strings.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2013-11-15 MrW SubstringFunctions sepearated from StringFunctions
 	2013-06-25 MrW Added fn.Filter
 	2011-01-13 MrW: Version 1.0

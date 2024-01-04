@@ -3,7 +3,7 @@
 	<!--
 	===== AUTHOR =====
 	
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved.
+	(c) 2024 @mrwatson-de
 	
 	===== PURPOSE =====
 	
@@ -16,7 +16,6 @@
 	Orders objects naturally from back to front with top-left at the back and bottom-right at the front.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-02-16 MrW: Version 0.1
 	-->
 	<!-- ===== HEAD ===== -->

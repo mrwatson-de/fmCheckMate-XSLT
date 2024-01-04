@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Performs an analysis and creates an FMPXMLRESULT data set to import into fmCheckMate.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2018-05-17 MrW: Version 2.0 Renamed to clearer verb + noun, and corrected analysis of duplicated functions
 	2016-03-13 MrW: Version 1.0
 	-->

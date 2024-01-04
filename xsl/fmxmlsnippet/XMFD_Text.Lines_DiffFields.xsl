@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -35,7 +35,6 @@
 	_Frac	=½:	_ID         // A statistic field = Fraction of Total
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2012-09-28 MrW: Improved Docu: added example list
 	2011-09-30 MrW: inc/constants.xsl
 	2011-08-10 MrW: Version 1.0

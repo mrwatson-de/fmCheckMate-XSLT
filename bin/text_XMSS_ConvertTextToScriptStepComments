@@ -18,7 +18,7 @@
 #
 # MrW 07.02.11 My first AWK-Script :-)
 #
-# (c) Copyright 2016 MrWatson. All Rights Reserved. 
+# (c) 2024 @mrwatson-de
 #
 BEGIN {
 print "<?xml version=\"1.0\"?>\

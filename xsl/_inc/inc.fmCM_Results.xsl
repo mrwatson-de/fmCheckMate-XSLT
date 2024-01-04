@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Functions (named templates) to create a filemaker analysis.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2016-01-25 MrW: Version 1.0.2 Corrected reference of Style info for ButtonBars
 	2015-11-17 MrW: Version 1.0.1 Corrected reference of Style info
 	2015-09-12 MrW: Version 1.0

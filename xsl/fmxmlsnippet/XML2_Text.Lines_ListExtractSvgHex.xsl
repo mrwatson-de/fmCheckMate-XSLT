@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str math" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -18,7 +18,6 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2015-09-16 MrW: Version 0.1
 	-->
 	<!-- ===== HEAD ===== -->

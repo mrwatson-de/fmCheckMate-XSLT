@@ -35,7 +35,7 @@
 	-->
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -52,7 +52,6 @@
 	The opposite function fn.parseXML.xsl
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	20200107 MrW: Version 1.1.1 Corrected a bug, where node() was being used instead of * (element)
 	20150515 MrW: Version 1.1 Quotes are also now correctly serialized.
 	20110113 MrW: Version 1.0

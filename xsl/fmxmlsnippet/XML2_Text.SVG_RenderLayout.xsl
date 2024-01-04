@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str math" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -155,7 +155,6 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2015-05-12 MrW: Version 0.3 with (radial) gradients - but not quite right yet ;)
 	2015-05-10 MrW: Version 0.3 with (linear) gradients - but not quite right yet ;)
 	2015-05-07 MrW: Version 0.2 with some basic CSS-formatting

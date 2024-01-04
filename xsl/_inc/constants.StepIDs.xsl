@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2023 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -11,7 +11,6 @@
 	Defines script step id constants to make stylesheet coding easier.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2023
 	2023-02-27 MrW: Version 1.4
 	- Added new Script Step IDs for fm19.6.2 up to 209 = ID_SET_DICTIONARY
 	- Added 96 ID_SAVE_A_COPY_AS_ADD_ON_PACKAGE

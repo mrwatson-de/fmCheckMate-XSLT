@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,7 +16,6 @@
 	with enter find mode, set fields, omit record, etc.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-06-25 MrW: Addes quotes to text IFF it has no quotes, and internationalized the function
 	2013-11-08 MrW: Removed doubled quotes from the criteria.
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl

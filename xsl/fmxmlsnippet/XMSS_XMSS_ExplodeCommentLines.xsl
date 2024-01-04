@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -19,7 +19,6 @@
 	@see XMSS_XMSS_MergeCommentLines.xsl for the inverse function
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2020-04-07 MrW: Version 1.1 Corrected a long standing bug which caused the last line to be lost.
 	2017-09-08 MrW: Version 1.0 Renamed to frequently used 'Explode' instead of 'Split', extended to deal with CRLF, CR and LF, and added the XSLT Relevance function
 	2016-10-11 MrW: Version 0.1

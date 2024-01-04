@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -19,7 +19,6 @@
 	into a file containing the function and one containing the test code.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2014-09-29 MrW: Version 1.1 Extended to document the included content with comments.
 	2011-02-09 MrW: Version 1.0
 	-->

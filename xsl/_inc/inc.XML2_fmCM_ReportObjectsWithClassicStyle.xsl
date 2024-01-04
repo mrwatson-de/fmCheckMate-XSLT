@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Include file to report objects which have classic style.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2016-01-22 MrW: Version 1.0
 	-->
 	<!-- ===== NEEDS ===== -->

@@ -5,7 +5,7 @@
  -->
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -32,7 +32,6 @@
 	   - Use the adjusted import-XSLT to import the real source XML-data
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-01-01 MrW: Version 1.0.0 - Promoted to version 1.0 and moved to the fmCheckMate library
 	2019-01-01 MrW: Version 0.9.2 - Simplified + improved the stylesheet creation to make a stylesheet which WORKS on the exported FMXMLRESULT file, making it easier to TEST the generated stylesheet.
 	2019-01-01 MrW: Version 0.9.1 - added namespace-alias to rename xslt namespace in the output file ... It works, but instead of renaming the prefix it changes the ns-url.  

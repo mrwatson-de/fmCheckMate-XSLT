@@ -4,7 +4,7 @@
 	version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -17,7 +17,6 @@
 	Emits a list of Xpath expressions.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-08-25 MrW Version 1.0.1 Removed incorrect use of select on call-template. 
 	2011-02-09 MrW Version 1.0
 	-->

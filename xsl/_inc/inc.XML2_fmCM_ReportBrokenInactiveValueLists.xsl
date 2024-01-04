@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Include file in a layout analysis to report broken inactive value lists.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2016-01-04 MrW: Version 1.2 Corrected to check only active value lists
 	2015-11-23 MrW: Version 1.1 Refactored as include file
 	2015-09-12 MrW: Version 1.0

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -25,7 +25,6 @@
         XMSS_Text_ConvertSetFieldsToPredicateExact.xsl
         
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2015-06-29 MrW: v1.1 supports Set Field by Name
 	2015-01-22 MrW: v1.0
 	-->

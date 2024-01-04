@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:date="http://exslt.org/dates-and-times" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,7 +16,6 @@
 	that is, the ones that you usually want to export and/or import session data in fmp format.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2021
 	2021-08-15 MrW: Version 1.0 At last a function with a clear name :-) - almost exactly 10 years after making the (unclearly named/documented) original functions
 	-->
 	<!-- ===== HEAD ===== -->

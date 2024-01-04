@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -23,7 +23,6 @@
 	- Parentheses are added if necessary (and perhaps also where not necessary)
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2015-01-12 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->

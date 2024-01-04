@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Returns the FileMaker Clipboard content type based on the first element of the fmxmlsnippet.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2017-05-29 MrW: Version 2.4 Added XMVL = ValueLists
 	2015-08-28 MrW: Version 2.3 Better recognition of XML2
 	2014-05-27 MrW: Version 2.2 Extended to support FileMaker Themes (XMTH)

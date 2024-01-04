@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -35,7 +35,6 @@
 	_List	=∑¶:	_ID         // A statistic field = Fraction of Total
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2020-08-21 MrW: Version 1.2 Changed the type symbol for serial number fields from '=+1' to the more semantically correct ':+1' - conveying the meaning of 'set' rather than 'calculate'.
 	2020-08-20 MrW: Version 1.1 Added Analysis of Summary list fields
 	2012-09-28 MrW: Improved Docu: added example list

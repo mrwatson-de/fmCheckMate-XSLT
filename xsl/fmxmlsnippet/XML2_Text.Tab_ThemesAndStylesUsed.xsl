@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2017 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -22,7 +22,6 @@
 	- Save the file to the given path.
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2017
 	2017-10-27 MrW: Version 1.0.2 iDDR folder moved from xml/ to temp/ folder
 	2015-09-12 MrW: Version 1.0.1 iddr renamed to iDDR 
 	2015-04-29 MrW: Version 1.0

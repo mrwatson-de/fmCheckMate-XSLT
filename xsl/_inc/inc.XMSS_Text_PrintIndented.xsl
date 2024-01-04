@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Include file to list script steps in text form similar to FileMaker ScriptMaker.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2023
 	2023-02-27 MrW: Step 175 `Perform JavaScript in Web Viewer` and 96 `Save a Copy as Add-on Package` are no longer OBSOLETE
 	2017-05-22 MrW: Corrected the parameter list to deal with faulty delimiters [pSIC]
 	2013-09-07 MrW: Added formatting parameters: pShowLineNumbers, pLineNumbers, pIndentGroups, 

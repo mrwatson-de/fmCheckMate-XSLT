@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2022 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -15,7 +15,6 @@
 	Corrects the z-order based on the position Left -> Right & Top->Bottom
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2022
 	20220204 MrW v0.1
 	-->
 	<!-- ===== HEAD ===== -->

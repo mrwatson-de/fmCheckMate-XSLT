@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2023 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -16,7 +16,6 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2023
 	2023-02-14 RW: Version 0.1 Happy Valentines Day, Alexa!
 	-->
 	<!-- ===== HEAD ===== -->

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:str="http://exslt.org/strings" extension-element-prefixes="exsl str math" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2020 MrWatson, russell@mrwatson.de All Rights Reserved. 
+	(c) 2024 @mrwatson-de
 
 	===== PURPOSE =====
 
@@ -24,7 +24,6 @@
 	
 	
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2020
 	2019-09-09 MrW: Version 0.1.1 Removed incorrect and superfluous generation of XML Processing Instruction
 	2015-05-29 MrW: Version 0.1
 	-->

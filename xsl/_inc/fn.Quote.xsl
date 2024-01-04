@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- ===== AUTHOR =====
 
-	(c) Copyright 2021 MrWatson, russell@mrwatson.de All Rights Reserved. ===== PURPOSE =====
+	(c) 2024 @mrwatson-de===== PURPOSE =====
 
 	===== PURPOSE =====
 	
@@ -15,7 +15,6 @@
 	Quote function as in FileMaker.
 
 	===== CHANGES HISTORY =====
-	(c) russell@mrwatson.de 2021
 
 	2021-10-21 MrW: Version 1.2.1 Improved Comment
 	2021-09-02 MrW: Version 1.2 Fixed fn.Unquote to unquote strings as FileMaker (¶->EOL)
