@@ -97,8 +97,8 @@ function f_dequote(strg)
 
 function f_trim(strg)
 {
-    sub(/^[ \t]+/,"",strg)  # leading
-    sub(/[ \t]+$/,"",strg)  # trailing 
+    sub(/^[ \t\r\n\xA0]+/,"",strg)  # leading
+    sub(/[ \t\r\n\xA0]+$/,"",strg)  # trailing 
     return strg;
 }
 
@@ -307,6 +307,10 @@ Step_id["View As"]=30
 print "<?xml version=\"1.0\"?>\
 <fmxmlsnippet type=\"FMObjectList\">"
 
+#Comment the following line in to output a DEBUG comment
+#print "<Step enable=\"True\" id=\"89\"><Text>DEBUG</Text></Step>"
+
+
 #################
 #END BEGIN
 #################
@@ -318,12 +322,16 @@ print "<?xml version=\"1.0\"?>\
 
 {origLine0 = $0}
 
+#FIXME - a hard space (Ux00A0) at the end of the line is causing the closing ] to be included in the step calculation
+#{print "<Step enable=\"True\" id=\"89\"><Text><![CDATA[",substr($0, length($0), 1),"]]></Text></Step>"}
+
 #Trim
 {
-sub(/^[ \t]+/,"");
-sub(/[ \t;]+$/,"");
+sub(/^[ \t\r\n\xA0 ]+/,"");
+sub(/[ \t\r\n\xA0 ;]+$/,"");
 }
 
+#{print "<Step enable=\"True\" id=\"89\"><Text><![CDATA[",substr($0, length($0), 1),"]]></Text></Step>"}
 
 #############################################
 #by default script steps are enabled

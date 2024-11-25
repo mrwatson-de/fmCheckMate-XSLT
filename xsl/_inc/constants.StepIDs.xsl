@@ -11,6 +11,10 @@
 	Defines script step id constants to make stylesheet coding easier.
 	
 	===== CHANGES HISTORY =====
+	2023-04-30 MrW: Version 1.5
+	- Added new Script Step IDs for fm20.3.1
+	  - 210 = ID_PERFORM_SCRIPT_ON_SERVER_WITH_CALLBACK
+	  - 211 = ID_TRIGGER_CLARIS_CONNECT_FLOW
 	2023-02-27 MrW: Version 1.4
 	- Added new Script Step IDs for fm19.6.2 up to 209 = ID_SET_DICTIONARY
 	- Added 96 ID_SAVE_A_COPY_AS_ADD_ON_PACKAGE
@@ -227,4 +231,6 @@
 	<xsl:variable name="ID_REVERT_TRANSACTION" select="'207'"/>
 	<xsl:variable name="ID_SET_SESSION_IDENTIFIER" select="'208'"/>
 	<xsl:variable name="ID_SET_DICTIONARY" select="'209'"/>
+	<xsl:variable name="ID_PERFORM_SCRIPT_ON_SERVER_WITH_CALLBACK" select="'210'"/>
+	<xsl:variable name="ID_TRIGGER_CLARIS_CONNECT_FLOW" select="'211'"/>
 </xsl:stylesheet>
