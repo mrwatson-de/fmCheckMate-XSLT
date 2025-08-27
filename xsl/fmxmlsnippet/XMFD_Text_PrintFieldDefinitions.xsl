@@ -16,23 +16,48 @@
 	
 	Here is an example list of each type of field:
 	
-	_ID	:+1	7           // A field with auto-incremented serial number (Auto-Increment)
+`_ID :+1 7`
+: A field with auto-incremented serial number (Auto-Increment)
+
+`active : "1"`
+: A field with an auto-enter fixed text (Auto-Data)
+
+`Status := "New"`
+: A field with an auto-enter initial calculated value (Auto-Init)
+
+`DateDeparture :== DateArrival+2`
+: A field with an auto-enter filter calculated value (Auto-Calc)
+
+`Info :=== "Input: " & Quote(Input)`
+: A field with an auto-enter filter calculated value even when inputs empty
+
+`RepIndex = ArrIndex+1`
+: A calculated field
+
+`_sTotal =∑: Score`
+: A statistic field = Total
+
+`_sCount =N: Options`
+: A statistic field = Count
+
+`_sAve =∑/N: Score`
+: A statistic field = Average
+
+`_sMin =≤: Score`
+: A statistic field = Minimum
+
+`_sMax =≥: Score`
+: A statistic field = Maximum
+
+`_StdDev =σ: Score`
+: A statistic field = Standard Deviation
+
+`_Frac =½: Score`
+: A statistic field = Fraction of Total
+
+`_List =∑¶: Names`
+: A statistic field = List of Text
 	
-	_X	:	"1"         // A field with an auto-enter fixed text (Auto-Data)
-	Status	:=	"New"       // A field with an auto-enter initial calculated value (Auto-Init)
-	e	:==	_ID+2       // A field with an auto-enter filter calculated value (Auto-Calc)
-	f	:===	_ID+3       // A field with an auto-enter filter calculated value even when inputs empty
-
-	d	=	_ID+1       // A calculated field
-
-	_sTotal	=∑:	_ID         // A statistic field = Total
-	_sCount	=N:	_ID         // A statistic field = Count
-	_sAve	=∑/N:	_ID         // A statistic field = Average
-	_sMin	=≤:	_ID         // A statistic field = Minimum
-	_sMax	=≥:	_ID         // A statistic field = Maximum
-	_StdDev	=σ:	_ID         // A statistic field = Standard Deviation
-	_Frac	=½:	_ID         // A statistic field = Fraction of Total
-	_List	=∑¶:	_ID         // A statistic field = Fraction of Total
 	
 	===== CHANGES HISTORY =====
 	2021-10-15 MrW: Version 1.3 Duplicated from XMFD_Text.Lines_ListFieldDefinitions.xsl - needs refactoring
