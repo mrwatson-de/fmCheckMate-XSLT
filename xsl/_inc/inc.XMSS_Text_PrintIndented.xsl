@@ -180,10 +180,14 @@
 		<xsl:param name="pParameterList"/>
 		<!---->
 		<xsl:variable name="params">
+			<xsl:if test="1=0">
+				<xsl:value-of select="substring($pParameterList,string-length( $pParameterList) -7)"/>
+				<xsl:value-of select="'|'"/>
+			</xsl:if>
 			<xsl:choose>
 				<xsl:when test="$pSIC='True' and $delimiter3=' ; '">
 					<!-- SIC mode => delimiter can also be missing a SPACE -->
-					<xsl:call-template name="fn.RemoveFinalDelimiterFromTextList">
+						<xsl:call-template name="fn.RemoveFinalDelimiterFromTextList">
 						<xsl:with-param name="pTextList">
 							<xsl:call-template name="fn.RemoveFinalDelimiterFromTextList">
 								<xsl:with-param name="pTextList" select="$pParameterList"/>
@@ -203,10 +207,21 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<!-- remove 1 space after trailing colon -->
+		<xsl:variable name="params2">
+			<xsl:choose>
+				<xsl:when test="substring($params,string-length( $params ) -1) = ': '">
+					<xsl:value-of select="substring($params,1,string-length( $params) -1) "/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$params"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="$params!=''">
+			<xsl:when test="$params2!=''">
 				<xsl:value-of select="$delimiter1"/>
-				<xsl:value-of select="$params"/>
+				<xsl:value-of select="$params2"/>
 				<xsl:value-of select="$delimiter4"/>
 			</xsl:when>
 			<xsl:otherwise>
