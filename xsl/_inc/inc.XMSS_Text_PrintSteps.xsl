@@ -22,6 +22,8 @@
 		4) LATER - i18n
 	
 	===== CHANGES HISTORY =====
+	2025-09-09 @mrwatson-de:
+	- Resolves #11 Standardise Variables and parameters to use lowerCamelCase
 	2025-09-08 @mrwatson-de:
 	- Resolves #5 Update for FM21
 	- Resolves #15 Update for FM22
@@ -2165,25 +2167,25 @@
 	 ! Script step 122. New Window
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '122']">
-		<xsl:variable name="NewWndStylesStyles" select="NewWndStyles/@Styles"/>
-		<xsl:variable name="NewWndStylesDocument"
-			select="($NewWndStylesStyles mod (2 * 2)) &gt; ($NewWndStylesStyles mod 2)"/>
-		<xsl:variable name="NewWndStylesDialog"
-			select="($NewWndStylesStyles mod (2 * 4)) &gt; ($NewWndStylesStyles mod 4)"/>
-		<xsl:variable name="NewWndStylesFloating"
-			select="($NewWndStylesStyles mod (2 * 256)) &gt; ($NewWndStylesStyles mod 256)"/>
-		<xsl:variable name="NewWndStylesResize"
-			select="($NewWndStylesStyles mod (2 * 512)) &gt; ($NewWndStylesStyles mod 512)"/>
-		<xsl:variable name="NewWndStylesClose"
-			select="($NewWndStylesStyles mod (2 * 65536)) &gt; ($NewWndStylesStyles mod 65536)"/>
-		<xsl:variable name="NewWndStylesMinimize"
-			select="($NewWndStylesStyles mod (2 * 131072)) &gt; ($NewWndStylesStyles mod 131072)"/>
-		<xsl:variable name="NewWndStylesMaximize"
-			select="($NewWndStylesStyles mod (2 * 262144)) &gt; ($NewWndStylesStyles mod 262144)"/>
-		<xsl:variable name="NewWndStylesZoom"
-			select="($NewWndStylesStyles mod (2 * 524288)) &gt; ($NewWndStylesStyles mod 524288)"/>
-		<xsl:variable name="NewWndStylesDimParentWindow"
-			select="($NewWndStylesStyles mod (2 * 1048576)) &gt; ($NewWndStylesStyles mod 1048576)"/>
+		<xsl:variable name="newWndStylesStyles" select="NewWndStyles/@Styles"/>
+		<xsl:variable name="newWndStylesDocument"
+			select="($newWndStylesStyles mod (2 * 2)) &gt; ($newWndStylesStyles mod 2)"/>
+		<xsl:variable name="newWndStylesDialog"
+			select="($newWndStylesStyles mod (2 * 4)) &gt; ($newWndStylesStyles mod 4)"/>
+		<xsl:variable name="newWndStylesFloating"
+			select="($newWndStylesStyles mod (2 * 256)) &gt; ($newWndStylesStyles mod 256)"/>
+		<xsl:variable name="newWndStylesResize"
+			select="($newWndStylesStyles mod (2 * 512)) &gt; ($newWndStylesStyles mod 512)"/>
+		<xsl:variable name="newWndStylesClose"
+			select="($newWndStylesStyles mod (2 * 65536)) &gt; ($newWndStylesStyles mod 65536)"/>
+		<xsl:variable name="newWndStylesMinimize"
+			select="($newWndStylesStyles mod (2 * 131072)) &gt; ($newWndStylesStyles mod 131072)"/>
+		<xsl:variable name="newWndStylesMaximize"
+			select="($newWndStylesStyles mod (2 * 262144)) &gt; ($newWndStylesStyles mod 262144)"/>
+		<xsl:variable name="newWndStylesZoom"
+			select="($newWndStylesStyles mod (2 * 524288)) &gt; ($newWndStylesStyles mod 524288)"/>
+		<xsl:variable name="newWndStylesDimParentWindow"
+			select="($newWndStylesStyles mod (2 * 1048576)) &gt; ($newWndStylesStyles mod 1048576)"/>
 		<!--2147483648-->
 		<!--4294967296-->
 		<!-- -->
@@ -2193,7 +2195,7 @@
 				<xsl:value-of select="'Style'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:choose>
-					<xsl:when test="not(NewWndStyles) or $NewWndStylesDocument">
+					<xsl:when test="not(NewWndStyles) or $newWndStylesDocument">
 						<!--Default => Document --> 
 						<xsl:value-of select="'Document'"/>
 					</xsl:when>
@@ -2249,27 +2251,27 @@
 				</xsl:if>
 				<xsl:if test="$pVerbose = 'True'">
 					<!-- Verbose -->
-					<xsl:if test="not($NewWndStylesClose)">
+					<xsl:if test="not($newWndStylesClose)">
 						<xsl:value-of select="'No Close'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
-					<xsl:if test="not($NewWndStylesMinimize)">
+					<xsl:if test="not($newWndStylesMinimize)">
 						<xsl:value-of select="'No Minimize'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
-					<xsl:if test="not($NewWndStylesMaximize)">
+					<xsl:if test="not($newWndStylesMaximize)">
 						<xsl:value-of select="'No Maximize'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
-					<xsl:if test="not($NewWndStylesZoom)">
+					<xsl:if test="not($newWndStylesZoom)">
 						<xsl:value-of select="'No Zoom'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
-					<xsl:if test="not($NewWndStylesResize)">
+					<xsl:if test="not($newWndStylesResize)">
 						<xsl:value-of select="'No Resize'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
-					<xsl:if test="not($NewWndStylesDimParentWindow)">
+					<xsl:if test="not($newWndStylesDimParentWindow)">
 						<xsl:value-of select="'No Dim'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
@@ -2624,7 +2626,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ExternalDataSourceName">
-					<xsl:with-param name="OrCurrentFile"/>
+					<xsl:with-param name="orCurrentFile"/>
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -2702,7 +2704,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSpecifyOutputFile">
-					<xsl:with-param name="SaveAsType" select="SaveAsType"/>
+					<xsl:with-param name="saveAsType" select="SaveAsType"/>
 				</xsl:call-template>
 				<xsl:call-template name="ScriptStepParamCreateDirectories"/>
 			</xsl:with-param>
@@ -2788,25 +2790,25 @@
 				<xsl:if test="Restore/@state = 'True'">
 					<xsl:if test="$pVerbose = 'True'">
 						<!-- Print type -->
-						<xsl:variable name="PrintSettingsPrintType"
+						<xsl:variable name="printSettingsPrintType"
 							select="PrintSettings/@PrintType"/>
 						<xsl:choose>
-							<xsl:when test="$PrintSettingsPrintType = 'BrowsedRecords'">
+							<xsl:when test="$printSettingsPrintType = 'BrowsedRecords'">
 								<xsl:value-of select="'Records being browsed'"/>
 							</xsl:when>
-							<xsl:when test="$PrintSettingsPrintType = 'CurrentRecord'">
+							<xsl:when test="$printSettingsPrintType = 'CurrentRecord'">
 								<xsl:value-of select="'Current Record'"/>
 							</xsl:when>
-							<xsl:when test="$PrintSettingsPrintType = 'BlankAsFormatted'">
+							<xsl:when test="$printSettingsPrintType = 'BlankAsFormatted'">
 								<xsl:value-of select="'Blank record, as formatted'"/>
 							</xsl:when>
-							<xsl:when test="$PrintSettingsPrintType = 'BlankBoxed'">
+							<xsl:when test="$printSettingsPrintType = 'BlankBoxed'">
 								<xsl:value-of select="'Blank record, with boxes'"/>
 							</xsl:when>
-							<xsl:when test="$PrintSettingsPrintType = 'BlankUnderscore'">
+							<xsl:when test="$printSettingsPrintType = 'BlankUnderscore'">
 								<xsl:value-of select="'Blank record, with underlines'"/>
 							</xsl:when>
-							<xsl:when test="$PrintSettingsPrintType = 'BlankWithPlaceholder'">
+							<xsl:when test="$printSettingsPrintType = 'BlankWithPlaceholder'">
 								<xsl:value-of select="'Blank record, with placeholder text'"/>
 							</xsl:when>
 						</xsl:choose>
@@ -2973,7 +2975,7 @@
 					<xsl:value-of select="'Password'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="ScriptStepPassword">
-						<xsl:with-param name="Password" select="Password/Calculation"/>
+						<xsl:with-param name="password" select="Password/Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -3036,7 +3038,7 @@
 					<xsl:value-of select="'Password'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="ScriptStepPassword">
-						<xsl:with-param name="Password" select="Password/Calculation"/>
+						<xsl:with-param name="password" select="Password/Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -3061,7 +3063,7 @@
 					<xsl:value-of select="'Old Password'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="ScriptStepPassword">
-						<xsl:with-param name="Password" select="OldPassword/Calculation"/>
+						<xsl:with-param name="password" select="OldPassword/Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -3071,7 +3073,7 @@
 					<xsl:value-of select="'Password'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="ScriptStepPassword">
-						<xsl:with-param name="Password" select="NewPassword/Calculation"/>
+						<xsl:with-param name="password" select="NewPassword/Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -3122,7 +3124,7 @@
 					<xsl:value-of select="'Password'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="ScriptStepPassword">
-						<xsl:with-param name="Password" select="Password/Calculation"/>
+						<xsl:with-param name="password" select="Password/Calculation"/>
 					</xsl:call-template>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -4858,16 +4860,16 @@
 ! 		<UniversalPathList>file:fmSyntaxColorizer</UniversalPathList>
 ! 	</FileReference>
 ! 
-! 	<Calculation><![CDATA[$param]]></Calculation>
+! 	<Calculation><![CDATA[$Param]]></Calculation>
 ! 
 ! 	<Script id="201" name="Hello::World"/>
 ! 
 ! 	<Action value="Read">
 ! 		<Timeout>
-! 			<Calculation><![CDATA[$timeout]]></Calculation>
+! 			<Calculation><![CDATA[$Timeout]]></Calculation>
 ! 		</Timeout>
 ! 		<ReadMultiple>
-! 			<Calculation><![CDATA[$continuous]]></Calculation>
+! 			<Calculation><![CDATA[$Continuous]]></Calculation>
 ! 		</ReadMultiple>
 ! 	</Action>
 ! 
@@ -4952,7 +4954,7 @@
 	 ! ========
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '202']">
-		<xsl:variable name="Operation" select="(ConfigureCoreML/text())[1]"/>
+		<xsl:variable name="operation" select="(ConfigureCoreML/text())[1]"/>
 		<!--  -->
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
@@ -4961,7 +4963,7 @@
 				<xsl:value-of select="'Operation'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:choose>
-					<xsl:when test="$Operation = 'Uninstall'">
+					<xsl:when test="$operation = 'Uninstall'">
 						<xsl:value-of select="'Unload'"/>
 						<xsl:value-of select="$delimiter3"/>
 
@@ -4973,15 +4975,15 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
-							<xsl:when test="$Operation = 'General'">
+							<xsl:when test="$operation = 'General'">
 								<xsl:value-of select="'General'"/>
 							</xsl:when>
-							<xsl:when test="$Operation = 'Vision'">
+							<xsl:when test="$operation = 'Vision'">
 								<xsl:value-of select="'Vision'"/>
 							</xsl:when>
 							<xsl:otherwise>
 								<!-- Unknown Operation -->
-								<xsl:value-of select="$Operation"/>
+								<xsl:value-of select="$operation"/>
 							</xsl:otherwise>
 						</xsl:choose>				
 						<xsl:value-of select="$delimiter3"/>
@@ -5887,7 +5889,7 @@
 	 ! ========
 	 !-->
 	<xsl:template match="//Step[not(ancestor::Step) and @id = '218']">
-		<xsl:variable name="QueryType" select="LLMSemanticFind/Query/@type"/>
+		<xsl:variable name="queryType" select="LLMSemanticFind/Query/@type"/>
 		<!--  -->
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
@@ -5897,13 +5899,13 @@
 					<xsl:value-of select="'Query by'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:choose>
-						<xsl:when test="$QueryType='1'">
+						<xsl:when test="$queryType='1'">
 							<xsl:value-of select="'Natural language'"/>
 						</xsl:when>
-						<xsl:when test="$QueryType='2'">
+						<xsl:when test="$queryType='2'">
 							<xsl:value-of select="'Vector data'"/>
 						</xsl:when>
-						<xsl:when test="$QueryType='3'">
+						<xsl:when test="$queryType='3'">
 							<xsl:value-of select="'Image'"/>
 						</xsl:when>
 						<xsl:otherwise>
@@ -5924,14 +5926,14 @@
 					</xsl:call-template>
 				
 				<xsl:choose>
-					<xsl:when test="$QueryType='2'">
+					<xsl:when test="$queryType='2'">
 						<!-- Image -->
 						<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
 							<xsl:with-param name="optional_label" select="'Vector'"/>
 							<xsl:with-param name="calc" select="LLMSemanticFind/Vector/Calculation"/>
 						</xsl:call-template>
 					</xsl:when>
-					<xsl:when test="$QueryType='3'">
+					<xsl:when test="$queryType='3'">
 						<!-- Image -->
 						<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
 							<xsl:with-param name="optional_label" select="'Image'"/>
@@ -5977,7 +5979,7 @@
 				</xsl:for-each>
 				
 				<!-- Cosine similarity condition -->
-				<xsl:variable name="CosineSimilarityType">
+				<xsl:variable name="cosineSimilarityType">
 					<xsl:for-each select="LLMSemanticFind/Condition">
 						<xsl:choose>
 							<xsl:when test="@type='1'">
@@ -6002,10 +6004,10 @@
 					</xsl:for-each>
 				</xsl:variable>
 				
-				<xsl:if test="string-length($CosineSimilarityType)&gt;0">
+				<xsl:if test="string-length($cosineSimilarityType)&gt;0">
 					<xsl:value-of select="'Cosine similarity condition'"/>
 					<xsl:value-of select="$delimiter2"/>
-					<xsl:value-of select="$CosineSimilarityType"/>
+					<xsl:value-of select="$cosineSimilarityType"/>
 					<xsl:value-of select="$delimiter3"/>
 					
 					<!-- Cosine similarity value -->
@@ -7305,7 +7307,7 @@
 	 ! ExternalDataSourceName
 	 !-->
 	<xsl:template name="ExternalDataSourceName">
-		<xsl:param name="OrCurrentFile" select="'False'"/>
+		<xsl:param name="orCurrentFile" select="'False'"/>
 		<!--  -->
 		<xsl:choose>
 			<xsl:when test="FileReference/@name">
@@ -7322,7 +7324,7 @@
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
 			</xsl:when>
-			<xsl:when test="$OrCurrentFile != 'False'">
+			<xsl:when test="$orCurrentFile != 'False'">
 				<xsl:value-of select="'Current File'"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -8267,21 +8269,21 @@
 	 ! In FM 17 the SaveAsType attribute has moved into this block 
 	 !-->
 	<xsl:template name="ScriptStepParamSpecifyOutputFile">
-		<xsl:param name="SaveAsType" select="''"/>
+		<xsl:param name="saveAsType" select="''"/>
 		<!--  -->
 		<xsl:call-template name="ScriptStepParamSpecifyFile"/>
-		<xsl:if test="$SaveAsType">
+		<xsl:if test="$saveAsType">
 			<xsl:choose>
-				<xsl:when test="$SaveAsType/@value = 'Clone'">
+				<xsl:when test="$saveAsType/@value = 'Clone'">
 					<xsl:value-of select="'clone (no records)'"/>
 				</xsl:when>
-				<xsl:when test="$SaveAsType/@value = 'CompactedCopy'">
+				<xsl:when test="$saveAsType/@value = 'CompactedCopy'">
 					<xsl:value-of select="'compacted copy (smaller)'"/>
 				</xsl:when>
-				<xsl:when test="$SaveAsType/@value = 'Copy'">
+				<xsl:when test="$saveAsType/@value = 'Copy'">
 					<xsl:value-of select="'copy of current file'"/>
 				</xsl:when>
-				<xsl:when test="$SaveAsType/@value = 'SelfContainedCopy'">
+				<xsl:when test="$saveAsType/@value = 'SelfContainedCopy'">
 					<xsl:value-of select="'self-contained copy (single file)'"/>
 				</xsl:when>
 			</xsl:choose>
@@ -8429,7 +8431,7 @@
 	 ! ScriptStepPassword
 	 !-->
 	<xsl:template name="ScriptStepPassword">
-		<xsl:param name="Password"/>
+		<xsl:param name="password"/>
 		<!-- -->
 		<xsl:choose>
 			<xsl:when test="$pScriptStepHidePasswords = 'True'">
@@ -8437,7 +8439,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:call-template name="OutputCalculation">
-					<xsl:with-param name="calc" select="$Password/Calculation"/>
+					<xsl:with-param name="calc" select="$password/Calculation"/>
 				</xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
