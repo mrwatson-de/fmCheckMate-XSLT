@@ -19,10 +19,12 @@
 	<!-- ===== CONSTANTS ===== -->
 	<xsl:variable name="APOS">'</xsl:variable>
 	<xsl:variable name="QUOT">"</xsl:variable>
-	<xsl:variable name="OPENQUOTES" select="'“'"/>
 	<!--Left Double Quotation Mark	-->
-	<xsl:variable name="CLOSEQUOTES" select="'”'"/>
+	<!-- i18n dbengine_string::kOpenSmartQuoteStrID -->
+	<xsl:variable name="OPENQUOTES" select="'“'"/>
 	<!--Right Double Quotation Mark -->
+	<!-- i18n dbengine_string::kCloseSmartQuoteStrID -->
+	<xsl:variable name="CLOSEQUOTES" select="'”'"/>
 	<xsl:variable name="PIPE">|</xsl:variable>
 	<xsl:variable name="TAB" select="'&#9;'"/>
 	<xsl:variable name="LF" select="'&#10;'"/>
