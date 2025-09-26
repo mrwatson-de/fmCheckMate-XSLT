@@ -22,6 +22,8 @@
 		4) LATER - i18n
 	
 	===== CHANGES HISTORY =====
+	2025-09-15 @mrwatson-de:
+	- Started adding comments defining the i18n strings
 	2025-09-09 @mrwatson-de:
 	- Resolves #11 Standardise Variables and parameters to use lowerCamelCase
 	2025-09-08 @mrwatson-de:
@@ -234,6 +236,8 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamScriptSpecified"/>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptEventWaitStrID -->
+				
 				<xsl:value-of select="'Wait for completion'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -254,12 +258,15 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:choose>
 					<xsl:when test="PauseTime/@value = 'ForDuration'">
-						<xsl:value-of select="concat('Duration (seconds)', $delimiter2)"/>
+						<!-- i18n dbengine_string::kScriptPauseDurationStrID1 -->
+						<xsl:value-of select="'Duration (seconds)'"/>
+						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="OutputCalculation">
 							<xsl:with-param name="calc" select="Calculation"/>
 						</xsl:call-template>
 					</xsl:when>
 					<xsl:when test="PauseTime/@value = 'Indefinitely'">
+						<!-- i18n dbengine_string::kScriptPauseIndefinitelyStrID -->
 						<xsl:value-of select="'Indefinitely'"/>
 					</xsl:when>
 				</xsl:choose>
@@ -275,6 +282,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+					<!-- i18n dbengine_string::kScriptReturnValueLabelStrID -->
 					<xsl:with-param name="optional_label" select="'Text Result'"/>
 					<xsl:with-param name="calc" select="Calculation"/>
 				</xsl:call-template>
@@ -311,17 +319,21 @@
 		<xsl:if test="$flush!=''">
 			<xsl:call-template name="ScriptStepParameterList">
 				<xsl:with-param name="pParameterList">
-						<xsl:value-of select="'Flush'"/>
+					<!-- i18n dbengine_string::kScriptLoopAlwaysFlushDoneStrID -->
+					<xsl:value-of select="'Flush'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="@flush"/>
 							<xsl:choose>
 							<xsl:when test="$flush='Always'">
-							<xsl:value-of select="'Always'"/>
+								<!-- i18n dbengine_string::kScriptLoopAlwaysFlushStrID -->
+								<xsl:value-of select="'Always'"/>
 						</xsl:when>
 						<xsl:when test="$flush='Defer'">
+							<!-- i18n dbengine_string::kScriptLoopDeferFlushStrID -->
 							<xsl:value-of select="'Defer'"/>
 						</xsl:when>
 						<xsl:when test="$flush='Min'">
+							<!-- i18n dbengine_string::kScriptLoopMinFlushStrID -->
 							<xsl:value-of select="'Minimum'"/>
 						</xsl:when>
 					</xsl:choose>
@@ -417,7 +429,9 @@
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
 				<xsl:if test="Value/Calculation">
-					<xsl:value-of select="concat('Value', $delimiter2)"/>
+					<!-- i18n dbengine_string::kScriptValueStrID-->
+					<xsl:value-of select="'Value'"/>
+					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
 						<xsl:with-param name="calc" select="Value/Calculation"/>
 					</xsl:call-template>
@@ -458,6 +472,7 @@
 					<xsl:if test="Calculation">
 
 						<xsl:call-template name="ScriptStepParamCalculation">
+							<!-- i18n dbengine_string::kScriptParameterStrID -->
 							<xsl:with-param name="optional_label" select="'Parameter'"/>
 							<xsl:with-param name="calc" select="Calculation"/>
 						</xsl:call-template>
@@ -465,7 +480,9 @@
 					<!-- -->
 				</xsl:if>
 				<xsl:if test="Interval/Calculation">
-					<xsl:value-of select="concat('Interval', $delimiter2)"/>
+					<!-- i18n dbengine_string::kScriptSpecifyIntervalLabel -->
+					<xsl:value-of select="'Interval'"/>
+					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
 						<xsl:with-param name="calc" select="Interval/Calculation"/>
 					</xsl:call-template>
@@ -511,6 +528,7 @@
 					<xsl:when test="RowPageLocation/@value = 'Previous'">
 						<xsl:value-of select="'Previous'"/>
 						<xsl:value-of select="$delimiter3"/>
+						<!-- i18n dbengine_string::kScriptExitAfterLastStrID -->
 						<xsl:value-of select="'Exit after last'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -521,6 +539,7 @@
 					<xsl:when test="RowPageLocation/@value = 'Next'">
 						<xsl:value-of select="'Next'"/>
 						<xsl:value-of select="$delimiter3"/>
+						<!-- i18n dbengine_string::kScriptExitAfterLastStrID -->
 						<xsl:value-of select="'Exit after last'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -554,31 +573,38 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="Restore/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptShowOnlyRelatedStrID -->
 					<xsl:value-of select="'Show only related records'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="MatchAllRecords/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptMatchFoundSetStrID -->
 					<xsl:value-of select="'Match found set'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
-				<xsl:value-of select="concat('From table', $delimiter2)"/>
+				<!-- i18n dbengine_string::kScriptFromTableStrID -->
+				<xsl:value-of select="'From table'"/>
+				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="QuotedStringOrUnknown">
 					<xsl:with-param name="string" select="Table/@name"/>
 				</xsl:call-template>
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
 				<xsl:if test="Option/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptExternalStrID -->
 					<xsl:value-of select="'External'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptUsingLayoutStrID -->
 				<xsl:value-of select="'Using layout'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamLayoutDestination"/>
 				<!-- -->
 				<xsl:if test="ShowInNewWindow/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptCreateWindowStrID -->
 					<xsl:value-of select="'New window'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -597,6 +623,7 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
+				<!-- i18n dbengine_string::kScriptSelectStrID -->
 				<xsl:value-of select="'Select'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -606,14 +633,17 @@
 				<!-- -->
 				<xsl:choose>
 					<xsl:when test="RowPageLocation/@value = 'First'">
+						<!-- i18n dbengine_string::kGotoPopupFirstStrID -->
 						<xsl:value-of select="'First'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
 					</xsl:when>
 					<xsl:when test="RowPageLocation/@value = 'Previous'">
+						<!-- i18n dbengine_string::kGotoPopupPreviousStrID -->
 						<xsl:value-of select="'Previous'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
+						<!-- i18n dbengine_string::kScriptExitAfterLastStrID -->
 						<xsl:value-of select="'Exit after last'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -622,9 +652,11 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:when>
 					<xsl:when test="RowPageLocation/@value = 'Next'">
+						<!-- i18n dbengine_string::kGotoPopupNextStrID -->
 						<xsl:value-of select="'Next'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
+						<!-- i18n dbengine_string::kScriptExitAfterLastStrID -->
 						<xsl:value-of select="'Exit after last'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="OutputTrueAsOnElseOff">
@@ -633,6 +665,7 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:when>
 					<xsl:when test="RowPageLocation/@value = 'Last'">
+						<!-- i18n dbengine_string::kGotoPopupLastStrID -->
 						<xsl:value-of select="'Last'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
@@ -660,8 +693,8 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="ObjectName">
-
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kScriptOptionObjectNameStrID -->
 						<xsl:with-param name="optional_label" select="'Object Name'"/>
 						<xsl:with-param name="calc" select="ObjectName/Calculation"/>
 					</xsl:call-template>
@@ -680,6 +713,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="SelectAll/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptOptionSelectPerformStrID -->
 					<xsl:value-of select="'Select/perform'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -759,7 +793,20 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-				<xsl:value-of select="UndoRedo/@value"/>
+				<xsl:choose>
+					<xsl:when test="UndoRedo/@value='Undo'">
+						<!-- i18n dbengine_string::kScriptUndoStrID -->
+						<xsl:value-of select="'Undo'"/>
+					</xsl:when>
+					<xsl:when test="UndoRedo/@value='Redo'">
+						<!-- i18n dbengine_string::kScriptRedoStrID -->
+						<xsl:value-of select="'Redo'"/>
+					</xsl:when>
+					<xsl:when test="UndoRedo/@value='Toggle'">
+						<!-- i18n dbengine_string::kScriptToggleUndoStrID -->
+						<xsl:value-of select="'Toggle'"/>
+					</xsl:when>
+				</xsl:choose>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:call-template name="ScriptStepEND"/>
@@ -799,11 +846,13 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSelect"/>
 				<xsl:if test="NoStyle/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptNoStyleStrID -->
 					<xsl:value-of select="'No style'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="LinkAvail/@state = 'True'">
+					<!-- FIXME - isn't this outdated? -->
 					<xsl:value-of select="'If link available'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -837,6 +886,7 @@
 				<xsl:if test="StartPosition">
 
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kScriptStartPosStrID -->
 						<xsl:with-param name="optional_label" select="'Start Position'"/>
 						<xsl:with-param name="calc" select="StartPosition/Calculation"/>
 					</xsl:call-template>
@@ -845,6 +895,7 @@
 				<xsl:if test="EndPosition">
 
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kScriptEndPosStrID -->
 						<xsl:with-param name="optional_label" select="'End Position'"/>
 						<xsl:with-param name="calc" select="EndPosition/Calculation"/>
 					</xsl:call-template>
@@ -888,15 +939,19 @@
 				<!-- -->
 				<xsl:choose>
 					<xsl:when test="FindReplaceOperation/@type = 'FindNext'">
+						<!-- i18n dbengine_string::kScriptFindReplaceFindNextStrID -->
 						<xsl:value-of select="'Find Next'"/>
 					</xsl:when>
 					<xsl:when test="FindReplaceOperation/@type = 'ReplaceAndFind'">
+						<!-- i18n dbengine_string::kScriptFindReplaceReplaceAndFindStrID -->
 						<xsl:value-of select="'Replace &amp; Find'"/>
 					</xsl:when>
 					<xsl:when test="FindReplaceOperation/@type = 'Replace'">
+						<!-- i18n dbengine_string::kScriptFindReplaceReplaceStrID -->
 						<xsl:value-of select="'Replace'"/>
 					</xsl:when>
 					<xsl:when test="FindReplaceOperation/@type = 'ReplaceAll'">
+						<!-- i18n dbengine_string::kScriptFindReplaceReplaceAllStrID -->
 						<xsl:value-of select="'Replace All'"/>
 					</xsl:when>
 				</xsl:choose>
@@ -1008,26 +1063,93 @@
 				<xsl:call-template name="ScriptStepParamTarget">
 					<xsl:with-param name="label" select="''"/>
 				</xsl:call-template>
+				<!-- i18n dbengine_string::kTypeStrID -->
 				<xsl:value-of select="'Type'"/>
 				<xsl:value-of select="$delimiter2"/>
-				<xsl:value-of select="InsertFrom/@value"/>
+				<xsl:for-each select="InsertFrom/@value">
+					<xsl:choose>
+						<xsl:when test=".='Camera'">
+							<!-- i18n dbengine_string::kInsertFromDeviceCameraStillStrID -->
+							<xsl:value-of select="'Camera'"/>
+						</xsl:when>
+						<xsl:when test=".='Video Camera'">
+							<!-- i18n dbengine_string::kInsertFromDeviceCameraVideoStrID -->
+							<xsl:value-of select="'Video Camera'"/>
+						</xsl:when>
+						<xsl:when test=".='Microphone'">
+							<!-- i18n dbengine_string::kInsertFromDeviceMicrophoneStrID -->
+							<xsl:value-of select="'Microphone'"/>
+						</xsl:when>
+						<xsl:when test=".='Barcode'">
+							<!-- i18n dbengine_string::kInsertFromDeviceBarCodeStrID -->
+							<xsl:value-of select="'Barcode'"/>
+						</xsl:when>
+						<xsl:when test=".='Photo Library'">
+							<!-- i18n dbengine_string::kInsertFromDevicePhotoLibStrID -->
+							<xsl:value-of select="'Photo Library'"/>
+						</xsl:when>
+						<xsl:when test=".='Music Library'">
+							<!-- i18n dbengine_string::kInsertFromDeviceMusicLibStrID -->
+							<xsl:value-of select="'Music Library'"/>
+						</xsl:when>
+						<xsl:when test=".='Signature'">
+							<!-- i18n dbengine_string::kInsertFromDeviceSignatureStrID -->
+							<xsl:value-of select="'Signature'"/>
+						</xsl:when>
+					</xsl:choose>
+				</xsl:for-each>
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Camera">
+					<!-- i18n dbengine_string::kDeviceCameraStrID -->
 					<xsl:value-of select="'Camera'"/>
 					<xsl:value-of select="$delimiter2"/>
-					<xsl:value-of select="DeviceOptions/Camera/@choice"/>
+					<xsl:for-each select="DeviceOptions/Camera/@choice">
+						<xsl:choose>
+							<xsl:when test=".='Back'">
+								<!-- i18n dbengine_string::kDeviceCameraBackStrID -->
+								<xsl:value-of select="'Back'"/>
+							</xsl:when>
+							<xsl:when test=".='Front'">
+								<!-- i18n dbengine_string::kDeviceCameraFrontStrID -->
+								<xsl:value-of select="'Front'"/>
+							</xsl:when>
+						</xsl:choose>
+					</xsl:for-each>
+					
+					
 					<xsl:call-template name="SIC.delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Resolution">
+					<!-- i18n dbengine_string::kResolutionStrID -->
 					<xsl:value-of select="'Resolution'"/>
 					<xsl:value-of select="$delimiter2"/>
-					<xsl:value-of select="DeviceOptions/Resolution/@choice"/>
+					<xsl:for-each select="DeviceOptions/Resolution/@choice">
+						<xsl:choose>
+							<xsl:when test=".='Full'">
+								<!-- i18n dbengine_string::kResolutionFullStrID -->
+								<xsl:value-of select="'Full'"/>
+							</xsl:when>
+							<xsl:when test=".='Large'">
+								<!-- i18n dbengine_string::kResolutionLargeStrID -->
+								<xsl:value-of select="'Large'"/>
+							</xsl:when>
+							<xsl:when test=".='Medium'">
+								<!-- i18n dbengine_string::kResolutionMediumStrID -->
+								<xsl:value-of select="'Medium'"/>
+							</xsl:when>
+							<xsl:when test=".='Small'">
+								<!-- i18n dbengine_string::kResolutionSmallStrID -->
+								<xsl:value-of select="'Small'"/>
+							</xsl:when>
+						</xsl:choose>
+					</xsl:for-each>
 					<xsl:call-template name="SIC.delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/MaxDuration/@state = 'True'">
+					<!-- i18n dbengine_string::kMaxDurationStrID -->
 					<xsl:value-of select="'Max duration'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
@@ -1037,11 +1159,13 @@
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/StartImmediately/@state = 'True'">
+					<!-- i18n dbengine_string::kStartImmediatelyStrID -->
 					<xsl:value-of select="'Start immediately'"/>
 					<xsl:call-template name="SIC.delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Title/Calculation">
+					<!-- i18n dbengine_string::kPrintShowCustomDialogTitleStrID -->
 					<xsl:value-of select="'Title'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
@@ -1051,6 +1175,7 @@
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Message/Calculation">
+					<!-- i18n dbengine_string::kPrintShowCustomDialogMessageStrID -->
 					<xsl:value-of select="'Message'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
@@ -1060,6 +1185,7 @@
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Prompt/Calculation">
+					<!-- i18n dbengine_string::kSignaturePromptStrID -->
 					<xsl:value-of select="'Prompt'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="OutputCalculation">
@@ -1069,16 +1195,20 @@
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DeviceOptions/Presentation/@choice">
+					<!-- i18n dbengine_string::kPresentationStrID -->
 					<xsl:value-of select="'Presentation'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:choose>
 						<xsl:when test="DeviceOptions/Presentation/@choice = 'Full Screen'">
+							<!-- i18n dbengine_string::kPresentationFullStrID -->
 							<xsl:value-of select="'Full Screen'"/>
 						</xsl:when>
 						<xsl:when test="DeviceOptions/Presentation/@choice = 'Overlay'">
+							<!-- i18n dbengine_string::kPresentationInlineStrID -->
 							<xsl:value-of select="'Overlay'"/>
 						</xsl:when>
 						<xsl:when test="DeviceOptions/Presentation/@choice = 'Embedded'">
+							<!-- i18n dbengine_string::kPresentationEmbeddedStrID -->
 							<xsl:value-of select="'Embedded'"/>
 						</xsl:when>
 						<xsl:otherwise>
@@ -1090,6 +1220,7 @@
 				<!-- -->
 				<xsl:if test="DeviceOptions/ScanFrom/@type = 'Field'">
 						<xsl:call-template name="ScriptStepParamTarget">
+							<!-- i18n dbengine_string::kScanFromStrID -->
 							<xsl:with-param name="label" select="'Scan from'"/>
 							<xsl:with-param name="field" select="DeviceOptions/ScanFrom/Field"/>
 						</xsl:call-template>
@@ -1157,12 +1288,14 @@
 				<xsl:if test="CURLOptions/Calculation">
 
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kScriptPrintCURLOptionsID -->
 						<xsl:with-param name="optional_label" select="'cURL options'"/>
 						<xsl:with-param name="calc" select="CURLOptions/Calculation"/>
 					</xsl:call-template>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="DontEncodeURL/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptDoNotAutoEncodeStrID -->
 					<xsl:value-of select="'Do not automatically encode URL'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1252,9 +1385,9 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-<!--				<xsl:call-template name="ScriptStepParamUniversalPathListReference"/>-->
 				<xsl:if test="UniversalPathList/@type = 'Reference'">
-					<xsl:value-of select="UniversalPathList/@type"/>
+					<!-- i18n dbengine_string::kScriptReferenceStrID -->
+					<xsl:value-of select="'Reference'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				
@@ -1288,17 +1421,21 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="DialogOptions[@enable = 'True']/FilterList/Filter">
+					<!-- i18n dbengine_string::kInsertFileOptionsFiltersStrID -->
 					<xsl:value-of select="'Filters'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
+				<!-- i18n FIXME - different key same result? dbengine_string::kInsertFileOptionsReferenceOnlyStrID -->
 				<xsl:call-template name="ScriptStepParamUniversalPathListReference"/>
 				<xsl:if test="DialogOptions[@enable = 'True']/Storage/@type = 'InsertOnly'">
+					<!-- i18n dbengine_string::kInsertFileOptionsEmbedOnlyStrID -->
 					<xsl:value-of select="'Insert'"/>
 					<xsl:value-of select="$delimiter3"/>
 					<!-- -->
 				</xsl:if>
 				<xsl:if test="DialogOptions/@asFile = 'False'">
+					<!-- i18n dbengine_string::kInsertFileOptionsMediaStrID -->
 					<xsl:value-of select="'Display content'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1308,11 +1445,13 @@
 						<!-- no text -->
 					</xsl:when>
 					<xsl:when test="DialogOptions[@enable = 'True']/Compress/@type = 'Never'">
+						<!-- i18n dbengine_string::kInsertFileOptionsNeverStrID -->
 						<xsl:value-of select="'Never compress'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
 					</xsl:when>
 					<xsl:when test="DialogOptions[@enable = 'True']/Compress/@type = 'WhenPossible'">
+						<!-- i18n dbengine_string::kInsertFileOptionsAlwaysStrID -->
 						<xsl:value-of select="'Compress when possible'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
@@ -1340,19 +1479,23 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:when>
 					<xsl:when test="With/@value='SerialNumbers'">
+						<!-- i18n dbengine_string::kScriptSerialNumbersStrID -->
 						<xsl:value-of select="'Serial numbers'"/>
 						<xsl:if test="$pVerbose = 'True'">
 							<xsl:value-of select="$delimiter2"/>
 							<xsl:choose>
 								<xsl:when test="SerialNumbers/@UseEntryOptions = 'True'">
+									<!-- i18n -->
 									<xsl:value-of select="'Use Entry Options'"/>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
 										<xsl:when test="SerialNumbers/@UpdateEntryOptions = 'False'">
+											<!-- i18n -->
 											<xsl:value-of select="'Update Entry Options'"/>
 										</xsl:when>
 										<xsl:otherwise>
+											<!-- i18n -->
 											<xsl:value-of select="'Custom values'"/>
 										</xsl:otherwise>
 									</xsl:choose>
@@ -1373,6 +1516,7 @@
 					</xsl:when>
 				</xsl:choose>
 				<xsl:if test="Restore/@state='True'">
+					<!-- i18n dbengine_string::kScriptOptionSkipAutoEntryStrID -->
 					<xsl:value-of select="'Skip auto-enter options'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1498,6 +1642,7 @@
 				<xsl:call-template name="ScriptStepParamNoDialog"/>
 				<!-- -->
 				<xsl:if test="ESSForceCommit/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptForceCommitStrID -->
 					<xsl:value-of select="'Force Commit'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1527,6 +1672,7 @@
 				<xsl:call-template name="ScriptStepParamNoDialog"/>
 				<!-- In fm18 the target table was added to the script text - at last :-) -->
 				<xsl:if test="Restore/@state='True' and Table">
+					<!-- i18n dbengine_string::kTableStrID -->
 					<xsl:value-of select="'Table'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:choose>
@@ -1547,24 +1693,28 @@
 				 !-->
 				<xsl:if test="Restore/@state = 'True' or DataSourceType/@value = 'Folder'">
 					<xsl:if test="Profile/@IncludeEnclosedFolders = 'True'">
+						<!-- i18n dbengine_string::kBatchProfileIncludeAllFoldersStrID -->
 						<xsl:value-of select="'Include all enclosed folders'"/>
 						<xsl:call-template name="SIC.delimiter3"/>
 					</xsl:if>
 					<!-- -->
 					<xsl:choose>
 						<xsl:when test="Profile/@PictureAndMovieImport = 'True'">
+							<!-- i18n dbengine_string::kBatchProfilePictureAndMoveFilesStrID -->
 							<xsl:value-of select="'Picture and movie files'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
 						</xsl:when>
 						<xsl:when
 							test="DataSourceType/@value = 'Folder' and Profile/@PictureAndMovieImport = 'False'">
+							<!-- i18n dbengine_string::kBatchProfileTextFilesStrID -->
 							<xsl:value-of select="'Text files'"/>
 							<xsl:value-of select="$delimiter3"/>
 							<!-- -->
 						</xsl:when>
 					</xsl:choose>
 					<xsl:if test="Profile/@ImportByReference = 'True'">
+						<!-- i18n dbengine_string::kBatchProfileImportByReferenceStrID -->
 						<xsl:value-of select="'Import only a reference'"/>
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
@@ -1572,16 +1722,19 @@
 					<!-- Import method (Record) -->
 					<xsl:choose>
 						<xsl:when test="ImportOptions/@method = 'Add'">
+							<!-- i18n dbengine_string::kImportActionAddStrID -->
 							<xsl:value-of select="'Add'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
 						</xsl:when>
 						<xsl:when test="ImportOptions/@method = 'UpdateOnMatch'">
+							<!-- i18n dbengine_string::kImportActionUpdateMatchingStrID -->
 							<xsl:value-of select="'Update'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
 						</xsl:when>
 						<xsl:when test="ImportOptions/@method = 'Update'">
+							<!-- i18n dbengine_string::kImportActionUpdateStrID -->
 							<xsl:value-of select="'Replace'"/>
 							<xsl:call-template name="SIC.delimiter3"/>
 							<!-- -->
@@ -1591,33 +1744,43 @@
 					<xsl:if test="ImportOptions/@CharacterSet">
 						<xsl:choose>
 							<xsl:when test="ImportOptions/@CharacterSet = 'Windows'">
+								<!-- i18n dbengine_string::kCharacterSetIOWindowsStrID -->
 								<xsl:value-of select="'Windows ANSI'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'DOS'">
+								<!-- i18n dbengine_string::kCharacterSetIODOSStrID -->
 								<xsl:value-of select="'DOS OEM'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'Macintosh'">
+								<!-- i18n dbengine_string::kCharacterSetIOMacStrID -->
 								<xsl:value-of select="'Mac Roman'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'Unicode'">
+								<!-- i18n dbengine_string::kCharacterSetIOUTF16StrID -->
 								<xsl:value-of select="'Unicode'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'UnicodeBE'">
+								<!-- i18n dbengine_string::kCharacterSetIOUTF16_BEStrID -->
 								<xsl:value-of select="'Unicode (big endian)'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'UTF-8'">
+								<!-- i18n dbengine_string::kCharacterSetIOUTF8StrID -->
 								<xsl:value-of select="'UTF-8'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'ShiftJIS'">
+								<!-- i18n dbengine_string::kCharacterSetIOShiftJISStrID -->
 								<xsl:value-of select="'Shift JIS'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'ChineseSimplified'">
+								<!-- i18n dbengine_string::kCharacterSetIOChineseSimpStrID -->
 								<xsl:value-of select="'Simplified Chinese (GB)'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'ChineseTraditional'">
+								<!-- i18n dbengine_string::kCharacterSetIOChineseTradStrID -->
 								<xsl:value-of select="'Traditional Chinese (Big-5)'"/>
 							</xsl:when>
 							<xsl:when test="ImportOptions/@CharacterSet = 'EUC-KR'">
+								<!-- i18n dbengine_string::kCharacterSetIOEUC_KRStrID -->
 								<xsl:value-of select="'Korean (EUC-KR)'"/>
 							</xsl:when>
 						</xsl:choose>
@@ -1649,6 +1812,7 @@
 							<xsl:call-template name="SIC.delimiter3"/>
 						</xsl:if>
 						<!-- -->
+						<!-- i18n dbengine_string::kScriptImportSourceStrID -->
 						<xsl:value-of select="'Source'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:choose>
@@ -1667,6 +1831,7 @@
 							</xsl:otherwise>
 						</xsl:choose>
 						<!-- -->
+						<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 						<xsl:value-of select="'Target'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Table/@name"/>
@@ -1803,6 +1968,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="Restore/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptRestoreStrID -->
 					<xsl:value-of select="'Restore'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1825,11 +1991,13 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="Restore/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptRestoreStrID -->
 					<xsl:value-of select="'Restore'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
 				<xsl:if test="Option/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptPDFAppendStrID -->
 					<xsl:value-of select="'Append'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -1840,11 +2008,13 @@
 				<xsl:if test="Restore/@state = 'True'">
 					<xsl:choose>
 						<xsl:when test="PDFOptions/@source = 'RecordsBeingBrowsed'">
+							<!-- i18n dbengine_string::kScriptPDFBrowsedRecords -->
 							<xsl:value-of select="'Records being browsed'"/>
 							<xsl:value-of select="$delimiter3"/>
 							<!-- -->
 						</xsl:when>
 						<xsl:when test="PDFOptions/@source = 'CurrentRecord'">
+							<!-- i18n dbengine_string::kScriptPDFCurrentRecord -->
 							<xsl:value-of select="'Current record'"/>
 							<xsl:value-of select="$delimiter3"/>
 							<!-- -->
@@ -1854,15 +2024,19 @@
 							<xsl:value-of select="', '"/>
 							<xsl:choose>
 								<xsl:when test="PDFOptions/@appearance = 'AsFormatted'">
+									<!-- i18n dbengine_string::kScriptPDFBlankAsFormatted -->
 									<xsl:value-of select="'as formatted'"/>
 								</xsl:when>
 								<xsl:when test="PDFOptions/@appearance = 'WithBoxes'">
+									<!-- i18n dbengine_string::kScriptPDFBlankWithBoxes -->
 									<xsl:value-of select="'with boxes'"/>
 								</xsl:when>
 								<xsl:when test="PDFOptions/@appearance = 'WithUnderlines'">
+									<!-- i18n dbengine_string::kScriptPDFBlankWithUnderlines -->
 									<xsl:value-of select="'with underlines'"/>
 								</xsl:when>
 								<xsl:when test="PDFOptions/@appearance = 'WithPlaceholderText'">
+									<!-- i18n dbengine_string::kScriptPDFBlankWithPlaceholderText -->
 									<xsl:value-of select="'with placeholder text'"/>
 								</xsl:when>
 							</xsl:choose>
@@ -2035,6 +2209,7 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="Restore/@state = 'True'">
+					<!-- i18n dbengine_string::kScriptRestoreStrID -->
 					<xsl:value-of select="'Restore'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -2047,6 +2222,7 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<xsl:if test="SortList/@Value = 'True'">
+						<!-- i18n dbengine_string::kScriptValueStrID-->
 						<xsl:value-of select="'Value'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
@@ -2329,6 +2505,7 @@
 						<xsl:value-of select="'Resize to Fit'"/>
 					</xsl:when>
 					<xsl:when test="WindowState/@value = 'Restore'">
+						<!-- i18n dbengine_string::kScriptRestoreStrID -->
 						<xsl:value-of select="'Restore'"/>
 					</xsl:when>
 				</xsl:choose>
@@ -2669,12 +2846,14 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:choose>
 					<xsl:when test="MultiUser/@value = 'True'">
+						<!-- i18n dbengine_string::kScriptOnStrID -->
 						<xsl:value-of select="'On'"/>
 					</xsl:when>
 					<xsl:when test="MultiUser/@value = 'OnHidden'">
 						<xsl:value-of select="'On (Hidden)'"/>
 					</xsl:when>
 					<xsl:when test="MultiUser/@value = 'False'">
+						<!-- i18n dbengine_string::kScriptOffStrID -->
 						<xsl:value-of select="'Off'"/>
 					</xsl:when>
 				</xsl:choose>
@@ -2765,6 +2944,7 @@
 							<xsl:call-template name="ScriptStepParamPageFormat"/>
 						</xsl:when>
 						<xsl:otherwise>
+							<!-- i18n dbengine_string::kScriptRestoreStrID -->
 							<xsl:value-of select="'Restore'"/>
 							<xsl:if test="1 = 0">
 								<xsl:value-of select="$delimiter2"/>
@@ -2852,6 +3032,7 @@
 						<xsl:call-template name="ScriptStepParamPageFormat"/>
 					</xsl:if>
 					<!-- -->
+					<!-- i18n dbengine_string::kScriptRestoreStrID -->
 					<xsl:value-of select="'Restore'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:if test="PrintSettings/PlatformData/@PlatformType = 'PrNm'">
@@ -4217,13 +4398,16 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
+				<!-- i18n dbengine_string::kMonitorRegionMonitorStrID -->
 				<xsl:value-of select="'Monitor'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:choose>
 					<xsl:when test="MonitorType/@value = 'iBeacon'">
+						<!-- i18n dbengine_string::kMonitorRegionTypeBeaconStrID -->
 						<xsl:value-of select="'iBeacon'"/>
 					</xsl:when>
 					<xsl:when test="MonitorType/@value = 'GeoLocation'">
+						<!-- i18n dbengine_string::kMonitorRegionTypeGeoFenceStrID -->
 						<xsl:value-of select="'Geofence'"/>
 					</xsl:when>
 				</xsl:choose>
@@ -4232,11 +4416,13 @@
 				<xsl:if test="MonitorType/RangeName">
 
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kMonitorRegionNameStrID -->
 						<xsl:with-param name="optional_label" select="'Name'"/>
 						<xsl:with-param name="calc" select="MonitorType/RangeName/Calculation"/>
 					</xsl:call-template>
 				</xsl:if>
 				<xsl:if test="Script">
+					<!-- i18n dbengine_string::kScriptStrID -->
 					<xsl:value-of select="'Script'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="QuotedStringOrUnknown">
@@ -4250,7 +4436,9 @@
 						<xsl:value-of select="FileReference/@name"/>
 						<xsl:value-of select="$CLOSEQUOTES"/>
 						<xsl:if test="FileReference/@name = ''">
-							<xsl:value-of select="' (file not open)'"/>
+							<xsl:value-of select="' '"/>
+							<!-- i18n dbengine_string::kScriptFileNotOpenStrID -->
+							<xsl:value-of select="'(file not open)'"/>
 						</xsl:if>
 					</xsl:if>
 					<xsl:value-of select="$delimiter3"/>
@@ -4258,6 +4446,7 @@
 					<xsl:if test="Calculation">
 
 						<xsl:call-template name="ScriptStepParamCalculation">
+							<!-- i18n dbengine_string::kScriptParameterStrID -->
 							<xsl:with-param name="optional_label" select="'Parameter'"/>
 							<xsl:with-param name="calc" select="Calculation"/>
 						</xsl:call-template>
@@ -4270,6 +4459,7 @@
 						<xsl:if test="MonitorType/ProximityUUID">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionUUIDStrID -->
 								<xsl:with-param name="optional_label" select="'UUID'"/>
 								<xsl:with-param name="calc"
 									select="MonitorType/ProximityUUID/Calculation"/>
@@ -4279,6 +4469,7 @@
 						<xsl:if test="MonitorType/MajorID">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionMajorStrID -->
 								<xsl:with-param name="optional_label" select="'Major'"/>
 								<xsl:with-param name="calc" select="MonitorType/MajorID/Calculation"
 								/>
@@ -4288,6 +4479,7 @@
 						<xsl:if test="MonitorType/MinorID">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionMinorStrID -->
 								<xsl:with-param name="optional_label" select="'Minor'"/>
 								<xsl:with-param name="calc" select="MonitorType/MinorID/Calculation"
 								/>
@@ -4299,6 +4491,7 @@
 						<xsl:if test="MonitorType/Latitude">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionLatitudeStrID -->
 								<xsl:with-param name="optional_label" select="'Latitude'"/>
 								<xsl:with-param name="calc"
 									select="MonitorType/Latitude/Calculation"/>
@@ -4308,6 +4501,7 @@
 						<xsl:if test="MonitorType/Longitude">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionLongitudeStrID -->
 								<xsl:with-param name="optional_label" select="'Longitude'"/>
 								<xsl:with-param name="calc"
 									select="MonitorType/Longitude/Calculation"/>
@@ -4317,6 +4511,7 @@
 						<xsl:if test="MonitorType/Radius">
 
 							<xsl:call-template name="ScriptStepParamCalculation">
+								<!-- i18n dbengine_string::kMonitorRegionRadiusStrID -->
 								<xsl:with-param name="optional_label" select="'Radius'"/>
 								<xsl:with-param name="calc" select="MonitorType/Radius/Calculation"
 								/>
@@ -4415,12 +4610,23 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<!-- -->
-				<xsl:value-of select="'Action'"/>
+				<!-- i18n dbengine_string::kLocalNotificationActionStrID -->
+					<xsl:value-of select="'Action'"/>
 				<xsl:value-of select="$delimiter2"/>
-				<xsl:value-of select="Action/@value"/>
+				<xsl:choose>
+					<xsl:when test="Action/@value='Clear'">
+						<!-- i18n dbengine_string::kLocalNotificationActionClearStrID -->
+						<xsl:value-of select="'Clear'"/>
+					</xsl:when>
+					<xsl:when test="Action/@value='Queue'">
+						<!-- i18n dbengine_string::kLocalNotificationActionQueueStrID -->
+						<xsl:value-of select="'Queue'"/>
+					</xsl:when>
+				</xsl:choose>
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
 				<xsl:if test="Action/Name">
+					<!-- i18n dbengine_string::kLocalNotificationNameStrID -->
 					<xsl:value-of select="'Name'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:value-of select="Action/Name/Calculation"/>
@@ -4430,6 +4636,7 @@
 				<xsl:if test="Action/@value = 'Queue'">
 					<!-- -->
 					<xsl:if test="Script/@name">
+						<!-- i18n dbengine_string::kScriptStrID -->
 						<xsl:value-of select="'Script'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:call-template name="QuotedStringOrUnknown">
@@ -4438,6 +4645,7 @@
 						<xsl:value-of select="$delimiter3"/>
 						<!-- -->
 						<xsl:if test="Calculation">
+							<!-- i18n dbengine_string::kScriptParameterStrID -->
 							<xsl:value-of select="'Parameter'"/>
 							<xsl:value-of select="$delimiter2"/>
 							<xsl:value-of select="Calculation"/>
@@ -4446,6 +4654,7 @@
 					</xsl:if>
 					<!-- -->
 					<xsl:if test="Action/Delay">
+						<!-- i18n dbengine_string::kLocalNotificationDelayStrID -->
 						<xsl:value-of select="'Delay'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/Delay/Calculation"/>
@@ -4453,6 +4662,7 @@
 					</xsl:if>
 					<!-- -->
 					<xsl:if test="Action/Title">
+						<!-- i18n dbengine_string::kLocalNotificationTitleStrID -->
 						<xsl:value-of select="'Title'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/Title/Calculation"/>
@@ -4460,6 +4670,7 @@
 					</xsl:if>
 					<!-- -->
 					<xsl:if test="Action/Body">
+						<!-- i18n dbengine_string::kLocalNotificationBodyStrID -->
 						<xsl:value-of select="'Body'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/Body/Calculation"/>
@@ -4467,13 +4678,14 @@
 					</xsl:if>
 					<!-- -->
 					<xsl:if test="Action/Button1Label">
-
+						<!-- i18n dbengine_string::kLocalNotificationButton0LabelStrID -->
 						<xsl:value-of select="'Button 1 Label'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/Button1Label/Calculation"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<!-- -->
+					<!-- i18n dbengine_string::kLocalNotificationButton1LabelStrID -->
 					<xsl:if test="Action/Button2Label">
 						<xsl:value-of select="'Button 2 Label'"/>
 						<xsl:value-of select="$delimiter2"/>
@@ -4481,6 +4693,7 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<!-- -->
+					<!-- i18n dbengine_string::kLocalNotificationButton2LabelStrID -->
 					<xsl:if test="Action/Button3Label">
 						<xsl:value-of select="'Button 3 Label'"/>
 						<xsl:value-of select="$delimiter2"/>
@@ -4489,12 +4702,14 @@
 					</xsl:if>
 					<!-- -->
 					<xsl:if test="Action/Button1ForceFgnd">
+						<!-- i18n dbengine_string::kLocalNotificationButton0ForegroundStrID -->
 						<xsl:value-of select="'Button 1 Foreground'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/Button1ForceFgnd/Calculation"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<!-- -->
+					<!-- i18n dbengine_string::kLocalNotificationButton1ForegroundStrID -->
 					<xsl:if test="Action/Button2ForceFgnd">
 						<xsl:value-of select="'Button 2 Foreground'"/>
 						<xsl:value-of select="$delimiter2"/>
@@ -4502,6 +4717,7 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<!-- -->
+					<!-- i18n dbengine_string::kLocalNotificationButton2ForegroundStrID -->
 					<xsl:if test="Action/Button3ForceFgnd">
 						<xsl:value-of select="'Button 3 Foreground'"/>
 						<xsl:value-of select="$delimiter2"/>
@@ -4509,6 +4725,7 @@
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:if>
 					<xsl:if test="Action/ShowWhenAppInForeground">
+						<!-- i18n FIXME fm22 -->
 						<xsl:value-of select="'Show when app in foreground'"/>
 						<xsl:value-of select="$delimiter2"/>
 						<xsl:value-of select="Action/ShowWhenAppInForeground/Calculation"/>
@@ -4552,6 +4769,7 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 				<xsl:value-of select="'Target'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="Field/text()"/>
@@ -4570,6 +4788,7 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 				<xsl:value-of select="'Target'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="Field/text()"/>
@@ -4604,6 +4823,7 @@
 			<xsl:with-param name="pParameterList">
 				<xsl:call-template name="ScriptStepParamSpecifyFile"/>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 				<xsl:value-of select="'Target'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamField"/>
@@ -4692,6 +4912,7 @@
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 				<xsl:value-of select="'Target'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamField"/>
@@ -4733,6 +4954,7 @@
 					</xsl:call-template>
 				</xsl:if>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 				<xsl:value-of select="'Target'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamField"/>
@@ -4880,13 +5102,23 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-
+				<!-- i18n dbengine_string::kConfigureNFCActionStrID -->
 				<xsl:value-of select="'Action'"/>
 				<xsl:value-of select="$delimiter2"/>
-				<xsl:value-of select="Action/@value"/>
+				<xsl:choose>
+					<xsl:when test="Action/@value='Cancel'">
+						<!-- i18n dbengine_string::kConfigureNFCActionCancelStrID -->
+						<xsl:value-of select="'Cancel'"/>						
+					</xsl:when>
+					<xsl:when test="Action/@value='Read'">
+						<!-- i18n dbengine_string::kConfigureNFCActionReadStrID -->
+						<xsl:value-of select="'Read'"/>						
+					</xsl:when>
+				</xsl:choose>
 				<xsl:value-of select="$delimiter3"/>
 
 				<xsl:if test="Script">
+					<!-- i18n dbengine_string::kScriptStrID -->
 					<xsl:value-of select="'Script'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:call-template name="QuotedStringOrUnknown">
@@ -4896,6 +5128,7 @@
 					<!-- -->
 					<xsl:if test="Calculation">
 						<xsl:call-template name="ScriptStepParamCalculation">
+							<!-- i18n dbengine_string::kScriptParameterStrID -->
 							<xsl:with-param name="optional_label" select="'Parameter'"/>
 						</xsl:call-template>
 					</xsl:if>
@@ -4904,18 +5137,21 @@
 
 				<xsl:for-each select="Action/Timeout">
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kConfigureNFCTimeoutStrID -->
 						<xsl:with-param name="optional_label" select="'Timeout'"/>
 					</xsl:call-template>
 				</xsl:for-each>
 
 				<xsl:for-each select="Action/ReadMultiple">
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kConfigureNFCMultipleStrID -->
 						<xsl:with-param name="optional_label" select="'Continuous Reading'"/>
 					</xsl:call-template>
 				</xsl:for-each>
 
 				<xsl:for-each select="Action/JSONOutput">
 					<xsl:call-template name="ScriptStepParamCalculation">
+						<!-- i18n dbengine_string::kConfigureJSONOutputStrID -->
 						<xsl:with-param name="optional_label" select="'Format Result as JSON'"/>
 					</xsl:call-template>
 				</xsl:for-each>
@@ -5108,14 +5344,17 @@
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
 				<xsl:if test="SkipAutoEntry/@state='True'">
+					<!-- i18n dbengine_string::kScriptOptionSkipAutoEntryStrID -->
 					<xsl:value-of select="'Skip auto-enter options'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<xsl:if test="Option/@state='True'">
+					<!-- i18n dbengine_string::kScriptSkipDataEntryStrID -->
 					<xsl:value-of select="'Skip data entry validation'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
 				<xsl:if test="ESSForceCommit/@state='True'">
+					<!-- i18n dbengine_string::kESSLockOverrideStrID-->
 					<xsl:value-of select="'Override ESS locking conflicts'"/>
 					<xsl:value-of select="$delimiter3"/>
 				</xsl:if>
@@ -5140,6 +5379,7 @@
 			<xsl:if test="Condition/Calculation">
 
 				<xsl:call-template name="ScriptStepParamCalculation">
+					<!-- i18n dbengine_string::kConditionalFormattingConditionID -->
 					<xsl:with-param name="optional_label" select="'Condition'"/>
 					<xsl:with-param name="calc" select="Condition/Calculation"/>
 				</xsl:call-template>
@@ -5147,11 +5387,13 @@
 			<xsl:if test="ErrorCode/Calculation">
 
 				<xsl:call-template name="ScriptStepParamCalculation">
+					<!-- i18n dbengine_string::kScriptTransactionErrorCodeStrID -->
 					<xsl:with-param name="optional_label" select="'Error Code'"/>
 					<xsl:with-param name="calc" select="ErrorCode/Calculation"/>
 				</xsl:call-template>
 
 				<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+					<!-- i18n dbengine_string::kScriptTransactionErrorMessageStrID -->
 					<xsl:with-param name="optional_label" select="'Error Message'"/>
 					<xsl:with-param name="calc" select="ErrorMessage/Calculation"/>
 				</xsl:call-template>
@@ -5220,7 +5462,7 @@
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
-
+				<!-- i18n dbengine_string::kTriggerConnectWorkflowLabelStrID -->
 				<xsl:value-of select="'Flow'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:choose>
@@ -5228,17 +5470,20 @@
 						<xsl:value-of select="Flow/text()"/>
 					</xsl:when>
 					<xsl:otherwise>
+						<!-- i18n dbengine_string::kUnknownScriptStrID -->
 						<xsl:value-of select="'&lt;unknown&gt;'"/>
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:value-of select="$delimiter3"/>
 
 				<xsl:call-template name="ScriptStepParamCalculation">
+					<!-- i18n dbengine_string::kTriggerConnectJSONDataLabelStrID -->
 					<xsl:with-param name="optional_label" select="'JSON Data'"/>
 					<xsl:with-param name="calc" select="JSONData/Calculation"/>
 				</xsl:call-template>
 
 				<xsl:call-template name="ScriptStepParamField">
+					<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 					<xsl:with-param name="label" select="'Target'"/>
 					<xsl:with-param name="field" select="Field"/>
 				</xsl:call-template>
@@ -5525,7 +5770,7 @@
 									<xsl:value-of select="'From list'"/>
 								</xsl:when>
 								<xsl:when test="OptionsSelectionType='By Name'">
-									<xsl:value-of select="'From list'"/>
+									<xsl:value-of select="'By name'"/>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:value-of select="OptionsSelectionType"/>
@@ -5838,14 +6083,18 @@
 				<xsl:call-template name="ScriptStepParamBooleany">
 					<xsl:with-param name="optional_label" select="'Verbose'"/>
 					<xsl:with-param name="value" select="LLMDebugLog/VerboseMode"/>
+					<!-- i18n dbengine_string::kScriptOnStrID -->
 					<xsl:with-param name="present" select="'On'"/>
+					<!-- i18n dbengine_string::kScriptOffStrID -->
 					<xsl:with-param name="empty" select="'Off'"/>
 				</xsl:call-template>
 				
 				<xsl:call-template name="ScriptStepParamBooleany">
 					<xsl:with-param name="optional_label" select="'Truncate Messages'"/>
 					<xsl:with-param name="value" select="LLMDebugLog/TruncateEmbeddingVectorsMode"/>
+					<!-- i18n dbengine_string::kScriptOnStrID -->
 					<xsl:with-param name="present" select="'On'"/>
+					<!-- i18n dbengine_string::kScriptOffStrID -->
 					<xsl:with-param name="empty" select="'Off'"/>
 				</xsl:call-template>
 				
@@ -6604,6 +6853,7 @@
 					</xsl:call-template>
 				</xsl:if>
 				
+				<!-- Bug in fm22: Prompt Template Name is not passed to clipboard -->
 				<xsl:for-each select="LLMCreateFind/TemplateName/Calculation">
 					<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
 						<xsl:with-param name="optional_label" select="'Prompt Template Name'"/>
@@ -7130,16 +7380,19 @@
 			<xsl:with-param name="pParameterList">
 				<!-- -->
 				<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+					<!-- i18n dbengine_string::kScriptListOfRecordIDs -->
 					<xsl:with-param name="optional_label" select="'List of record IDs'"/>
 					<xsl:with-param name="calc" select="RowList/Calculation"/>
 				</xsl:call-template>
 				<!-- -->
+				<!-- i18n dbengine_string::kScriptUsingLayoutStrID -->
 				<xsl:value-of select="'Using layout'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="ScriptStepParamLayoutDestination"/>
 				<!-- -->
 				<xsl:choose>
 					<xsl:when test="ShowInNewWindow/@state = 'True'">
+						<!-- i18n dbengine_string::kScriptCreateWindowStrID -->
 						<xsl:value-of select="'New window'"/>
 						<xsl:value-of select="$delimiter3"/>
 					</xsl:when>
@@ -7407,39 +7660,51 @@
 		<!-- -->
 				<xsl:choose>
 					<xsl:when test="not($animationValue)">
+						<!-- i18n dbengine_string::kLayoutTransitionNoneStrID -->
 						<xsl:value-of select="'None'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideFromLeft'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideFromLeftStrID -->
 						<xsl:value-of select="'Slide in from Left'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideFromRight'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideFromRightStrID -->
 						<xsl:value-of select="'Slide in from Right'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideFromBottom'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideFromBottomStrID -->
 						<xsl:value-of select="'Slide in from Bottom'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideToLeft'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideToLeftStrID -->
 						<xsl:value-of select="'Slide out to Left'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideToRight'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideToRightStrID -->
 						<xsl:value-of select="'Slide out to Right'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'SlideToBottom'">
+						<!-- i18n dbengine_string::kLayoutTransitionSlideToBottomStrID -->
 						<xsl:value-of select="'Slide out to Bottom'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'FlipFromLeft'">
+						<!-- i18n dbengine_string::kLayoutTransitionFlipFromLeft -->
 						<xsl:value-of select="'Flip from Left'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'FlipFromRight'">
+						<!-- i18n dbengine_string::kLayoutTransitionFlipFromRight -->
 						<xsl:value-of select="'Flip from Right'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'ZoomIn'">
+						<!-- i18n dbengine_string::kLayoutTransitionZoomInStrID -->
 						<xsl:value-of select="'Zoom In'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'ZoomOut'">
+						<!-- i18n dbengine_string::kLayoutTransitionZoomOutStrID -->
 						<xsl:value-of select="'Zoom Out'"/>
 					</xsl:when>
 					<xsl:when test="$animationValue = 'CrossDissolve'">
+						<!-- i18n dbengine_string::kLayoutTransitionCrossDissolve -->
 						<xsl:value-of select="'Cross Dissolve'"/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -7457,6 +7722,7 @@
 		<!-- -->
 		<xsl:choose>
 			<xsl:when test="not($string) or $string = ''">
+				<!-- i18n dbengine_string::kUnknownScriptStrID -->
 				<xsl:value-of select="'&lt;unknown&gt;'"/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -7488,6 +7754,7 @@
 	 ! ScriptStepParamAnimationValue
 	 !-->
 	<xsl:template name="ScriptStepParamAnimationValue">
+		<!-- i18n dbengine_string::kLayoutTransitionLabelStrID -->
 		<xsl:value-of select="'Animation'"/>
 		<xsl:value-of select="$delimiter2"/>
 		<xsl:call-template name="OutputAnimationValue"/>
@@ -7509,9 +7776,11 @@
 		</xsl:if>		
 		<xsl:choose>
 			<xsl:when test="$true_or_false= 'True'">
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -7527,7 +7796,9 @@
 		<xsl:call-template name="ScriptStepParamBooleany">
 			<xsl:with-param name="optional_label" select="$label"/>
 			<xsl:with-param name="value" select="$value"/>
+			<!-- i18n dbengine_string::kScriptOnStrID -->
 			<xsl:with-param name="true" select="'On'"/>
+			<!-- i18n dbengine_string::kScriptOffStrID -->
 			<xsl:with-param name="otherwise" select="'Off'"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -7603,11 +7874,13 @@
 			<xsl:when
 				test="DataSourceType/@value = 'File' and (Profile/@DataType = 'XLS ' or Profile/@DataType = 'XLSX')">
 				<xsl:if test="UniversalPathList">
+					<!-- i18n dbengine_string::kScriptImportSourceStrID -->
 					<xsl:value-of select="'Source'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:value-of select="concat($QUOT, Profile/@FileName, $QUOT)"/>
 					<xsl:call-template name="SIC.delimiter3"/>
 					<!-- -->
+					<!-- i18n dbengine_string::kExcelOptionsWorksheet2StrID -->
 					<xsl:value-of select="'Worksheet'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:value-of select="concat($QUOT, Profile/@WorksheetName, $QUOT)"/>
@@ -7788,6 +8061,7 @@
 	 ! child::Repetition/Calculation (text())
 	 !-->
 	<xsl:template name="ScriptStepParamTarget">
+		<!-- i18n dbengine_string::kScriptImportTargetStrID -->
 		<xsl:param name="label" select="'Target'"/>
 		<xsl:param name="field" select="Field"/>
 		<xsl:param name="repetition_calc"/>
@@ -7905,9 +8179,11 @@
 		<!-- -->
 		<xsl:choose>
 			<xsl:when test="$destinationValue = 'OriginalLayout'">
+				<!-- i18n dbengine_string::kScriptOriginalLayoutStrID -->
 				<xsl:value-of select="'original layout'"/>
 			</xsl:when>
 			<xsl:when test="$destinationValue = 'CurrentLayout' or not(LayoutDestination)">
+				<!-- i18n dbengine_string::kScriptCurrentLayoutStrID -->
 				<xsl:value-of select="'&lt;Current Layout&gt;'"/>
 			</xsl:when>
 			<xsl:when test="$destinationValue = 'SelectedLayout'">
@@ -7952,9 +8228,11 @@
 		<xsl:value-of select="$delimiter2"/>
 		<xsl:choose>
 			<xsl:when test="$state = 'True'">
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -7964,13 +8242,16 @@
 	 ! ScriptStepParamNoDialog
 	 !-->
 	<xsl:template name="ScriptStepParamNoDialog">
+		<!-- i18n dbengine_string::kScriptWithDialogLabelStrID -->
 		<xsl:value-of select="'With dialog'"/>
 		<xsl:value-of select="$delimiter2"/>
 		<xsl:choose>
 			<xsl:when test="NoInteract/@state = 'True'">
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -8020,13 +8301,16 @@
 	 ! ScriptStepParamPause
 	 !-->
 	<xsl:template name="ScriptStepParamPause">
+		<!-- i18n dbengine_string::kScriptPauseStrID -->
 		<xsl:value-of select="'Pause'"/>
 		<xsl:value-of select="$delimiter2"/>
 		<xsl:choose>
 			<xsl:when test="Pause/@state = 'True'">
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -8038,6 +8322,7 @@
 	<xsl:template name="ScriptStepParamSaveType">
 		<xsl:choose>
 			<xsl:when test="SaveType/@value = 'BrowsedRecords'">
+				<!-- i18n dbengine_string::kSaveRecordsBeingBrowsedID -->
 				<xsl:value-of select="'Records being browsed'"/>
 				<xsl:value-of select="$delimiter3"/>
 				<!-- -->
@@ -8055,10 +8340,12 @@
 	 !   and Perform Script on Server
 	 !-->
 	<xsl:template name="ScriptStepParamScriptSpecified">
+		<!-- i18n dbengine_string::kPerformByNameSelectorLabelStrID -->
 		<xsl:value-of select="'Specified'"/>
 		<xsl:value-of select="$delimiter2"/>
 		<xsl:choose>
 			<xsl:when test="Calculated/Calculation">
+				<!-- i18n dbengine_string::kPerformByNameSelectByNameStrID -->
 				<xsl:value-of select="'By name'"/>
 				<xsl:value-of select="$delimiter3"/>
 				<xsl:call-template name="OutputCalculation">
@@ -8066,6 +8353,7 @@
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kPerformByNameSelectSpecificStrID -->
 				<xsl:value-of select="'From list'"/>
 				<xsl:value-of select="$delimiter3"/>
 				<xsl:call-template name="QuotedStringOrUnknown">
@@ -8073,13 +8361,16 @@
 				</xsl:call-template>
 				<xsl:if test="FileReference/@name">
 					<xsl:value-of select="' '"/>
+					<!-- i18n dbengine_string::kScriptFromFileStrID -->
 					<xsl:value-of select="'from file'"/>
 					<xsl:value-of select="$delimiter2"/>
 					<xsl:value-of select="$OPENQUOTES"/>
 					<xsl:value-of select="FileReference/@name"/>
 					<xsl:value-of select="$CLOSEQUOTES"/>
 					<xsl:if test="FileReference/@name = ''">
-						<xsl:value-of select="' (file not open)'"/>
+						<xsl:value-of select="' '"/>
+						<!-- i18n dbengine_string::kScriptFileNotOpenStrID -->
+						<xsl:value-of select="'(file not open)'"/>
 					</xsl:if>
 				</xsl:if>
 			</xsl:otherwise>
@@ -8087,6 +8378,7 @@
 		<xsl:value-of select="$delimiter3"/>
 		<!-- Parameter -->
 		<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+			<!-- i18n dbengine_string::kScriptParameterLabelStrID-->
 			<xsl:with-param name="optional_label" select="'Parameter'"/>
 			<xsl:with-param name="calc" select="Calculation"/>
 		</xsl:call-template>
@@ -8153,6 +8445,7 @@
 		<!-- -->
 		<xsl:if test="Script">
 			<!-- Script -->
+			<!-- i18n dbengine_string::kScriptStrID -->
 			<xsl:value-of select="'Script'"/>
 			<xsl:value-of select="$delimiter2"/>
 			<xsl:call-template name="QuotedStringOrUnknown">
@@ -8166,7 +8459,9 @@
 				<xsl:value-of select="FileReference/@name"/>
 				<xsl:value-of select="$CLOSEQUOTES"/>
 				<xsl:if test="FileReference/@name = ''">
-					<xsl:value-of select="' (file not open)'"/>
+					<xsl:value-of select="' '"/>
+					<!-- i18n dbengine_string::kScriptFileNotOpenStrID -->
+					<xsl:value-of select="'(file not open)'"/>
 				</xsl:if>
 			</xsl:if>
 			<xsl:value-of select="$delimiter3"/>
@@ -8175,12 +8470,14 @@
 			<!-- Script Parameter -->
 
 			<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+				<!-- i18n dbengine_string::kScriptParameterStrID -->
 				<xsl:with-param name="optional_label" select="'Parameter'"/>
 				<xsl:with-param name="calc" select="Calculation"/>
 			</xsl:call-template>
 		</xsl:if>
 		<xsl:if test="CallbackScript">
 			<!-- Script -->
+			<!-- i18n dbengine_string::kPSOSWithCallbackScriptNameStrID -->
 			<xsl:value-of select="'Callback script'"/>
 			<xsl:value-of select="$delimiter2"/>
 			<xsl:call-template name="QuotedStringOrUnknown">
@@ -8189,13 +8486,16 @@
 			<xsl:if test="CallbackScript/FileReference/@name">
 				<!-- CallbackScript File Reference -->
 				<xsl:value-of select="' '"/>
+				<!-- i18n dbengine_string::kScriptFromFileStrID -->
 				<xsl:value-of select="'from file'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="$OPENQUOTES"/>
 				<xsl:value-of select="CallbackScript/FileReference/@name"/>
 				<xsl:value-of select="$CLOSEQUOTES"/>
 				<xsl:if test="CallbackScript/FileReference/@name = ''">
-					<xsl:value-of select="' (file not open)'"/>
+					<xsl:value-of select="' '"/>
+					<!-- i18n dbengine_string::kScriptFileNotOpenStrID -->
+					<xsl:value-of select="'(file not open)'"/>
 				</xsl:if>
 			</xsl:if>
 			<xsl:value-of select="$delimiter3"/>
@@ -8203,6 +8503,7 @@
 				<!-- CallbackScript Parameter -->
 
 				<xsl:call-template name="ScriptStepParamCalculationOrTwoSpaces">
+					<!-- i18n dbengine_string::kScriptParameterStrID -->
 					<xsl:with-param name="optional_label" select="'Parameter'"/>
 					<xsl:with-param name="calc" select="CallbackScript/ScriptParameter/Calculation"/>
 				</xsl:call-template>
@@ -8214,6 +8515,7 @@
 	<xsl:template name="ScriptStepParamSelect">
 		<!--xsl:param name="delimiter3"/-->
 		<xsl:if test="SelectAll/@state = 'True'">
+			<!-- i18n dbengine_string::kScriptSelectStrID -->
 			<xsl:value-of select="'Select'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
@@ -8290,11 +8592,13 @@
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
 		<xsl:if test="AutoOpen/@state = 'True'">
+			<!-- i18n dbengine_string::kScriptOpenAutomaticallyStrID -->
 			<xsl:value-of select="'Automatically open'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
 		<!-- -->
 		<xsl:if test="CreateEmail/@state = 'True'">
+			<!-- i18n dbengine_string::kScriptCreateEmailStrID -->
 			<xsl:value-of select="'Create email'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
@@ -8348,23 +8652,11 @@
 	 !-->
 	<xsl:template name="ScriptStepParamCreateDirectories">
 		<!-- -->
-		<xsl:choose>
-			<xsl:when test="CreateDirectories/@state = 'True'">
-				<xsl:value-of select="'Create folders'"/>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:value-of select="'On'"/>
-				<xsl:value-of select="$delimiter3"/>
-			</xsl:when>
-			<xsl:when test="CreateDirectories/@state = 'False'">
-				<xsl:value-of select="'Create folders'"/>
-				<xsl:value-of select="$delimiter2"/>
-				<xsl:value-of select="'Off'"/>
-				<xsl:value-of select="$delimiter3"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<!-- FileMaker 16- ... no CreateDirectories function -->
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:call-template name="OutputScriptStepParamTrueOnOff">
+			<!-- i18n dbengine_string::kCreateDirectoryStrID -->
+			<xsl:with-param name="label" select="'Create folders'"/>
+			<xsl:with-param name="value" select="CreateDirectories/@state"/>
+		</xsl:call-template>
 	</xsl:template>
 	<!--
 	 ! ScriptStepParamRepetition
@@ -8375,18 +8667,21 @@
 		<xsl:choose>
 			<xsl:when test="$repetition = 1 or number(Repetition/Calculation) = 1">
 				<!-- [1] don't output -->
+				<!-- i18n dbengine_string::kScriptOptionObjectRepetitionStrID -->
 				<xsl:value-of select="'Repetition'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="'1'"/>
 			</xsl:when>
 			<xsl:when test="$repetition &gt; 0">
 				<!-- [2+] output -->
+				<!-- i18n dbengine_string::kScriptOptionObjectRepetitionStrID -->
 				<xsl:value-of select="'Repetition'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:value-of select="$repetition"/>
 			</xsl:when>
 			<xsl:when test="Repetition/Calculation">
 				<!-- [1+1] Calculation -->
+				<!-- i18n dbengine_string::kScriptOptionObjectRepetitionStrID -->
 				<xsl:value-of select="'Repetition'"/>
 				<xsl:value-of select="$delimiter2"/>
 				<xsl:call-template name="OutputCalculation">
@@ -8401,6 +8696,7 @@
 	 !-->
 	<xsl:template name="ScriptStepParamRestore">
 		<xsl:if test="Restore/@state = 'True'">
+			<!-- i18n dbengine_string::kScriptRestoreStrID -->
 			<xsl:value-of select="'Restore'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
@@ -8410,9 +8706,9 @@
 	 !-->
 	<xsl:template name="ScriptStepParamUniversalPathListReference">
 		<!---->
-		<!--<xsl:if test="UniversalPathList/text() and UniversalPathList/@type = 'Reference'">-->
 		<xsl:if test="UniversalPathList/@type = 'Reference'">
-				<xsl:value-of select="UniversalPathList/@type"/>
+			<!-- i18n dbengine_string::kScriptReferenceStrID -->
+			<xsl:value-of select="'Reference'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
 		<!-- -->
@@ -8423,6 +8719,7 @@
 	<xsl:template name="ScriptStepParamVerifySSLCertificates">
 		<!--  -->
 		<xsl:if test="VerifySSLCertificates/@state = 'True'">
+			<!-- i18n dbengine_string::kScriptOptionVerifySSLCertificatesStrID -->
 			<xsl:value-of select="'Verify SSL Certificates'"/>
 			<xsl:value-of select="$delimiter3"/>
 		</xsl:if>
@@ -8452,9 +8749,11 @@
 		<!---->
 		<xsl:choose>
 			<xsl:when test="$state = 'True'">
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -8467,9 +8766,11 @@
 		<!---->
 		<xsl:choose>
 			<xsl:when test="$value = 'Hide'">
+				<!-- i18n dbengine_string::kScriptOffStrID -->
 				<xsl:value-of select="'Off'"/>
 			</xsl:when>
 			<xsl:when test="$value = 'Show'">
+				<!-- i18n dbengine_string::kScriptOnStrID -->
 				<xsl:value-of select="'On'"/>
 			</xsl:when>
 			<xsl:when test="$value = 'Toggle'">
