@@ -7435,7 +7435,7 @@
 	 ! <unknown>* = never used
 	 !-->
 	<xsl:template
-		match="//Step[not(ancestor::Step) and (@id = 0 or @id = 2 or @id = 15 or @id = 52 or @id = 53 or @id = 54 or @id = 58 or @id = 59 or @id = 78 or @id = 100 or @id = 153 or @id = 162 or @id = 163 or @id = 170 or @id = 171 or @id = 173 or @id = 204 or @id = 224)]">
+		match="//Step[not(ancestor::Step) and (@id = '0' or @id = '2' or @id = '15' or @id = '52' or @id = '53' or @id = '54' or @id = '58' or @id = '59' or @id = '78' or @id = '100' or @id = '153' or @id = '162' or @id = '163' or @id = '170' or @id = '171' or @id = '173' or @id = '204' or @id = '224')]">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--

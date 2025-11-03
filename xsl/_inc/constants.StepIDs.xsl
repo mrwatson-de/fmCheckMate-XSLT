@@ -233,4 +233,210 @@
 	<xsl:variable name="ID_SET_DICTIONARY" select="'209'"/>
 	<xsl:variable name="ID_PERFORM_SCRIPT_ON_SERVER_WITH_CALLBACK" select="'210'"/>
 	<xsl:variable name="ID_TRIGGER_CLARIS_CONNECT_FLOW" select="'211'"/>
+	<xsl:variable name="STEP_ID_1" select="'Perform Script'"/>
+	<xsl:variable name="STEP_ID_4" select="'Go To Next Field'"/>
+	<xsl:variable name="STEP_ID_5" select="'Go To Previous Field'"/>
+	<xsl:variable name="STEP_ID_6" select="'Go To Layout'"/>
+	<xsl:variable name="STEP_ID_7" select="'New Record Request'"/>
+	<xsl:variable name="STEP_ID_8" select="'Duplicate Record Request'"/>
+	<xsl:variable name="STEP_ID_9" select="'Delete Record Request'"/>
+	<xsl:variable name="STEP_ID_10" select="'Delete All Records'"/>
+	<xsl:variable name="STEP_ID_11" select="'Insert From Index'"/>
+	<xsl:variable name="STEP_ID_12" select="'Insert From Last Visited'"/>
+	<xsl:variable name="STEP_ID_13" select="'Insert Current Date'"/>
+	<xsl:variable name="STEP_ID_14" select="'Insert Current Time'"/>
+	<xsl:variable name="STEP_ID_16" select="'Go To Record Request page'"/>
+	<xsl:variable name="STEP_ID_17" select="'Go To Field'"/>
+	<xsl:variable name="STEP_ID_18" select="'Check Selection'"/>
+	<xsl:variable name="STEP_ID_19" select="'Check Record'"/>
+	<xsl:variable name="STEP_ID_20" select="'Check Found Set'"/>
+	<xsl:variable name="STEP_ID_21" select="'Unsort Records'"/>
+	<xsl:variable name="STEP_ID_22" select="'Enter Find Mode'"/>
+	<xsl:variable name="STEP_ID_23" select="'Show All Records'"/>
+	<xsl:variable name="STEP_ID_24" select="'Modify Last Find'"/>
+	<xsl:variable name="STEP_ID_25" select="'Omit Record'"/>
+	<xsl:variable name="STEP_ID_26" select="'Omit Multiple Records'"/>
+	<xsl:variable name="STEP_ID_27" select="'Show Omitted Only'"/>
+	<xsl:variable name="STEP_ID_28" select="'Perform Find'"/>
+	<xsl:variable name="STEP_ID_29" select="'Show Hide Toolbars'"/>
+	<xsl:variable name="STEP_ID_30" select="'View As'"/>
+	<xsl:variable name="STEP_ID_31" select="'Adjust Window'"/>
+	<xsl:variable name="STEP_ID_32" select="'Open Help'"/>
+	<xsl:variable name="STEP_ID_33" select="'Open File'"/>
+	<xsl:variable name="STEP_ID_34" select="'Close File'"/>
+	<xsl:variable name="STEP_ID_35" select="'Import Records'"/>
+	<xsl:variable name="STEP_ID_36" select="'Export Records'"/>
+	<xsl:variable name="STEP_ID_37" select="'Save A copy As'"/>
+	<xsl:variable name="STEP_ID_38" select="'Open Manage Database'"/>
+	<xsl:variable name="STEP_ID_39" select="'Sort Records'"/>
+	<xsl:variable name="STEP_ID_40" select="'Relookup Field Contents'"/>
+	<xsl:variable name="STEP_ID_41" select="'Enter Preview Mode'"/>
+	<xsl:variable name="STEP_ID_42" select="'Print Setup'"/>
+	<xsl:variable name="STEP_ID_43" select="'Print'"/>
+	<xsl:variable name="STEP_ID_44" select="'Exit Application'"/>
+	<xsl:variable name="STEP_ID_45" select="'Undo Redo'"/>
+	<xsl:variable name="STEP_ID_46" select="'Cut'"/>
+	<xsl:variable name="STEP_ID_47" select="'Copy'"/>
+	<xsl:variable name="STEP_ID_48" select="'Paste'"/>
+	<xsl:variable name="STEP_ID_49" select="'Clear'"/>
+	<xsl:variable name="STEP_ID_50" select="'Select All'"/>
+	<xsl:variable name="STEP_ID_51" select="'Revert Record Request'"/>
+	<xsl:variable name="STEP_ID_55" select="'Enter Browse Mode'"/>
+	<xsl:variable name="STEP_ID_56" select="'Insert Picture'"/>
+	<xsl:variable name="STEP_ID_57" select="'Send Event'"/>
+	<xsl:variable name="STEP_ID_59" select="'Insert Quicktime'"/>
+	<xsl:variable name="STEP_ID_60" select="'Insert Current User Name'"/>
+	<xsl:variable name="STEP_ID_61" select="'Insert Text'"/>
+	<xsl:variable name="STEP_ID_62" select="'Pause Resume Script'"/>
+	<xsl:variable name="STEP_ID_63" select="'Send Mail'"/>
+	<xsl:variable name="STEP_ID_64" select="'Send Dde Execute'"/>
+	<xsl:variable name="STEP_ID_65" select="'Dial Phone'"/>
+	<xsl:variable name="STEP_ID_66" select="'Speak'"/>
+	<xsl:variable name="STEP_ID_67" select="'Perform Applescript'"/>
+	<xsl:variable name="STEP_ID_68" select="'If'"/>
+	<xsl:variable name="STEP_ID_69" select="'Else'"/>
+	<xsl:variable name="STEP_ID_70" select="'End If'"/>
+	<xsl:variable name="STEP_ID_71" select="'Loop'"/>
+	<xsl:variable name="STEP_ID_72" select="'Exit Loop If'"/>
+	<xsl:variable name="STEP_ID_73" select="'End Loop'"/>
+	<xsl:variable name="STEP_ID_74" select="'Go To Related Record'"/>
+	<xsl:variable name="STEP_ID_75" select="'Commit Records Requests'"/>
+	<xsl:variable name="STEP_ID_76" select="'Set Field'"/>
+	<xsl:variable name="STEP_ID_77" select="'Insert Calculated Result'"/>
+	<xsl:variable name="STEP_ID_79" select="'Freeze Window'"/>
+	<xsl:variable name="STEP_ID_80" select="'Refresh Window'"/>
+	<xsl:variable name="STEP_ID_81" select="'Scroll Window'"/>
+	<xsl:variable name="STEP_ID_82" select="'New File'"/>
+	<xsl:variable name="STEP_ID_83" select="'Change Password'"/>
+	<xsl:variable name="STEP_ID_84" select="'Set Multi-User'"/>
+	<xsl:variable name="STEP_ID_85" select="'Allow User Abort'"/>
+	<xsl:variable name="STEP_ID_86" select="'Set Error Capture'"/>
+	<xsl:variable name="STEP_ID_87" select="'Show Custom Dialog'"/>
+	<xsl:variable name="STEP_ID_88" select="'Open Manage Scripts'"/>
+	<xsl:variable name="STEP_ID_89" select="'Comment'"/>
+	<xsl:variable name="STEP_ID_90" select="'Halt Script'"/>
+	<xsl:variable name="STEP_ID_91" select="'Replace Field Contents'"/>
+	<xsl:variable name="STEP_ID_92" select="'Show Hide Text Ruler'"/>
+	<xsl:variable name="STEP_ID_93" select="'Beep'"/>
+	<xsl:variable name="STEP_ID_94" select="'Set Use System Formats'"/>
+	<xsl:variable name="STEP_ID_95" select="'Recover File'"/>
+	<xsl:variable name="STEP_ID_96" select="'Save A copy As Add on package'"/>
+	<xsl:variable name="STEP_ID_97" select="'Set Zoom Level'"/>
+	<xsl:variable name="STEP_ID_98" select="'Copy All Records Requests'"/>
+	<xsl:variable name="STEP_ID_99" select="'Go To Portal Row'"/>
+	<xsl:variable name="STEP_ID_101" select="'Copy Record Request'"/>
+	<xsl:variable name="STEP_ID_102" select="'Flush Cache To Disk'"/>
+	<xsl:variable name="STEP_ID_103" select="'Exit Script'"/>
+	<xsl:variable name="STEP_ID_104" select="'Delete Portal Row'"/>
+	<xsl:variable name="STEP_ID_105" select="'Open Preferences'"/>
+	<xsl:variable name="STEP_ID_106" select="'Correct Word'"/>
+	<xsl:variable name="STEP_ID_107" select="'Spelling Options'"/>
+	<xsl:variable name="STEP_ID_108" select="'Select Dictionaries'"/>
+	<xsl:variable name="STEP_ID_109" select="'Edit User Dictionary'"/>
+	<xsl:variable name="STEP_ID_111" select="'Open Url'"/>
+	<xsl:variable name="STEP_ID_112" select="'Open Manage Value Lists'"/>
+	<xsl:variable name="STEP_ID_113" select="'Open Sharing'"/>
+	<xsl:variable name="STEP_ID_114" select="'Open File Options'"/>
+	<xsl:variable name="STEP_ID_115" select="'Allow Formatting Bar'"/>
+	<xsl:variable name="STEP_ID_116" select="'Set Next Serial Value'"/>
+	<xsl:variable name="STEP_ID_117" select="'Execute Sql'"/>
+	<xsl:variable name="STEP_ID_118_FM16" select="'open remote'"/>
+	<xsl:variable name="STEP_ID_118" select="'Open Hosts'"/>
+	<xsl:variable name="STEP_ID_119" select="'Move Resize Window'"/>
+	<xsl:variable name="STEP_ID_120" select="'Arrange All Windows'"/>
+	<xsl:variable name="STEP_ID_121" select="'Close Window'"/>
+	<xsl:variable name="STEP_ID_122" select="'New Window'"/>
+	<xsl:variable name="STEP_ID_123" select="'Select Window'"/>
+	<xsl:variable name="STEP_ID_124" select="'Set Window Title'"/>
+	<xsl:variable name="STEP_ID_125" select="'Else If'"/>
+	<xsl:variable name="STEP_ID_126" select="'Constrain Found Set'"/>
+	<xsl:variable name="STEP_ID_127" select="'Extend Found Set'"/>
+	<xsl:variable name="STEP_ID_128" select="'Perform Find Replace'"/>
+	<xsl:variable name="STEP_ID_129" select="'Open Find Replace'"/>
+	<xsl:variable name="STEP_ID_130" select="'Set Selection'"/>
+	<xsl:variable name="STEP_ID_131" select="'Insert File'"/>
+	<xsl:variable name="STEP_ID_132" select="'Export Field Contents'"/>
+	<xsl:variable name="STEP_ID_133" select="'Open Record Request'"/>
+	<xsl:variable name="STEP_ID_134" select="'Add Account'"/>
+	<xsl:variable name="STEP_ID_135" select="'Delete Account'"/>
+	<xsl:variable name="STEP_ID_136" select="'Reset Account Password'"/>
+	<xsl:variable name="STEP_ID_137" select="'Enable Account'"/>
+	<xsl:variable name="STEP_ID_138" select="'Re-Login'"/>
+	<xsl:variable name="STEP_ID_139" select="'Convert File'"/>
+	<xsl:variable name="STEP_ID_140" select="'Open Manage Data Sources'"/>
+	<xsl:variable name="STEP_ID_141" select="'Set variable'"/>
+	<xsl:variable name="STEP_ID_142" select="'Install Menu Set'"/>
+	<xsl:variable name="STEP_ID_143" select="'Save Records As Excel'"/>
+	<xsl:variable name="STEP_ID_144" select="'Save Records As Pdf'"/>
+	<xsl:variable name="STEP_ID_145" select="'Go To Object'"/>
+	<xsl:variable name="STEP_ID_146" select="'Set Web Viewer'"/>
+	<xsl:variable name="STEP_ID_147" select="'Set Field By Name'"/>
+	<xsl:variable name="STEP_ID_148" select="'Install Ontimer Script'"/>
+	<xsl:variable name="STEP_ID_149" select="'Open Edit Saved Finds'"/>
+	<xsl:variable name="STEP_ID_150" select="'Perform Quick Find'"/>
+	<xsl:variable name="STEP_ID_151" select="'Open Manage Layouts'"/>
+	<xsl:variable name="STEP_ID_152" select="'Save Records As Snapshot link'"/>
+	<xsl:variable name="STEP_ID_154" select="'Sort Records By Field'"/>
+	<xsl:variable name="STEP_ID_155" select="'Find Matching Records'"/>
+	<xsl:variable name="STEP_ID_156" select="'Open Manage Containers'"/>
+	<xsl:variable name="STEP_ID_157" select="'Install Plug-In File'"/>
+	<xsl:variable name="STEP_ID_158" select="'Insert Pdf'"/>
+	<xsl:variable name="STEP_ID_159" select="'Insert Audio Video'"/>
+	<xsl:variable name="STEP_ID_160" select="'Insert From Url'"/>
+	<xsl:variable name="STEP_ID_161" select="'Insert From Device'"/>
+	<xsl:variable name="STEP_ID_164" select="'Perform Script On Server'"/>
+	<xsl:variable name="STEP_ID_165" select="'Open Manage Themes'"/>
+	<xsl:variable name="STEP_ID_166" select="'Show Hide Menubar'"/>
+	<xsl:variable name="STEP_ID_167" select="'Refresh Object'"/>
+	<xsl:variable name="STEP_ID_168" select="'Set Script Animation'"/>
+	<xsl:variable name="STEP_ID_169" select="'Close Popover'"/>
+	<xsl:variable name="STEP_ID_172_ALT" select="'upload to filemaker server'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="STEP_ID_172" select="'Open Upload To Host'"/>
+	<xsl:variable name="STEP_ID_173" select="'Unknown 173'"/>
+	<xsl:variable name="STEP_ID_174" select="'Enable Touch Keyboard'"/>
+	<xsl:variable name="STEP_ID_175" select="'Perform Script In Web viewer'"/>
+	<!-- Obsoleted in FM16: -->
+	<xsl:variable name="STEP_ID_176" select="'Obsolete Set Allowed Orientations'"/>
+	<xsl:variable name="STEP_ID_177" select="'Avplayer Play'"/>
+	<xsl:variable name="STEP_ID_178" select="'Avplayer Set Playback State'"/>
+	<xsl:variable name="STEP_ID_179" select="'Avplayer Set Options'"/>
+	<xsl:variable name="STEP_ID_180" select="'Refresh Portal'"/>
+	<xsl:variable name="STEP_ID_181_FM17" select="'get directory'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="STEP_ID_181" select="'Get Folder Path'"/>
+	<xsl:variable name="STEP_ID_182" select="'Truncate Table'"/>
+	<xsl:variable name="STEP_ID_183_FM16" select="'open launch center'"/>
+	<!-- ^-Renamed in FM17 -v -->
+	<xsl:variable name="STEP_ID_183_FM17" select="'open my apps'"/>
+	<!-- ^-Renamed in FM18 -v -->
+	<xsl:variable name="STEP_ID_183" select="'Open Favorites'"/>
+	<xsl:variable name="STEP_ID_184" select="'Open Starter Solution'"/>
+	<xsl:variable name="STEP_ID_185" select="'Configure Region Monitor Script'"/>
+	<xsl:variable name="STEP_ID_186" select="'Unknown External Script Step from missing plug-in'"/>
+	<xsl:variable name="STEP_ID_187" select="'Configure Local Notification'"/>
+	<xsl:variable name="STEP_ID_188" select="'Get File Exists'"/>
+	<xsl:variable name="STEP_ID_189" select="'Get File Size'"/>
+	<xsl:variable name="STEP_ID_190" select="'Create Data File'"/>
+	<xsl:variable name="STEP_ID_191" select="'Open Data File'"/>
+	<xsl:variable name="STEP_ID_192" select="'Write To Data File'"/>
+	<xsl:variable name="STEP_ID_193" select="'Read From Data File'"/>
+	<xsl:variable name="STEP_ID_194" select="'Get Data File Position'"/>
+	<xsl:variable name="STEP_ID_195" select="'Set Data File Position'"/>
+	<xsl:variable name="STEP_ID_196" select="'Close Data File'"/>
+	<xsl:variable name="STEP_ID_197" select="'Delete File'"/>
+	<xsl:variable name="STEP_ID_198" select="'Unknown 198'"/>
+	<xsl:variable name="STEP_ID_199" select="'Rename File'"/>
+	<xsl:variable name="STEP_ID_200" select="'Set Error Logging'"/>
+	<xsl:variable name="STEP_ID_201" select="'Configure Nfc Reading'"/>
+	<xsl:variable name="STEP_ID_202" select="'Configure Machine Learning Model'"/>
+	<xsl:variable name="STEP_ID_203" select="'Execute Filemaker Data Api'"/>
+	<xsl:variable name="STEP_ID_204" select="'Unknown 204'"/>
+	<xsl:variable name="STEP_ID_205" select="'Open Transaction'"/>
+	<xsl:variable name="STEP_ID_206" select="'Commit Transaction'"/>
+	<xsl:variable name="STEP_ID_207" select="'Revert Transaction'"/>
+	<xsl:variable name="STEP_ID_208" select="'Set Session Identifier'"/>
+	<xsl:variable name="STEP_ID_209" select="'Set Dictionary'"/>
+	<xsl:variable name="STEP_ID_210" select="'Perform Script On Server with Callback'"/>
+	<xsl:variable name="STEP_ID_211" select="'Trigger Claris Connect Flow'"/>
 </xsl:stylesheet>
