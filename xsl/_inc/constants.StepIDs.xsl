@@ -233,6 +233,23 @@
 	<xsl:variable name="ID_SET_DICTIONARY" select="'209'"/>
 	<xsl:variable name="ID_PERFORM_SCRIPT_ON_SERVER_WITH_CALLBACK" select="'210'"/>
 	<xsl:variable name="ID_TRIGGER_CLARIS_CONNECT_FLOW" select="'211'"/>
+	<!-- 212 not found -->
+	<xsl:variable name="ID_FINE_TUNE_MODEL" select="'213'"/>
+	<xsl:variable name="ID_PERFORM_SQL_QUERY_BY_NATURAL_LANGUAGE" select="'214'"/>
+	<xsl:variable name="ID_INSERT_EMBEDDING" select="'215'"/>
+	<xsl:variable name="ID_INSERT_EMBEDDING_IN_FOUND_SET" select="'216'"/>
+	<xsl:variable name="ID_SET_AI_CALL_LOGGING" select="'217'"/>
+	<xsl:variable name="ID_PERFORM_SEMANTIC_FIND" select="'218'"/>
+	<xsl:variable name="ID_PERFORM_RAG_ACTION" select="'219'"/>
+	<xsl:variable name="ID_GENERATE_RESPONSE_FROM_MODEL" select="'220'"/>
+	<xsl:variable name="ID_PERFORM_FIND_BY_NATURAL_LANGUAGE" select="'221'"/>
+	<xsl:variable name="ID_CONFIGURE_REGRESSION_MODEL" select="'222'"/>
+	<!-- 223 not found -->
+	<!-- 224 not found -->
+	<xsl:variable name="ID_SAVE_RECORDS_AS_JSONL" select="'225'"/>
+	<xsl:variable name="ID_CONFIGURE_PROMPT_TEMPLATE" select="'226'"/>
+	<xsl:variable name="ID_CONFIGURE_RAG_ACCOUNT" select="'227'"/>
+	<xsl:variable name="ID_GO_TO_LIST_OF_RECORDS" select="'228'"/>
 	<xsl:variable name="STEP_ID_1" select="'Perform Script'"/>
 	<xsl:variable name="STEP_ID_4" select="'Go To Next Field'"/>
 	<xsl:variable name="STEP_ID_5" select="'Go To Previous Field'"/>
@@ -439,4 +456,21 @@
 	<xsl:variable name="STEP_ID_209" select="'Set Dictionary'"/>
 	<xsl:variable name="STEP_ID_210" select="'Perform Script On Server with Callback'"/>
 	<xsl:variable name="STEP_ID_211" select="'Trigger Claris Connect Flow'"/>
+	<!-- 212 not found -->
+	<xsl:variable name="STEP_ID_213" select="'Fine-Tune Model'"/>
+	<xsl:variable name="STEP_ID_214" select="'Perform SQL Query by Natural Language'"/>
+	<xsl:variable name="STEP_ID_215" select="'Insert Embedding'"/>
+	<xsl:variable name="STEP_ID_216" select="'Insert Embedding in Found Set'"/>
+	<xsl:variable name="STEP_ID_217" select="'Set AI Call Logging'"/>
+	<xsl:variable name="STEP_ID_218" select="'Perform Semantic Find'"/>
+	<xsl:variable name="STEP_ID_219" select="'Perform RAG Action'"/>
+	<xsl:variable name="STEP_ID_220" select="'Generate Response from Model'"/>
+	<xsl:variable name="STEP_ID_221" select="'Perform Find by Natural Language'"/>
+	<xsl:variable name="STEP_ID_222" select="'Configure Regression Model'"/>
+	<!-- 223 not found -->
+	<!-- 224 not found -->
+	<xsl:variable name="STEP_ID_225" select="'Save Records as JSONL'"/>
+	<xsl:variable name="STEP_ID_226" select="'Configure Prompt Template'"/>
+	<xsl:variable name="STEP_ID_227" select="'Configure RAG Account'"/>
+	<xsl:variable name="STEP_ID_228" select="'Go to List of Records'"/>
 </xsl:stylesheet>
