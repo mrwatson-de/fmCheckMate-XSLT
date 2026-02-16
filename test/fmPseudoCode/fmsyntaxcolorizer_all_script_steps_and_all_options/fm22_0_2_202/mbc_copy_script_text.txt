@@ -1,0 +1,1536 @@
+# All script steps and all options in file fmSyntaxColorizer
+
+# # NEVER run the contents of this script!
+Exit Script [ Text Result:    ]
+# # Doc
+If [ 1 ]
+	# @purpose: The primary purpose of this script is to provide a test bed for script steps. It contains every script step with more or less every combination of possible parameters.
+	# @author: @mrwatson-de
+	# 
+	# It is specifically used by @mrwatson-de to check the output of fmCheckMate's Print Script Step XSLT transformation function (which converts a FileMaker clipboard script or script step fmxmlsnippet to FileMaker script text)
+	# 
+	# It is also available in @mirslavkos's Ooe-fm (One of Everything FileMaker) file as a test bed for SaXML & co.
+	# 
+	# To test fmCheckMate's Print Script Step XSLT transformation you need
+	# 
+	# - the latest version of FileMaker Pro
+	# - this script (from Ooe-fm or fmSyntaxColorizer)
+	# - fmWorkMate
+	# - fmCheckMate-XSLT
+	# - BaseElements plugin
+	# - MBS plugin
+	# - a Mac
+	# 
+	# Setup the test environment needed to test the Print Script Step XSLT transformation
+	# 
+	# 1. Download and setup FileMaker Pro
+	# 2. Download and setup BaseElements plugin
+	#    - Setup:
+	#      - install plugin
+	# 3. Download and setup MBS plugin
+	#    - Setup:
+	#      - install plugin
+	#      - licence, if necessary
+	# 4. Download and setup fmWorkMate
+	#    - Setup:
+	#      - move the fmWorkMate folder to Applications folder
+	#      - rename folder to just `fmWorkMate`, if necessary
+	# 5. Download and setup the fmCheckMate-XSLT Library
+	#    - Setup:
+	#      - move the fmCheckMate-XSLT folder to the **Documents** folder
+	#      - rename folder to just `fmCheckMate`
+	# 6. Download and setup fmSyntaxColorizer
+	#    - Setup:
+	#      - move the fmSyntaxColorizer folder next to the fmWorkMate folder
+	#      - rename folder to just `fmSyntaxColorizer`, if necessary
+	# 
+	# Method to test fmCheckMate's Print Script Step XSLT transformation
+	# 
+	# 1. Prepare the test environment as above
+	# 2. Diff the function results with the actual script text
+	#    a. Open fmSyntaxColorizer (or Ooe-fm) and copy all steps from this script (CMD+A, CMD+C)
+	#    b. Open fmWorkMate > fmTextDiff and add the clipboard contents to the diff (CMD+7, CMD+7)
+	#    c. Return to fmSyntaxColorizer and copy the selected step text (Right Click > Copy Selected // MBS function)
+	#    d. In fmTextDiff add the clipboard contents to the diff (CMD+7)
+	# 3. Inspect the results
+	#    - Only difference's should be
+	#       - empty comment steps (because MBS shows empty lines as `#` instead of ``)
+	#       - documented steps that contain internal state not available on the clipboard
+	# 
+	# 
+	# 20250815 @mrwatson-de Update started for FM22
+	# 20250630 @mrwatson-de Updated for FM21
+	# 20170516 MrW Script sorted alphabetically within categories for fm16
+End If
+# # Vars
+If [ 1 ]
+	# @var $$fjhsd.gfd.jhsgf.dshg.fshgf $abc $AccountName $AudioPath $BaseModel $BCC $BeaconName $Body $calculation $CC $Code $Command $container $continuous $cURL_Options
+	# @var $data $DataSource $date $DefaultLocation $Delay $DlgMessage $DlgTitle $Endpoint $Ersetzen
+	# @var $FensterBreite $FensterHoehe $FensterLinks $FensterName $FensterNameAlt $FensterNameNeu $FensterOben $FieldName $file $FileContents $FileExists $FileID $FilePath $FileSize $FolderPath $format
+	# @var $i $InputFile $JSONOptions $KeineSourceVar $yKontoname $Latitude $LayoutName $LayoutNr $LayoutNumber $Longitude
+	# @var $Major $MBS_Command_Results $Message $Minor $Model $MoreComplexName $MyRagAccount $MySecretApiKey $n $name $Name $Nr $number $Objektname
+	# @var $p1 $P1 $p2 $P2 $P3 $P4 $Param $Parameters $Passwort $Path $Path1 $PathXML $PathXSL $PathXSLT $PdfPath $Pos $price $Prompt $PromptTemplateName $Radius $RagAcccount $RecordIDs $Rep $ResponseTarget
+	# @var $ScriptParameter $ScriptResult $Secret $source $SourceFile $SourceFileName $SourceURL $SourceVar $SpaceID $Subject $Suchen $Target $TargetDump $TargetFileContents $TargetVar $TargetWebContent $TemplateName $test $text $time $timeout $timestamp $Title $To $TrainingDataFilePath
+	# @var $UpdatedModel $url $UserPrompt $UseSetVariable $UUID $var $Volume $WebContent $window $windowname 
+	Set Variable [ $FileID ; Value: "" ]
+	Set Variable [ $FileExists ; Value: "" ]
+	Set Variable [ $FileSize ; Value: "" ]
+	Set Variable [ $PathXSLT ; Value: "" ]
+	Set Variable [ $target ; Value: "" ]
+	Set Variable [ $data ; Value: "" ]
+	Set Variable [ $pos ; Value: "" ]
+	Set Variable [ $window ; Value: "" ]
+	Set Variable [ $name ; Value: "" ]
+	Set Variable [ $windowname ; Value: "" ]
+	Set Variable [ $Parameters ; Value: "" ]
+	Set Variable [ $secret ; Value: "" ]
+End If
+# # Control
+If [ 1 ]
+	# 
+	Allow User Abort [ On ]
+	Allow User Abort [ Off ]
+	# Commit Transaction - see Open Transaction
+	# 
+	Configure Local Notification [ Action: Queue ]
+	Configure Local Notification [ Action: Clear ]
+	Configure Local Notification [ Action: Clear ; Name: "Name" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Parameter: $Param ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ; Button 3 Label: "Button 3 label" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ; Button 3 Label: "Button 3 label" ; Button 1 Foreground: "Button 1 foreground" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ; Button 3 Label: "Button 3 label" ; Button 1 Foreground: "Button 1 foreground" ; Button 2 Foreground: "Button 2 foreground" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ; Button 3 Label: "Button 3 label" ; Button 1 Foreground: "Button 1 foreground" ; Button 2 Foreground: "Button 2 foreground" ; Button 3 Foreground: "Button 3 foreground" ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Label: "Button 1 label" ; Button 2 Label: "Button 2 label" ; Button 3 Label: "Button 3 label" ; Button 1 Foreground: "Button 1 foreground" ; Button 2 Foreground: "Button 2 foreground" ; Button 3 Foreground: "Button 3 foreground" ; Show when app in foreground: True ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Foreground: "Button 1 foreground" ; Button 2 Foreground: "Button 2 foreground" ; Button 3 Foreground: "Button 3 foreground" ; Show when app in foreground: True ]
+	Configure Local Notification [ Action: Queue ; Name: $Name ; Script: “Hello world” ; Delay: $Delay ; Title: $Title ; Body: $Body ; Button 1 Foreground: "Button 1 foreground" ; Button 2 Foreground: "Button 2 foreground" ; Button 3 Foreground: "Button 3 foreground" ; Show when app in foreground: True ]
+	# 
+	Configure NFC Reading [ Action: Cancel ]
+	Configure NFC Reading [ Action: Read ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Timeout: $Timeout ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Timeout: $Timeout ; Continuous Reading: $Continuous ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Parameter: $Param ; Timeout: $Timeout ; Continuous Reading: $Continuous ; Format Result as JSON: $format ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Format Result as JSON: $Format ]
+	Configure NFC Reading [ Action: Read ; Timeout: $timeout ; Continuous Reading: $continuous ; Format Result as JSON: $Format ]
+	Configure NFC Reading [ Action: Read ; Continuous Reading: $Continuous ; Format Result as JSON: $Format ]
+	Configure NFC Reading [ Action: Read ; Format Result as JSON: $Format ]
+	Configure NFC Reading [ Action: Read ]
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Format Result as JSON: $Format ]
+	# 
+	Configure Region Monitor Script [ Monitor: iBeacon ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; Name: "foobar" ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; Name: "foobar" ; UUID: $UUID ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; UUID: $UUID ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; Name: $BeaconName ; Script: “Hello world” from file: “Self” ; Parameter: 1 ; UUID: $UUID ; Major: $Major ; Minor: $Minor ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; Name: $BeaconName ; Script: “Hello world” from file: “Self” ; Parameter: 1 ; UUID: $UUID ]
+	Configure Region Monitor Script [ Monitor: iBeacon ; Name: 123 ; Script: “Hello world” from file: “Self” ; Parameter: 1 ; UUID: $UUID ]
+	Configure Region Monitor Script [ Monitor: Geofence ; Name: $BeaconName ; Script: “Hello world” ; Parameter: 1 ; Latitude: $Latitude ; Longitude: $Longitude ; Radius: $Radius ]
+	# 
+	If [ 1=0 ]
+	Else If [ 1=1 ]
+		If [    ]
+		Else If [    ]
+		End If
+	Else
+	End If
+	# 
+	Exit Script [ Text Result:    ]
+	Exit Script [ Text Result: $ScriptResult ]
+	Exit Script [ Text Result: "nix" ]
+	# 
+	Halt Script
+	# 
+	Install OnTimer Script []
+	Install OnTimer Script [ “<unknown>” ; Interval: 123 ]
+	Install OnTimer Script [ “All script steps sorted by category” ; Parameter: $Param ; Interval: 1+2 ]
+	# 
+	Loop [ Flush: Always ]
+		Exit Loop If [ 1=1 ]
+		Loop [ Flush: Defer ]
+			Exit Loop If [ 1=1 ]
+			Loop [ Flush: Minimum ]
+				Exit Loop If [ 1=1 ]
+			End Loop
+		End Loop
+	End Loop
+	# 
+	Open Transaction []
+		Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message: "Broken" ]
+	Commit Transaction
+	Open Transaction [ Skip data entry validation ]
+		Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message:    ]
+		Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message:    ]
+		Revert Transaction [ Condition: 1=1 ]
+	Commit Transaction
+	Open Transaction [ Override ESS locking conflicts ]
+		Revert Transaction [ Error Code: 5000 ; Error Message: "Broken" ]
+	Commit Transaction
+	Open Transaction [ Skip data entry validation ; Override ESS locking conflicts ]
+		Revert Transaction [ Condition: 1=1 ; Error Code: 1 ; Error Message: "Broken" ]
+	Commit Transaction
+	Open Transaction [ Skip auto-enter options ; Skip data entry validation ; Override ESS locking conflicts ]
+	Commit Transaction
+	# 
+	Pause/Resume Script [ Indefinitely ]
+	Pause/Resume Script [ Duration (seconds): 1 ]
+	# 
+	Perform Script [ “All script steps sorted by category” ; Specified: From list ; Parameter:    ]
+	# 
+	Perform Script [ <unknown> ; Specified: From list ; Parameter:    ]
+	Perform Script [ “All script steps sorted by category” ; Specified: From list ; Parameter: $ScriptParameter ]
+	Perform Script [ Specified: By name ; "All script steps and all options" ; Parameter: $ScriptParameter ]
+	Perform Script [ <unknown> from file: “” (file not open) ; Specified: From list ; Parameter:    ]
+	# Two error cases for fmSyntaxColorizer:
+	Perform Script [ “All script steps sorted by category” ; Specified: From list ; Parameter: /* commented out */ ]
+	Perform Script [ “All script steps sorted by category” ; Specified: From list ; Parameter: "/* not only commented out, but also stringified! */" ]
+	# 
+	Perform Script on Server [ <unknown> ; Specified: From list ; Parameter:    ; Wait for completion: On ]
+	Perform Script on Server [ <unknown> ; Specified: From list ; Parameter:    ; Wait for completion: Off ]
+	# 
+	Perform Script on Server with Callback [ Specified: From list ; <unknown> ; Parameter:    ; Callback script specified: From list ; <unknown> ; Parameter:    ; State: Continue ]
+	Perform Script on Server with Callback [ Specified: From list ; “<unknown>” ; Parameter:    ; Callback script specified: From list ; <unknown> ; Parameter:    ; State: Continue ]
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” ; Parameter:    ; Callback script specified: From list ; <unknown> ; Parameter:    ; State: Continue ]
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” from file: “Self” ; Parameter:    ; Callback script specified: From list ; <unknown> ; Parameter:    ; State: Continue ]
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” ; Parameter: "Param" ; Callback script specified: From list ; “Undefined variables” ; Parameter: "Param" ; State: Continue ]
+	# 
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” from file: “Self” ; Parameter: "ParamOver" ; Callback script specified: From list ; “Undefined variables” from file: “Self” ; Parameter: "ParamBack" ; State: Continue ]
+	# 
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” ; Parameter: "Param" ; Callback script specified: From list ; “Undefined variables” ; Parameter: "Param" ; State: Continue ]
+	Perform Script on Server with Callback [ Specified: From list ; “A typical script” ; Parameter: "Param" ; Callback script specified: From list ; “All script steps and all options” from file: “Self” ; Parameter: "Param" ; State: Continue ]
+	# 
+	# Revert Transaction - see Open Transaction
+	# 
+	Set Error Capture [ On ]
+	Set Error Capture [ Off ]
+	# 
+	Set Error Logging [ On ]
+	Set Error Logging [ Off ]
+	Set Error Logging [ On ; Custom debug info: Get ( CurrentHostTimestamp ) ]
+	# 
+	Set Layout Object Animation [ On ]
+	Set Layout Object Animation [ Off ]
+	# 
+	Set Revert Transaction on Error [ Off ]
+	Set Revert Transaction on Error [ On ]
+	# 
+	Set Variable []
+	Set Variable [ $var ]
+	Set Variable [ $var ; Value: <Function Missing>( 2 ) + 4 ]
+	Set Variable [ $var ; Value: 1+Test( 1 ) & "string" & ( $$fjhsd.gfd.jhsgf.dshg.fshgf ) ]
+	Set Variable [ $MBS_Command_Results ; Value: Let( [ $text = TestTable::TextField1 ; $number = TestTable::NumberField1 ; $date = TestTable::DateField1; $time = TestTable::TimeField1; $timestamp = TestTable::TimestampField1 ; $container = TestTable::ContainerField1 ; $calculation = TestTable::CalcFi… ]
+	# 
+	# 
+	Trigger Claris Connect Flow [ Flow: MrWatsonWebhook ; JSON Data: JSONSetElement ( "" ; ["whatever" ; "foo" ; JSONString] ; ["whatever" ; "bar" ; JSONString] ; ["whatever" ; "baz" ; JSONString] ; ["whatever" ; "too much" ; JSONString] ) ; Target: $Target ]
+	Trigger Claris Connect Flow [ Flow: <unknown> ; JSON Data: JSONSetElement ( "" ; "whatever" ; "foo" ; JSONString ) ; Target: $Target ]
+	Trigger Claris Connect Flow [ Flow: <unknown> ; JSON Data: JSONSetElement ( "" ; "whatever" ; "foo" ; JSONString ) ; Target: $Target ]
+	Trigger Claris Connect Flow [ Flow: <unknown> ; JSON Data: JSONSetElement ( "" ; "whatever" ; "foo" ; JSONString ) ; Target: TestTable::TextField1 ]
+End If
+# # Navigation
+If [ 1 ]
+	Close Popover
+	# 
+	Enter Browse Mode [ Pause: On ]
+	Enter Browse Mode [ Pause: Off ]
+	# 
+	Enter Find Mode [ Pause: On ]
+	Enter Find Mode [ Pause: Off ]
+	Enter Find Mode [ Restore ; Pause: On ]
+	# 
+	Enter Preview Mode [ Pause: On ]
+	Enter Preview Mode [ Pause: Off ]
+	# 
+	Go to Field [ <Table Missing> ]
+	Go to Field [ Select/perform ; <Table Missing> ]
+	Go to Field [ Select/perform ]
+	Go to Field [ <Table Missing>[2+3] ]
+	Go to Field [ <Table Missing> ]
+	# 
+	Go to Layout [ original layout ; Animation: None ]
+	Go to Layout [ $LayoutName ; Animation: None ]
+	Go to Layout [ $LayoutNumber ; Animation: None ]
+	Go to Layout [ "Test" ; Animation: None ]
+	Go to Layout [ “File Open” (_Home) ; Animation: None ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide in from Left ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide in from Right ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide in from Bottom ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide out to Left ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide out to Right ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Slide out to Bottom ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Flip from Left ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Flip from Right ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Zoom In ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Zoom Out ]
+	Go to Layout [ “File Open” (_Home) ; Animation: Cross Dissolve ]
+	# 
+	# Some error cases for fmSyntaxColorizer
+	Go to Layout [ <unknown> ; Animation: None ]
+	Go to Layout [ <Function Missing> ; Animation: None ]
+	Go to Layout [ /*cf_LayoutName*/ ; Animation: None ]
+	# and undefined variables
+	Go to Layout [ $LayoutName ; Animation: None ]
+	Go to Layout [ $LayoutNr ; Animation: None ]
+	# 
+	# FM22
+	Go to List of Records [ List of record IDs:    ; Using layout: <Current Layout> ; Animation: None ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: <Current Layout> ; Animation: None ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: None ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Left ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Right ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Bottom ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Left ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Right ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Bottom ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Flip from Left ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Flip from Right ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Zoom In ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Zoom Out ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Cross Dissolve ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: “My Layout for TestTable” (TestTable) ; New window ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutNumber ; Animation: None ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutName ; Animation: None ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutName ; New window ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutName ; New window ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutName ; New window ]
+	Go to List of Records [ List of record IDs: $RecordIDs ; Using layout: $LayoutName ; New window ]
+	# /FM22
+	# 
+	Go to Next Field
+	# 
+	Go to Object [ Repetition: 1 ]
+	Go to Object [ Object Name: "RepField" ; Repetition: $Rep ]
+	Go to Object [ Object Name: $Objektname ; Repetition: 1 ]
+	# 
+	Go to Portal Row [ Select: On ; First ]
+	Go to Portal Row [ Select: Off ; Last ]
+	Go to Portal Row [ Select: Off ; Previous ; Exit after last: On ]
+	Go to Portal Row [ Select: Off ; Previous ; Exit after last: Off ]
+	Go to Portal Row [ Select: Off ; Next ; Exit after last: On ]
+	Go to Portal Row [ Select: Off ; Next ; Exit after last: Off ]
+	Go to Portal Row [ Select: Off ; With dialog: On ; $abc ]
+	Go to Portal Row [ Select: Off ; With dialog: On ; Get( CurrentDate ) ]
+	Go to Portal Row [ Select: Off ; With dialog: Off ; 1+1 ]
+	# 
+	Go to Previous Field
+	# 
+	Go to Record/Request/Page [ First ]
+	Go to Record/Request/Page [ Last ]
+	Go to Record/Request/Page [ Previous ; Exit after last: On ]
+	Go to Record/Request/Page [ Previous ; Exit after last: Off ]
+	Go to Record/Request/Page [ Next ; Exit after last: On ]
+	Go to Record/Request/Page [ Next ; Exit after last: Off ]
+	Go to Record/Request/Page [ With dialog: Off ; 1+1 ]
+	Go to Record/Request/Page [ With dialog: Off ; Get( LayoutNumber ) + 1 ]
+	Go to Record/Request/Page [ With dialog: On ; $Nr ]
+	# 
+	# Some error cases for fmSyntaxColorizer
+	Go to Record/Request/Page [ With dialog: On ; <Function Missing> + 1 ]
+	Go to Record/Request/Page [ With dialog: On ; /*cf_LayoutNumber + 1*/ ]
+	# 
+	Go to Related Record [ From table: “TestTable” ; Using layout: <Current Layout> ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: <Current Layout> ]
+	Go to Related Record [ Show only related records ; From table: “TestTable_Contacts” ; Using layout: <Current Layout> ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Left ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Right ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide in from Bottom ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Left ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Right ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Slide out to Bottom ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Flip from Left ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Flip from Right ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Zoom In ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Zoom Out ]
+	Go to Related Record [ Show only related records ; From table: “TestTable” ; Using layout: “My Layout for TestTable” (TestTable) ; Animation: Cross Dissolve ]
+	Go to Related Record [ Show only related records ; Match found set ; From table: “TestTable_Contacts” ; Using layout: “Contacts” (Contacts) ; New window ]
+	Go to Related Record [ Show only related records ; Match found set ; From table: “TestTable_Contacts” ; Using layout: “Contacts” (Contacts) ; New window ]
+	Go to Related Record [ Show only related records ; Match found set ; From table: “TestTable_Contacts” ; Using layout: “Contacts” (Contacts) ; New window ]
+	Go to Related Record [ Show only related records ; Match found set ; From table: “TestTable_Ooe” ; External; Using layout: “My Layout for TestTable” (TestTable) ; New window ]
+	Go to Related Record [ Show only related records ; From table: <unknown> ; Using layout: <unknown> ]
+End If
+# # Editing
+If [ 1 ]
+	Clear [ Select ]
+	Clear [ Select ; <Table Missing> ]
+	Clear [ TestTable::TextField1 ]
+	Clear [ Select ; TestTable::ID ]
+	# 
+	Copy [ Select ]
+	Copy [ Select ; <Table Missing> ]
+	# 
+	Cut [ Select ]
+	Cut [ <Table Missing> ]
+	# 
+	# FM21 Bug: No style is reversed
+	Paste [ Select ; No style ]
+	Paste [ Select ]
+	Paste [ Select ; <Table Missing> ]
+	Paste [ Select ; No style ; <Table Missing> ]
+	Paste [ TestTable::NumberField1[$Rep] ]
+	Paste [ No style ; TestTable::TextField1[$Rep] ]
+	# 
+	Perform Find/Replace [ With dialog: On ; Find Next ]
+	Perform Find/Replace [ With dialog: Off ; Find Next ]
+	Perform Find/Replace [ With dialog: On ; $Suchen ; $Ersetzen ; Replace ]
+	Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Find Next ]
+	Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Replace & Find ]
+	Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Replace All ]
+	# 
+	Select All
+	# 
+	Set Selection [ <Table Missing> ; Start Position: 1 ; End Position: 12 ]
+	# 
+	Undo/Redo [ Toggle ]
+	Undo/Redo [ Undo ]
+	Undo/Redo [ Redo ]
+End If
+# # Fields
+If [ 1 ]
+	Export Field Contents [ Create folders: Off ]
+	Export Field Contents [ TestTable::ContainerField1 ; Create folders: Off ]
+	Export Field Contents [ <Table Missing> ; “file.txt” ; Automatically open ; Create email ; Create folders: Off ]
+	Export Field Contents [ “file.txt” ; Automatically open ; Create email ; Create folders: Off ]
+	# 
+	Insert Audio/Video []
+	Insert Audio/Video [ Reference ; “$AudioPath” ]
+	Insert Audio/Video [ “$AudioPath” ]
+	# 
+	# Extended in fm16: TARGET = VARIABLE
+	Insert Calculated Result []
+	Insert Calculated Result [ Target: $TargetVar ]
+	Insert Calculated Result [ $SourceVar ]
+	Insert Calculated Result [ Target: $TargetVar ; $SourceVar ]
+	Insert Calculated Result [ Select ; Target: $TargetVar ]
+	Insert Calculated Result [ Select ; $SourceVar ]
+	Insert Calculated Result [ Select ; Target: $TargetVar ; $SourceVar ]
+	Insert Calculated Result [ Select ; Target: $TargetVar ; "Value" ]
+	Insert Calculated Result [ Select ; Target: TestTable::MyGlobal_g ; TestTable::ContactNameList_u ]
+	Insert Calculated Result [ Select ; Target: TestTable::TextField1 ; "hello" ]
+	Insert Calculated Result [ Select ; Target: <Table Missing> ; 1+2 ]
+	Insert Calculated Result [ Select ; Target: $Target ]
+	Insert Calculated Result [ Select ; Target: $UseSetVariable ; "Value" ]
+	# 
+	Insert Current Date []
+	Insert Current Date [ Select ]
+	Insert Current Date [ Target: $UseSetVariable ]
+	Insert Current Date [ Select ; Target: $UseSetVariable ]
+	Insert Current Date [ Select ; Target: TestTable::MyGlobal_g ]
+	Insert Current Date [ Select ; Target: $UseSetVariable ]
+	# 
+	Insert Current Time []
+	Insert Current Time [ Select ]
+	Insert Current Time [ Target: $UseSetVariable ]
+	Insert Current Time [ Select ; Target: $UseSetVariable ]
+	# 
+	Insert Current Time [ Select ; Target: TestTable::MyGlobal_g[$Rep] ]
+	Insert Current Time [ Select ; Target: $UseSetVariable ]
+	# 
+	Insert Current User Name [ Select ; Target: $UseSetVariable ]
+	Insert Current User Name [ Select ; Target: TestTable::TimeField1 ]
+	Insert Current User Name [ Select ; Target: $UseSetVariable ]
+	# 
+	Insert File []
+	Insert File [ “$Path” ]
+	Insert File [ Target: $Target ; “$Path” ]
+	# 
+	Insert File [ Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Display content ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Insert ; Target: $Target ; “$Path” ]
+	Insert File [ Insert ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Insert ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Insert ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Insert ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Reference ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Reference ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+	# 
+	Insert File [ Filters ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Insert ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Insert ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Insert ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Insert ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Insert ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Reference ; Never compress ; Target: $Target ; “$Path” ]
+	Insert File [ Filters ; Reference ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+	# 
+	Insert File [ Target: $TargetFileContents ; “some file somewhere” ]
+	Insert File [ Target: $TargetFileContents ; “$SourceFileName” ]
+	Insert File [ Insert ; Never compress ; “$Path1” ]
+	Insert File [ Reference ; Never compress ; “$Path1” ]
+	Insert File [ “$Path1” ]
+	Insert File [ Filters ]
+	Insert File [ Filters ; Target: TestTable::ID ]
+	Insert File [ Filters ; Target: TestTable::ID ; “$Path” ]
+	Insert File [ Target: $FileContents ; “some file somewhere” ]
+	# 
+	Insert from Device [ Type: Music Library ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Photo Library ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Camera ; Camera: Back; Resolution: Full ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Camera ; Camera: Front; Resolution: Full ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Camera ; Camera: Front; Resolution: Large ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Camera ; Camera: Front; Resolution: Medium ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Camera ; Camera: Front; Resolution: Small ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Video Camera ; Camera: Back; Resolution: Full; Max duration: 60; Start immediately ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Video Camera ; Camera: Front; Resolution: Small; Max duration: 5; Start immediately ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Microphone ; Max duration: 12; Start immediately ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Barcode ; Camera: Back; Resolution: Full ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Barcode ; Scan from: TestTable::<Field Missing> ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Photo Library ]
+	# 
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Full Screen ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Overlay ]
+	Insert from Device [ TestTable::MyGlobal_g ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Embedded ]
+	# 
+	Insert from Index []
+	Insert from Index [ TestTable::MyGlobal_g ]
+	Insert from Index [ Select ; TestTable::MyGlobal_g ]
+	Insert from Index [ Select ]
+	# 
+	Insert from Last Visited []
+	Insert from Last Visited [ TestTable::MyGlobal_g ]
+	Insert from Last Visited [ Select ; TestTable::MyGlobal_g ]
+	Insert from Last Visited [ Select ]
+	# 
+	Insert from URL [ With dialog: Off ]
+	Insert from URL [ With dialog: On ]
+	Insert from URL [ With dialog: On ; Target: TestTable::MyGlobal_g ]
+	Insert from URL [ With dialog: Off ; Target: TestTable::ContainerField1 ; $URL ; Verify SSL Certificates ; Do not automatically encode URL ]
+	# 
+	Insert from URL [ Select ; With dialog: On ; Target: $WebContent ]
+	Insert from URL [ Select ; With dialog: On ; Target: TestTable::TextField1 ; $url ]
+	Insert from URL [ Select ; With dialog: On ; Target: TestTable::TextField1 ; $url ; Do not automatically encode URL ]
+	Insert from URL [ Select ; With dialog: Off ; Target: TestTable::TextField1 ; $url ]
+	Insert from URL [ Select ; With dialog: On ; cURL options: "-X PUT" ]
+	Insert from URL [ Select ; With dialog: Off ; Target: TestTable::TextField1 ; $URL ; Verify SSL Certificates ; cURL options: $curl_options ]
+	# 
+	# ONLY ONE Param => Assume Source Var
+	# The following INFREQUENT form has no target -> NEEDS a currently selected layout field
+	Insert from URL [ With dialog: Off ; $URL ]
+	Insert from URL [ With dialog: Off ; Target: $TargetWebContent ; "someurl" ]
+	Insert from URL [ With dialog: Off ; Target: $TargetWebContent ; $SourceURL ]
+	# TODO: MBS must interpret first var as Target when 2 Vars between 'With dialog' and 'cURL options': Target Variable + URL Variable
+	Insert from URL [ With dialog: On ; Target: $TargetWebContent ; $URL ; cURL options: $cURL_Options ]
+	# EGIT - in cURL options ist es GEMISCHT: MANCHE Vars sind  Target Vars, manche QUELL Vars
+	Insert from URL [ With dialog: Off ; Target: TestTable::DateField1 ; "http://www.mrwatson.de" ; cURL options: " --trace $TargetDump --uploadOrWhatever $SourceFile " ; Do not automatically encode URL ]
+	# 
+	Insert PDF []
+	Insert PDF [ “$PdfPath” ]
+	Insert PDF [ Reference ; “$PdfPath” ]
+	Insert PDF [ Reference ]
+	Insert PDF [ Reference ]
+	# 
+	Insert Picture []
+	Insert Picture [ “Bild.png” ]
+	Insert Picture [ Reference ; “Bild.png” ]
+	Insert Picture [ Reference ]
+	# 
+	Insert Text []
+	Insert Text [ “A B C” ]
+	Insert Text [ Target: $Code ; “A B C” ]
+	Insert Text [ Select ; Target: $Code ; “A B C” ]
+	Insert Text [ “$KeineSourceVar - sondern nur  text” ]
+	Insert Text [ Target: $TargetVar ; “$KeineSourceVar - sondern nur  text” ]
+	Insert Text [ Select ; Target: <Table Missing> ; “1+2” ]
+	Insert Text [ Select ; Target: TestTable::NumberField1 ; “foo bar baz” ]
+	Insert Text [ Select ; Target: $Code ; “A B C” ]
+	Insert Text [ Target: $Code ; “A B C” ]
+	Insert Text [ Target: $Code ; “$price” ]
+	Insert Text [ Target: $Code ; “"” ]
+	Insert Text [ Target: $Code ]
+	Insert Text [ Select ]
+	# 
+	Relookup Field Contents [ With dialog: On ]
+	Relookup Field Contents [ With dialog: Off ; TestTable::TextField1 ]
+	# 
+	Replace Field Contents [ With dialog: On ; <Table Missing> ]
+	Replace Field Contents [ With dialog: On ; 123456 ]
+	Replace Field Contents [ With dialog: On ; TestTable::MyGlobal_g ; Current contents ]
+	# Custom Values: 1+1
+	Replace Field Contents [ With dialog: Off ; TestTable::SerialNumberOnCreationIncBy1 ; Serial numbers ]
+	# Custom Values: 100+10
+	Replace Field Contents [ With dialog: On ; TestTable::SerialNumberOnCreationIncBy1 ; Serial numbers ]
+	# Entry Options (+1)
+	Replace Field Contents [ With dialog: Off ; TestTable::SerialNumberOnCreationIncBy1 ; Serial numbers ]
+	# Entry Options (+10)
+	Replace Field Contents [ With dialog: Off ; TestTable::SerialNumberOnCommitIncBy10 ; Serial numbers ]
+	# Entry Options (+1) ; Update Serial Number in Entry Options
+	Replace Field Contents [ With dialog: Off ; TestTable::SerialNumberOnCreationIncBy1 ; Serial numbers ]
+	# Custom Values: 1+1 ; Update Serial Number in Entry Options
+	Replace Field Contents [ With dialog: Off ; TestTable::SerialNumberOnCreationIncBy1 ; Serial numbers ]
+	Replace Field Contents [ With dialog: On ; TestTable::NumberField1 ; Serial numbers ]
+	Replace Field Contents [ With dialog: On ; TestTable::TextField1 ; "Calc" ]
+	# FM22 - New option: Skip auto-enter options
+	Replace Field Contents [ With dialog: On ; 123456 ; Skip auto-enter options ]
+	Replace Field Contents [ With dialog: On ; TestTable::TextField1 ; Current contents ; Skip auto-enter options ]
+	Replace Field Contents [ With dialog: On ; TestTable::TextField1 ; "Calc" ; Skip auto-enter options ]
+	# /FM22
+	# 
+	Set Field [ <Table Missing> ; 1+2 ]
+	Set Field [ <Table Missing>[2+1] ; 1+2 ]
+	Set Field [ _Color::<Field Missing> ; 1+2 ]
+	Set Field [ TestTable::ID[2] ; 1+2 ]
+	Set Field [ TestTable::TextField_lotsTurnedOn ; "Tabelle nicht vorhanden" ]
+	Set Field [ TestTable::NumberField1 ; "<Tabelle nicht vorhanden>" ]
+	# 
+	Set Field By Name [ "Test::Egal" ; 1+2 ]
+	Set Field By Name [ $FieldName ; "Value" ]
+	# 
+	Set Next Serial Value [ 1 ]
+	Set Next Serial Value [ <Table Missing> ; 1 ]
+	Set Next Serial Value [ TestTable::ContactNameList_u ; 1 ]
+	# 
+	# OBSOLETE STEPS
+	#[OBSOLETE]  Insert Object
+	#[OBSOLETE]  Insert QuickTime
+End If
+# # Records
+If [ 1 ]
+	Commit Records/Requests [ With dialog: On ]
+	Commit Records/Requests [ With dialog: Off ]
+	Commit Records/Requests [ Skip data entry validation ; With dialog: On ]
+	Commit Records/Requests [ Skip data entry validation ; With dialog: Off ]
+	Commit Records/Requests [ Skip data entry validation ; With dialog: Off ; Force Commit ]
+	# 
+	Copy All Records/Requests
+	# 
+	Copy Record/Request
+	# 
+	Delete All Records [ With dialog: On ]
+	Delete All Records [ With dialog: Off ]
+	# 
+	Delete Portal Row [ With dialog: On ]
+	Delete Portal Row [ With dialog: Off ]
+	# 
+	Delete Record/Request [ With dialog: On ]
+	Delete Record/Request [ With dialog: Off ]
+	# 
+	Duplicate Record/Request
+	# 
+	Export Records [ With dialog: On ; Create folders: Off ]
+	Export Records [ With dialog: On ; Create folders: Off ; Macintosh ]
+	Export Records [ With dialog: On ; Create folders: Off ; Windows (ANSI) ]
+	Export Records [ With dialog: On ; Create folders: Off ; Macintosh ]
+	Export Records [ With dialog: On ; Create folders: Off ; “file.txt” ; Macintosh ]
+	Export Records [ With dialog: On ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Unicode (UTF-8) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Unicode (UTF-8) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Unicode (UTF-16) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Windows (ANSI) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; ASCII (DOS) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Japanese (Shift-JIS) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Simplified Chinese (GB) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Traditional Chinese (Big-5) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Korean (EUC-KR) ]
+	Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+	# 
+	Import Records [ With dialog: Off ; Table: TestTable ; “fmSyntaxColorizer.fmp12” ; Add; Mac Roman ]
+	Import Records [ With dialog: On ; “file.txt” ]
+	Import Records [ With dialog: On ; “file.fmp12” ]
+	Import Records [ With dialog: On ; “file.tab” ]
+	Import Records [ With dialog: On ; “file.tab” ]
+	Import Records [ With dialog: On ; “file.csv” ]
+	Import Records [ With dialog: On ; “file.csv” ]
+	Import Records [ With dialog: On ; “file.mer” ]
+	Import Records [ With dialog: On ; “file.dbf” ]
+	Import Records [ With dialog: On ; Source: "file:file.xls"; Worksheet: "" ]
+	Import Records [ With dialog: On ; Source: "file:file.xls"; Worksheet: "" ]
+	Import Records [ With dialog: On ; Source: "file:file.xlsx"; Worksheet: "" ]
+	Import Records [ With dialog: On ; Source: "file:file.xlsx"; Worksheet: "" ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Include all enclosed folders; Picture and movie files; Import only a reference ; Add; Mac Roman ; Verify SSL Certificates ]
+	Import Records [ With dialog: On ; folder; Include all enclosed folders; Picture and movie files; Import only a reference ]
+	Import Records [ With dialog: On ; folder; Picture and movie files ]
+	Import Records [ With dialog: On ; folder; Text files ]
+	Import Records [ With dialog: On ; folder; Text files ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Add; Mac Roman ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Replace; Mac Roman ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Mac Roman ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Mac Roman ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Windows ANSI ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Include all enclosed folders; Text files ; Update; DOS OEM ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Unicode ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Unicode (big endian) ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; UTF-8 ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Shift JIS ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Simplified Chinese (GB) ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Traditional Chinese (Big-5) ]
+	Import Records [ With dialog: On ; Table: TestTable ; folder; Text files ; Update; Korean (EUC-KR) ]
+	Import Records [ With dialog: Off ; Table: {New table} ; “Import.log” ; Add; UTF-8 ]
+	Import Records [ With dialog: Off ]
+	Import Records [ With dialog: Off ; http://xslt.com/xsl.xml ]
+	Import Records [ With dialog: Off ; http://xslt.com/xsl.xml; xsl.xsl ]
+	Import Records [ With dialog: Off ; http://xslt.com/xsl.xml; $PathXSL ]
+	Import Records [ With dialog: Off ; Table: Home.Syntax_ALL ; http://xslt.com/xsl.xml; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+	Import Records [ With dialog: Off ; Table: Home.Syntax_ALL ; xml.xml; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+	Import Records [ With dialog: Off ; Table: Home.Syntax_ALL ; $PathXML; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+	# 
+	New Record/Request
+	# 
+	Open Record/Request
+	# 
+	Revert Record/Request [ With dialog: On ]
+	Revert Record/Request [ With dialog: Off ]
+	# 
+	Save Records as Excel [ With dialog: On ; Create folders: Off ]
+	Save Records as Excel [ With dialog: Off ; Create folders: Off ]
+	Save Records as Excel [ Restore ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Records being browsed ; Create folders: Off ]
+	Save Records as Excel [ Restore ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Current record ; Create folders: Off ]
+	# 
+	Save Records as JSONL [ Format for fine-tuning: Off ; Create folders: Off ]
+	Save Records as JSONL [ Format for fine-tuning: Off ; Create folders: On ]
+	Save Records as JSONL [ Format for fine-tuning: On ; System Prompt:    ; User Prompt:    ; Assistant Prompt:    ; Create folders: Off ]
+	Save Records as JSONL [ Format for fine-tuning: On ; System Prompt: $SystemPrompt ; User Prompt: $UserPrompt ; Assistant Prompt: $AssistantPrompt ; Create folders: Off ]
+	Save Records as JSONL [ Format for fine-tuning: On ; Table: “TestTable” ; System Prompt: $SystemPrompt ; User Prompt: $UserPrompt ; Assistant Prompt: $AssistantPrompt ; “$OutputFilePath” ; Create folders: Off ]
+	# 
+	Save Records as JSONL [ Format for fine-tuning: On ; Table: “TestTable” ; System Prompt: $SystemPrompt ; User Prompt: $UserPrompt ; Assistant Prompt: $AssistantPrompt ; “$OutputFilePath” ; Automatically open ; Create folders: On ]
+	# 
+	Save Records as PDF [ With dialog: On ; Create folders: Off ]
+	Save Records as PDF [ Restore ; With dialog: On ; Records being browsed ; Create folders: Off ]
+	Save Records as PDF [ Restore ; With dialog: On ; Current record ; Create folders: Off ]
+	Save Records as PDF [ With dialog: On ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Records being browsed ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Current record ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Blank record, as formatted ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Blank record, with boxes ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Blank record, with underlines ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Blank record, with placeholder text ; Create folders: Off ]
+	Save Records as PDF [ Restore ; Append ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Records being browsed ; Create folders: Off ]
+	# 
+	Save Records as Snapshot Link [ Records being browsed ; Create folders: Off ]
+	Save Records as Snapshot Link [ “$Path” ; Create email ; Records being browsed ; Create folders: Off ]
+	Save Records as Snapshot Link [ “$Path” ; Create email ; Current record ; Create folders: Off ]
+	# 
+	Truncate Table [ With dialog: On ; Table: <Current Table> ]
+	Truncate Table [ With dialog: Off ; Table: “TestTable” ]
+	Truncate Table [ With dialog: Off ; Table: <Table Missing> ]
+End If
+# # Found Sets
+If [ 1 ]
+	Constrain Found Set []
+	Constrain Found Set [ Restore ]
+	Constrain Found Set [ Restore ; Find without indexes ]
+	Constrain Found Set [ Find without indexes ]
+	# 
+	Extend Found Set []
+	Extend Found Set [ Restore ]
+	# 
+	Find Matching Records [ Replace ; TestTable::TextField1 ]
+	Find Matching Records [ Constrain ; TestTable::TextField1 ]
+	Find Matching Records [ Extend ; TestTable::TextField1 ]
+	# 
+	Modify Last Find
+	# 
+	Omit Multiple Records [ With dialog: On ]
+	Omit Multiple Records [ With dialog: Off ; 123 ]
+	# 
+	Omit Record
+	# 
+	Perform Find []
+	Perform Find [ Restore ]
+	# 
+	Perform Quick Find []
+	Perform Quick Find [ "Hello" ]
+	# 
+	Show All Records
+	# 
+	Show Omitted Only
+	# 
+	Sort Records [ With dialog: Off ]
+	Sort Records [ With dialog: On ]
+	Sort Records [ With dialog: On ]
+	# Don't keep sorted
+	Sort Records [ Restore ; With dialog: Off ]
+	# Keep sorted
+	Sort Records [ Restore ; With dialog: Off ]
+	# Descending
+	Sort Records [ Restore ; With dialog: Off ]
+	# Everything
+	Sort Records [ Restore ; With dialog: Off ]
+	# 
+	Sort Records by Field [ Ascending ; TestTable::ID ]
+	Sort Records by Field [ Descending ; TestTable::ID ]
+	Sort Records by Field [ Associated value list ; TestTable::ID ]
+	# 
+	Unsort Records
+End If
+# # Windows
+If [ 1 ]
+	Adjust Window [ Resize to Fit ]
+	Adjust Window [ Maximize ]
+	Adjust Window [ Minimize ]
+	Adjust Window [ Restore ]
+	Adjust Window [ Hide ]
+	# 
+	Arrange All Windows [ Tile Horizontally ]
+	Arrange All Windows [ Tile Vertically ]
+	Arrange All Windows [ Cascade Window ]
+	Arrange All Windows [ Bring All To Front ]
+	# 
+	Close Window [ Current Window ]
+	Close Window [ Name: $FensterName ; Current file ]
+	# 
+	Freeze Window
+	# 
+	Move/Resize Window [ Current Window ]
+	Move/Resize Window [ Name: $FensterName ; Current file ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	# 
+	New Window [ Style: Document ; Name: "Window" ; Using layout: <Current Layout> ]
+	New Window [ Style: Document ; Using layout: “Home” (_Home) ; Height: 1 ; Width: 2 ; Top: 3 ; Left: 4 ]
+	New Window [ Style: Document ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	New Window [ Style: Floating Document ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	New Window [ Style: Dialog ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	New Window [ Style: Dialog ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	New Window [ Style: Card ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	New Window [ Style: Card ; Name: $FensterName ; Using layout: $LayoutName ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+	# 
+	Refresh Window []
+	Refresh Window [ Flush cached join results ; Flush cached external data ]
+	# 
+	Scroll Window [ Home ]
+	Scroll Window [ End ]
+	Scroll Window [ Page Up ]
+	Scroll Window [ Page Down ]
+	Scroll Window [ To Selection ]
+	# 
+	Select Window [ Current Window ]
+	Select Window [ Name: $FensterName ; Current file ]
+	# 
+	#[OBSOLETE]  Set Allowed Orientations [ Portrait: On ; Portrait Upside Down: On ; Landscape Left: On ; Landscape Right: On ]
+	#[OBSOLETE]  Set Allowed Orientations [ Portrait: Off ; Portrait Upside Down: Off ; Landscape Left: Off ; Landscape Right: On ]
+	#[OBSOLETE]  Set Allowed Orientations [ Portrait: On ; Portrait Upside Down: Off ; Landscape Left: Off ; Landscape Right: Off ]
+	# 
+	Set Window Title [ Current Window ; New Title: $FensterNameNeu ]
+	Set Window Title [ Of Window: $FensterNameAlt ; Current file ; New Title: $FensterNameNeu ]
+	# 
+	Set Zoom Level [ Lock: On ; 25% ]
+	Set Zoom Level [ Lock: On ; 50% ]
+	Set Zoom Level [ Lock: On ; 75% ]
+	Set Zoom Level [ Lock: On ; 100% ]
+	Set Zoom Level [ Lock: On ; 150% ]
+	Set Zoom Level [ Lock: On ; 200% ]
+	Set Zoom Level [ Lock: On ; 300% ]
+	Set Zoom Level [ Lock: On ; 400% ]
+	Set Zoom Level [ Lock: On ; Zoom In ]
+	Set Zoom Level [ Lock: On ; Zoom Out ]
+	# 
+	Show/Hide Menubar [ Lock: On ; Toggle ]
+	Show/Hide Menubar [ Lock: On ; Hide ]
+	Show/Hide Menubar [ Lock: On ; Show ]
+	# 
+	Show/Hide Text Ruler [ Toggle ]
+	Show/Hide Text Ruler [ Show ]
+	Show/Hide Text Ruler [ Hide ]
+	# 
+	Show/Hide Toolbars [ Toggle ]
+	Show/Hide Toolbars [ Lock ; Show ]
+	Show/Hide Toolbars [ Lock ; Include Edit Record Toolbar ; Hide ]
+	Show/Hide Toolbars [ Lock ; Include Edit Record Toolbar ; Toggle ]
+	# 
+	View As [ Cycle ]
+	View As [ View as Form ]
+	View As [ View as List ]
+	View As [ View as Table ]
+End If
+# # Files
+If [ 1 ]
+	Close Data File [ File ID: ]
+	Close Data File [ File ID: $FileID ]
+	# 
+	Close File [ Current File ]
+	Close File [ “Self” ]
+	# 
+	Convert File [ With dialog: On ]
+	Convert File [ With dialog: Off ]
+	Convert File [ With dialog: Off ; Verify SSL Certificates ]
+	Convert File [ Skip Indexes ; With dialog: On ]
+	Convert File [ Skip Indexes ; With dialog: On ; Verify SSL Certificates ]
+	Convert File [ Skip Indexes ; With dialog: Off ; “$DataSource” ; Verify SSL Certificates ]
+	Convert File [ Skip Indexes ; With dialog: Off ; Verify SSL Certificates ]
+	Convert File [ Open File ; With dialog: On ]
+	Convert File [ Open File ; With dialog: Off ]
+	Convert File [ Open File ; Skip Indexes ; With dialog: Off ]
+	Convert File [ Open File ; Skip Indexes ; With dialog: Off ; “$DataSource” ]
+	Convert File [ Open File ; Skip Indexes ; With dialog: Off ; http:xml; $XsltFilePath ]
+	Convert File [ Open File ; Skip Indexes ; With dialog: Off ; RESULTSET.xml; FMPXMLRESULT_XSLT_CreateXMLImportTemplate.xsl ; Verify SSL Certificates ]
+	Convert File [ Open File ; Skip Indexes ; With dialog: Off ; “$DataSource” ; Verify SSL Certificates ]
+	Convert File [ Open File ; With dialog: On ; http:xml; $PathXSLT ]
+	# 
+	Create Data File [ ; Create folders: Off ]
+	Create Data File [ ; Create folders: On ]
+	Create Data File [ “abc.def” ; Create folders: Off ]
+	# 
+	Delete File [ Target file: ]
+	Delete File [ Target file: “"byebye.csv"” ]
+	# 
+	Get Data File Position [ Target: ]
+	Get Data File Position [ File ID: $FileID ; Target: $Pos ]
+	Get Data File Position [ File ID: $FileID ; Target: TestTable::TextField1 ]
+	# 
+	Get File Exists [ ; Target: ]
+	Get File Exists [ “abc.fmp12” ; Target: $FileExists ]
+	# 
+	Get File Size [ ; Target: ]
+	Get File Size [ “abc.fmp12” ; Target: $FileSize ]
+	# 
+	New File
+	# 
+	Open Data File [ ; Target: ]
+	Open Data File [ “abc.def” ; Target: TestTable::NumberField1 ]
+	# 
+	Open File [ Open hidden: On ; <unknown> ]
+	Open File [ Open hidden: On ; “Self” ]
+	Open File [ Open hidden: On ; “Self” ]
+	# 
+	Print [ With dialog: On ]
+	Print [ With dialog: Off ]
+	Print [ Restore: drucker.werkheim-hamburg.de ; With dialog: Off ]
+	Print [ Restore: 192.168.1.1 ; With dialog: On ]
+	Print [ Restore: printer.fmworkmate.com ; With dialog: On ]
+	Print [ Restore: drücker.günther.com ; With dialog: On ]
+	# 
+	# FM Print options
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	# 
+	# Layout Print options
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+	# 
+	Print Setup [ With dialog: On ]
+	Print Setup [ Restore ; With dialog: On ]
+	Print Setup [ Restore ; With dialog: Off ]
+	Print Setup [ Restore ; With dialog: On ]
+	# 
+	Read from Data File [ Target: ; Read as: Bytes ]
+	Read from Data File [ Target: ; Read as: UTF-8 ]
+	Read from Data File [ Target: ; Read as: UTF-16 ]
+	Read from Data File [ File ID: $FileID ; Amount: 123 ; Target: TestTable::MyGlobal_g ; Read as: UTF-16 ]
+	Read from Data File [ File ID: $FileID ; Amount (bytes): 123 ; Target: $target ; Read as: UTF-8 ]
+	Read from Data File [ File ID: $FileID ; Amount (bytes): 123 ; Target: $target ; Read as: Bytes ]
+	# 
+	Recover File [ With dialog: On ]
+	Recover File [ With dialog: Off ]
+	Recover File [ With dialog: Off ; “$file” ]
+	# 
+	Rename File [ Source file: ]
+	Rename File [ Source file: “$source” ]
+	Rename File [ Source file: “$source” ; New name: "New Name" ]
+	Rename File [ Source file: ; New name: "New Name" ]
+	# 
+	Save a Copy as [ copy of current file ; Create folders: Off ]
+	Save a Copy as [ clone (no records) ; Create folders: Off ]
+	Save a Copy as [ compacted copy (smaller) ; Create folders: Off ]
+	Save a Copy as [ self-contained copy (single file) ; Create folders: Off ]
+	Save a Copy as [ “$test” ; copy of current file ; Automatically open ; Create email ; Create folders: Off ]
+	Save a Copy as [ “Test.fmp12” ; clone (no records) ; Create folders: Off ]
+	# 
+	Save a Copy as XML [ Window name:    ; Destination file: <unknown> ]
+	Save a Copy as XML [ Window name: $window ; Destination file: <unknown> ]
+	Save a Copy as XML [ Window name: $window ; Destination file: “there” ]
+	Save a Copy as XML [ Window name: $window ; Destination file: “there” ; Include details for analysis tools ]
+	Save a Copy as XML [ Window name: $window ; Destination file: “there” ; Include details for analysis tools ]
+	Save a Copy as XML [ Window name: "window" ; Destination file: “$file” ; Include details for analysis tools ]
+	# 
+	Set Data File Position []
+	Set Data File Position [ File ID: $FileID ]
+	Set Data File Position [ File ID:    ; New position: 123 ]
+	Set Data File Position [ File ID: $FileID ]
+	Set Data File Position [ File ID: $FileID ; New position: $Pos ]
+	# 
+	Set Multi-User [ On ]
+	Set Multi-User [ On (Hidden) ]
+	Set Multi-User [ Off ]
+	# 
+	Set Use System Formats [ On ]
+	Set Use System Formats [ Off ]
+	# 
+	Write to Data File [ Data source: ; Write as: UTF-16 ; Append line feed ]
+	Write to Data File [ Data source: ; Write as: UTF-16 ; Append line feed ]
+	Write to Data File [ File ID: $FileID ; Data source: TestTable::TextField1 ; Write as: UTF-8 ]
+	Write to Data File [ File ID: $FileID ; Data source: $data ; Write as: UTF-16 ; Append line feed ]
+End If
+# # Accounts
+If [ 1 ]
+	Add Account [ Privilege Set: <unknown> ]
+	Add Account [ Privilege Set: <unknown> ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: $AccountName ; Privilege Set: USER ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: "aaa" ; Privilege Set: [Read-Only Access] ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: "Privilege Set deleted" ; Privilege Set: <unknown> ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: "acc" ; Privilege Set: [Read-Only Access] ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: [Data Entry Only] ; Expire password ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: [Read-Only Access] ; Expire password ]
+	Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: USER ; Expire password ]
+	Add Account [ Authenticate via: External Server ; Group Name:$Groupname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Apple Account ; Account Name: $Kontoname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Amazon ; Account Name: $Kontoname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Google ; Account Name: $Kontoname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Microsoft Entra ID ; Account Name: $Kontoname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Microsoft Entra ID ; Group Name:$Groupname ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Custom OAuth ; Account Name: $Username ; Privilege Set: USER ]
+	Add Account [ Authenticate via: Custom OAuth ; Group Name:$Groupname ; Privilege Set: USER ]
+	# 
+	Change Password [ With dialog: On ]
+	Change Password [ With dialog: Off ]
+	Change Password [ Old Password: •••••••• ; With dialog: Off ]
+	Change Password [ Old Password: •••••••• ; Password: •••••••• ; With dialog: On ]
+	Change Password [ Old Password: •••••••• ; Password: •••••••• ; With dialog: Off ]
+	# 
+	Delete Account []
+	Delete Account [ Account Name: $Kontoname ]
+	# 
+	Enable Account [ Activate ]
+	Enable Account [ Account Name: $Kontoname ; Activate ]
+	Enable Account [ Account Name: $Kontoname ; Deactivate ]
+	# 
+	Re-Login [ With dialog: Off ]
+	Re-Login [ Password: •••••••• ; With dialog: Off ]
+	Re-Login [ Account Name: $Kontoname ; Password: •••••••• ; With dialog: Off ]
+	# 
+	Reset Account Password []
+	Reset Account Password [ Expire password ]
+	Reset Account Password [ Account Name: "acc" ; Password: •••••••• ]
+	Reset Account Password [ Account Name: $Kontoname ; Password: •••••••• ; Expire password ]
+End If
+# # Artificial Intelligence
+If [ 1 ]
+	# 
+	# ## 	Configure AI Account
+	# 
+	Configure AI Account [ Account Name:    ; Model Provider: OpenAI ; API key:    ]
+	Configure AI Account [ Account Name: "MyChatGPT" ; Model Provider: OpenAI ; API key: $Secret ]
+	Configure AI Account [ Account Name: "MyCohere" ; Model Provider: Cohere ; API key: $Secret ]
+	Configure AI Account [ Account Name: "MyCustomAI" ; Model Provider: Custom ; Endpoint: "http://example.com/endpoint" ; API key: $Secret ]
+	Configure AI Account [ Account Name: "MyCustomAI" ; Model Provider: Custom ; Endpoint: "http://example.com/endpoint" ; API key: $Secret ]
+	Configure AI Account [ Account Name: "MyChatGPT" ; Model Provider: Custom ; Endpoint:    ; API key: $Secret ]
+	# 
+	Configure Machine Learning Model [ Operation: Unload ; Name:    ]
+	Configure Machine Learning Model [ Operation: General ; Name: "MyGeneral" ; From: TestTable::TextField1[2] ]
+	Configure Machine Learning Model [ Operation: General ; Name: "MyGeneral" ; From: TestTable::MyGlobal_g[$i] ]
+	Configure Machine Learning Model [ Operation: Vision ; Name: "MyVision" ; From: TestTable::TextField1[2] ]
+	Configure Machine Learning Model [ Operation: Unload ; Name: "MyModel" ]
+	Configure Machine Learning Model [ Operation: Vision ; Name: "MyVision" ; From: ]
+	Configure Machine Learning Model [ Operation: Vision ; Name: "MyVision" ; From: ]
+	# 
+	# FM22
+	Configure Prompt Template [ Template Name:    ; Model Provider: OpenAI ; Template Type: SQL Query ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: Anthropic ; Template Type: SQL Query ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: Cohere ; Template Type: SQL Query ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: Custom ; Template Type: SQL Query ]
+	# 
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: SQL Query ; SQL Prompt: "Generate a fully formed SQL query based on following rules:¶ 1. Enclose all table and field names in double quotes.¶ 2. Format dates as \"DATE 'YYYY-MM-DD'\", times as \"TIME 'HH:MM:SS'\" and timestamps as \"TIMESTAMP 'YYYY-MM-DD HH:MM:SS'\".¶ 3. Return queries in plain text (not JSON).¶ 4. Use \"FETCH FIRST n ROW ONLY\" instead of \"LIMIT\".¶ 5. Support single queries only.¶ 6. No semicolon is needed at the end of SQL query.¶ 7. Don't generate nested SQL queries.¶ 8. Use \"LIKE\" instead of \"ILIKE\".¶ 9. Keep all comparisons case-sensitive.¶ 10. Do not include fields that are not included in the question.¶ 11. Use unquoted ROWID in queries.¶ 12. Only utilize the following database schema:¶ :schema:" ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: SQL Query ; Natural Language Prompt: "The answer should be returned in plain text, not in JSON.¶ Break down response if it is too long." ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: SQL Query ; SQL Prompt: "Generate a fully formed SQL query based on following rules:¶ 1. Enclose all table and field names in double quotes.¶ 2. Format dates as \"DATE 'YYYY-MM-DD'\", times as \"TIME 'HH:MM:SS'\" and timestamps as \"TIMESTAMP 'YYYY-MM-DD HH:MM:SS'\".¶ 3. Return queries in plain text (not JSON).¶ 4. Use \"FETCH FIRST n ROW ONLY\" instead of \"LIMIT\".¶ 5. Support single queries only.¶ 6. No semicolon is needed at the end of SQL query.¶ 7. Don't generate nested SQL queries.¶ 8. Use \"LIKE\" instead of \"ILIKE\".¶ 9. Keep all comparisons case-sensitive.¶ 10. Do not include fields that are not included in the question.¶ 11. Use unquoted ROWID in queries.¶ 12. Only utilize the following database schema:¶ :schema:" ; Natural Language Prompt: "The answer should be returned in plain text, not in JSON.¶ Break down response if it is too long." ]
+	# 
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: Find Request ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: Find Request ; Find Request Prompt: "Generate and only return a JSON layout query…" ]
+	# 
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: RAG Prompt ]
+	Configure Prompt Template [ Template Name: $TemplateName ; Model Provider: OpenAI ; Template Type: RAG Prompt ; RAG Prompt: "Provide a comprehensive and informative answer to the question…" ]
+	# 
+	# ## 	Configure RAG Account
+	# 
+	Configure RAG Account  [ RAG Account Name:    ; Endpoint:    ; API key:    ]
+	Configure RAG Account  [ RAG Account Name: $MyRagAccount ; Endpoint: $Endpoint ; API key: $MySecretApiKey ]
+	Configure RAG Account  [ RAG Account Name: $MyRagAccount ; Endpoint: $Endpoint ; API key: $MySecretApiKey ; Verify SSL Certificates ]
+	Configure RAG Account  [ RAG Account Name: $MyRagAccount ; Endpoint:    ; API key: $MySecretApiKey ; Verify SSL Certificates ]
+	Configure RAG Account  [ RAG Account Name:    ; Endpoint:    ; API key:    ; Verify SSL Certificates ]
+	# 
+	# ## 	Configure Regression Model
+	# 
+	Configure Regression Model [ Action: Train Model ; Model Name:    ; Algorithm: Random Forest ]
+	Configure Regression Model [ Action: Train Model ; Model Name: "Fred" ; Algorithm: Random Forest ; Training Vectors Field: TestTable::TextField1 ; Training Target Field: TestTable::TextField_lotsTurnedOn ; Skip empty or invalid records ; Parameters: $Parameters ; Save Model To: TestTable::ContainerField1 ]
+	# 
+	Configure Regression Model [ Action: Save Model ; Model Name:    ]
+	Configure Regression Model [ Action: Save Model ; Model Name: "Fred" ; Save Model To: TestTable::ContainerField1 ]
+	Configure Regression Model [ Action: Save Model ; Model Name: "Fred" ; Save Model To: $UpdatedModel[$Rep] ]
+	Configure Regression Model [ Action: Save Model ; Model Name: "Fred" ; Save Model To: TestTable::ContainerField1[$Rep] ]
+	# 
+	Configure Regression Model [ Action: Load Model ; Model Name:    ]
+	Configure Regression Model [ Action: Load Model ; Model Name: "Fred" ; Load Model From: TestTable::ContainerField1 ]
+	Configure Regression Model [ Action: Load Model ; Model Name: "Fred" ; Load Model From: TestTable::ContainerField1[$Rep] ]
+	Configure Regression Model [ Action: Load Model ; Model Name: "Fred" ; Load Model From: $UpdatedModel[$Rep] ]
+	# 
+	Configure Regression Model [ Action: Unload Model ; Model Name:    ]
+	Configure Regression Model [ Action: Unload Model ; Model Name: "Fred" ]
+	Configure Regression Model [ Action: Train Model ; Model Name: DeletedFields::<Field Missing> ; Algorithm: Random Forest ; Training Vectors Field: DeletedFields::<Field Missing> ; Training Target Field: DeletedFields::<Field Missing> ; Skip empty or invalid records ; Parameters: DeletedFields::<Field Missing> ; Save Model To: DeletedFields::<Field Missing> ]
+	# 
+	# ## Fine-Tune Model
+	# 
+	Fine-Tune Model [ Account Name:    ; Base Model:    ; Training Data: Table ]
+	Fine-Tune Model [ Account Name:    ; Base Model:    ; Training Data: Table ]
+	Fine-Tune Model [ Account Name:    ; Base Model:    ; Training Data: File ]
+	Fine-Tune Model [ Account Name:    ; Base Model:    ; Training Data: Table ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Completion Field: TestTable::TextField1 ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Response Target: TestTable::MyGlobal_g ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Completion Field: TestTable::TextField1 ; Response Target: TestTable::MyGlobal_g ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Completion Field: TestTable::TextField1 ; Response Target: TestTable::MyGlobal_g[$Rep] ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Completion Field: TestTable::TextField1 ; Response Target: $ResponseTarget[$Rep] ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: Table ; “TestTable” ; Completion Field: TestTable::TextField1 ; Response Target: $ResponseTarget[$Rep] ; Parameters: $Param ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; “TrainingData.xyz” ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; “$TrainingDataFilePath” ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; “$TrainingDataFilePath” ; Response Target: TestTable::MyGlobal_g ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; “$TrainingDataFilePath” ; Response Target: TestTable::MyGlobal_g ; Parameters: JSONSetElement ( "{}" ;["what_params" ; "don't know" ; JSONString] ) ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; Response Target: TestTable::TextField1 ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; Response Target: TestTable::MyGlobal_g ; Parameters: JSONSetElement ( "{}" ;["what_params" ; "don't know" ; JSONString] ) ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; Parameters: JSONSetElement ( "{}" ;["what_params" ; "don't know" ; JSONString] ) ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; Response Target: $TargetVar ]
+	# Extra Label
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; “$TrainingDataFilePath” ; Response Target: $ResponseTarget ; Parameters:    ]
+	Fine-Tune Model [ Account Name: $Name ; Base Model: $BaseModel ; Training Data: File ; Parameters:    ]
+	# 
+	Generate Response from Model [ Account Name:    ; Model:    ; User Prompt:    ]
+	Generate Response from Model [ Account Name:    ; Model:    ; User Prompt:    ; Agentic mode ]
+	Generate Response from Model [ Account Name:    ; Model:    ; User Prompt:    ; Stream ]
+	Generate Response from Model [ Account Name:    ; Model:    ; User Prompt:    ; Stream ; Web Viewer: <Active Object> ]
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt: $UserPrompt ]
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt: $UserPrompt ; Agentic mode ]
+	# 
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt: $UserPrompt ; Agentic mode ; Response: $TargetResponse ; Tool Calls from Model: $TargetToolCallsFromModel ; Instructions: $InstructionsCalculation ; Messages: $TargetMessages ; Save Message History To: $SaveMessageHistoryVariable[$Rep] ; Message History Count: $SaveMessageHistoryCountCalc ; Temperature: $TemparatureCalculation ; Tool Definitions: $ToolDefinitionsCalc ; Stream ; Parameters: $Parameters ; Web Viewer: $WebViewer ; Function Name: $JavascriptFunctionName ]
+	# 
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt:    ; Agentic mode ; Response: $TargetResponse ; Tool Calls from Model: $TargetToolCallsFromModel ; Instructions: $InstructionsCalculation ; Messages: $TargetMessages ; Save Message History To: $SaveMessageHistoryVariable[$Rep] ; Message History Count: $SaveMessageHistoryCountCalc ; Temperature: $TemparatureCalculation ; Tool Definitions: $ToolDefinitionsCalc ; Stream ; Parameters: $Parameters ; Web Viewer: <Active Object> ]
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt:    ; Agentic mode ; Response: $TargetResponse ; Tool Calls from Model: $TargetToolCallsFromModel ; Instructions: $InstructionsCalculation ; Messages: $TargetMessages ; Save Message History To: $SaveMessageHistoryVariable[$Rep] ; Message History Count: $SaveMessageHistoryCountCalc ; Temperature:    ; Tool Definitions:    ; Stream ; Parameters:    ; Web Viewer: <Active Object> ]
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt:    ; Agentic mode ; Response: $TargetResponse ; Tool Calls from Model: $TargetToolCallsFromModel ; Instructions:    ; Messages: $TargetMessages ; Save Message History To: $SaveMessageHistoryVariable[$Rep] ; Message History Count: $SaveMessageHistoryCountCalc ; Temperature:    ; Tool Definitions:    ; Stream ; Parameters:    ; Web Viewer: <Active Object> ]
+	# 
+	Generate Response from Model [ Account Name: $AccountName ; Model: $Model ; User Prompt:    ; Agentic mode ; Response: $TargetResponse ; Tool Calls from Model: $TargetToolCallsFromModel ; Instructions:    ; Messages: $TargetMessages ; Save Message History To: $SaveMessageHistoryVariable[$Rep] ; Message History Count: $SaveMessageHistoryCountCalc ; Temperature:    ; Tool Definitions:    ; Stream ; Parameters:    ; Web Viewer: <Active Object> ]
+	# 
+	# 
+	Generate Response from Model [ Account Name:    ; Model:    ; User Prompt:    ; Agentic mode ; Messages: $TargetMessages ]
+	# /FM22
+	# 
+	# ## Insert Embedding
+	# 
+	Insert Embedding [ Account Name:    ; Embedding Model:    ]
+	Insert Embedding [ Account Name:    ; Embedding Model: $EmbeddingModel ; Input:    ]
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::MyGlobal_g ; Input: TestTable::TextField1 ]
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField1 ; Input: TestTable::TextField1 ; Target: TestTable::TextField1[$Rep] ]
+	# 
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField1 ; Input: TestTable::TextField1 ]
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: Contacts::Name ; Input: TestTable::TextField1 ]
+	# 
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField1 ; Input: TestTable::TextField1 ]
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField1 ; Input: TestTable::TextField1 ; Target: TestTable::TextField1[$Rep] ]
+	# 
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField1 ; Input: TestTable::TextField1 ]
+	Insert Embedding [ Account Name: "MyChatGPT" ; Embedding Model: Contacts::Name ; Input: TestTable::TextField1 ]
+	# 
+	# ## Insert Embedding in Found Set
+	# 
+	Insert Embedding in Found Set [ Account Name:    ; Embedding Model:    ]
+	Insert Embedding in Found Set [ Account Name:    ; Embedding Model:    ]
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField_lotsTurnedOn ]
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: TestTable::TextField_lotsTurnedOn ; Source Field: Contacts::Name ]
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Source Field: TestTable::TextField1 ; Target Field: Contacts::Name ]
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Source Field: TestTable::TextField1 ; Target Field: Contacts::Name ; Replace target contents ]
+	# 
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Source Field: TestTable::TextField1 ; Target Field: Contacts::Name ; Replace target contents ; Continue on error ; Show summary ; Parameters: "ParamsJSON" ]
+	# 
+	Insert Embedding in Found Set [ Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Source Field: Contacts::Name ; Replace target contents ; Parameters: "ParamsJSON" ]
+	# 
+	# FM22
+	Perform Find by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Get: Found Set ]
+	Perform Find by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Get: Found Set as JSON ]
+	Perform Find by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Get: Find Request as JSON ]
+	# 
+	# Bug in fm22: Prompt Template Name is not passed to the clipboard
+	Perform Find by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Get: Found Set ; Parameters: $Parameters ; Prompt Template Name: $PromptTemplateName ]
+	Perform Find by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Get: Found Set as JSON ; Parameters: $Parameters ; Response Target: TestTable::TextField1[$Rep] ; Prompt Template Name: $PromptTemplateName ]
+	Perform Find by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Get: Found Set as JSON ; Parameters: $Parameters ; Response Target: TestTable::TextField1[$Rep] ; Prompt Template Name: $PromptTemplateName ]
+	Perform Find by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Get: Found Set as JSON ; Parameters: $Parameters ; Response Target: TestTable::TextField1[$Rep] ]
+	Perform Find by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Get: Found Set as JSON ; Parameters: $Parameters ; Response Target: TestTable::TextField1[$Rep] ]
+	# 
+	# 
+	# RAG Action Add Data (From Text)
+	Perform RAG Action [ RAG Account Name:    ; Space ID:    ; Action: Add Data ; RAG Data: From Text ;    ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID:    ; Action: Add Data ; RAG Data: From Text ;    ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Text ; "Rag data" ]
+	# 
+	# RAG Action Add Data (From File)
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File ; “$InputFile” ]
+	# 
+	# RAG Action Add Data (From File (Async))
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File (Async) ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File (Async) ; “$InputFile” ]
+	# 
+	# RAG Action Add Data (From Container)
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container ; Container Field: TestTable::ContainerField1 ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container ; Container Field: TestTable::ContainerField1_RC[$Rep] ]
+	# 
+	# RAG Action Add Data (From Container (Async))
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container (Async) ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container (Async) ; Container Field: TestTable::ContainerField1_RC ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From Container (Async) ; Container Field: TestTable::ContainerField1[$Rep] ]
+	# 
+	# RAG Action Send Prompt
+	Perform RAG Action [ RAG Account Name:    ; Space ID:    ; Action: Send Prompt ;    ; AI Account Name:    ; Model:    ; Stream: Off ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: Off ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name: $PromptTemplateName ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name: $PromptTemplateName ; Response Target: $ResponseTarget ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name: $PromptTemplateName ; Response Target: $ResponseTarget[$Rep] ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name: $PromptTemplateName ; Response Target: TestTable::ContainerField1[$Rep] ; Parameters: $Parameters ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name: $PromptTemplateName ; Response Target: $ResponseTarget ; Parameters: $Parameters ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Response Target: $ResponseTarget ; Parameters: $Parameters ]
+	# 
+	# RAG Action Remove Data
+	Perform RAG Action [ RAG Account Name:    ; Space ID:    ; Action: Remove Data ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Remove Data ]
+	# 
+	# The following steps have 'left overs' - a label or a hanging semicolon - caused be emptying a selected element - which is not detectable in the clipboard XML and which disappear if you copy paste the step
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File ; ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File (Async) ; ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Prompt Template Name:    ; Response Target: $ResponseTarget ; Parameters:    ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Response Target: $ResponseTarget ]
+	# Fixed:
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Add Data ; RAG Data: From File (Async) ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Response Target: $ResponseTarget ]
+	Perform RAG Action [ RAG Account Name: $RagAcccount ; Space ID: $SpaceID ; Action: Send Prompt ; "Prompt" ; AI Account Name: $AccountName ; Model: $Model ; Stream: On ; Response Target: $ResponseTarget ]
+	# 
+	# /FM22
+	# 
+	# 
+	# 
+	If [ 1 // Perform Semantic Find ]
+		# 
+		Perform Semantic Find [ Query by: Vector data ; Vector:    ; Record set: All records ]
+		Perform Semantic Find [ Query by: Vector data ; Vector:    ; Record set: Current found set ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Record set: All records ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Record set: All records ]
+		Perform Semantic Find [ Query by: Vector data ; Vector:    ; Record set: All records ]
+		Perform Semantic Find [ Query by: Image ; Account Name:    ; Embedding Model:    ; Image: $MyImage ; Record set: All records ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Cosine similarity condition: greater than ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Cosine similarity condition: less than ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Cosine similarity condition: equal to ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Cosine similarity condition: greater than or equal to ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name:    ; Embedding Model:    ; Text:    ; Cosine similarity condition: less than or equal to ]
+		# 
+		Perform Semantic Find [ Query by: Image ; Account Name: $AccountName ; Embedding Model: $EmbeddingModel ; Image: $MyImage ; Record set: All records ]
+		Perform Semantic Find [ Query by: Image ; Account Name:    ; Embedding Model:    ; Image: $MyImage ; Record set: All records ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: All records ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Cosine similarity condition: greater than ; Cosine similarity value:    ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Cosine similarity condition: greater than ; Cosine similarity value:    ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Cosine similarity condition: greater than ; Cosine similarity value: 1/2 ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Cosine similarity condition: greater than ; Cosine similarity value: 1/2 ; Save result: ]
+		# 
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Save result: ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Save result: ]
+		Perform Semantic Find [ Query by: Natural language ; Account Name: "MyChatGPT" ; Embedding Model: "Model" ; Text: TestTable::TextField1 ; Record set: Current found set ; Target field: TestTable::TextField1 ; Return count: TestTable::TextField1 ; Cosine similarity condition: greater than ; Cosine similarity value: 1/2 ; Save result: ]
+	End If
+	# 
+	# FM22
+	Perform SQL Query by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ]
+	# 
+	# Stream
+	Perform SQL Query by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ]
+	# 
+	# Actions no params
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query for Data Only ; Data Tables: From list ; Tables... ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get SQL ; Data Tables: From list ; Tables... ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get First SQL Only ; Data Tables: From list ; Tables... ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get DDL ; Data Tables: From list ; Tables... ]
+	# 
+	# Actions Data Tables from list full
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query for Data Only ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get SQL ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get First SQL Only ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Get DDL ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	# 
+	# Query Data Tables from list
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	# Query Data Tables By name
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: By name ;    ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: By name ; List( "Contacts" ; "TestTable" ) ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	# Query Data Tables By DDL
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: By DDL ;    ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: From list ; Action: Query ; Data Tables: By DDL ; "How from DDL?" ; Stream ; Prompt Template Name: $PromptTemplateName ; Parameters: $Parameters ; Response Target: TestTable::TextField1 ; Web Viewer: "WebViewer" ; Function Name: "JavascriptFunction" ]
+	# 
+	# JSONOptions
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: By JSON data ;    ]
+	Perform SQL Query by Natural Language [ Account Name: $AccountName ; Model: $Model ; Prompt: $Prompt ; Options specified: By JSON data ; $JSONOptions ]
+	# 
+	# Removed stuff, where possible
+	Perform SQL Query by Natural Language [ Account Name:    ; Model:    ; Prompt:    ; Options specified: From list ; Action: Query ; Data Tables: By DDL ;    ; Stream ; Prompt Template Name:    ; Parameters:    ; Response Target: $ResponseTarget[$Rep] ; Web Viewer: <Active Object> ]
+	# 
+	# /FM22
+	# 
+	Set AI Call Logging [ Off ; Verbose: Off ]
+	Set AI Call Logging [ On ; Verbose: Off ]
+	Set AI Call Logging [ On ; Verbose: On ; Truncate Messages: Off ]
+	Set AI Call Logging [ On ; Verbose: On ; Truncate Messages: On ]
+	Set AI Call Logging [ On ; Filename: "filename.ext" ; Verbose: On ; Truncate Messages: On ]
+	Set AI Call Logging [ On ; Filename: "filename.ext" ; Verbose: Off ]
+	Set AI Call Logging [ Off ; Filename: "filename.ext" ; Verbose: Off ]
+	Set AI Call Logging [ Off ; Filename: "filename.ext" ; Verbose: Off ]
+End If
+# # Spelling
+If [ 1 ]
+	Check Found Set
+	# 
+	Check Record
+	# 
+	Check Selection [ Select ]
+	Check Selection []
+	Check Selection [ TestTable::TextField1 ]
+	Check Selection [ Select ; <Table Missing> ]
+	Check Selection [ Select ; TestTable::TextField1 ]
+	# 
+	Correct Word
+	# 
+	Edit User Dictionary
+	# 
+	Select Dictionaries
+	# 
+	Set Dictionary [ Spelling Language: Português (Brasil) ]
+	Set Dictionary [ Spelling Language: Português (Portugal) ]
+	Set Dictionary [ Spelling Language: Nederlands ]
+	Set Dictionary [ Spelling Language: Deutsch (Alte Regeln) ]
+	Set Dictionary [ Spelling Language: Español ]
+	Set Dictionary [ Spelling Language: Italiano ]
+	Set Dictionary [ Spelling Language: Français ]
+	Set Dictionary [ Spelling Language: US English (Medical) ]
+	Set Dictionary [ Spelling Language: Deutsch (Neue Regeln) ]
+	Set Dictionary [ Spelling Language: Schweizerdeutsch ]
+	Set Dictionary [ Spelling Language: US English ]
+	Set Dictionary [ Spelling Language: Svenska ]
+	Set Dictionary [ Spelling Language: UK English ]
+	Set Dictionary [ Spelling Language: UK English ; User Dictionary: “MyBritishDictionary.ext” ]
+	# 
+	Spelling Options
+End If
+# # Open Menu item
+If [ 1 ]
+	Open Edit Saved Finds
+	Open Favorites
+	Open File Options
+	Open Find/Replace
+	Open Help
+	Open Hosts
+	Open Manage Containers
+	Open Manage Data Sources
+	Open Manage Database
+	Open Manage Layouts
+	Open Manage Themes
+	Open Manage Value Lists
+	Open Script Workspace
+	Open Settings
+	Open Sharing
+	Open Upload to Host
+End If
+# # Miscellaneous
+If [ 1 ]
+	# BUG 1047 Applescript Prob. fixed
+	# FIXME please
+	# TODO next friday
+	# TEST this!
+	# NOTE there must be a space after the @ symbol:
+	# @ Christian: THANK YOU for the cool SyntaxColoring function in the MBS Plugin!
+	# 
+	Allow Formatting Bar [ On ]
+	Allow Formatting Bar [ Off ]
+	# 
+	AVPlayer Play [ Object Name : <Active Object> ]
+	AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 1 ]
+	AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: $Rep ]
+	AVPlayer Play [ Field : TestTable::TextField1 ]
+	AVPlayer Play [ Field : TestTable::TextField1[2] ]
+	AVPlayer Play [ Field : TestTable::TextField1[$Rep] ]
+	AVPlayer Play [ URL : $URL ]
+	# 
+	AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 1 ; Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 2 ; Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	# 
+	AVPlayer Play [ Field : TestTable::TextField1 ; Presentation: Full Screen Only ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ Field : TestTable::TextField1[2] ; Presentation: Full Screen Only ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	# 
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Presentation: Full Screen Only ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: Yes ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: Yes ; Hide Controls: Yes ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Hide Controls: No ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Start Offset: 1 ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ; End Offset: 234 ]
+	AVPlayer Play [ URL : "http://www.fmworkmate.de" ]
+	# 
+	AVPlayer Set Options [ Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Disable External Controls: No ; Pause in Background: No ; Position: 123 ; Start Offset: 123 ; End Offset: 123 ; Sequence: Next ]
+	AVPlayer Set Options [ Presentation: Start Full Screen ]
+	AVPlayer Set Options [ Presentation: Full Screen Only ]
+	AVPlayer Set Options [ Presentation: Start Embedded ]
+	AVPlayer Set Options [ Presentation: Audio Only ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: No ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: No ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: No ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: No ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Sequence: None ]
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Sequence: Next ]
+	# 
+	AVPlayer Set Options [ Sequence: None ]
+	AVPlayer Set Options [ Sequence: Next ]
+	AVPlayer Set Options [ Sequence: Previous ]
+	# 
+	AVPlayer Set Options [ Volume: 1000 ]
+	AVPlayer Set Options [ Zoom: Fit ]
+	AVPlayer Set Options [ Zoom: Fill ]
+	AVPlayer Set Options [ Zoom: Stretch ]
+	AVPlayer Set Options [ Zoom: Fit Only ]
+	AVPlayer Set Options [ Zoom: Fill Only ]
+	AVPlayer Set Options [ Zoom: Stretch Only ]
+	# 
+	AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: $Volume ; Zoom: Stretch ; Sequence: Previous ]
+	# 
+	AVPlayer Set Playback State [ Stopped ]
+	AVPlayer Set Playback State [ Paused ]
+	AVPlayer Set Playback State [ Playing ]
+	# 
+	Beep
+	# 
+	# 
+	Dial Phone [ With dialog: On ; 12345678 ]
+	Dial Phone [ With dialog: Off ; 12345678 ]
+	# 
+	Enable Touch Keyboard [ Off ]
+	Enable Touch Keyboard [ Toggle ]
+	Enable Touch Keyboard [ On ]
+	# 
+	Execute FileMaker Data API [ Select ]
+	Execute FileMaker Data API []
+	Execute FileMaker Data API [ Target: TestTable::TextField1 ]
+	Execute FileMaker Data API [ Target: TestTable::TextField1 ; JSONSetElement ( "{}" ; "foo" ; "bar" ; JSONString ) ]
+	Execute FileMaker Data API [ Select ; Target: TestTable::TextField1 ; JSONSetElement ( "{}" ; "foo" ; "bar" ; JSONString ) ]
+	# 
+	Execute SQL [ With dialog: Off ]
+	Execute SQL [ With dialog: Off ; SQL Text: SELECT * FROM orders ]
+	Execute SQL [ With dialog: On ; SQL Text: SELECT * FROM orders ]
+	# 
+	Exit Application
+	# 
+	Flush Cache to Disk
+	# 
+	Get Folder Path []
+	Get Folder Path [ Allow Folder Creation ]
+	Get Folder Path [ Allow Folder Creation ; $FolderPath ; $DefaultLocation ]
+	Get Folder Path [ $FolderPath ; $Title ; $DefaultLocation ]
+	# 
+	Install Menu Set [ “[File Default]” ]
+	Install Menu Set [ “[Standard FileMaker Menus]” ; Use as file default: Off ]
+	Install Menu Set [ “[Standard FileMaker Menus]” ; Use as file default: On ]
+	Install Menu Set [ “USER Menuset” ; Use as file default: On ]
+	Install Menu Set [ “ADMIN Menuset” ; Use as file default: On ]
+	# 
+	Install Plug-In File []
+	Install Plug-In File [ TestTable::TextField1 ]
+	# 
+	Open URL [ With dialog: Off ]
+	Open URL [ With dialog: On ; "http://db.de" ]
+	Open URL [ With dialog: Off ; "http://www.mrwatson.de" ]
+	Open URL [ With dialog: Off ; "http://www.mrwatson.de" ]
+	Open URL [ With dialog: Off ; In external browser ; "http://www.mrwatson.de" ]
+	Open URL [ With dialog: Off ; In external browser ]
+	# 
+	Perform AppleScript []
+	Perform AppleScript [ "tell application "Finder" to activate" ]
+	Perform AppleScript [ "display dialog "Hello world!"" ]
+	Perform AppleScript [ "display dialog \"Hello world!\"" ]
+	# 
+	Perform JavaScript in Web Viewer [ Object Name: <Active Object> ]
+	Perform JavaScript in Web Viewer [ Object Name: "abc" ; Function Name: "def" ; Parameters: $p1 &  List( 1;2;3;4), $p2 ]
+	# 
+	Refresh Object [ Object Name: "Obj" ; Repetition: 2 ]
+	# 
+	Refresh Portal [ Object Name: "Portal1" ]
+	Refresh Portal [ Object Name: $MoreComplexName ]
+	# 
+	Save a Copy as Add-on Package [ Window name:    ; Replace UUIDs: Off ]
+	Save a Copy as Add-on Package [ Window name:    ; Replace UUIDs: On ]
+	Save a Copy as Add-on Package [ Window name: $window ; Replace UUIDs: Off ]
+	Save a Copy as Add-on Package [ Window name: $window ; Replace UUIDs: On ]
+	Save a Copy as Add-on Package [ Window name: $window ; Replace UUIDs: On ]
+	# 
+	# FIXME - edit on windows
+	Send DDE Execute
+	# 
+	Send Event []
+	Send Event [ “<unknown>” ; “misc” ; “dosc” ]
+	Send Event [ “<unknown>” ; “misc” ; “dosc” ]
+	Send Event [ “iCal.app” ; “aevt” ; “oapp” ]
+	Send Event [ “Calendar.app” ; “misc” ; “dosc” ]
+	Send Event [ “TextMate.app” ; “aevt” ; “odoc” ; “fmxmlsnippet.xml” ]
+	Send Event [ “AppleScript-Editor.app” ; “misc” ; “dosc” ; “ FMClipboard_Save.scpt” ]
+	Send Event [ “AppleScript-Editor.app” ; “misc” ; “dosc” ; “get name of every field of current layout” ]
+	# 
+	Send Mail [ Send via E-mail Client ; With dialog: On ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+	Send Mail [ Send via E-mail Client ; With dialog: Off ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+	Send Mail [ Send via SMTP Server ; No dialog ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+	Send Mail [ Send via OAuth 2.0 ; No dialog ]
+	Send Mail [ Send via OAuth 2.0 ; No dialog ; To: "to" ; CC: "cc" ; BCC: "bcc" ; Subject: "Subject" ; Message: "Message" ]
+	Send Mail [ Send via OAuth 2.0 ; No dialog ; To: "to" ; CC: "cc" ; BCC: "bcc" ; Subject: "Subject" ; Message: "Message" ; 2 Attachments ]
+	# 
+	Set Session Identifier [    ]
+	Set Session Identifier [ "It's me, Mario!" ]
+	# 
+	Set Web Viewer [ Object Name: "wv" ; Action: Reset ]
+	// Set Web Viewer [ Object Name: "wv" ; Action: Reload ]
+	// Set Web Viewer [ Object Name: "wv" ; Action: Go Forward ]
+	Set Web Viewer [ Object Name: "wv" ; Action: Go Back ]
+	Set Web Viewer [ Object Name: "wv" ; URL: "http://www.mapquest.com/maps/map.adp?" & "formtype=address&" & "searchtype=address&" & "cid=filemkr&" & "address=" & "" & "&country=" & "" ]
+	# 
+	Show Custom Dialog [ $DlgTitle ; $DlgMessage ; TestTable::TextField1 ; TestTable::TextField_lotsTurnedOn ; TestTable_Contacts::Name ]
+	Show Custom Dialog [ $DlgTitle ; "Only Button 1 and 3¶" & "and input 2" ; TestTable::NumberField1 ]
+	Show Custom Dialog [ $DlgTitle ; $DlgMessage ]
+	# 
+	Speak [ "Standard voice" ]
+	Speak [ "Agnes says.." ]
+	Speak [ "Albert" ]
+End If
+# # External Plugin steps
+If [ 1 ]
+	MBS [ Select ; Destination: TestTable::ContainerField1 ; Function: $Command ; P1: $P1 ; P2: $P2 ; P3: $P3 ; P4: $P4 ]
+End If
+# # Errors: Steps whose fmxmlsnippet does not contain 100% of the display information
+If [ 1 ]
+	# 2 Extra Labels:
+	Configure NFC Reading [ Action: Read ; Script: “Hello world” ; Timeout:    ; Continuous Reading:    ; Format Result as JSON: $format ]
+	# 
+	# Note: The option to specify the target result or not is NOT part of the clipboard, rather is implied by the existence of a calculation -> copying and pasting the following step ADDS a target calculation
+	Set Field By Name [ "Value" ]
+	Set Field By Name [    ]
+	# 
+End If

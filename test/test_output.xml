@@ -1,0 +1,58 @@
+<?xml version="1.0"?><fmxmlsnippet type="FMObjectList">
+	<Step enable="True" id="86" name="Set Error Capture">		<Set state="True"></Set>	</Step>
+	<Step enable="True" id="85" name="Allow User Abort">		<Set state="False"></Set>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Calculation><![CDATA[$params]]></Calculation>		<Value>			<Calculation><![CDATA[Get( ScriptParameter )]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$params</Name>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Calculation><![CDATA[$a]]></Calculation>		<Value>			<Calculation><![CDATA[1]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$a</Name>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[2]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$b</Name>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step enable="True" id="68" name="If">		<Calculation><![CDATA[1=0]]></Calculation>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[ Never]]></Text>	</Step>
+	<Step enable="True" id="125" name="Else If">		<Calculation><![CDATA[$a=1]]></Calculation>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[ Do sth]]></Text>	</Step>
+	<Step enable="True" id="125" name="Else If">		<Calculation><![CDATA[1=1]]></Calculation>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[ Always]]></Text>	</Step>
+    <Step enable="True" id="69"/>
+	<Step id="89" enable="True">		<Text><![CDATA[ Otherwise]]></Text>	</Step>
+    <Step enable="True" id="70"/>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[ ToDo still]]></Text>	</Step>
+	<Step id="89" enable="True"><Text><![CDATA[Perform Script [ Specified: From list ; “HelloWorld” ; Parameter: "everybody" ]]]></Text></Step>
+	<Step id="89" enable="True"><Text><![CDATA[Perform Script ["HelloWorld" ; Parameter: "short with normal quotes" ]]]></Text></Step>
+	<Step id="89" enable="True"><Text><![CDATA[Perform Script ["HelloWorld" ; "short with normal quotes" ]]]></Text></Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step enable="True" id="76" name="Set Field">		<Calculation><![CDATA[123]]></Calculation>		<Field table="MyTable" id="0" repetition="1" name="MyField"/>	</Step>
+	<Step enable="True" id="76" name="Set Field">		<Calculation><![CDATA[123]]></Calculation>		<Field table="MyTable" id="0" repetition="1" name="MyField"/>	</Step>
+	<Step id="89" enable="True"><Text><![CDATA[SF[MyTable::MyField;123]]]></Text></Step>
+	<Step enable="True" id="76" name="Set Field">		<Calculation><![CDATA[123]]></Calculation>		<Field table="MyTable" id="0" repetition="1" name="MyField"/>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[LOOP]]></Text>	</Step>
+	<Step id="89" enable="True"><Text><![CDATA[Go To Record [ First ]]]></Text></Step>
+	<Step id="89" enable="True"><Text><![CDATA[Go To Record First]]></Text></Step>
+	<Step id="89" enable="True"><Text><![CDATA[Go To First Record]]></Text></Step>
+    <Step enable="True" id="71"/>
+	<Step enable="True" id="72" name="Exit Loop If">		<Calculation><![CDATA[$i > $n]]></Calculation>	</Step>
+	<Step id="89" enable="True"><Text><![CDATA[	Go To Record [ Next ; Exit after Last: On ]]]></Text></Step>
+    <Step enable="True" id="73"/>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[Calculate Factorial]]></Text>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[1]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$fac</Name>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[1]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$i</Name>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[10]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$n</Name>	</Step>
+    <Step enable="True" id="71"/>
+	<Step enable="True" id="72" name="Exit Loop If">		<Calculation><![CDATA[$i > $n]]></Calculation>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[$fac * $i]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$fac</Name>	</Step>
+	<Step enable="True" id="141" name="Set Variable">		<Value>			<Calculation><![CDATA[$i + 1]]></Calculation>		</Value>		<Repetition>			<Calculation><![CDATA[1]]></Calculation>		</Repetition>		<Name>$i</Name>	</Step>
+    <Step enable="True" id="73"/>
+	<Step enable="True" id="87" name="Show Custom Dialog">		<Message><Calculation><![CDATA[$fac]]></Calculation></Message>		<Buttons>			<Button CommitState="True">				<Calculation><![CDATA["OK"]]></Calculation>			</Button>			<Button CommitState="False">				<Calculation><![CDATA["Cancel"]]></Calculation>			</Button>			<Button CommitState="False"></Button>		</Buttons>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[Short forms]]></Text>	</Step>
+	<Step id="89" enable="True"><Text><![CDATA[GTR [ First ]]]></Text></Step>
+	<Step id="89" enable="True"><Text><![CDATA[GTR [ Next ; Exit after Last: On ]]]></Text></Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+	<Step id="89" enable="True">		<Text><![CDATA[]]></Text>	</Step>
+    <Step enable="True" id="90"/>
+</fmxmlsnippet>

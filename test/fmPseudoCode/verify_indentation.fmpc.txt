@@ -1,0 +1,7 @@
+	# This file has indented lines and potentially CRLF if copied incorrectly
+	Set Variable [ $x ; 1 ]
+    Set Variable [ $y ; 2 ]
+  # Indented comment
+	If [ $x = 1 ]
+		Set Variable [ $z ; 3 ]
+	End If
