@@ -15,6 +15,7 @@
 	Converts Set Field X = Calc to Set Field X = $X
 
 	===== CHANGES HISTORY =====
+	2026-02-14 @mrwatson-de Version 1.1 Remove dots from names
 	2014-07-04 MrW: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
@@ -30,7 +31,7 @@
 		<!-- -->
 		<Step enable="{$enable}" id="76">
 			<Calculation>
-				<xsl:value-of select="concat($varType,translate(Field/@name,' ','_'))"/>
+				<xsl:value-of select="concat($varType,translate(Field/@name,' .','_'))"/>
 			</Calculation>
 			<xsl:copy-of select="Field"/>
 			<xsl:copy-of select="Repetition"/>
