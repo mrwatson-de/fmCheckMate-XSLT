@@ -15,6 +15,7 @@
 	Converts Set Field X = Calc to Set Variable $X = Calc
 
 	===== CHANGES HISTORY =====
+	2026-02-17 @mrwatson-de Version 1.2 Refactored $varName
 	2026-02-14 @mrwatson-de Version 1.1 Remove dots from names
 	2014-07-04 MrW: Version 1.0
 	-->
@@ -30,21 +31,8 @@
 		<xsl:variable name="enable" select="@enable"/>
 		<xsl:variable name="fieldTable" select="Field/@table"/>
 		<xsl:variable name="fieldName" select="Field/@name"/>
+		<xsl:variable name="varName" select="concat($varType,translate($fieldName,' .','_'))"/>
 		<!-- -->
-		<xsl:variable name="repetitionArray">
-			<xsl:choose>
-				<xsl:when test="Repetition/Calculation">
-					<xsl:text>[</xsl:text>
-					<xsl:value-of select="Repetition/Calculation"/>
-					<xsl:text>]</xsl:text>
-				</xsl:when>
-				<xsl:when test="Field/@repetition&gt;1">
-					<xsl:text>[</xsl:text>
-					<xsl:value-of select="Field/@repetition"/>
-					<xsl:text>]</xsl:text>
-				</xsl:when>
-			</xsl:choose>
-		</xsl:variable>
 		<Step enable="{$enable}" id="141">
 			<Value>
 				<xsl:copy-of select="Calculation"/>
@@ -68,7 +56,7 @@
 				</Calculation>
 			</Repetition>
 			<Name>
-				<xsl:value-of select="concat($varType,translate($fieldName,' .','_'))"/>
+				<xsl:value-of select="$varName"/>
 			</Name>
 		</Step>
 	</xsl:template>
