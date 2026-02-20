@@ -181,7 +181,7 @@
 	<!--
 	 ! Script step 1. Perform Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '1']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '1']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -200,7 +200,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '3']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '3']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -230,7 +230,7 @@
 	 !  - always with Parameter: …
 	 !  - Wait for completion at the end 
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '164']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '164']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -252,7 +252,7 @@
 	<!--
 	 ! Script step 62. Pause/Resume Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '62']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '62']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -277,7 +277,7 @@
 	<!--
 	 ! Script step 103. Exit Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '103']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '103']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -293,13 +293,13 @@
 	<!--
 	 ! Script step 90. Halt Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '90']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '90']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 68. If
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '68']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '68']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -313,7 +313,7 @@
 	<!--
 	 ! Script step 71. Loop
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '71']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '71']">
 	<xsl:variable name="flush" select="FlushType/@value"/>
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:if test="$flush!=''">
@@ -346,19 +346,19 @@
 	<!--
 	 ! Script step 70. End If
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '70']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '70']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 73. End Loop
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '73']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '73']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 125. Else If
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '125']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '125']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -372,13 +372,13 @@
 	<!--
 	 ! Script step 69. Else
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '69']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '69']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 72. Exit Loop If
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '72']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '72']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -392,7 +392,7 @@
 	<!--
 	 ! Script step 85. Allow User Abort
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '85']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '85']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -406,7 +406,7 @@
 	<!--
 	 ! Script step 86. Set Error Capture
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '86']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '86']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -420,7 +420,7 @@
 	<!--
 	 ! Script step 141. Set Variable
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '141']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '141']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -445,7 +445,7 @@
 	<!--
 	 ! Script step 168. Set Layout Object Animation
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '168']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '168']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -459,7 +459,7 @@
 	<!--
 	 ! Script step 148. Install OnTimer Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '148']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '148']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -503,7 +503,7 @@
 	<!--
 	 ! Script step 6. Go to Layout
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '6']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '6']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -516,7 +516,7 @@
 	<!--
 	 ! Script step 16. Go to Record/Request/Page
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '16']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '16']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -568,7 +568,7 @@
 	<!--
 	 ! Script step 74. Go to Related Record
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '74']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '74']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -619,7 +619,7 @@
 	<!--
 	 ! Script step 99. Go to Portal Row
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '99']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '99']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -688,7 +688,7 @@
 	<!--
 	 ! Script step 145. Go to Object
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '145']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '145']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -708,7 +708,7 @@
 	<!--
 	 ! Script step 17. Go to Field
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '17']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '17']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -726,25 +726,25 @@
 	<!--
 	 ! Script step 4. Go to Next Field
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '4']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '4']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 5. Go to Previous Field
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '5']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '5']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 169. Close Popover
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '169']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '169']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 55. Enter Browse Mode
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '55']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '55']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -756,7 +756,7 @@
 	<!--
 	 ! Script step 22. Enter Find Mode
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '22']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '22']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -770,7 +770,7 @@
 	<!--
 	 ! Script step 41. Enter Preview Mode
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '41']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '41']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -789,7 +789,7 @@
 	<!--
 	 ! Script step 45. Undo/Redo
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '45']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '45']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -814,7 +814,7 @@
 	<!--
 	 ! Script step 46. Cut
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '46']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '46']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -827,7 +827,7 @@
 	<!--
 	 ! Script step 47. Copy
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '47']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '47']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -840,7 +840,7 @@
 	<!--
 	 ! Script step 48. Paste
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '48']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '48']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -865,7 +865,7 @@
 	<!--
 	 ! Script step 49. Clear
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '49']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '49']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -878,7 +878,7 @@
 	<!--
 	 ! Script step 130. Set Selection
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '130']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '130']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -908,13 +908,13 @@
 	<!--
 	 ! Script step 50. Select All
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '50']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '50']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 128. Perform Find/Replace
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '128']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '128']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -969,7 +969,7 @@
 	<!--
 	 ! Script step 76. Set Field
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '76']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '76']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -984,7 +984,7 @@
 	<!--
 	 ! Script step 147. Set Field By Name
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '147']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '147']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1005,7 +1005,7 @@
 	<!--
 	 ! Script step 116. Set Next Serial Value
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '116']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '116']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1020,7 +1020,7 @@
 	<!--
 	 ! Script step 61. Insert Text
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '61']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '61']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1040,7 +1040,7 @@
 	<!--
 	 ! Script step 77. Insert Calculated Result
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '77']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '77']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1056,7 +1056,7 @@
 	<!--
 	 ! Script step 161. Insert from Device (fm13)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '161']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '161']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1236,7 +1236,7 @@
 	<!--
 	 ! Script step 11. Insert from Index
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '11']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '11']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1249,7 +1249,7 @@
 	<!--
 	 ! Script step 12. Insert from Last Visited
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '12']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '12']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1270,7 +1270,7 @@
 
 	Note: In FM18 the parameter order changed and demoted VerifySSLCertificates to behind the URL.
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '160']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '160']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1307,7 +1307,7 @@
 	<!--
 	 ! Script step 13. Insert Current Date
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '13']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '13']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1320,7 +1320,7 @@
 	<!--
 	 ! Script step 14. Insert Current Time
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '14']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '14']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1333,7 +1333,7 @@
 	<!--
 	 ! Script step 60. Insert Current User Name
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '60']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '60']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1346,7 +1346,7 @@
 	<!--
 	 ! Script step 56. Insert Picture
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '56']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '56']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1363,7 +1363,7 @@
 	 !	<UniversalPathList type="Reference">movie:../../../Music/iTunes/iTunes Music/Music/Lily Allen/It's Not Me, It's You/03 Not Fair.m4a</UniversalPathList>
 	 ! </Step>
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '159']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '159']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1381,7 +1381,7 @@
 		<UniversalPathList type="Embedded">image:../../../../../Library/Documentation/User Information.localized/AirPort Extreme and Bluetooth Regulatory Certification.pdf</UniversalPathList>
 	</Step>
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '158']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '158']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1416,7 +1416,7 @@
 		</DialogOptions>
 	</Step>
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '131']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '131']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1466,7 +1466,7 @@
 	<!--
 	 ! Script step 91. Replace Field Contents
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '91']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '91']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1527,7 +1527,7 @@
 	<!--
 	 ! Script step 40. Relookup Field Contents
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '40']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '40']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1540,7 +1540,7 @@
 	<!--
 	 ! Script step 132. Export Field Contents
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '132']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '132']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1564,19 +1564,19 @@
 	<!--
 	 ! Script step 7. New Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '7']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '7']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 8. Duplicate Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '8']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '8']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 9. Delete Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '9']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '9']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1588,7 +1588,7 @@
 	<!--
 	 ! Script step 104. Delete Portal Row
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '104']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '104']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1600,7 +1600,7 @@
 	<!--
 	 ! Script step 10. Delete All Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '10']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '10']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1612,13 +1612,13 @@
 	<!--
 	 ! Script step 133. Open Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '133']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '133']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 51. Revert Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '51']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '51']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1630,7 +1630,7 @@
 	<!--
 	 ! Script step 75. Commit Records/Requests
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '75']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '75']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1653,19 +1653,19 @@
 	<!--
 	 ! Script step 101. Copy Record/Request
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '101']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '101']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 98. Copy All Records/Requests
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '98']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '98']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 35. Import Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '35']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '35']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1926,7 +1926,7 @@
 	<!--
 	 ! Script step 36. Export Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '36']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '36']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1963,7 +1963,7 @@
 	<!--
 	 ! Script step 143. Save Records as Excel
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '143']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '143']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -1986,7 +1986,7 @@
 	<!--
 	 ! Script step 144. Save Records as PDF
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '144']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '144']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2053,7 +2053,7 @@
 	<!--
 	 ! Script step 152. Save Records as Snapshot Link
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '152']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '152']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2072,7 +2072,7 @@
 		<BaseTable id="-1" name="&lt;Current Table&gt;"></BaseTable></Step>
 	
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '182']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '182']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2108,7 +2108,7 @@
 	<!--
 	 ! Script step 28. Perform Find
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '28']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '28']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2121,7 +2121,7 @@
 	<!--
 	 ! Script step 150. Perform Quick Find
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '150']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '150']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2135,7 +2135,7 @@
 	<!--
 	 ! Script step 126. Constrain Found Set
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '126']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '126']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2152,7 +2152,7 @@
 	<!--
 	 ! Script step 127. Extend Found Set
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '127']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '127']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2165,31 +2165,31 @@
 	<!--
 	 ! Script step 24. Modify Last Find
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '24']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '24']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 23. Show All Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '23']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '23']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 27. Show Omitted Only
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '27']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '27']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 25. Omit Record
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '25']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '25']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 26. Omit Multiple Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '26']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '26']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2204,7 +2204,7 @@
 	<!--
 	 ! Script step 39. Sort Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '39']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '39']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2266,7 +2266,7 @@
 	<!--
 	 ! Script step 154. Sort Records by Field
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '154']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '154']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2291,7 +2291,7 @@
 	<!--
 	 ! Script step 21. Unsort Records
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '21']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '21']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
@@ -2310,7 +2310,7 @@
 		<Field table="Students" id="2" name="Name"/>
 	</Step>
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '155']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '155']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2342,7 +2342,7 @@
 	<!--
 	 ! Script step 122. New Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '122']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '122']">
 		<xsl:variable name="newWndStylesStyles" select="NewWndStyles/@Styles"/>
 		<xsl:variable name="newWndStylesDocument"
 			select="($newWndStylesStyles mod (2 * 2)) &gt; ($newWndStylesStyles mod 2)"/>
@@ -2459,7 +2459,7 @@
 	<!--
 	 ! Script step 123. Select Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '123']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '123']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2473,7 +2473,7 @@
 	<!--
 	 ! Script step 121. Close Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '121']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '121']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2487,7 +2487,7 @@
 	<!--
 	 ! Script step 31. Adjust Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '31']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '31']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2516,7 +2516,7 @@
 	<!--
 	 ! Script step 119. Move/Resize Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '119']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '119']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2562,7 +2562,7 @@
 	<!--
 	 ! Script step 120. Arrange All Windows
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '120']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '120']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2587,13 +2587,13 @@
 	<!--
 	 ! Script step 79. Freeze Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '79']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '79']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 80. Refresh Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '80']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '80']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2614,7 +2614,7 @@
 	<!--
 	 ! Script step 81. Scroll Window
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '81']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '81']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2642,7 +2642,7 @@
 	<!--
 	 ! Script step 166. Show/Hide Menubar
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '166']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '166']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2657,7 +2657,7 @@
 	<!--
 	 ! Script step 29. Show/Hide Toolbars
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '29']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '29']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2677,7 +2677,7 @@
 	<!--
 	 ! Script step 92. Show/Hide Text Ruler
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '92']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '92']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2689,7 +2689,7 @@
 	<!--
 	 ! Script step 124. Set Window Title
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '124']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '124']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2711,7 +2711,7 @@
 	<!--
 	 ! Script step 97. Set Zoom Level
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '97']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '97']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2741,7 +2741,7 @@
 	<!--
 	 ! Script step 30. View As
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '30']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '30']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2773,13 +2773,13 @@
 	<!--
 	 ! Script step 82. New File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '82']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '82']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 33. Open File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '33']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '33']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2798,7 +2798,7 @@
 	<!--
 	 ! Script step 34. Close File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '34']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '34']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2812,7 +2812,7 @@
 	<!--
 	 ! Script step 139. Convert File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '139']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '139']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2840,7 +2840,7 @@
 	<!--
 	 ! Script step 84. Set Multi-User
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '84']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '84']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2864,7 +2864,7 @@
 	<!--
 	 ! Script step 94. Set Use System Formats
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '94']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '94']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2878,7 +2878,7 @@
 	<!--
 	 ! Script step 37. Save a Copy as
 	 !-->
-	 <xsl:template match="//Step[not(ancestor::Step) and @id = '37']">
+	 <xsl:template match="Step[not(ancestor::Step) and @id = '37']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2897,7 +2897,7 @@
 	 !       Thus the XML element for the "Replace UUIDs option is
 	 !       (confusingly) called LinkAvail !
 	 !-->
-	 <xsl:template match="//Step[not(ancestor::Step) and @id = '96']">
+	 <xsl:template match="Step[not(ancestor::Step) and @id = '96']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			
@@ -2921,7 +2921,7 @@
 	<!--
 	 ! Script step 95. Recover File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '95']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '95']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2934,7 +2934,7 @@
 	<!--
 	 ! Script step 42. Print Setup
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '42']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '42']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -2963,7 +2963,7 @@
 	<!--
 	 ! Script step 43. Print
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '43']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '43']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3073,7 +3073,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '134']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '134']">
 		<xsl:variable name="account_type" select="AddAccount/AccountType"/>
 		<xsl:variable name="account_type_name">
 			<xsl:choose>
@@ -3185,7 +3185,7 @@
 	<!--
 	 ! Script step 135. Delete Account
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '135']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '135']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3203,7 +3203,7 @@
 	<!--
 	 ! Script step 136. Reset Account Password
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '136']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '136']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3236,7 +3236,7 @@
 	<!--
 	 ! Script step 83. Change Password
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '83']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '83']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3267,7 +3267,7 @@
 	<!--
 	 ! Script step 137. Enable Account
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '137']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '137']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3289,7 +3289,7 @@
 	<!--
 	 ! Script step 138. Re-Login
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '138']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '138']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3325,7 +3325,7 @@
 	<!--
 	 ! Script step 18. Check Selection
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '18']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '18']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3338,37 +3338,37 @@
 	<!--
 	 ! Script step 19. Check Record
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '19']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '19']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 20. Check Found Set
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '20']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '20']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 106. Correct Word
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '106']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '106']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 107. Spelling Options
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '107']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '107']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 108. Select Dictionaries
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '108']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '108']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 109. Edit User Dictionary
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '109']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '109']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!-- 
@@ -3381,91 +3381,91 @@
 	<!--
 	 ! Script step 149. Open Edit Saved Finds
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '149']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '149']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 105. Open Preferences
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '105']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '105']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 114. Open File Options
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '114']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '114']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 156. Open Manage Containers
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '156']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '156']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 38. Open Manage Database
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '38']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '38']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 140. Open Manage Data Sources
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '140']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '140']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 151. Open Manage Layouts
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '151']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '151']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 88. Open Script Workspace
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '88']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '88']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 165. Open Manage Themes
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '165']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '165']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 112. Open Manage Value Lists
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '112']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '112']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 129. Open Find/Replace
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '129']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '129']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 32. Open Help
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '32']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '32']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 118. Open Hosts (prior to fm17 Open Remote)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '118']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '118']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 113. Open Sharing
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '113']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '113']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 172. Upload to Host (prior to fm18 Upload to FileMaker Server)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '172']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '172']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!-- 
@@ -3478,7 +3478,7 @@
 	<!--
 	 ! Script step 87. Show Custom Dialog
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '87']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '87']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3577,7 +3577,7 @@
 	<!--
 	 ! Script step 115. Allow Formatting Bar (fmp12)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '115']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '115']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3591,7 +3591,7 @@
 	<!--
 	 ! Script step 167. Refresh Object
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '167']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '167']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3611,13 +3611,13 @@
 	<!--
 	 ! Script step 93. Beep
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '93']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '93']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 66. Speak
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '66']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '66']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3638,7 +3638,7 @@
 	<!--
 	 ! Script step 65. Dial Phone
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '65']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '65']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3653,7 +3653,7 @@
 	<!--
 	 ! Script step 157. Install Plug-In File
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '157']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '157']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3665,7 +3665,7 @@
 	<!--
 	 ! Script step 142. Install Menu Set
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '142']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '142']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3693,7 +3693,7 @@
 	<!--
 	 ! Script step 146. Set Web Viewer
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '146']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '146']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3745,7 +3745,7 @@
 	<!--
 	 ! Script step 111. Open URL
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '111']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '111']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3764,7 +3764,7 @@
 	<!--
 	 ! Script step 63. Send Mail
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '63']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '63']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3856,13 +3856,13 @@
 	<!--
 	 ! Script step 64. Send DDE Execute
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '64']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '64']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 67. Perform AppleScript
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '67']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '67']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3893,7 +3893,7 @@
 	<!--
 	 ! Script step 117. Execute SQL
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '117']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '117']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3911,7 +3911,7 @@
 	<!--
 	 ! Script step 57. Send Event
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '57']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '57']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -3972,7 +3972,7 @@
 	<!--
 	 ! Script step 89. Comment
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '89']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '89']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:if test="Text != ''">
 			<xsl:value-of select="' '"/>
@@ -3985,13 +3985,13 @@
 	<!--
 	 ! Script step 102. Flush Cache to Disk
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '102']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '102']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 44. Exit Application
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '44']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '44']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
@@ -4004,13 +4004,13 @@
 	<!--
 	 ! Script step 173. EMPTY -> UNKNWONN
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '173']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '173']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 174. Enable Touch Keyboard
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '174']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '174']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4036,7 +4036,7 @@
 	                End Offset: 234 ] 
 	
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '177']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '177']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4151,7 +4151,7 @@
 	<!--
 	 ! Script step 178. AVPlayer Set Playback State
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '178']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '178']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4178,7 +4178,7 @@
 	                       Sequence: Next ]
 	
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '179']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '179']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4320,7 +4320,7 @@
 	<!--
 	 ! Script step 180. Refresh Portal
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '180']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '180']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4339,7 +4339,7 @@
 	<!--
 	 ! Script step 181. Get Folder Path (prior to fm18 Get Directory)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '181']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '181']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4380,21 +4380,21 @@
 	<!--
 	 ! Script step 183. Open Favorites (fm17 Open My Apps,prior to fm17 Open Launch Center)
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '183']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '183']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 184. Open Starter Solution
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '184']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '184']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 185. Configure Region Monitor Script
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '185']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '185']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4527,7 +4527,7 @@
 	<!--
 	 ! Script step 186. External Script Step
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '186']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '186']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4605,7 +4605,7 @@
 	 ! 	</Action>
 	 ! </Step>
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '187']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '187']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4763,7 +4763,7 @@
 	<!--
      ! Script step 188. Get File Exists (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '188']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '188']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4782,7 +4782,7 @@
 	<!--
      ! Script step 189. Get File Size (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '189']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '189']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4801,7 +4801,7 @@
 	<!--
      ! Script step 190. Create Data File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '190']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '190']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4817,7 +4817,7 @@
 	<!--
      ! Script step 191. Open Data File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '191']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '191']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4837,7 +4837,7 @@
 	 ! ========
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '192']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '192']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4881,7 +4881,7 @@
 	<!--
      ! Script step 193. Read from Data File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '193']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '193']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4942,7 +4942,7 @@
 	<!--
      ! Script step 194. Get Data File Position (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '194']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '194']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4966,7 +4966,7 @@
 	<!--
      ! Script step 195. Set Data File Position (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '195']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '195']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -4994,7 +4994,7 @@
 	<!--
      ! Script step 196. Close Data File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '196']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '196']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5012,7 +5012,7 @@
 	<!--
      ! Script step 197. Delete File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '197']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '197']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5027,7 +5027,7 @@
 	<!--
      ! Script step 199. Rename File (FM18)
       !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '199']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '199']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5051,7 +5051,7 @@
 	<!--
      ! Script step 200. Set Error Logging (FM18)
      !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '200']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '200']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5098,7 +5098,7 @@
 ! </Step>
 ! 
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '201']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '201']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5189,7 +5189,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '202']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '202']">
 		<xsl:variable name="operation" select="(ConfigureCoreML/text())[1]"/>
 		<!--  -->
 		<xsl:call-template name="ScriptStepSTART"/>
@@ -5246,7 +5246,7 @@
 	<!--
 	 ! Script step 203. Execute FileMaker Data API
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '203']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '203']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5290,7 +5290,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '175']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '175']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5339,7 +5339,7 @@
 	<!--
 	 ! Script step 205. Open Transaction
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '205']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '205']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5366,13 +5366,13 @@
 	<!--
 	! Script step 206. Commit Transaction
 	!-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '206']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '206']">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	! Script step 207. Revert Transaction
 	!-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '207']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '207']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5407,7 +5407,7 @@
 	<!--
 	! Script step 208. Set Session Identifier
 	!-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '208']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '208']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5422,7 +5422,7 @@
 	<!--
 	! Script step 209. Set Dictionary
 	!-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '209']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '209']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5446,7 +5446,7 @@
 		<!--
 		! Script step 210. Perform Script on Server with Callback
 		!-->
-		<xsl:template match="//Step[not(ancestor::Step) and @id = '210']">
+		<xsl:template match="Step[not(ancestor::Step) and @id = '210']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 		<xsl:with-param name="pParameterList">
@@ -5458,7 +5458,7 @@
 	<!--
 	! Script step 211. Trigger Claris Connect Flow
 	!-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '211']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '211']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5498,7 +5498,7 @@
 	 ! Script step 212. Configure AI Account
 	 ! Configure AI Account [ Account Name:    ; Model Provider: OpenAI ; API key:    ]
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '212']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '212']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5597,7 +5597,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '213']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '213']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5725,7 +5725,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '214']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '214']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5926,7 +5926,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '215']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '215']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -5984,7 +5984,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '216']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '216']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -6062,7 +6062,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '217']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '217']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -6137,7 +6137,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '218']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '218']">
 		<xsl:variable name="queryType" select="LLMSemanticFind/Query/@type"/>
 		<!--  -->
 		<xsl:call-template name="ScriptStepSTART"/>
@@ -6371,7 +6371,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '219']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '219']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -6621,7 +6621,7 @@
 	  </Step>
 
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '220']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '220']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -6789,7 +6789,7 @@
 	  </Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '221']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '221']">
 		<xsl:variable name="Action" select="LLMCreateFind/Action"/>
 		<xsl:variable name="ActionOutput">
 			<xsl:choose>
@@ -6970,7 +6970,7 @@
 	 !   - LLMTrainSkipRecords
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '222']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '222']">
 		<xsl:variable name="Action" select="LLMTrain/LLMTrainAction"/>
 		<xsl:variable name="ActionOutput">
 			<xsl:choose>
@@ -7089,7 +7089,7 @@
 	 ! Script step 223. Set Revert Transaction on Error
 	 ! FM21
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '223']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '223']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -7129,7 +7129,7 @@
 		</Step>
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '225']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '225']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -7223,7 +7223,7 @@
 	 ! ========
 	 ! ========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '226']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '226']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -7324,7 +7324,7 @@
 		</Step>
 		 ! =========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '227']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '227']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -7374,7 +7374,7 @@
 		</Step>
 	 ! =========
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '228']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '228']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
@@ -7434,15 +7434,14 @@
 	 !
 	 ! <unknown>* = never used
 	 !-->
-	<xsl:template
-		match="//Step[not(ancestor::Step) and (@id = '0' or @id = '2' or @id = '15' or @id = '52' or @id = '53' or @id = '54' or @id = '58' or @id = '59' or @id = '78' or @id = '100' or @id = '153' or @id = '162' or @id = '163' or @id = '170' or @id = '171' or @id = '173' or @id = '204' or @id = '224')]">
+	<xsl:template match="Step[not(ancestor::Step) and (@id = '0' or @id = '2' or @id = '15' or @id = '52' or @id = '53' or @id = '54' or @id = '58' or @id = '59' or @id = '78' or @id = '100' or @id = '153' or @id = '162' or @id = '163' or @id = '170' or @id = '171' or @id = '173' or @id = '204' or @id = '224')]">
 		<xsl:call-template name="ScriptStepSTARTEND"/>
 	</xsl:template>
 	<!--
 	 ! Script step 176. Set Allowed Orientations
 	 ! FIXME - Versioning? This was allowed in some distand version - now obsoleted - delete?
 	 !-->
-	<xsl:template match="//Step[not(ancestor::Step) and @id = '176']">
+	<xsl:template match="Step[not(ancestor::Step) and @id = '176']">
 		<xsl:call-template name="ScriptStepSTART"/>
 		<xsl:call-template name="ScriptStepParameterList">
 			<xsl:with-param name="pParameterList">
