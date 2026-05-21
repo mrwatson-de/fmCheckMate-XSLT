@@ -6,7 +6,7 @@
 
 	===== PURPOSE =====
 
-	XSL-File: XMFN_Text.Lines_ListCustomFunctionCalls.xsl
+	XSL-File: XMFN_Text.Lines_ListFunctionCalls.xsl
 
 	XML-Source: fmxmlsnippet.xml
 	XML-Grammar: fmxmlsnippet
@@ -15,6 +15,7 @@
 	Returns the list of custom functions, showing the functoin calls
 	
 	===== CHANGES HISTORY =====
+	2026-05-21 @mrwatson-de: Version 0.2 renamed file
 	2022-02-26 MrW: V0.1
 	-->
 	<!-- ===== HEAD ===== -->

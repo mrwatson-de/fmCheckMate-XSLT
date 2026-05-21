@@ -6,15 +6,17 @@
 
 	===== PURPOSE =====
 
-	XSL-File: XMFN_XMFN_SortFuctionsByName.xsl
+	XSL-File: XMFN_XMFN_SortFunctionsTreeByCreationOrder.xsl
 
 	XML-Source: fmxmlsnippet.xml
 	XML-Grammar: fmxmlsnippet
 	XML-Content: copied custom functions
 	
-	Sort the Custom Functions into creation order whilst ignoring folders
+	Sort the Custom Function Tree into creation order recursively.
 	
 	===== CHANGES HISTORY =====
+	2026-05-21 @mrwatson-de: Version 1.1 renamed and updated to support FM22 Folders
+	2026-05-21 @mrwatson-de: Version 1.0.1 Typo in file name
 	2025-08-15 @mrwatson-de: Version 1.0
 	-->
 	<!-- ===== HEAD ===== -->
@@ -22,11 +24,13 @@
 	<xsl:include href="../../../fmCheckMate/xsl/_inc/inc.Clone.xsl"/>
 	<!-- ===== PARAMS ===== -->
 	<!-- ===== TEMPLATES ===== -->
-	<!-- Sort custom functions into creation order  -->
-	<xsl:template match="/">
-		<xsl:for-each select="//CustomFunction">
-			<xsl:sort select="@name"/>
-			<xsl:copy-of select="."/>
-		</xsl:for-each>
+	<!-- Output group and sort contents into creation order recursively -->
+	<xsl:template match="fmxmlsnippet | Group">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates select="CustomFunction | Group">
+				<xsl:sort select="@id" data-type="number"/>
+			</xsl:apply-templates>
+		</xsl:copy>
 	</xsl:template>
 </xsl:stylesheet>
