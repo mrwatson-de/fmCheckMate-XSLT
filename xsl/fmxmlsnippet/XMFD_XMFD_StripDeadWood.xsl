@@ -15,6 +15,7 @@
 	Removes 'dead wood' from field definitions, i.e. Calculations + Look-ups that are no longer active
 	
 	===== CHANGES HISTORY =====
+	2026-07-15n @mrwatson-de: Version 1.2: Keep everything else 
 	2013-09-09 MrW: Clone templates centralized in _inc/inc.Clone.xsl
 	2011-08-10 MrW: Version 1.0
 	-->
@@ -22,10 +23,6 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="no" cdata-section-elements="Calculation Text Data"/>
 	<xsl:include href="../../../fmCheckMate/xsl/_inc/inc.Clone.xsl"/>
 	<!--===== TEMPLATES =====-->
-	<!-- Main -->
-	<xsl:template match="/">
-		<xsl:apply-templates select="//Field[not(ancestor::Field)]"/>
-	</xsl:template>
 	<!--
 	 !
 	 !
